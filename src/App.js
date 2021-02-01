@@ -7,16 +7,26 @@ import HomePage from "./pages/home";
 import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
 
+import { auth, createUserProfileDocument } from "./firebase/firebase";
+
 function App() {
-  const [placeholder, setPlaceholder] = useState("Hi");
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    fetch("/hello")
-      .then((res) => res.json())
-      .then((data) => {
-        setPlaceholder(data.result);
-      });
+    auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const user = await createUserProfileDocument(userAuth);
+        user?.onSnapshot((snapshot) => {
+          setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data(),
+          });
+        });
+      }
+      setCurrentUser(userAuth);
+    });
   }, []);
+
   return (
     <>
       <Router>
@@ -26,11 +36,11 @@ function App() {
             {/* <p>Flask says {placeholder}</p> */}
           </Route>
           <Route path={ROUTES.SIGN_UP}>
-            <SignupPage/>
+            <SignupPage />
           </Route>
 
           <Route path={ROUTES.SIGN_IN}>
-            <SigninPage/>
+            <SigninPage />
           </Route>
         </Switch>
       </Router>
