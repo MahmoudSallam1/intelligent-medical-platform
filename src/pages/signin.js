@@ -5,27 +5,28 @@ import Form from "../components/form";
 import FooterContainer from "../containers/footer";
 import * as ROUTES from "../constants/routes";
 
+import { auth, signInWithGoogle } from "../firebase/firebase";
+
 export default function SigninPage() {
   const history = useHistory();
   const [error, setError] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const isInvalid = (password === "") | (emailAddress === "");
+  const isInvalid = (password === "") | (email === "");
 
-  // function handleSignin(event) {
-  //   event.preventDefault();
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(emailAddress, password)
-  //     .then(() => {
-  //       setEmailAddress("");
-  //       setPassword("");
-  //       setError("");
-  //       history.push(ROUTES.BROWSE);
-  //     })
-  //     .catch((error) => setError(error.message));
-  // }
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setEmail("");
+      setPassword("");
+      history.push(ROUTES.HOME)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <>
@@ -34,11 +35,11 @@ export default function SigninPage() {
         <Form.Title>Sign In</Form.Title>
         {error && <Form.Error>{error}</Form.Error>}
 
-        <Form.Base onSubmit={{}} method="POST">
+        <Form.Base onSubmit={handleSubmit} method="POST">
           <Form.Input
             placeholder="Email address"
-            value={emailAddress}
-            onChange={({ target }) => setEmailAddress(target.value)}
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
           />
           <Form.Input
             type="password"
@@ -50,6 +51,11 @@ export default function SigninPage() {
 
           <Form.Submit disabled={isInvalid} type="submit">
             Sign In
+          </Form.Submit>
+
+
+          <Form.Submit googleColor  onClick={signInWithGoogle} >
+          Sign in with Google
           </Form.Submit>
 
           <Form.Text>

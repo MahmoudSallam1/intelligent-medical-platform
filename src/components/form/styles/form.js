@@ -71,11 +71,18 @@ export const Input = styled.input`
   background: #f5f6fa;
   border-radius: 4px;
   border: 0;
-  color: #1db5e4;
+  color: rgba(2, 48, 63, 0.88);
   height: 50px;
   line-height: 50px;
   padding: 5px 20px;
   margin-bottom: 20px;
+  font-size:1.1rem;
+
+  &:focus{
+    outline:0;
+    border-bottom:3px solid #1db5e4;
+
+  }
 
   &:last-of-type {
     margin-bottom: 30px;
@@ -83,7 +90,9 @@ export const Input = styled.input`
 `;
 
 export const Submit = styled.button`
-  background: #fab91c;
+
+  background:${({ googleColor }) => (googleColor ? "#1db5e4" :"#fab91c")};
+
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
