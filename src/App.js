@@ -6,6 +6,7 @@ import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/home";
 import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
+import DashboardPage from "./pages/dashboard";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase";
 
@@ -33,7 +34,6 @@ function App() {
         <Switch>
           <Route exact path={ROUTES.HOME}>
             <HomePage />
-            {/* <p>Flask says {placeholder}</p> */}
           </Route>
           <Route path={ROUTES.SIGN_UP}>
             <SignupPage />
@@ -41,6 +41,9 @@ function App() {
 
           <Route path={ROUTES.SIGN_IN}>
             <SigninPage />
+          </Route>
+          <Route path={ROUTES.DASHBOARD}>
+            <DashboardPage />
           </Route>
         </Switch>
       </Router>

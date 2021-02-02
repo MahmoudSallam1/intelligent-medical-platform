@@ -46,4 +46,13 @@ export const createUserProfileDocument = async (userAuth: any) => {
   }
   return userReference;
 };
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => {
+  auth.signInWithPopup(provider);
+};
+
+export const startLogout = () => {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => console.log("User signed out!"));
+};

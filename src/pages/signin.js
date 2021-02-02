@@ -22,11 +22,12 @@ export default function SigninPage() {
       await auth.signInWithEmailAndPassword(email, password);
       setEmail("");
       setPassword("");
-      history.push(ROUTES.HOME)
+      history.push(ROUTES.DASHBOARD);
     } catch (err) {
       console.log(err);
     }
   }
+
 
   return (
     <>
@@ -53,9 +54,8 @@ export default function SigninPage() {
             Sign In
           </Form.Submit>
 
-
-          <Form.Submit googleColor  onClick={signInWithGoogle} >
-          Sign in with Google
+          <Form.Submit googleColor onClick={signInWithGoogle}>
+            Sign in with Google
           </Form.Submit>
 
           <Form.Text>
