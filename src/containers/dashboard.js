@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../components/header";
 import * as ROUTES from "../constants/routes";
 import { startLogout } from "../firebase/firebase";
 
 import Dashboard from "../components/dashboard";
+
+import Navigation from "../components/navigation";
 
 export default function DashboardContainer({ children }) {
   return (
@@ -13,19 +15,18 @@ export default function DashboardContainer({ children }) {
         Mahmoud Sallam
       </Header>
 
+      <Navigation>
+        <Navigation.List>
+        <Navigation.ButtonLink>Start session</Navigation.ButtonLink>
+          <Navigation.Item to={ROUTES.HOME}>Home</Navigation.Item>
+          <Navigation.Item to={ROUTES.HOME}>Analytics</Navigation.Item>
+          <Navigation.Item to={ROUTES.HOME}>Settings</Navigation.Item>
+          <Navigation.Item onClick={startLogout}>Log out</Navigation.Item>
+        </Navigation.List>
+      </Navigation>
+
       <Dashboard>
-        <Dashboard.Navigation>
-          <Dashboard.List>
-            <Dashboard.Item to={ROUTES.HOME}>Home</Dashboard.Item>
-            <Dashboard.Item to={ROUTES.HOME}>Analytics</Dashboard.Item>
-            <Dashboard.Item to={ROUTES.HOME}>Settings</Dashboard.Item>
-            <Dashboard.Item onClick={startLogout}>Log out</Dashboard.Item>
-          </Dashboard.List>
-        </Dashboard.Navigation>
-
         <Dashboard.Session>
-
-
           <Dashboard.SessionInsights>
             <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
             <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
@@ -36,8 +37,6 @@ export default function DashboardContainer({ children }) {
           <Dashboard.SessionCard>
             <Dashboard.SessionIcon src="./images/session.png" />
           </Dashboard.SessionCard>
-
-
         </Dashboard.Session>
       </Dashboard>
     </>
