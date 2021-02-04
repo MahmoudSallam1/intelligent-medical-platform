@@ -6,9 +6,9 @@ import {
   SessionIcon,
   SessionInsights,
   Insight,
+  UpcomingSession,
+  Content
 } from "./styles/dashboard";
-
-
 
 
 export default function Dashboard({ children, ...restProps }) {
@@ -17,6 +17,13 @@ export default function Dashboard({ children, ...restProps }) {
 
 Dashboard.Session = function DashboardSession({ children, ...restProps }) {
   return <Session {...restProps}>{children}</Session>;
+};
+
+Dashboard.UpcomingSession = function DashboardUpcomingSession({
+  children,
+  ...restProps
+}) {
+  return <UpcomingSession {...restProps}>{children}</UpcomingSession>;
 };
 
 Dashboard.SessionInsights = function DashboardSessionInsights({
@@ -39,4 +46,16 @@ Dashboard.SessionCard = function DashboardSessionCard({
 
 Dashboard.SessionIcon = function DashboardSessionIcon({ ...restProps }) {
   return <SessionIcon {...restProps} />;
+};
+
+
+
+
+
+
+Dashboard.Content = function DashboardContent({
+  children,
+  ...restProps
+}) {
+  return <Content {...restProps}>{children}</Content>;
 };

@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../components/header";
 import * as ROUTES from "../constants/routes";
-import { startLogout } from "../firebase/firebase";
 
 import Dashboard from "../components/dashboard";
 
-import Navigation from "../components/navigation";
+import Menu from "../components/menu";
+import Burger from "../components/burger";
 
 export default function DashboardContainer({ children }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <Header>
@@ -15,28 +17,26 @@ export default function DashboardContainer({ children }) {
         Mahmoud Sallam
       </Header>
 
-      <Navigation>
-        <Navigation.List>
-        <Navigation.ButtonLink>Start session</Navigation.ButtonLink>
-          <Navigation.Item to={ROUTES.HOME}>Home</Navigation.Item>
-          <Navigation.Item to={ROUTES.HOME}>Analytics</Navigation.Item>
-          <Navigation.Item to={ROUTES.HOME}>Settings</Navigation.Item>
-          <Navigation.Item onClick={startLogout}>Log out</Navigation.Item>
-        </Navigation.List>
-      </Navigation>
+
+      <div>
+        <Burger open={open} setOpen={setOpen} />
+        <Menu open={open} setOpen={setOpen} />
+      </div>
 
       <Dashboard>
         <Dashboard.Session>
-          <Dashboard.SessionInsights>
-            <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
-            <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
-            <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
-            <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
-          </Dashboard.SessionInsights>
+          <Dashboard.Content>
+            <Dashboard.SessionInsights>
+              <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
+              <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
+              <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
+              <Dashboard.Insight>Lorem ipsum</Dashboard.Insight>
+            </Dashboard.SessionInsights>
 
-          <Dashboard.SessionCard>
-            <Dashboard.SessionIcon src="./images/session.png" />
-          </Dashboard.SessionCard>
+            <Dashboard.SessionCard>
+              <Dashboard.SessionIcon src="./images/session.png" />
+            </Dashboard.SessionCard>
+          </Dashboard.Content>
         </Dashboard.Session>
       </Dashboard>
     </>

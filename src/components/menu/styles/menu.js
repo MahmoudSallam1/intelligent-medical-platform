@@ -1,17 +1,24 @@
 import styled from "styled-components";
 import { Link as ReachRouterLink } from "react-router-dom";
 
-export const Container = styled.div`
-  background-color: #1db5e4;
-  width:200px;
-  position:absolute;
-  top:4.3em;
-  left:0;
-  height:95vh;
+export const StyledMenu = styled.nav`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1db5e4;
+  height: 100vh;
+  text-align: left;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
 `;
 
+
 export const List = styled.ul`
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 2em;
   list-style: none;
   display: flex;
@@ -20,7 +27,7 @@ export const List = styled.ul`
   align-items: center;
 `;
 
-export const Item = styled.li`
+export const Item = styled.a`
   font-size: 1rem;
   font-weight: 300;
   cursor: pointer;
@@ -28,12 +35,12 @@ export const Item = styled.li`
   display: inline-block;
   color: white;
   padding: 1em;
+  transition: color 0.3s linear;
 
   &:hover {
     color: #fab91c;
   }
 `;
-
 
 export const ButtonLink = styled(ReachRouterLink)`
   background-color: #fff;
@@ -42,14 +49,13 @@ export const ButtonLink = styled(ReachRouterLink)`
   border-radius: 3px;
   padding: 0.5em 1.5em;
   cursor: pointer;
-  font-size:0.9rem;
-  font-weight:300;
+  font-size: 0.9rem;
+  font-weight: 300;
   text-decoration: none;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 
   &:hover {
     background: #fab91c;
-    color:white;
+    color: white;
   }
 `;
-
