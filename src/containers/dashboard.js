@@ -22,7 +22,7 @@ export default function DashboardContainer({ children }) {
         <Burger open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen}>
           <Menu.List>
-            <Menu.ButtonLink>Start session</Menu.ButtonLink>
+            <Menu.ButtonLink>Start new session</Menu.ButtonLink>
             <Menu.Item to={ROUTES.HOME}>Home</Menu.Item>
             <Menu.Item to={ROUTES.HOME}>Analytics</Menu.Item>
             <Menu.Item to={ROUTES.HOME}>Settings</Menu.Item>
