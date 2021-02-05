@@ -17,8 +17,7 @@ export default function SignupPage() {
 
   const [error, setError] = useState("");
 
-  const isInvalid =
-    displayName === "" || password === "" || email === "";
+  const isInvalid = displayName === "" || password === "" || email === "";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -28,16 +27,26 @@ export default function SignupPage() {
     }
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-      await createUserProfileDocument(user, displayName);
-      setDisplayName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      history.push(ROUTES.HOME)
+      const { user } = await auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(function (result) {
+          result.user.updateProfile({
+            displayName: displayName,
+          });
+          // createUserProfileDocument(user, displayName);
+          setDisplayName("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          history.push(ROUTES.HOME);
+        });
+   
+      // await createUserProfileDocument(user, displayName);
+      // setDisplayName("");
+      // setEmail("");
+      // setPassword("");
+      // setConfirmPassword("");
+      // history.push(ROUTES.HOME);
     } catch (err) {
       console.log(err);
     }

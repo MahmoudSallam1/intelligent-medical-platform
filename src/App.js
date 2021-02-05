@@ -10,6 +10,10 @@ import DashboardPage from "./pages/dashboard";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase";
 
+
+
+
+
 function App() {
   const [currentUser, setCurrentUser] = useState();
 
@@ -28,25 +32,31 @@ function App() {
     });
   }, []);
 
+
+  console.log(currentUser);
+
+  
+
+
   return (
     <>
-      <Router>
-        <Switch>
-          <Route exact path={ROUTES.HOME}>
-            <HomePage />
-          </Route>
-          <Route path={ROUTES.SIGN_UP}>
-            <SignupPage />
-          </Route>
+        <Router>
+          <Switch>
+            <Route exact path={ROUTES.HOME}>
+              <HomePage />
+            </Route>
+            <Route path={ROUTES.SIGN_UP}>
+              <SignupPage />
+            </Route>
 
-          <Route path={ROUTES.SIGN_IN}>
-            <SigninPage />
-          </Route>
-          <Route path={ROUTES.DASHBOARD}>
-            <DashboardPage />
-          </Route>
-        </Switch>
-      </Router>
+            <Route path={ROUTES.SIGN_IN}>
+              <SigninPage />
+            </Route>
+            <Route path={ROUTES.DASHBOARD}>
+              <DashboardPage />
+            </Route>
+          </Switch>
+        </Router>
     </>
   );
 }

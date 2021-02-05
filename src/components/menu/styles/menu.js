@@ -16,7 +16,6 @@ export const StyledMenu = styled.nav`
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
 `;
 
-
 export const List = styled.ul`
   margin-top: 50px;
   padding: 2em;
@@ -25,9 +24,10 @@ export const List = styled.ul`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  list-style: none;
 `;
 
-export const Item = styled.a`
+export const Item = styled.li`
   font-size: 1rem;
   font-weight: 300;
   cursor: pointer;
