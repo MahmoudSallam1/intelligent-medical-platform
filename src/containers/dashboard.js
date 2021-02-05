@@ -7,7 +7,7 @@ import Dashboard from "../components/dashboard";
 import Menu from "../components/menu";
 import Burger from "../components/burger";
 
-import { startLogout } from '../firebase/firebase';
+import { startLogout } from "../firebase/firebase";
 
 export default function DashboardContainer({ children }) {
   const [open, setOpen] = useState(false);
@@ -22,10 +22,11 @@ export default function DashboardContainer({ children }) {
         <Burger open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen}>
           <Menu.List>
+            <Menu.ButtonLink>Start session</Menu.ButtonLink>
             <Menu.Item to={ROUTES.HOME}>Home</Menu.Item>
             <Menu.Item to={ROUTES.HOME}>Analytics</Menu.Item>
             <Menu.Item to={ROUTES.HOME}>Settings</Menu.Item>
-            <Menu.ButtonLink onClick={startLogout}>Log out</Menu.ButtonLink>
+            <Menu.Item onClick={startLogout}>Log out</Menu.Item>
           </Menu.List>
         </Menu>
       </div>
