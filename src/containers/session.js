@@ -9,9 +9,16 @@ import Burger from "../components/burger";
 
 import { startLogout } from "../firebase/firebase";
 
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+
 export default function SessionContainer({ children }) {
   const [open, setOpen] = useState(false);
-
+  const { transcript, resetTranscript } = useSpeechRecognition();
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null;
+  }
   return (
     <>
       <Header>
@@ -33,33 +40,31 @@ export default function SessionContainer({ children }) {
       </div>
 
       <Session>
+        <Session.Content>
+          <Session.Buttons>
+            <Session.Button
+              onClick={() =>
+                SpeechRecognition.startListening({
+                  continuous: true,
+                  // language: "ar-EG",
+                })
+              }
+              src="/images/icons/session/play.png"
+            />
+            <Session.Button
+              onClick={SpeechRecognition.stopListening}
+              src="/images/icons/session/pause.png"
+            />
+            <Session.Button
+              onClick={resetTranscript}
+              src="/images/icons/session/upload.png"
+            />
+            <Session.Button src="/images/icons/session/download.png" />
+          </Session.Buttons>
 
-      <Session.Content>
-
-
-      <Session.Buttons>
-
-          <Session.Button src="/images/icons/session/play.png"/>
-          <Session.Button src="/images/icons/session/pause.png"/>
-          <Session.Button src="/images/icons/session/upload.png"/>
-          <Session.Button src="/images/icons/session/download.png"/>
-      </Session.Buttons>
-
-
-
-      <Session.Card>
-          details of card here
-      </Session.Card>
-
-
-
-
-      </Session.Content>
-
-
+          <Session.Card>{transcript}</Session.Card>
+        </Session.Content>
       </Session>
-
-
     </>
   );
 }

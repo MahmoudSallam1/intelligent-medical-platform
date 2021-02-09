@@ -33,6 +33,7 @@ export const Title = styled.h1`
     width: 80%;
     text-align:center;
     font-size: 3rem;
+    margin:0 auto;
   }
 
   @media (max-width: 450px) {
