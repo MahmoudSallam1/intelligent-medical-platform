@@ -7,6 +7,7 @@ import HomePage from "./pages/home";
 import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
 import DashboardPage from "./pages/dashboard";
+import SessionPage from "./pages/session";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase";
 
@@ -54,6 +55,9 @@ function App() {
             </Route>
             <Route path={ROUTES.DASHBOARD}>
               <DashboardPage />
+            </Route>
+            <Route path={ROUTES.SESSION}>
+              <SessionPage />
             </Route>
           </Switch>
         </Router>
