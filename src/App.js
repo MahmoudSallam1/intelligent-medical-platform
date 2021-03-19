@@ -8,11 +8,11 @@ import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
 import SessionPage from "./pages/session";
 
+import DashboardPage from "./pages/dashboard";
+
+import AppointmentPage from "./pages/appointments";
+
 import { auth, createUserProfileDocument } from "./firebase/firebase";
-
-
-
-
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -32,34 +32,30 @@ function App() {
     });
   }, []);
 
-
   console.log(currentUser);
-
-  
-
 
   return (
     <>
-        <Router>
-          <Switch>
-            <Route exact path={ROUTES.HOME}>
-              <HomePage />
-            </Route>
-            <Route path={ROUTES.SIGN_UP}>
-              <SignupPage />
-            </Route>
+      <Router>
+        <Switch>
+          <Route exact path={ROUTES.HOME}>
+            <HomePage />
+          </Route>
+          <Route path={ROUTES.SIGN_UP}>
+            <SignupPage />
+          </Route>
 
-            <Route path={ROUTES.SIGN_IN}>
-              <SigninPage />
-            </Route>
-            {/* <Route path={ROUTES.DASHBOARD}>
-              <DashboardPage />
-            </Route> */}
-            <Route path={ROUTES.SESSION}>
-              <SessionPage />
-            </Route>
-          </Switch>
-        </Router>
+          <Route path={ROUTES.SIGN_IN}>
+            <SigninPage />
+          </Route>
+          <Route path={ROUTES.DASHBOARD}>
+            <DashboardPage />
+          </Route>
+          <Route path={ROUTES.APPOINTMENT}>
+            <AppointmentPage />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 }
