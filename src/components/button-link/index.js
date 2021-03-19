@@ -1,12 +1,12 @@
 import React from "react";
 import { Link as ReachRouterLink } from "react-router-dom";
-import { Container, Logo, ButtonLink } from "./styles/header";
+import { Container, Logo, ButtonLink } from "./styles/button-link";
 
-export default function Header({ children, ...restProps }) {
+export default function ButtonLinks({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 }
 
-Header.Logo = function HeaderLogo({ to, ...restProps }) {
+ButtonLinks.Logo = function ButtonLinksLogo({ to, ...restProps }) {
   return (
     <ReachRouterLink to={to}>
       <Logo {...restProps} />
@@ -14,8 +14,9 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
   );
 };
 
-Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
+ButtonLinks.ButtonLink = function ButtonLinksButtonLink({
+  children,
+  ...restProps
+}) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>;
 };
-
-

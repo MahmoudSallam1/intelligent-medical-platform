@@ -17,6 +17,7 @@ export const Row = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 0.5em;
+
 `;
 export const Column = styled.div`
   display: flex;
@@ -43,11 +44,8 @@ export const Text = styled.p`
   line-height: 1.5;
   width: 60%;
   font-weight: 300;
-
 `;
 export const Icon = styled.img`
   object-fit: cover;
   width: 60px;
 `;
-
-

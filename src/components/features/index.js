@@ -24,5 +24,3 @@ Features.Text = function FeaturesText({ children, ...restProps }) {
 Features.Icon = function FeaturesIcon({ children, ...restProps }) {
   return <Icon {...restProps} />;
 };
-
-

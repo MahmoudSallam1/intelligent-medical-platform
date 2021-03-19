@@ -6,7 +6,6 @@ import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/home";
 import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
-import DashboardPage from "./pages/dashboard";
 import SessionPage from "./pages/session";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase";
@@ -53,9 +52,9 @@ function App() {
             <Route path={ROUTES.SIGN_IN}>
               <SigninPage />
             </Route>
-            <Route path={ROUTES.DASHBOARD}>
+            {/* <Route path={ROUTES.DASHBOARD}>
               <DashboardPage />
-            </Route>
+            </Route> */}
             <Route path={ROUTES.SESSION}>
               <SessionPage />
             </Route>

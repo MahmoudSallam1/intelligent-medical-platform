@@ -8,14 +8,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5em 7em;
-  background-color: #fff;
+  padding: 1.5em 2em;
   color:#555;
   font-size:0.9rem;
-  box-shadow:50px 50px 10px rgba(0,0,0,0.12);
-  @media (max-width: 650px) {
-    padding: 1.5em 3em;
-  }
+
 `;
 
 export const Logo = styled.img`
