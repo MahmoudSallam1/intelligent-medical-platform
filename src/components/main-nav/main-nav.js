@@ -1,53 +1,83 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
 
-import Container from "@material-ui/core/Container";
-
-import { NavLink, Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
 import ButtonLinks from "../button-link/index";
 const useStyles = makeStyles((theme) => ({
-  root: {
+  appBar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    padding: "1em",
+  },
+  toolbar: {
+    flexWrap: "wrap",
+  },
+  toolbarTitle: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(0),
+  link: {
+    margin: theme.spacing(1, 2),
   },
-  title: {
-    flexGrow: 1,
-  },
-  white:{
-    background:"#fff"
-  }
 }));
 
 function MainNav() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar className={classes.white}  position="static">
-        <Container>
-          <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              <NavLink to="/">Logo</NavLink>
-            </Typography>
-
-            <ButtonLinks>
-              <ButtonLinks.ButtonLink to={ROUTES.SIGN_IN}>
-                {" "}
-                Login
-              </ButtonLinks.ButtonLink>
-            </ButtonLinks>
-          </Toolbar>
-        </Container>
+    <>
+      <CssBaseline />
+      <AppBar
+        position="static"
+        color="default"
+        elevation={0}
+        className={classes.appBar}
+      >
+        <Toolbar className={classes.toolbar}>
+          <Typography
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.toolbarTitle}
+          >
+            IntelligentMedicalSystem
+          </Typography>
+          <nav>
+            <Link
+              variant="button"
+              color="textPrimary"
+              href="#"
+              className={classes.link}
+            >
+              Home
+            </Link>
+            <Link
+              variant="button"
+              color="textPrimary"
+              href="#"
+              className={classes.link}
+            >
+              Features
+            </Link>
+            <Link
+              variant="button"
+              color="textPrimary"
+              href="#"
+              className={classes.link}
+            >
+              About us
+            </Link>
+          </nav>
+          <ButtonLinks.ButtonLink to={ROUTES.SIGN_IN}>
+            Login
+          </ButtonLinks.ButtonLink>
+        </Toolbar>
       </AppBar>
-    </div>
+    </>
   );
 }
 
