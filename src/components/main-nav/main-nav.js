@@ -15,8 +15,15 @@ const useStyles = makeStyles((theme) => ({
     padding: "1em",
   },
   toolbar: {
-    flexWrap: "wrap",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: "column",
+    },
   },
+
+
   toolbarTitle: {
     flexGrow: 1,
   },

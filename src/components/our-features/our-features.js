@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     borderRadius: "10px",
+    padding:"1em",
+    transition:"all 0.3s ease;",
+    '&:hover': {
+      transform: "scale(1.1)"
+   },
   },
   cardHeader: {
     backgroundColor:

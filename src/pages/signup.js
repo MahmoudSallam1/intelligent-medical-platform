@@ -9,6 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+import Box from '@material-ui/core/Box';
+
+
 import { useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 import { Link } from "react-router-dom";
@@ -16,13 +19,24 @@ import { Link } from "react-router-dom";
 import { auth, createUserProfileDocument } from "../firebase/firebase";
 
 const useStyles = makeStyles((theme) => ({
+  container:{
+    display:"flex",
+    height:"100vh",
+    justifyContent:"center",
+    alignItems:"center"
+
+
+  },
   paper: {
-    // marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     height: "90vh",
+    background:"#fff",
+    padding:"2em",
+    borderRadius:"8px",
+    
   },
   avatar: {
     backgroundColor: theme.palette.secondary.main,
@@ -83,9 +97,10 @@ export default function SignUp() {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container className={classes.container} component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+
+      <Box className={classes.paper} boxShadow={1}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -164,7 +179,7 @@ export default function SignUp() {
             </Grid>
           </Grid>
         </form>
-      </div>
+      </Box>
     </Container>
   );
 }
