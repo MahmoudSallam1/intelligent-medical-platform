@@ -6,7 +6,6 @@ import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/home";
 import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
-import SessionPage from "./pages/session";
 
 import DashboardPage from "./pages/dashboard";
 

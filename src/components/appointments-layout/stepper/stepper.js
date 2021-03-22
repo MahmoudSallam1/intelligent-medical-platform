@@ -6,7 +6,6 @@ import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import GeneralInformation from "./general-medical-history/general-information";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,40 +13,24 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
+    padding:"0.5em 1.5em"
   },
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  btnGroup:{
+    textAlign:"center",
+  }
 }));
 
-function getSteps() {
-  return [
-    "General information",
-    "Medical history",
-    "Familial diseases",
-    "Smoking history",
-  ];
-}
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <GeneralInformation/>;
-    case 1:
-      return "What is an ad group anyways?";
-    case 2:
-      return "This is the bit I really care about!";
-    default:
-      return "Unknown step";
-  }
-}
 
-export default function HorizontalLinearStepper() {
+
+export default function HorizontalLinearStepper({ steps, getStepContent }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-  const steps = getSteps();
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -112,7 +95,7 @@ export default function HorizontalLinearStepper() {
           );
         })}
       </Stepper>
-      <div>
+      <div className={classes.btnGroup}>
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>
