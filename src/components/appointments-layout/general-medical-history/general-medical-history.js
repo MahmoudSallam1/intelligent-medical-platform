@@ -11,6 +11,10 @@ import OurGrid from "../../grid/grid";
 import HorizontalLinearStepper from "../stepper/stepper";
 
 import GeneralInformation from "./general-information";
+import MedicalHistory from "./medical-history";
+import FamilialDiseases from "./familial-diseases";
+import SmokingHistory from "./smoking-history";
+
 
 
 const useStyles = makeStyles({
@@ -34,9 +38,11 @@ function getStepContent(step) {
     case 0:
       return <GeneralInformation/>;
     case 1:
-      return "What is an ad group anyways?";
+      return <MedicalHistory/>;
     case 2:
-      return "This is the bit I really care about!";
+      return <FamilialDiseases/>;
+    case 3:
+      return <SmokingHistory/>;
     default:
       return "Unknown step";
   }
