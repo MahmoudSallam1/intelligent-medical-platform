@@ -136,6 +136,7 @@ function GeneralInformation() {
                 value="female"
                 control={<Radio />}
                 label="Female"
+                
               />
               <FormControlLabel value="male" control={<Radio />} label="Male" />
             </RadioGroup>
