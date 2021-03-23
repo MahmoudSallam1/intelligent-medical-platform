@@ -1,4 +1,4 @@
-export const patientGeneralMedicalHistoryArray = [
+export  const patientGeneralMedicalHistoryArray = [
     {
       id: 1,
       question: "AIDS/HIV Positive",

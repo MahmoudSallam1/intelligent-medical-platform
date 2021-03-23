@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -6,17 +6,21 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
-import patientGeneralMedicalHistoryArray from "./medical-history-array"
-
+import { patientGeneralMedicalHistoryArray } from "./medical-history-array";
+import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   breath: {
-    marginTop: "2em",
+    marginTop: "1em",
     textAlign: "left",
   },
   ourForm: {
     display: "grid",
     gridTemplateColumns: "repeat( auto-fit, minmax(300px, 1fr) )",
     placeContent: "center",
+  },
+  ourFlex: {
+    display: "flex",
+    flexDirection: "row",
   },
 }));
 
@@ -27,7 +31,6 @@ function MedicalHistory() {
   const handleChangeR = (event) => {
     setValue(event.target.value);
   };
-
 
   const [state, setState] = React.useState({
     checkedA: false,
@@ -40,7 +43,7 @@ function MedicalHistory() {
     checkedH: false,
     checkedI: false,
     checkedJ: false,
-    checkedK: false
+    checkedK: false,
   });
 
   const handleChange = (event) => {
@@ -49,10 +52,8 @@ function MedicalHistory() {
   return (
     <div>
       <div className={classes.breath}>
-
-
         <Typography variant="h6" gutterBottom>
-          Are you allergic to any of the following? 
+          Are you allergic to any of the following?
         </Typography>
         <br />
       </div>
@@ -168,48 +169,34 @@ function MedicalHistory() {
               name="checkedI"
               color="primary"
               margin="normal"
-             
             />
           }
           label="Aspirin"
         />
-     </form>
-        <div className={classes.breath}>
-
-
-        <Typography variant="h6" gutterBottom>
-        Do you have, or have you had, any of the following?
-        </Typography>
-       
-      </div>
-     
-      <form className={classes.ourForm}>
-      {objects.keys( patientGeneralMedicalHistoryArray).map((ikk) =>
-                  
-      <FormLabel key={ikk.id} className={classes.breath} component="legend">
-            {ikk.question}
-            </FormLabel>
-            <RadioGroup
-              aria-label="alcoholic1"
-              name="alcohol"
-              value={value}
-              onChange={handleChangeR}
-            >
-              <FormControlLabel
-                value="yes"
-                control={<Radio />}
-                label="Yes"
-                
-              />
-              <FormControlLabel 
-              value="no" 
-              control={<Radio />} 
-              label="No" />
-            </RadioGroup>
-      )}
       </form>
+      <div className={classes.breath}>
+        <Typography variant="h6" gutterBottom>
+          Do you have, or have you had, any of the following?
+        </Typography>
+      </div>
+
+      <>
+        <Grid container>
+          {patientGeneralMedicalHistoryArray.slice(0, 20).map((item) => (
+            <Grid key={item.id} item xs={6} sm={4} md={4} lg={3}>
+              <FormLabel className={classes.breath} component="legend">
+                {item.question}
+              </FormLabel>
+              <RadioGroup className={classes.ourFlex}>
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
+              </RadioGroup>
+            </Grid>
+          ))}
+        </Grid>
+      </>
     </div>
   );
 }
 
-export default MedicalHistory
+export default MedicalHistory;
