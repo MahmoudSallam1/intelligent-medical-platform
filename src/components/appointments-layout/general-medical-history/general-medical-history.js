@@ -13,8 +13,7 @@ import HorizontalLinearStepper from "../stepper/stepper";
 import GeneralInformation from "./general-information";
 import MedicalHistory from "./medical-history";
 import FamilialDiseases from "./familial-diseases";
-import SmokingHistory from "./smoking-history";
-
+import SmokingAlcohol from "./smoking-alcohol"
 
 
 const useStyles = makeStyles({
@@ -30,7 +29,7 @@ const steps = [
   "General information",
   "Medical history",
   "Familial diseases",
-  "Smoking history",
+  "Smoking and Alcoholic drinks",
 ];
 
 function getStepContent(step) {
@@ -38,13 +37,11 @@ function getStepContent(step) {
     case 0:
       return <GeneralInformation/>;
     case 1:
-      return <MedicalHistory/>;
+      return <MedicalHistory />;
     case 2:
       return <FamilialDiseases/>;
-    case 3:
-      return <SmokingHistory/>;
     default:
-      return "Unknown step";
+      return <SmokingAlcohol />;
   }
 }
 function GeneralMedicalHistory() {

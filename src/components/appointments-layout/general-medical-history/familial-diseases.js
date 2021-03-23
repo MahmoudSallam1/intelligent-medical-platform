@@ -23,8 +23,17 @@ function FamilialDiseases() {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
+    checkedA: false,
+    checkedB: false,
+    checkedC: false,
+    checkedD: false,
+    checkedE: false,
+    checkedF: false,
+    checkedG: false,
+    checkedH: false,
+    checkedI: false,
+    checkedJ: false,
+    checkedK: false
   });
 
   const handleChange = (event) => {
@@ -55,9 +64,9 @@ function FamilialDiseases() {
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedA}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedA"
               color="primary"
             />
           }
@@ -73,110 +82,111 @@ function FamilialDiseases() {
               color="primary"
             />
           }
-          label="Heart attack under age 50"
+          label="Strokes under age 50"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedC}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedC"
               color="primary"
             />
           }
-          label="Heart attack under age 50"
+          label="High blood pressure"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedD}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedD"
               color="primary"
               margin="normal"
             />
           }
-          label="Heart attack under age 50"
+          label="Elevated cholesterol"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedE}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedE"
               color="primary"
               margin="normal"
             />
           }
-          label="Heart attack under age 50"
+          label="Diabetes"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedF}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedF"
               color="primary"
               margin="normal"
             />
           }
-          label="Heart attack under age 50"
+          label="Asthma or hay fever"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedG}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedG"
               color="primary"
               margin="normal"
             />
           }
-          label="Heart attack under age 50"
+          label="Congenital heart disease"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedH}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedH"
               color="primary"
               margin="normal"
             />
           }
-          label="Heart attack under age 50"
+          label="Heart operations"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedI}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedI"
               color="primary"
               margin="normal"
+             
             />
           }
-          label="Heart attack under age 50"
+          label="Obesity"
         />
         <FormControlLabel
           margin="normal"
           control={
             <Checkbox
-              checked={state.checkedB}
+              checked={state.checkedJ}
               onChange={handleChange}
-              name="checkedB"
+              name="checkedJ"
               color="primary"
               margin="normal"
             />
           }
-          label="Heart attack under age 50"
+          label="Glaucoma"
         />
       </form>
     </div>
