@@ -1,16 +1,14 @@
 import React from "react";
 
-import OurGrid from "../../grid/grid";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import Container from "@material-ui/core/Container";
 
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -29,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   breath: {
     marginTop: "1em",
-    textAlign:"left"
+    textAlign: "left",
   },
 
   radio: {
@@ -37,10 +35,8 @@ const useStyles = makeStyles((theme) => ({
       color: "#1DB5E4",
     },
   },
-  ourGrid:{
-  }
-
 }));
+
 function GeneralInformation() {
   const classes = useStyles();
 
@@ -58,22 +54,18 @@ function GeneralInformation() {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+
+  console.log(document.querySelectorAll(" p * div "));
   return (
-    <>
-      <OurGrid className={classes.ourGrid}>
-        <Grid item xs={12} md={6} lg={6}>
-          <Typography
-            className={classes.marginBot}
-            align={"left"}
-            variant="h6"
-            gutterBottom
-          >
-            Patient General Medical History{" "}
-          </Typography>
-          <form
-            className={classes.form}
-            //   noValidate
-          >
+    <Container>
+      <form
+      //   noValidate
+      >
+        <Grid spacing={3} container>
+          <Grid item xs={12} md={6} lg={6}>
+            <Typography align={"left"} variant="h6" gutterBottom>
+              Patient General Medical History{" "}
+            </Typography>
             <TextField
               variant="outlined"
               margin="normal"
@@ -136,26 +128,16 @@ function GeneralInformation() {
                 value="female"
                 control={<Radio />}
                 label="Female"
-                
               />
               <FormControlLabel value="male" control={<Radio />} label="Male" />
             </RadioGroup>
-          </form>{" "}
-        </Grid>
+          </Grid>
 
-        <Grid item xs={12} md={6} lg={6}>
-          <Typography
-            className={classes.marginBot}
-            align={"left"}
-            variant="h6"
-            gutterBottom
-          >
-           Emergency contacts{" "}
-          </Typography>
-          <form
-            className={classes.form}
-            //   noValidate
-          >
+          <Grid item xs={12} md={6} lg={6}>
+            <Typography align={"left"} variant="h6" gutterBottom>
+              Emergency contacts{" "}
+            </Typography>
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -191,10 +173,10 @@ function GeneralInformation() {
               autoComplete="text"
               autoFocus
             />
-          </form>{" "}
+          </Grid>
         </Grid>
-      </OurGrid>
-    </>
+      </form>{" "}
+    </Container>
   );
 }
 

@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
 
 function MedicalHistory() {
   const classes = useStyles();
-  const [value, setValue] = React.useState();
+  // const [value, setValue] = React.useState();
 
-  const handleChangeR = (event) => {
-    setValue(event.target.value);
-  };
+  // const handleChangeR = (event) => {
+  //   setValue(event.target.value);
+  // };
 
   const [state, setState] = React.useState({
     checkedA: false,
@@ -180,7 +180,7 @@ function MedicalHistory() {
         </Typography>
       </div>
 
-      <>
+      
         <Grid container>
           {patientGeneralMedicalHistoryArray.slice(0, 20).map((item) => (
             <Grid key={item.id} item xs={6} sm={4} md={4} lg={3}>
@@ -194,7 +194,7 @@ function MedicalHistory() {
             </Grid>
           ))}
         </Grid>
-      </>
+      
     </div>
   );
 }

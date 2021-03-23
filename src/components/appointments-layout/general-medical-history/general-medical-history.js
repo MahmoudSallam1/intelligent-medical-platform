@@ -6,15 +6,14 @@ import Paper from "@material-ui/core/Paper";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import OurGrid from "../../grid/grid";
-
 import HorizontalLinearStepper from "../stepper/stepper";
+
+import OurGrid from "../../grid/grid";
 
 import GeneralInformation from "./general-information";
 import MedicalHistory from "./medical-history";
 import FamilialDiseases from "./familial-diseases";
-import SmokingAlcohol from "./smoking-alcohol"
-
+import SmokingAlcohol from "./smoking-alcohol";
 
 const useStyles = makeStyles({
   breath: {
@@ -35,11 +34,11 @@ const steps = [
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <GeneralInformation/>;
+      return <GeneralInformation />;
     case 1:
       return <MedicalHistory />;
     case 2:
-      return <FamilialDiseases/>;
+      return <FamilialDiseases />;
     default:
       return <SmokingAlcohol />;
   }

@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   btnGroup: {
     textAlign: "center",
   },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
 }));
 
 export default function HorizontalLinearStepper({ steps, getStepContent }) {
@@ -80,8 +84,8 @@ export default function HorizontalLinearStepper({ steps, getStepContent }) {
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>
-              {getStepContent(activeStep)}
+            <Typography  component={'span'} className={classes.instructions}>
+              {getStepContent(activeStep)} 
             </Typography>
             <div>
               <Button
