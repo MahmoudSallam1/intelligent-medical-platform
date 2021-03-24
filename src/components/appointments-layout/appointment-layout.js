@@ -5,7 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBarAndDrawer from "../app-bar-drawer/app-bar-drawer";
 
 import GeneralMedicalHistory from "./general-medical-history/general-medical-history";
-
+import PatientData from "./patient-data/patient-data";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,8 +24,9 @@ export default function AppointmentLayout() {
       <AppBarAndDrawer pageTitle={"Appointment"} />
       {/* appbar and drawer ends here */}
 
-      <GeneralMedicalHistory />
-
+      {/* <GeneralMedicalHistory /> */}
+      <PatientData />
+      
 
     </div>
   );

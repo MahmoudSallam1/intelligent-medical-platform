@@ -180,55 +180,53 @@ function MedicalHistory() {
         </Typography>
       </div>
 
-      
-        <Grid container>
-          {patientGeneralMedicalHistoryArray.slice(0, 20).map((item) => (
-            <Grid key={item.id} item xs={6} sm={4} md={4} lg={3}>
-              <FormLabel className={classes.breath} component="legend">
-                {item.question}
-              </FormLabel>
-              <RadioGroup className={classes.ourFlex}>
-                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="no" control={<Radio />} label="No" />
-              </RadioGroup>
-            </Grid>
-          ))}
-        </Grid>
+      <Grid container>
+        {patientGeneralMedicalHistoryArray.slice(0, 20).map((item) => (
+          <Grid key={item.id} item xs={6} sm={4} md={4} lg={3}>
+            <FormLabel className={classes.breath} component="legend">
+              {item.question}
+            </FormLabel>
+            <RadioGroup className={classes.ourFlex}>
+              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+              <FormControlLabel value="no" control={<Radio />} label="No" />
+            </RadioGroup>
+          </Grid>
+        ))}
+      </Grid>
 
-        <div className={classes.breath}>
+      <div className={classes.breath}>
         <Typography variant="h6" gutterBottom>
-          Women: Are you 
+          Women: Are you
         </Typography>
       </div>
 
-        <Grid container>
-          
-            
-              <FormLabel className={classes.breath} component="legend">
-                Pregnant/Trying to get pregnant?
-              </FormLabel>
-              <RadioGroup className={classes.ourFlex}>
-                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="no" control={<Radio />} label="No" />
-              </RadioGroup>
-              <FormLabel className={classes.breath} component="legend">
-                Taking oral contraceptives?
-              </FormLabel>
-              <RadioGroup className={classes.ourFlex}>
-                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="no" control={<Radio />} label="No" />
-              </RadioGroup>
-
-              <FormLabel className={classes.breath} component="legend">
-                Nursing?
-              </FormLabel>
-              <RadioGroup className={classes.ourFlex}>
-                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="no" control={<Radio />} label="No" />
-              </RadioGroup>
-            
+      <Grid container>
+        <Grid item xs={6} sm={4} md={4} lg={4}>
+          <FormLabel className={classes.breath} component="legend">
+            Pregnant/Trying to get pregnant?
+          </FormLabel>
+          <RadioGroup className={classes.ourFlex}>
+            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio />} label="No" />
+          </RadioGroup>
         </Grid>
-      
+
+        <Grid item xs={6} sm={4} md={4} lg={4}>
+          <FormLabel className={classes.breath} component="legend">Taking oral contraceptives?</FormLabel>
+          <RadioGroup className={classes.ourFlex}>
+            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio />} label="No" />
+          </RadioGroup>
+        </Grid>
+        <Grid item xs={6} sm={4} md={4} lg={4}>
+          <FormLabel className={classes.breath} component="legend">Nursing?</FormLabel>
+          <RadioGroup className={classes.ourFlex}>
+            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio />} label="No" />
+          </RadioGroup>
+        </Grid>
+      </Grid>
+      <br></br>
     </div>
   );
 }
