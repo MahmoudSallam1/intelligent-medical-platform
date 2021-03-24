@@ -69,7 +69,7 @@ function MedicalHistory() {
               color="primary"
             />
           }
-          label="Heart attack under age 50"
+          label="Penicillin"
         />
         <FormControlLabel
           margin="normal"
@@ -93,7 +93,7 @@ function MedicalHistory() {
               color="primary"
             />
           }
-          label="Aspirin"
+          label="Codeine"
         />
         <FormControlLabel
           margin="normal"
@@ -106,7 +106,7 @@ function MedicalHistory() {
               margin="normal"
             />
           }
-          label="Aspirin"
+          label="Local Anesthetics"
         />
         <FormControlLabel
           margin="normal"
@@ -119,7 +119,7 @@ function MedicalHistory() {
               margin="normal"
             />
           }
-          label="Aspirin"
+          label="Acrylic"
         />
         <FormControlLabel
           margin="normal"
@@ -132,7 +132,7 @@ function MedicalHistory() {
               margin="normal"
             />
           }
-          label="Aspirin"
+          label="Metal"
         />
         <FormControlLabel
           margin="normal"
@@ -145,7 +145,7 @@ function MedicalHistory() {
               margin="normal"
             />
           }
-          label="Aspirin"
+          label="Latex"
         />
         <FormControlLabel
           margin="normal"
@@ -158,7 +158,7 @@ function MedicalHistory() {
               margin="normal"
             />
           }
-          label="Heart operations"
+          label="Sulfa drugs"
         />
         <FormControlLabel
           margin="normal"
@@ -171,7 +171,7 @@ function MedicalHistory() {
               margin="normal"
             />
           }
-          label="Aspirin"
+          label="Other"
         />
       </form>
       <div className={classes.breath}>
@@ -193,6 +193,40 @@ function MedicalHistory() {
               </RadioGroup>
             </Grid>
           ))}
+        </Grid>
+
+        <div className={classes.breath}>
+        <Typography variant="h6" gutterBottom>
+          Women: Are you 
+        </Typography>
+      </div>
+
+        <Grid container>
+          
+            
+              <FormLabel className={classes.breath} component="legend">
+                Pregnant/Trying to get pregnant?
+              </FormLabel>
+              <RadioGroup className={classes.ourFlex}>
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
+              </RadioGroup>
+              <FormLabel className={classes.breath} component="legend">
+                Taking oral contraceptives?
+              </FormLabel>
+              <RadioGroup className={classes.ourFlex}>
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
+              </RadioGroup>
+
+              <FormLabel className={classes.breath} component="legend">
+                Nursing?
+              </FormLabel>
+              <RadioGroup className={classes.ourFlex}>
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
+              </RadioGroup>
+            
         </Grid>
       
     </div>
