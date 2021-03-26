@@ -6,6 +6,10 @@ import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/home";
 import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
+import GeneralMedicalHistoryPage from "./pages/general-medical-history";
+import PatientDataPage from "./pages/patient-data";
+import PrescriptionPage from './pages/prescription'
+
 
 import DashboardPage from "./pages/dashboard";
 
@@ -53,6 +57,16 @@ function App() {
           <Route path={ROUTES.APPOINTMENT}>
             <AppointmentPage />
           </Route>
+          <Route path="/medical-history">
+            <GeneralMedicalHistoryPage />
+          </Route>
+          <Route path="/patient-data">
+            <PatientDataPage />
+          </Route>
+          <Route path="/prescription">
+            <PrescriptionPage />
+          </Route>
+    
         </Switch>
       </Router>
     </>

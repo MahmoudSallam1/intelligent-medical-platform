@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: "repeat( auto-fit, minmax(300px, 1fr) )",
     placeContent: "center",
   },
+  gray: {
+    color: "#424242",
+    fontWeight: "500",
+    fontSize: "1.1rem",
+  },
 }));
 
 function SmokingAlcohol() {
@@ -38,7 +43,7 @@ function SmokingAlcohol() {
           Smoking and Alcoholic drinks
         </Typography>
         <br />
-        <Typography variant="h6" gutterBottom>
+        <Typography className={classes.gray} variant="h6" gutterBottom>
             Have you ever smoked cigarettes, cigars, or a pipe?
           </Typography>
         <form
@@ -58,7 +63,7 @@ function SmokingAlcohol() {
 
           <br />
 
-          <Typography variant="h6" gutterBottom>
+          <Typography className={classes.gray} variant="h6" gutterBottom>
             Do you ever drink alcoholic beverages?
           </Typography>
           <RadioGroup

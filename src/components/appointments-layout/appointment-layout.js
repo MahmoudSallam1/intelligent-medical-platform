@@ -1,6 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Grid from "@material-ui/core/Grid";
+import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
+
+import { Route } from "react-router-dom";
+
+import OurGrid from "../grid/grid";
 
 import AppBarAndDrawer from "../app-bar-drawer/app-bar-drawer";
 
@@ -11,9 +18,17 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
+  breath: {
+    padding: "2em",
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+    marginTop: "2em",
+  },
 }));
 
-export default function AppointmentLayout() {
+export default function AppointmentLayout({ children }) {
   const classes = useStyles();
 
   return (
@@ -22,12 +37,11 @@ export default function AppointmentLayout() {
 
       {/* appbar and drawer starts here */}
       <AppBarAndDrawer pageTitle={"Appointment"} />
+
       {/* appbar and drawer ends here */}
 
-      {/* <GeneralMedicalHistory /> */}
-      <PatientData />
-      
-
+      {children}
+      {/* <PatientData /> */}
     </div>
   );
 }

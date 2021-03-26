@@ -35,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
       color: "#1DB5E4",
     },
   },
+  gray: {
+    color: "#424242",
+    fontWeight: "500",
+    fontSize: "1.1rem",
+  },
 }));
 
 function GeneralInformation() {
@@ -63,7 +68,7 @@ function GeneralInformation() {
       >
         <Grid spacing={3} container>
           <Grid item xs={12} md={6} lg={6}>
-            <Typography align={"left"} variant="h6" gutterBottom>
+            <Typography className={classes.gray} align={"left"} variant="h6" gutterBottom>
               Patient General Medical History{" "}
             </Typography>
             <TextField
@@ -134,7 +139,7 @@ function GeneralInformation() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={6}>
-            <Typography align={"left"} variant="h6" gutterBottom>
+            <Typography className={classes.gray} align={"left"} variant="h6" gutterBottom>
               Emergency contacts{" "}
             </Typography>
 

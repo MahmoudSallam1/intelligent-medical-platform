@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     position: "relative",
+    height:"100vh",
     whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -151,7 +152,7 @@ function AppBarAndDrawer({pageTitle}) {
         </Toolbar>
       </AppBar>
 
-      <Drawer
+      <Drawer 
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),

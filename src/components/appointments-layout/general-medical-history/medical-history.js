@@ -22,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
   },
+  gray: {
+    color: "#424242",
+    fontWeight: "500",
+    fontSize: "1.1rem",
+  },
 }));
 
 function MedicalHistory() {
@@ -52,7 +57,7 @@ function MedicalHistory() {
   return (
     <div>
       <div className={classes.breath}>
-        <Typography variant="h6" gutterBottom>
+        <Typography className={classes.gray} variant="h6" gutterBottom>
           Are you allergic to any of the following?
         </Typography>
         <br />
@@ -175,7 +180,7 @@ function MedicalHistory() {
         />
       </form>
       <div className={classes.breath}>
-        <Typography variant="h6" gutterBottom>
+        <Typography className={classes.gray} variant="h6" gutterBottom>
           Do you have, or have you had, any of the following?
         </Typography>
       </div>
@@ -195,7 +200,7 @@ function MedicalHistory() {
       </Grid>
 
       <div className={classes.breath}>
-        <Typography variant="h6" gutterBottom>
+        <Typography  className={classes.gray} variant="h6" gutterBottom>
           Women: Are you
         </Typography>
       </div>

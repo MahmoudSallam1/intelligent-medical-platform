@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: "repeat( auto-fit, minmax(300px, 1fr) )",
     placeContent: "center",
   },
+  gray: {
+    color: "#424242",
+    fontWeight: "500",
+    fontSize: "1.1rem",
+  },
 }));
 
 function FamilialDiseases() {
@@ -52,7 +57,7 @@ function FamilialDiseases() {
         </Typography>
         <br />
 
-        <Typography variant="h6" gutterBottom>
+        <Typography className={classes.gray} variant="h6" gutterBottom>
           Check those to which the answer is yes (leave other blank).
         </Typography>
         <br />

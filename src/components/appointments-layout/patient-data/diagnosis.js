@@ -102,14 +102,14 @@ function Diagnosis() {
         </Grid>
 
         <br></br>
-        <Typography
+        {/* <Typography
           className={classes.gray}
           align={"left"}
           variant="h6"
           gutterBottom
         >
           Comments
-        </Typography>
+        </Typography> */}
         <TextField
           id="standard-textarea"
           placeholder="Comments"
