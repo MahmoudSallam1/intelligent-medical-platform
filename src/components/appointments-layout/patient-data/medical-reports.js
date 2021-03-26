@@ -12,6 +12,10 @@ import Container from "@material-ui/core/Container";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
@@ -39,12 +43,17 @@ const useStyles = makeStyles((theme) => ({
 
 function MedicalReports() {
   const classes = useStyles();
-
   const [value, setValue] = React.useState();
 
   const [open, setOpen] = React.useState(false);
   const [files, setFiles] = React.useState();
   const [isRecord, setIsRecord] = React.useState(false);
+
+  const { transcript, resetTranscript } = useSpeechRecognition();
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null;
+  }
 
   function handleClose() {
     setOpen(false);
@@ -85,7 +94,10 @@ function MedicalReports() {
                   variant="contained"
                   color="primary"
                   className={classes.button}
-                  onClick={() => setIsRecord(!isRecord)}
+                  onClick={() => {
+                    setIsRecord(!isRecord);
+                    SpeechRecognition.stopListening();
+                  }}
                   endIcon={<PauseIcon />}
                 >
                   Pause
@@ -94,7 +106,13 @@ function MedicalReports() {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => setIsRecord(!isRecord)}
+                  onClick={() => {
+                    setIsRecord(!isRecord);
+                    SpeechRecognition.startListening({
+                      continuous: true,
+                      // language: "ar-EG",
+                    });
+                  }}
                   className={classes.button}
                   endIcon={<MicIcon />}
                 >
@@ -109,7 +127,7 @@ function MedicalReports() {
               multiline
               fullWidth
               rowsMax={4}
-              value={value}
+              value={transcript}
               onChange={handleChange}
               variant="outlined"
             />

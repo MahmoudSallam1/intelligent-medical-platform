@@ -6,6 +6,9 @@ import TextField from "@material-ui/core/TextField";
 import PauseIcon from "@material-ui/icons/Pause";
 import Button from "@material-ui/core/Button";
 import MicIcon from "@material-ui/icons/Mic";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 import Container from "@material-ui/core/Container";
 
@@ -38,14 +41,18 @@ const useStyles = makeStyles((theme) => ({
 
 function Diagnosis() {
   const classes = useStyles();
-
   const [value, setValue] = React.useState();
   const [isRecord, setIsRecord] = React.useState(false);
-
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+  const { transcript, resetTranscript } = useSpeechRecognition();
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null;
+  }
 
   console.log(document.querySelectorAll(" p * div "));
   return (
@@ -70,7 +77,10 @@ function Diagnosis() {
                   variant="contained"
                   color="primary"
                   className={classes.button}
-                  onClick={() => setIsRecord(!isRecord)}
+                  onClick={() => {
+                    setIsRecord(!isRecord);
+                    SpeechRecognition.stopListening();
+                  }}
                   endIcon={<PauseIcon />}
                 >
                   Pause
@@ -79,7 +89,13 @@ function Diagnosis() {
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => setIsRecord(!isRecord)}
+                  onClick={() => {
+                    setIsRecord(!isRecord);
+                    SpeechRecognition.startListening({
+                      continuous: true,
+                      // language: "ar-EG",
+                    });
+                  }}
                   className={classes.button}
                   endIcon={<MicIcon />}
                 >
@@ -94,7 +110,7 @@ function Diagnosis() {
               multiline
               fullWidth
               rowsMax={4}
-              value={value}
+              value={transcript}
               onChange={handleChange}
               variant="outlined"
             />

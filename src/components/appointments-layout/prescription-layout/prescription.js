@@ -14,6 +14,10 @@ import Container from "@material-ui/core/Container";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
@@ -42,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     padding: "2em",
-    background:"#EEF9FE"
+    background: "#EEF9FE",
   },
   doctorHeading: {
     color: "#1DB5E4",
@@ -65,6 +69,11 @@ function Prescription() {
     setValue(event.target.value);
   };
 
+  const { transcript, resetTranscript } = useSpeechRecognition();
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null;
+  }
   console.log(document.querySelectorAll(" p * div "));
   return (
     <Container>
@@ -73,7 +82,7 @@ function Prescription() {
       >
         <Grid spacing={3} container>
           <Grid item xs={12} md={12} lg={12}>
-            <div >
+            <div>
               {/* <Typography
                 className={classes.gray}
                 align={"left"}
@@ -90,7 +99,10 @@ function Prescription() {
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    onClick={() => setIsRecord(!isRecord)}
+                    onClick={() => {
+                      setIsRecord(!isRecord);
+                      SpeechRecognition.stopListening();
+                    }}
                     endIcon={<PauseIcon />}
                   >
                     Pause
@@ -99,7 +111,13 @@ function Prescription() {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => setIsRecord(!isRecord)}
+                    onClick={() => {
+                      setIsRecord(!isRecord);
+                      SpeechRecognition.startListening({
+                        continuous: true,
+                        // language: "ar-EG",
+                      });
+                    }}
                     className={classes.button}
                     endIcon={<MicIcon />}
                   >
@@ -196,6 +214,7 @@ function Prescription() {
                   placeholder="Prescription"
                   multiline
                   fullWidth
+                  value={transcript}
                 />
               </div>
 
@@ -208,8 +227,7 @@ function Prescription() {
                   Signature{" "}
                 </Typography>
                 <br></br>
-                <Divider style={{width:"30%"}} />
-
+                <Divider style={{ width: "30%" }} />
               </div>
             </Paper>
           </Grid>

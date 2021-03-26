@@ -8,8 +8,7 @@ import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
 import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
-import PrescriptionPage from './pages/prescription'
-
+import PrescriptionPage from "./pages/prescription";
 
 import DashboardPage from "./pages/dashboard";
 
@@ -38,38 +37,35 @@ function App() {
   console.log(currentUser);
 
   return (
-    <>
-      <Router>
-        <Switch>
-          <Route exact path={ROUTES.HOME}>
-            <HomePage />
-          </Route>
-          <Route path={ROUTES.SIGN_UP}>
-            <SignupPage />
-          </Route>
+    <Router>
+      <Switch>
+        <Route exact path={ROUTES.HOME}>
+          <HomePage />
+        </Route>
+        <Route path={ROUTES.SIGN_UP}>
+          <SignupPage />
+        </Route>
 
-          <Route path={ROUTES.SIGN_IN}>
-            <SigninPage />
-          </Route>
-          <Route path={ROUTES.DASHBOARD}>
-            <DashboardPage />
-          </Route>
-          <Route path={ROUTES.APPOINTMENT}>
-            <AppointmentPage />
-          </Route>
-          <Route path="/medical-history">
-            <GeneralMedicalHistoryPage />
-          </Route>
-          <Route path="/patient-data">
-            <PatientDataPage />
-          </Route>
-          <Route path="/prescription">
-            <PrescriptionPage />
-          </Route>
-    
-        </Switch>
-      </Router>
-    </>
+        <Route path={ROUTES.SIGN_IN}>
+          <SigninPage />
+        </Route>
+        <Route path={ROUTES.DASHBOARD}>
+          <DashboardPage />
+        </Route>
+        <Route path={ROUTES.APPOINTMENT}>
+          <AppointmentPage />
+        </Route>
+        <Route path="/medical-history">
+          <GeneralMedicalHistoryPage />
+        </Route>
+        <Route path="/patient-data">
+          <PatientDataPage />
+        </Route>
+        <Route path="/prescription">
+          <PrescriptionPage />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
