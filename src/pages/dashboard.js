@@ -1,9 +1,9 @@
-import React from 'react'
-import DashboardContainer from '../containers/dashboard'
+import React from "react";
 
-export default function DashboardPage() {
-    return (
-        
-       <DashboardContainer/>
-    )
+import Dashboard from "../components/dashboard-layout/dashboard";
+
+function DashboardPage() {
+  return <Dashboard />;
 }
+
+export default DashboardPage;

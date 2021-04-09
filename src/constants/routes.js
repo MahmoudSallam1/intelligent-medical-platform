@@ -3,4 +3,4 @@ export const BROWSE = "/browse";
 export const SIGN_UP = "/signup";
 export const SIGN_IN = "/signin";
 export const DASHBOARD = "/dashboard";
-export const SESSION = "/session";
+export const APPOINTMENT = "/appointment"

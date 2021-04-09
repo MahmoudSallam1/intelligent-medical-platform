@@ -17,7 +17,7 @@ export default function FeaturesContainer({ children }) {
           <Features.Icon src="/images/icons/ocr.png" />
           <Features.Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt. 
+            eiusmod tempor incididunt.
           </Features.Text>
         </Features.Column>
         <Features.Column>
