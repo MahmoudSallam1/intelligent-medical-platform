@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   radio: {
-    "&:checked": {
+    "&$focused": {
       color: "#1DB5E4",
     },
   },
@@ -45,22 +45,20 @@ const useStyles = makeStyles((theme) => ({
 function GeneralInformation() {
   const classes = useStyles();
 
-  // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("2014-08-18T21:11:54")
-  );
+  const [fullName, SetFullName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [gender, setGender] = useState("");
 
-  const [value, setValue] = React.useState("female");
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  // Emergency
+  const [emergencyFullName, setEmergencyFullName] = useState("");
+  const [emergencyPhoneNumber, setEmergencyPhoneNumber] = useState("");
+  const [relation, setRelation] = useState("");
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+  console.log(selectedDate);
 
-  console.log(document.querySelectorAll(" p * div "));
   return (
     <Container>
       <form
@@ -68,12 +66,19 @@ function GeneralInformation() {
       >
         <Grid spacing={3} container>
           <Grid item xs={12} md={6} lg={6}>
-            <Typography className={classes.gray} align={"left"} variant="h6" gutterBottom>
+            <Typography
+              className={classes.gray}
+              align={"left"}
+              variant="h6"
+              gutterBottom
+            >
               Patient General Medical History{" "}
             </Typography>
             <TextField
               variant="outlined"
               margin="normal"
+              value={fullName}
+              onChange={(e) => SetFullName(e.target.value)}
               required
               fullWidth
               id="fullName"
@@ -85,6 +90,8 @@ function GeneralInformation() {
             <TextField
               variant="outlined"
               margin="normal"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               required
               fullWidth
               id="address"
@@ -96,6 +103,8 @@ function GeneralInformation() {
             <TextField
               variant="outlined"
               margin="normal"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
               required
               fullWidth
               id="phoneNumber"
@@ -113,7 +122,7 @@ function GeneralInformation() {
                 format="MM/dd/yyyy"
                 value={selectedDate}
                 fullWidth
-                onChange={handleDateChange}
+                onChange={(date) => setSelectedDate(date)}
                 KeyboardButtonProps={{
                   "aria-label": "change date",
                 }}
@@ -125,30 +134,41 @@ function GeneralInformation() {
             </FormLabel>
             <RadioGroup
               aria-label="gender"
-              name="gender1"
-              value={value}
-              onChange={handleChange}
+              name="gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
             >
               <FormControlLabel
                 value="female"
-                control={<Radio />}
+                control={<Radio color="primary" />}
                 label="Female"
               />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel
+                value="male"
+                control={<Radio color="primary" />}
+                label="Male"
+              />
             </RadioGroup>
           </Grid>
 
           <Grid item xs={12} md={6} lg={6}>
-            <Typography className={classes.gray} align={"left"} variant="h6" gutterBottom>
+            <Typography
+              className={classes.gray}
+              align={"left"}
+              variant="h6"
+              gutterBottom
+            >
               Emergency contacts{" "}
             </Typography>
 
             <TextField
               variant="outlined"
               margin="normal"
+              value={emergencyFullName}
+              onChange={(e) => setEmergencyFullName(e.target.value)}
               required
               fullWidth
-              id="fullName"
+              id="emergencyFullName"
               label="Full Name"
               name="text"
               autoComplete="text"
@@ -158,9 +178,11 @@ function GeneralInformation() {
             <TextField
               variant="outlined"
               margin="normal"
+              value={emergencyPhoneNumber}
+              onChange={(e) => setEmergencyPhoneNumber(e.target.value)}
               required
               fullWidth
-              id="phoneNumber"
+              id="emergencyPhoneNumber"
               label="Phone Number"
               name="text"
               type="number"
@@ -170,6 +192,8 @@ function GeneralInformation() {
             <TextField
               variant="outlined"
               margin="normal"
+              value={relation}
+              onChange={(e) => setRelation(e.target.value)}
               required
               fullWidth
               id="relation"

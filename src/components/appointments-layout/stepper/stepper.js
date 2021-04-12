@@ -37,6 +37,8 @@ export default function HorizontalLinearStepper({ steps, getStepContent }) {
   };
 
   const handleNext = () => {
+    //
+    console.log("calling backend.....");
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -84,8 +86,8 @@ export default function HorizontalLinearStepper({ steps, getStepContent }) {
           </div>
         ) : (
           <div>
-            <Typography  component={'span'} className={classes.instructions}>
-              {getStepContent(activeStep)} 
+            <Typography component={"span"} className={classes.instructions}>
+              {getStepContent(activeStep)}
             </Typography>
             <div>
               <Button

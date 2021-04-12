@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -7,7 +7,7 @@ import PauseIcon from "@material-ui/icons/Pause";
 import { DropzoneDialog } from "material-ui-dropzone";
 import Button from "@material-ui/core/Button";
 import MicIcon from "@material-ui/icons/Mic";
-
+import KeyboardIcon from "@material-ui/icons/Keyboard";
 import Container from "@material-ui/core/Container";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -17,16 +17,6 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column",
-  },
-  breath: {
-    marginTop: "1em",
-    textAlign: "left",
-  },
   gray: {
     color: "#616161",
     fontWeight: "400",
@@ -39,16 +29,19 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginBottom: "1em",
   },
+  button: {
+    marginLeft: "1em",
+  },
 }));
 
 function MedicalReports() {
   const classes = useStyles();
-  const [value, setValue] = React.useState();
 
-  const [open, setOpen] = React.useState(false);
-  const [files, setFiles] = React.useState();
-  const [isRecord, setIsRecord] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [files, setFiles] = useState();
+  const [isRecord, setIsRecord] = useState(false);
 
+  //Speech Recognition
   const { transcript, resetTranscript } = useSpeechRecognition();
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -67,11 +60,9 @@ function MedicalReports() {
     setOpen(true);
   }
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  // console.log(document.querySelectorAll(" p * div "));
 
-  console.log(document.querySelectorAll(" p * div "));
+  console.log(transcript);
   return (
     <Container>
       <form
@@ -89,46 +80,47 @@ function MedicalReports() {
                 Symptoms{" "}
               </Typography>
 
-              {isRecord ? (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                  onClick={() => {
-                    setIsRecord(!isRecord);
-                    SpeechRecognition.stopListening();
-                  }}
-                  endIcon={<PauseIcon />}
-                >
-                  Pause
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    setIsRecord(!isRecord);
-                    SpeechRecognition.startListening({
-                      continuous: true,
-                      // language: "ar-EG",
-                    });
-                  }}
-                  className={classes.button}
-                  endIcon={<MicIcon />}
-                >
-                  Record
-                </Button>
-              )}
+              <div>
+                {isRecord ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    onClick={() => {
+                      setIsRecord(!isRecord);
+                      SpeechRecognition.stopListening();
+                    }}
+                    endIcon={<PauseIcon />}
+                  >
+                    Pause
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      setIsRecord(!isRecord);
+                      SpeechRecognition.startListening({
+                        continuous: true,
+                        // language: "ar-EG",
+                      });
+                    }}
+                    className={classes.button}
+                    endIcon={<MicIcon />}
+                  >
+                    Record
+                  </Button>
+                )}
+              </div>
             </div>
 
             <TextField
-              id="outlined-multiline-flexible"
+              id="symptoms"
               label="Symptoms"
+              value={transcript}
               multiline
               fullWidth
               rowsMax={4}
-              value={transcript}
-              onChange={handleChange}
               variant="outlined"
             />
           </Grid>
