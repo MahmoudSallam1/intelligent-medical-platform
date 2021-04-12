@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
@@ -15,16 +14,6 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    display: "flex",
-    overflow: "auto",
-    flexDirection: "column",
-  },
-  breath: {
-    marginTop: "1em",
-    textAlign: "left",
-  },
   gray: {
     color: "#616161",
     fontWeight: "400",
@@ -41,12 +30,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Diagnosis() {
   const classes = useStyles();
-  const [value, setValue] = React.useState();
-  const [isRecord, setIsRecord] = React.useState(false);
+  const [isRecord, setIsRecord] = useState(false);
+  const [comments, setComments] = useState("");
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+
+  //Speech Recognition
 
   const { transcript, resetTranscript } = useSpeechRecognition();
 
@@ -54,7 +42,8 @@ function Diagnosis() {
     return null;
   }
 
-  console.log(document.querySelectorAll(" p * div "));
+  console.log(comments);
+
   return (
     <Container>
       <form
@@ -111,23 +100,17 @@ function Diagnosis() {
               fullWidth
               rowsMax={4}
               value={transcript}
-              onChange={handleChange}
               variant="outlined"
             />
           </Grid>
         </Grid>
 
         <br></br>
-        {/* <Typography
-          className={classes.gray}
-          align={"left"}
-          variant="h6"
-          gutterBottom
-        >
-          Comments
-        </Typography> */}
+
         <TextField
-          id="standard-textarea"
+          id="comments"
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
           placeholder="Comments"
           multiline
           fullWidth

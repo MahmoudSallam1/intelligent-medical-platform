@@ -44,21 +44,28 @@ function SmokingAlcohol() {
         </Typography>
         <br />
         <Typography className={classes.gray} variant="h6" gutterBottom>
-            Have you ever smoked cigarettes, cigars, or a pipe?
-          </Typography>
+          Have you ever smoked cigarettes, cigars, or a pipe?
+        </Typography>
         <form
           className={classes.form}
           //   noValidate
         >
-   
           <RadioGroup
             aria-label="smoking1"
             name="smoking"
             value={value}
             onChange={handleChange}
           >
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel
+              value="yes"
+              control={<Radio color="primary" />}
+              label="Yes"
+            />
+            <FormControlLabel
+              value="no"
+              control={<Radio color="primary" />}
+              label="No"
+            />
           </RadioGroup>
 
           <br />
@@ -72,8 +79,16 @@ function SmokingAlcohol() {
             value={selection}
             onChange={updateSelection}
           >
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel
+              value="yes"
+              control={<Radio color="primary" />}
+              label="Yes"
+            />
+            <FormControlLabel
+              value="no"
+              control={<Radio color="primary" />}
+              label="No"
+            />
           </RadioGroup>
         </form>{" "}
       </div>

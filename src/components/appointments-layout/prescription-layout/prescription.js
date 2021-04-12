@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -25,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     flexDirection: "column",
   },
-  breath: {
-    marginTop: "1em",
-    textAlign: "left",
-  },
   gray: {
     color: "#616161",
     fontWeight: "400",
@@ -38,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    // alignItems: "center",
     marginBottom: "1em",
   },
   button: {
@@ -62,19 +57,13 @@ const useStyles = makeStyles((theme) => ({
 function Prescription() {
   const classes = useStyles();
 
-  const [value, setValue] = React.useState();
-  const [isRecord, setIsRecord] = React.useState(false);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const [isRecord, setIsRecord] = useState(false);
 
   const { transcript, resetTranscript } = useSpeechRecognition();
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
   }
-  console.log(document.querySelectorAll(" p * div "));
   return (
     <Container>
       <form
@@ -83,15 +72,6 @@ function Prescription() {
         <Grid spacing={3} container>
           <Grid item xs={12} md={12} lg={12}>
             <div>
-              {/* <Typography
-                className={classes.gray}
-                align={"left"}
-                variant="h6"
-                gutterBottom
-              >
-                Prescription{" "}
-              </Typography> */}
-
               <div>
                 {" "}
                 {isRecord ? (
@@ -138,7 +118,6 @@ function Prescription() {
         </Grid>
 
         <br></br>
-
         <Grid conatiner>
           <Grid item xs={12} md={12} lg={12}>
             <Paper elevation={0} className={classes.card}>

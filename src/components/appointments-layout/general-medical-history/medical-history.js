@@ -192,8 +192,8 @@ function MedicalHistory() {
               {item.question}
             </FormLabel>
             <RadioGroup className={classes.ourFlex}>
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
+              <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
+              <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
             </RadioGroup>
           </Grid>
         ))}
@@ -211,23 +211,23 @@ function MedicalHistory() {
             Pregnant/Trying to get pregnant?
           </FormLabel>
           <RadioGroup className={classes.ourFlex}>
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
           </RadioGroup>
         </Grid>
 
         <Grid item xs={6} sm={4} md={4} lg={4}>
           <FormLabel className={classes.breath} component="legend">Taking oral contraceptives?</FormLabel>
           <RadioGroup className={classes.ourFlex}>
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
           </RadioGroup>
         </Grid>
         <Grid item xs={6} sm={4} md={4} lg={4}>
           <FormLabel className={classes.breath} component="legend">Nursing?</FormLabel>
           <RadioGroup className={classes.ourFlex}>
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
+            <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
           </RadioGroup>
         </Grid>
       </Grid>

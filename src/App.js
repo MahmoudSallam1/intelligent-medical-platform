@@ -55,13 +55,13 @@ function App() {
         <Route path={ROUTES.APPOINTMENT}>
           <AppointmentPage />
         </Route>
-        <Route path="/medical-history">
+        <Route path={ROUTES.MEDICAL_HISTORY}>
           <GeneralMedicalHistoryPage />
         </Route>
-        <Route path="/patient-data">
+        <Route path={ROUTES.PATIENT_DATA}>
           <PatientDataPage />
         </Route>
-        <Route path="/prescription">
+        <Route path={ROUTES.PRESCRIPTION}>
           <PrescriptionPage />
         </Route>
       </Switch>

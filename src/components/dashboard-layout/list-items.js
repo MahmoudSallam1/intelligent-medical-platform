@@ -12,6 +12,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
 
+import * as ROUTES from "../../constants/routes";
+
 export const mainListItems = (
   <div>
     <Link style={{ textDecoration: "none", color: "black" }} to="/">
@@ -22,7 +24,10 @@ export const mainListItems = (
         <ListItemText primary="Home" />
       </ListItem>
     </Link>
-    <Link style={{ textDecoration: "none", color: "black" }} to="/dashboard">
+    <Link
+      style={{ textDecoration: "none", color: "black" }}
+      to={ROUTES.DASHBOARD}
+    >
       <ListItem button>
         <ListItemIcon>
           <DashboardIcon />
@@ -48,7 +53,10 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Settings" />
     </ListItem>
-    <Link style={{ textDecoration: "none", color: "black" }} to="/signin">
+    <Link
+      style={{ textDecoration: "none", color: "black" }}
+      to={ROUTES.SIGN_IN}
+    >
       <ListItem button>
         <ListItemIcon>
           <ExitToAppIcon />
@@ -64,7 +72,7 @@ export const secondaryListItems = (
     <ListSubheader inset>Saved reports</ListSubheader>
     <Link
       style={{ textDecoration: "none", color: "black" }}
-      to="/medical-history"
+      to={ROUTES.MEDICAL_HISTORY}
     >
       {" "}
       <ListItem button>
@@ -75,7 +83,10 @@ export const secondaryListItems = (
       </ListItem>
     </Link>
 
-    <Link style={{ textDecoration: "none", color: "black" }} to="/patient-data">
+    <Link
+      style={{ textDecoration: "none", color: "black" }}
+      to={ROUTES.PATIENT_DATA}
+    >
       <ListItem button>
         <ListItemIcon>
           <AssignmentIcon />
@@ -83,7 +94,10 @@ export const secondaryListItems = (
         <ListItemText primary="Patient Data" />
       </ListItem>
     </Link>
-    <Link style={{ textDecoration: "none", color: "black" }} to="/prescription">
+    <Link
+      style={{ textDecoration: "none", color: "black" }}
+      to={ROUTES.PRESCRIPTION}
+    >
       <ListItem button>
         <ListItemIcon>
           <AssignmentIcon />
