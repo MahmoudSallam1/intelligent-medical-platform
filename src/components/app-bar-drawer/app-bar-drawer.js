@@ -20,6 +20,8 @@ import {
   secondaryListItems,
 } from "../dashboard-layout/list-items";
 
+import LogOut from "./log-out";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     position: "relative",
-    height:"100vh",
+    height: "100vh",
     whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -96,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppBarAndDrawer({pageTitle}) {
+function AppBarAndDrawer({ pageTitle }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
@@ -152,7 +154,7 @@ function AppBarAndDrawer({pageTitle}) {
         </Toolbar>
       </AppBar>
 
-      <Drawer 
+      <Drawer
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -168,6 +170,9 @@ function AppBarAndDrawer({pageTitle}) {
         <List>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
+        <Divider />
+
+        <List><LogOut/></List>
       </Drawer>
 
       {/* end of nav and drawer */}

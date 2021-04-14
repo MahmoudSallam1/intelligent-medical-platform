@@ -9,14 +9,17 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from '@material-ui/core/Paper';
-
+import Paper from "@material-ui/core/Paper";
+import Alert from "@material-ui/lab/Alert";
 import { useHistory } from "react-router-dom";
 import * as ROUTES from "../constants/routes";
 
 import { Link } from "react-router-dom";
 
-import { auth, signInWithGoogle } from "../firebase/firebase";
+import { connect } from "react-redux";
+import { signIn } from "../store/actions/authActions";
+
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,31 +52,29 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+
+  error: {
+    marginTop: theme.spacing(2),
+  },
 }));
 
-export default function SignIn() {
+function SignIn(props) {
   const classes = useStyles();
 
   const history = useHistory();
-  const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const isInvalid = (password === "") | (email === "");
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log(email, password);
-
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      setEmail("");
-      setPassword("");
-      history.push(ROUTES.DASHBOARD);
-    } catch (err) {
-      console.log(err);
-    }
+    props.signIn({ email, password });
   }
+
+  const { authError, auth } = props;
+
+  if (auth.uid) return <Redirect to={ROUTES.DASHBOARD} />;
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -87,12 +88,15 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form
-            className={classes.form}
-            onSubmit={handleSubmit}
-            method="POST"
-            //   noValidate
-          >
+
+          <div className="">
+            {authError ? (
+              <Alert className={classes.error} severity="error">
+                {authError}
+              </Alert>
+            ) : null}
+          </div>
+          <form className={classes.form} onSubmit={handleSubmit} method="POST">
             <TextField
               variant="outlined"
               margin="normal"
@@ -131,6 +135,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+
             <Grid container>
               <Grid item xs>
                 <Link>Forgot password?</Link>
@@ -148,65 +153,19 @@ export default function SignIn() {
   );
 }
 
-// export default function SigninPage() {
-//   const history = useHistory();
-//   const [error, setError] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
 
-//   const isInvalid = (password === "") | (email === "");
+  };
+};
 
-//   async function handleSubmit(e) {
-//     e.preventDefault();
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (creds) => dispatch(signIn(creds)),
+  };
+};
 
-//     try {
-//       await auth.signInWithEmailAndPassword(email, password);
-//       setEmail("");
-//       setPassword("");
-//       history.push(ROUTES.DASHBOARD);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-
-//   return (
-//     <>
-//       <HeaderContainer />
-//       <Form bgColor="#1DB5E4">
-//         <Form.Title>Sign In</Form.Title>
-//         {error && <Form.Error>{error}</Form.Error>}
-
-//         <Form.Base onSubmit={handleSubmit} method="POST">
-//           <Form.Input
-//             placeholder="Email address"
-//             value={email}
-//             onChange={({ target }) => setEmail(target.value)}
-//           />
-//           <Form.Input
-//             type="password"
-//             value={password}
-//             autoComplete="off"
-//             placeholder="Password"
-//             onChange={({ target }) => setPassword(target.value)}
-//           />
-
-//           <Form.Submit disabled={isInvalid} type="submit">
-//             Sign In
-//           </Form.Submit>
-
-//           <Form.Submit googleColor onClick={signInWithGoogle}>
-//             Sign in with Google
-//           </Form.Submit>
-
-//           <Form.Text>
-//             New to gradProject? <Form.Link to="/signup">Sign up now.</Form.Link>
-//           </Form.Text>
-//           <Form.TextSmall>
-//             This page is protected by Google reCAPTCHA.
-//           </Form.TextSmall>
-//         </Form.Base>
-//       </Form>
-//       <FooterContainer />
-//     </>
-//   );
-// }
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

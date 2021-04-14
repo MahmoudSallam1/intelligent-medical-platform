@@ -9,8 +9,8 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import SettingsIcon from "@material-ui/icons/Settings";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import HomeIcon from "@material-ui/icons/Home";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 import * as ROUTES from "../../constants/routes";
 
@@ -53,17 +53,6 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Settings" />
     </ListItem>
-    <Link
-      style={{ textDecoration: "none", color: "black" }}
-      to={ROUTES.SIGN_IN}
-    >
-      <ListItem button>
-        <ListItemIcon>
-          <ExitToAppIcon />
-        </ListItemIcon>
-        <ListItemText primary="Log out" />
-      </ListItem>
-    </Link>
   </div>
 );
 

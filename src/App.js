@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
@@ -12,30 +12,8 @@ import PrescriptionPage from "./pages/prescription";
 
 import DashboardPage from "./pages/dashboard";
 
-import AppointmentPage from "./pages/appointments";
-
-import { auth, createUserProfileDocument } from "./firebase/firebase";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState();
-
-  useEffect(() => {
-    auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const user = await createUserProfileDocument(userAuth);
-        user?.onSnapshot((snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      }
-      setCurrentUser(userAuth);
-    });
-  }, []);
-
-  console.log(currentUser);
-
   return (
     <Router>
       <Switch>
@@ -52,9 +30,7 @@ function App() {
         <Route path={ROUTES.DASHBOARD}>
           <DashboardPage />
         </Route>
-        <Route path={ROUTES.APPOINTMENT}>
-          <AppointmentPage />
-        </Route>
+
         <Route path={ROUTES.MEDICAL_HISTORY}>
           <GeneralMedicalHistoryPage />
         </Route>
