@@ -22,6 +22,9 @@ import {
 
 import LogOut from "./log-out";
 
+import { connect } from "react-redux";
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -98,9 +101,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppBarAndDrawer({ pageTitle }) {
+function AppBarAndDrawer({ pageTitle,profile }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -140,7 +144,7 @@ function AppBarAndDrawer({ pageTitle }) {
 
           <Typography component="h5" variant="h5" color="inherit" noWrap>
             <Box fontWeight="fontWeightLight" m={1}>
-              Username
+              {profile.displayName}
             </Box>{" "}
           </Typography>
 
@@ -180,4 +184,13 @@ function AppBarAndDrawer({ pageTitle }) {
   );
 }
 
-export default AppBarAndDrawer;
+
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    profile: state.firebase.profile,
+  };
+};
+
+export default connect(mapStateToProps)(AppBarAndDrawer);
+

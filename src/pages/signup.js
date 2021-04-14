@@ -8,11 +8,14 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Alert from "@material-ui/lab/Alert";
 
 import Box from "@material-ui/core/Box";
 
 import * as ROUTES from "../constants/routes";
 import { Link } from "react-router-dom";
+
+import { signUp } from "../store/actions/authActions";
 
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -54,16 +57,14 @@ function SignUp(props) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [error, setError] = useState("");
-
   const isInvalid = displayName === "" || password === "" || email === "";
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("sign up");
+    props.signUp({ email, password, displayName });
   }
 
-  const { auth } = props;
+  const { auth, authError } = props;
   if (auth.uid) return <Redirect to={ROUTES.DASHBOARD} />;
 
   return (
@@ -77,6 +78,14 @@ function SignUp(props) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
+
+        <div className="">
+          {authError ? (
+            <Alert className={classes.error} severity="error">
+              {authError}
+            </Alert>
+          ) : null}
+        </div>
         <form
           className={classes.form}
           onSubmit={handleSubmit}
@@ -157,7 +166,14 @@ function SignUp(props) {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
+    authError: state.auth.authError,
   };
 };
 
-export default connect(mapStateToProps)(SignUp);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

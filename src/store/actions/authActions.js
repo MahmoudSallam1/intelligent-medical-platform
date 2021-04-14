@@ -16,15 +16,35 @@ export const signIn = ({ email, password }) => {
 };
 
 export const signOut = () => {
-  
   return (dispatch, getState, { getFirebase }) => {
-
     const firebase = getFirebase();
     firebase
       .auth()
       .signOut()
       .then(() => {
         dispatch({ type: "SIGNOUT_SUCCESS" });
+      });
+  };
+};
+
+export const signUp = ({ email, password, displayName }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        return firestore.collection("doctors").doc(res.user.uid).set({
+          displayName: displayName,
+        });
+      })
+      .then(() => {
+        dispatch({ type: "SIGNUP_SUCCESS" });
+      })
+      .catch((err) => {
+        dispatch({ type: "SIGNUP_ERROR", err });
       });
   };
 };

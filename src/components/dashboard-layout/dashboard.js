@@ -57,7 +57,7 @@ function Dashboard(props) {
     <div className={classes.root}>
       <CssBaseline />
 
-      <AppBarAndDrawer pageTitle={"Dashboard"} />
+      <AppBarAndDrawer  pageTitle={"Dashboard"} />
 
       <OurGrid>
         {/* Chart */}
@@ -87,6 +87,7 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     auth: state.firebase.auth,
+    profile: state.firebase.profile,
   };
 };
 
