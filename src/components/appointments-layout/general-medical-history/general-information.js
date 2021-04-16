@@ -10,6 +10,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
 import Container from "@material-ui/core/Container";
 
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
+
+import { connect } from "react-redux";
+import { createPatientGeneralInformation } from "../../../store/actions/patientGeneralInformationActions";
+import { Redirect } from "react-router-dom";
+
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
@@ -42,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function GeneralInformation() {
+function GeneralInformation(props) {
   const classes = useStyles();
 
   const [fullName, SetFullName] = useState("");
@@ -51,17 +58,29 @@ function GeneralInformation() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [gender, setGender] = useState("");
 
-
   // Emergency
   const [emergencyFullName, setEmergencyFullName] = useState("");
   const [emergencyPhoneNumber, setEmergencyPhoneNumber] = useState("");
   const [relation, setRelation] = useState("");
 
-  console.log(selectedDate);
-
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.createPatientGeneralInformation({
+      fullName,
+      address,
+      phoneNumber,
+      selectedDate,
+      gender,
+      emergencyFullName,
+      emergencyPhoneNumber,
+      relation,
+    });
+    // this.props.history.push("/");
+  }
   return (
     <Container>
       <form
+      // onSubmit={handleSubmit}
       //   noValidate
       >
         <Grid spacing={3} container>
@@ -203,10 +222,33 @@ function GeneralInformation() {
               autoFocus
             />
           </Grid>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            className={classes.button}
+            startIcon={<SaveIcon />}
+            onClick={handleSubmit}
+          >
+            Save
+          </Button>
         </Grid>
       </form>{" "}
     </Container>
   );
 }
 
-export default GeneralInformation;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createPatientGeneralInformation: (generalInformation) =>
+      dispatch(createPatientGeneralInformation(generalInformation)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GeneralInformation);
