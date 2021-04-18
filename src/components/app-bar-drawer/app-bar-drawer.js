@@ -24,7 +24,6 @@ import LogOut from "./log-out";
 
 import { connect } from "react-redux";
 
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     position: "relative",
-    height: "100vh",
+    height: "110vh",
+  
     whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -101,10 +101,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppBarAndDrawer({ pageTitle,profile }) {
+function AppBarAndDrawer({ pageTitle, profile }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -176,14 +175,15 @@ function AppBarAndDrawer({ pageTitle,profile }) {
         <List>{secondaryListItems}</List>
         <Divider />
 
-        <List><LogOut/></List>
+        <List>
+          <LogOut />
+        </List>
       </Drawer>
 
       {/* end of nav and drawer */}
     </>
   );
 }
-
 
 const mapStateToProps = (state) => {
   // console.log(state);
@@ -193,4 +193,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(AppBarAndDrawer);
-

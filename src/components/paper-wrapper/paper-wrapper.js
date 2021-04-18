@@ -1,15 +1,19 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
+import { makeStyles } from "@material-ui/core/styles";
 
-
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
-
-
+  breath: {
+    padding: "2em",
+  },
+  marginBot: {
+    marginBottom: "1em",
+  },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
@@ -30,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function OurGrid({ children }) {
+function PaperWrapper({ children }) {
   const classes = useStyles();
 
   return (
@@ -38,14 +42,13 @@ function OurGrid({ children }) {
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={3}>
-          {children}
+          <Grid item xs={12} md={12} lg={12}>
+            <Paper className={classes.breath}>{children}</Paper>
+          </Grid>
         </Grid>
-        {/* <Box pt={4}>
-          <Copyrights />
-        </Box> */}
       </Container>
     </main>
   );
 }
 
-export default OurGrid;
+export default PaperWrapper;
