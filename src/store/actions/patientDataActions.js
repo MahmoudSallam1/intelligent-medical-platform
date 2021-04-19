@@ -4,12 +4,16 @@ export const createPatientData = (patientData) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     firestore
-      .collection("patient-data")
-      .add({
-        ...patientData,
+      .collection("doctors")
+      .doc(authorId)
+      .update({
         displayName: profile.displayName,
         authorId: authorId,
         createdAt: new Date(),
+        patientData: {
+          ...patientData,
+          createdAt: new Date(),
+        },
       })
       .then(() => {
         dispatch({ type: "CREATE_PATIENT_DATA_SUCCESS" });

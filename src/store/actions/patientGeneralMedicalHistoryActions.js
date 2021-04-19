@@ -4,12 +4,17 @@ export const createPatientGeneralMedicalHistory = (generalMedicalHistory) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     firestore
-      .collection("patient-general-medical-history")
-      .add({
-        ...generalMedicalHistory,
+
+      .collection("doctors")
+      .doc(authorId)
+      .update({
         displayName: profile.displayName,
         authorId: authorId,
         createdAt: new Date(),
+        patientGeneralMedicalHistory: {
+          ...generalMedicalHistory,
+          createdAt: new Date(),
+        },
       })
       .then(() => {
         dispatch({ type: "CREATE_GENERAL_MEDCIAL_HISTORY_SUCCESS" });

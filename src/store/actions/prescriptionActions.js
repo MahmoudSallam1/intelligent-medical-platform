@@ -4,12 +4,16 @@ export const createPrescription = (prescription) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     firestore
-      .collection("prescription")
-      .add({
-        ...prescription,
+      .collection("doctors")
+      .doc(authorId)
+      .update({
         displayName: profile.displayName,
         authorId: authorId,
         createdAt: new Date(),
+        prescription: {
+          ...prescription,
+          createdAt: new Date(),
+        },
       })
       .then(() => {
         dispatch({ type: "CREATE_PRESCRIPTION_SUCCESS" });
