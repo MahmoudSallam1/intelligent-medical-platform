@@ -14,10 +14,10 @@ import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 
 import { connect } from "react-redux";
-import { createPatientGeneralInformation } from "../../../store/actions/patientGeneralInformationActions";
-import { Redirect } from "react-router-dom";
+import { createPatientGeneralInformation } from "../../../store/actions/patientGeneralMedicalHistoryActions";
 
 import DateFnsUtils from "@date-io/date-fns";
+
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -47,42 +47,33 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     fontSize: "1.1rem",
   },
+  btnGroup: {
+    textAlign: "center",
+  },
 }));
 
-function GeneralInformation(props) {
+function GeneralInformation({
+  formData,
+  setFormData,
+  nextStep,
+  prevStep,
+  activeStep,
+  steps,
+}) {
   const classes = useStyles();
 
-  const [fullName, SetFullName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [gender, setGender] = useState("");
-
-  // Emergency
-  const [emergencyFullName, setEmergencyFullName] = useState("");
-  const [emergencyPhoneNumber, setEmergencyPhoneNumber] = useState("");
-  const [relation, setRelation] = useState("");
-
-  function handleSubmit(e) {
+  function handleNext(e) {
     e.preventDefault();
-    props.createPatientGeneralInformation({
-      fullName,
-      address,
-      phoneNumber,
-      selectedDate,
-      gender,
-      emergencyFullName,
-      emergencyPhoneNumber,
-      relation,
-    });
-    // this.props.history.push("/");
+    nextStep();
+  }
+
+  function handleBack(e) {
+    e.preventDefault();
+    prevStep();
   }
   return (
     <Container>
-      <form
-      // onSubmit={handleSubmit}
-      //   noValidate
-      >
+      <form>
         <Grid spacing={3} container>
           <Grid item xs={12} md={6} lg={6}>
             <Typography
@@ -96,8 +87,13 @@ function GeneralInformation(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              value={fullName}
-              onChange={(e) => SetFullName(e.target.value)}
+              value={formData.fullName}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  fullName: e.target.value,
+                });
+              }}
               required
               fullWidth
               id="fullName"
@@ -109,8 +105,13 @@ function GeneralInformation(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              value={formData.address}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  address: e.target.value,
+                });
+              }}
               required
               fullWidth
               id="address"
@@ -122,8 +123,13 @@ function GeneralInformation(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              value={formData.phoneNumber}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  phoneNumber: e.target.value,
+                });
+              }}
               required
               fullWidth
               id="phoneNumber"
@@ -139,9 +145,14 @@ function GeneralInformation(props) {
                 id="date-picker-dialog"
                 label="Date picker dialog"
                 format="MM/dd/yyyy"
-                value={selectedDate}
                 fullWidth
-                onChange={(date) => setSelectedDate(date)}
+                value={formData.selectedDate}
+                onChange={(date) => {
+                  setFormData({
+                    ...formData,
+                    selectedDate: date,
+                  });
+                }}
                 KeyboardButtonProps={{
                   "aria-label": "change date",
                 }}
@@ -154,8 +165,13 @@ function GeneralInformation(props) {
             <RadioGroup
               aria-label="gender"
               name="gender"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
+              value={formData.gender}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  gender: e.target.value,
+                });
+              }}
             >
               <FormControlLabel
                 value="female"
@@ -183,8 +199,13 @@ function GeneralInformation(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              value={emergencyFullName}
-              onChange={(e) => setEmergencyFullName(e.target.value)}
+              value={formData.emergencyFullName}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  emergencyFullName: e.target.value,
+                });
+              }}
               required
               fullWidth
               id="emergencyFullName"
@@ -197,8 +218,13 @@ function GeneralInformation(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              value={emergencyPhoneNumber}
-              onChange={(e) => setEmergencyPhoneNumber(e.target.value)}
+              value={formData.emergencyPhoneNumber}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  emergencyPhoneNumber: e.target.value,
+                });
+              }}
               required
               fullWidth
               id="emergencyPhoneNumber"
@@ -211,8 +237,13 @@ function GeneralInformation(props) {
             <TextField
               variant="outlined"
               margin="normal"
-              value={relation}
-              onChange={(e) => setRelation(e.target.value)}
+              value={formData.relation}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  relation: e.target.value,
+                });
+              }}
               required
               fullWidth
               id="relation"
@@ -222,33 +253,30 @@ function GeneralInformation(props) {
               autoFocus
             />
           </Grid>
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            className={classes.button}
-            startIcon={<SaveIcon />}
-            onClick={handleSubmit}
-          >
-            Save
-          </Button>
         </Grid>
       </form>{" "}
+      <div className={classes.btnGroup}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          className={classes.button}
+        >
+          Back
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleNext}
+          className={classes.button}
+        >
+          {activeStep === steps.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </div>
     </Container>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.firebase.auth,
-  };
-};
+export default GeneralInformation;
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createPatientGeneralInformation: (generalInformation) =>
-      dispatch(createPatientGeneralInformation(generalInformation)),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(GeneralInformation);

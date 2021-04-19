@@ -1,5 +1,5 @@
 import authReducer from "./authReducer";
-import patientGeneralInformationReducer from "./patientGeneralInformationReducer";
+import patientGeneralMedicalHistoryReducer from "./patientGeneralMedicalHistoryReducer";
 import patientDataReducer from "./patientDataReducer";
 import prescriptionReducer from "./prescriptionReducer";
 import { combineReducers } from "redux";
@@ -8,7 +8,7 @@ import { firebaseReducer } from "react-redux-firebase";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  patientGeneralInformation: patientGeneralInformationReducer,
+  patientGeneralMedicalHistory: patientGeneralMedicalHistoryReducer,
   patientData: patientDataReducer,
   prescription: prescriptionReducer,
   firestore: firestoreReducer,

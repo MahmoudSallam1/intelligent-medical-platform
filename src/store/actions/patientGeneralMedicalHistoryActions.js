@@ -1,4 +1,4 @@
-export const createPatientGeneralInformation = (generalInformation) => {
+export const createPatientGeneralMedicalHistory = (generalMedicalHistory) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -6,16 +6,16 @@ export const createPatientGeneralInformation = (generalInformation) => {
     firestore
       .collection("patient-general-medical-history")
       .add({
-        ...generalInformation,
+        ...generalMedicalHistory,
         displayName: profile.displayName,
         authorId: authorId,
         createdAt: new Date(),
       })
       .then(() => {
-        dispatch({ type: "CREATE_GENERAL_INFORMATION_SUCCESS" });
+        dispatch({ type: "CREATE_GENERAL_MEDCIAL_HISTORY_SUCCESS" });
       })
       .catch((err) => {
-        dispatch({ type: "CREATE_GENERAL_INFORMATION_ERROR" }, err);
+        dispatch({ type: "CREATE_GENERAL_MEDCIAL_HISTORY_ERROR" }, err);
       });
   };
 };
