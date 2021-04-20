@@ -1,8 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -10,40 +8,29 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 
+import "./our-features.css";
+import { tiers } from "./tiers";
+
 const useStyles = makeStyles((theme) => ({
   section: {
-    marginBottom: "2em",
+    backgroundColor: "#EEF9FE",
+    paddingBottom:"7em"
   },
   heroContent: {
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(12, 0, 6),
   },
-  card: {
-    borderRadius: "10px",
-    padding:"1em",
-    transition:"all 0.3s ease;",
-    '&:hover': {
-      transform: "scale(1.1)"
-   },
-  },
-  cardHeader: {
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[700],
+  heading: {
+    color: "#1DB5E4",
+    lineHeight: "1.1",
+    fontSize: "48px",
+    textAlign: "center",
   },
 
-  CardContent: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "3em",
-  },
-  cardPricing: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: theme.spacing(2),
+  content: {
+    color: "#6B6C6F",
+    marginTop: "25px",
+    fontSize: "20px",
+    textAlign: "center",
   },
 
   imageClass: {
@@ -52,109 +39,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const tiers = [
-  {
-    title: "Digitalize",
-    image: "/images/icons/prescription.png",
-    buttonText: "Sign up for free",
-    buttonVariant: "outlined",
-  },
-  {
-    title: "OCR",
-    image: "/images/icons/ocr.png",
-
-    buttonText: "Get started",
-    buttonVariant: "contained",
-  },
-  {
-    title: "Analytics",
-    image: "/images/icons/analytics.png",
-    buttonText: "Contact us",
-    buttonVariant: "outlined",
-  },
-];
-
 function OurFeatures() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
 
       <div className={classes.section}>
-        {/* Hero unit */}
         <Container
           maxWidth="sm"
           component="main"
           className={classes.heroContent}
         >
-          <Typography
-            variant="h4"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            Our features
+          <Typography className={classes.heading} variant="h2" gutterBottom>
+            <Box fontWeight="fontWeightBold">Our features</Box>
           </Typography>
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            component="p"
-          >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s,
+          <Typography className={classes.content} variant="body1" gutterBottom>
+            A platform that adapts to your needs.
           </Typography>
         </Container>
 
-        <Container maxWidth="md" component="main">
+        <Container maxWidth="lg" component="main">
           <Grid container spacing={5} alignItems="flex-end">
             {tiers.map((tier) => (
-              <Grid
-                item
-                key={tier.title}
-                xs={12}
-                sm={tier.title === "Enterprise" ? 12 : 6}
-                md={4}
-              >
-                <Card className={classes.card}>
-                  <CardContent className={classes.CardContent}>
-                    <img
-                      className={classes.imageClass}
-                      src={tier.image}
-                      alt=""
-                    />
-                    <Typography
-                      variant="h6"
-                      align="center"
-                      color="textPrimary"
-                      gutterBottom
-                    >
-                      <Box lineHeight={1.3} m={1}>
-                        {tier.title}
-                      </Box>
-                    </Typography>
-
-                    <Typography
-                      variant="subtitle3"
-                      align="center"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      <Box lineHeight={1.3} m={1}>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.{" "}
-                      </Box>
-                    </Typography>
-                  </CardContent>
-                </Card>
+              <Grid item key={tier.id} xs={12} md={4}>
+                {/* <img className={classes.imageClass} src={tier.image} alt="" /> */}
+                <div class={`card card-${tier.id}`}>
+                  <h3>{tier.title}</h3>
+                  <p>{tier.desc}</p>
+                </div>
               </Grid>
             ))}
           </Grid>
         </Container>
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
