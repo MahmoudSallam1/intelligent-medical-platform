@@ -8,7 +8,7 @@ body {
 }
 
 body ::selection {
-    color: #02303F;
-    background: #FAB91C;
+    color: #fff;
+    background: #1DB5E4;
 
 }

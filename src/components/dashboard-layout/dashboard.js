@@ -11,8 +11,13 @@ import Appointments from "./appointments";
 
 import AppBarAndDrawer from "../app-bar-drawer/app-bar-drawer";
 
-
 import OurGrid from "../grid/grid";
+
+import * as ROUTES from "../../constants/routes";
+
+import { Redirect } from "react-router-dom";
+
+import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,15 +45,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+function Dashboard(props) {
+  const { auth } = props;
+
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
 
   return (
     <div className={classes.root}>
       <CssBaseline />
 
-      <AppBarAndDrawer pageTitle={"Dashboard"} />
+      <AppBarAndDrawer  pageTitle={"Dashboard"} />
 
       <OurGrid>
         {/* Chart */}
@@ -73,3 +82,13 @@ export default function Dashboard() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  };
+};
+
+export default connect(mapStateToProps)(Dashboard);

@@ -32,20 +32,22 @@ const useStyles = makeStyles((theme) => ({
   },
 
   section: {
-    background: "#02303F",
+    background: "#1DB5E4",
+    padding: "0.3em 10em",
   },
-
-  footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
+  item: {
+    color: "#fff",
+  },
+  title:{
     color: "#fff",
 
-    paddingBottom: theme.spacing(3),
+  },
+  footer: {
+    paddingTop: theme.spacing(5),
+    paddingBottom: theme.spacing(5),
     [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-      color: "#fff",
+      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(8),
     },
   },
 }));
@@ -84,22 +86,21 @@ export default function Footer() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
 
       <div className={classes.section}>
-        {/* Footer */}
-        <Container maxWidth="md" component="footer" className={classes.footer}>
-          <Grid container spacing={4} justify="space-evenly">
+        <Container maxWidth="lg" component="footer" className={classes.footer}>
+          <Grid container spacing={3} justify="space-evenly">
             {footers.map((footer) => (
               <Grid item xs={6} sm={3} key={footer.title}>
-                <Typography variant="h6" gutterBottom>
+                <Typography className={classes.title} variant="h6" gutterBottom>
                   {footer.title}
                 </Typography>
                 <ul>
                   {footer.description.map((item) => (
                     <li key={item}>
-                      <Link href="#" variant="subtitle1">
+                      <Link className={classes.item} href="#">
                         {item}
                       </Link>
                     </li>
@@ -108,12 +109,12 @@ export default function Footer() {
               </Grid>
             ))}
           </Grid>
-          <Box mt={5}>
+          {/* <Box mt={5}>
             <Copyright />
-          </Box>
+          </Box> */}
         </Container>
       </div>
       {/* End footer */}
-    </React.Fragment>
+    </>
   );
 }

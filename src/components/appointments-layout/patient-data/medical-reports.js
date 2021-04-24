@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -30,11 +30,22 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1em",
   },
   button: {
-    marginLeft: "1em",
+    marginRight: theme.spacing(1),
+    padding: "0.5em 1.5em",
+  },
+  btnGroup: {
+    textAlign: "center",
   },
 }));
 
-function MedicalReports() {
+function MedicalReports({
+  formData,
+  setFormData,
+  nextStep,
+  prevStep,
+  activeStep,
+  steps,
+}) {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
@@ -60,9 +71,17 @@ function MedicalReports() {
     setOpen(true);
   }
 
+  function handleNext(e) {
+    e.preventDefault();
+    nextStep();
+  }
+
+  function handleBack(e) {
+    e.preventDefault();
+    prevStep();
+  }
   // console.log(document.querySelectorAll(" p * div "));
 
-  console.log(transcript);
   return (
     <Container>
       <form
@@ -117,7 +136,13 @@ function MedicalReports() {
             <TextField
               id="symptoms"
               label="Symptoms"
-              value={transcript}
+              value={formData.symptoms}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  symptoms: e.target.value,
+                });
+              }}
               multiline
               fullWidth
               rowsMax={4}
@@ -135,7 +160,7 @@ function MedicalReports() {
         >
           Upload Reports / Radiology{" "}
         </Typography>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={12}>
             <div style={{ textAlign: "left" }}>
               <Button variant="contained" color="primary" onClick={handleOpen}>
@@ -170,6 +195,24 @@ function MedicalReports() {
       </form>{" "}
       <br></br>
       <br></br>
+      <div className={classes.btnGroup}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          className={classes.button}
+        >
+          Back
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleNext}
+          className={classes.button}
+        >
+          {activeStep === steps.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </div>
     </Container>
   );
 }

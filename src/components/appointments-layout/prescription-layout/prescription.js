@@ -18,6 +18,9 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
+
+
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
@@ -52,18 +55,40 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.8rem",
     fontWeight: "400",
   },
+  btnGroup: {
+    textAlign: "center",
+  },
 }));
 
-function Prescription() {
+function Prescription({
+  formData,
+  setFormData,
+  nextStep,
+  prevStep,
+  activeStep,
+  steps,
+}) {
   const classes = useStyles();
 
   const [isRecord, setIsRecord] = useState(false);
+
+  function handleNext(e) {
+    e.preventDefault();
+    nextStep();
+  }
+
+  function handleBack(e) {
+    e.preventDefault();
+    prevStep();
+  }
 
   const { transcript, resetTranscript } = useSpeechRecognition();
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
   }
+
+  
   return (
     <Container>
       <form
@@ -72,7 +97,7 @@ function Prescription() {
         <Grid spacing={3} container>
           <Grid item xs={12} md={12} lg={12}>
             <div>
-              <div>
+              <div className={classes.btnGroup}>
                 {" "}
                 {isRecord ? (
                   <Button
@@ -118,7 +143,7 @@ function Prescription() {
         </Grid>
 
         <br></br>
-        <Grid conatiner>
+        <Grid container>
           <Grid item xs={12} md={12} lg={12}>
             <Paper elevation={0} className={classes.card}>
               <div className={classes.ourFlex}>
@@ -191,9 +216,15 @@ function Prescription() {
                 <TextField
                   id="standard-textarea"
                   placeholder="Prescription"
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      prescription: e.target.value,
+                    });
+                  }}
                   multiline
                   fullWidth
-                  value={transcript}
+                  value={formData.prescription}
                 />
               </div>
 
@@ -214,6 +245,24 @@ function Prescription() {
       </form>{" "}
       <br></br>
       <br></br>
+      <div className={classes.btnGroup}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          className={classes.button}
+        >
+          Back
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleNext}
+          className={classes.button}
+        >
+          {activeStep === steps.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </div>
     </Container>
   );
 }

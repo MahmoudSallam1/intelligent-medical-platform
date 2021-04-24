@@ -39,6 +39,8 @@ export default function HorizontalLinearStepper({ steps, getStepContent }) {
   const handleNext = () => {
     //
     console.log("calling backend.....");
+
+    
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());

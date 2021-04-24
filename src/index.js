@@ -5,6 +5,27 @@ import "./index.css";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
+import { createStore, applyMiddleware, compose } from "redux";
+import rootReducer from "./store/reducers/rootReducer";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { reduxFirestore, getFirestore } from "redux-firestore";
+import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import fbConfig from "./firebase/firebase";
+
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reactReduxFirebase(fbConfig, {
+      useFirestoreForProfile: true,
+      userProfile: "doctors",
+      attachAuthIsReady: true,
+    }), // redux binding for firebase
+    reduxFirestore(fbConfig) // redux bindings for firestore
+  )
+);
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -36,13 +57,14 @@ const theme = createMuiTheme({
   },
 });
 
-
-
-
-ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    {" "}
-    <App />
-  </ThemeProvider>,
-  document.getElementById("root")
-);
+store.firebaseAuthIsReady.then(() => {
+  ReactDOM.render(
+    <ThemeProvider theme={theme}>
+      {" "}
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>,
+    document.getElementById("root")
+  );
+});

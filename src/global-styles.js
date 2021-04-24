@@ -15,12 +15,12 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     ::selection {
-    color: #02303F;
-    background: #FAB91C;
+    color: #fff;
+    background: #1DB5E4;
 }
 
 ::-moz-selection {
-    color: #02303F;
-    background: #FAB91C;
+    color: #fff;
+    background: #1DB5E4;
 }
 `;

@@ -20,7 +20,7 @@ export const Logo = styled.img`
 `;
 
 export const ButtonLink = styled(ReachRouterLink)`
-  background-color: #fab91c;
+  background-color: #1db5e4;
   color: white;
   border: 0;
   border-radius: 3px;
@@ -29,6 +29,6 @@ export const ButtonLink = styled(ReachRouterLink)`
   text-decoration: none;
 
   &:hover {
-    background: #1db5e4;
+    background: #fab91c;
   }
 `;

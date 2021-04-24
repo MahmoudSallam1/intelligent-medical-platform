@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
+import Button from "@material-ui/core/Button";
+
 import { patientGeneralMedicalHistoryArray } from "./medical-history-array";
 import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
@@ -27,15 +29,21 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     fontSize: "1.1rem",
   },
+  btnGroup: {
+    textAlign: "center",
+  },
 }));
 
-function MedicalHistory() {
+function MedicalHistory({
+  formData,
+  setFormData,
+  nextStep,
+  prevStep,
+  activeStep,
+  steps,
+}) {
   const classes = useStyles();
-  // const [value, setValue] = React.useState();
-
-  // const handleChangeR = (event) => {
-  //   setValue(event.target.value);
-  // };
+  
 
   const [state, setState] = React.useState({
     checkedA: false,
@@ -54,6 +62,16 @@ function MedicalHistory() {
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+
+  function handleNext(e) {
+    e.preventDefault();
+    nextStep();
+  }
+
+  function handleBack(e) {
+    e.preventDefault();
+    prevStep();
+  }
   return (
     <div>
       <div className={classes.breath}>
@@ -192,15 +210,23 @@ function MedicalHistory() {
               {item.question}
             </FormLabel>
             <RadioGroup className={classes.ourFlex}>
-              <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
+              <FormControlLabel
+                value="yes"
+                control={<Radio color="primary" />}
+                label="Yes"
+              />
+              <FormControlLabel
+                value="no"
+                control={<Radio color="primary" />}
+                label="No"
+              />
             </RadioGroup>
           </Grid>
         ))}
       </Grid>
 
       <div className={classes.breath}>
-        <Typography  className={classes.gray} variant="h6" gutterBottom>
+        <Typography className={classes.gray} variant="h6" gutterBottom>
           Women: Are you
         </Typography>
       </div>
@@ -211,27 +237,75 @@ function MedicalHistory() {
             Pregnant/Trying to get pregnant?
           </FormLabel>
           <RadioGroup className={classes.ourFlex}>
-            <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
+            <FormControlLabel
+              value="yes"
+              control={<Radio color="primary" />}
+              label="Yes"
+            />
+            <FormControlLabel
+              value="no"
+              control={<Radio color="primary" />}
+              label="No"
+            />
           </RadioGroup>
         </Grid>
 
         <Grid item xs={6} sm={4} md={4} lg={4}>
-          <FormLabel className={classes.breath} component="legend">Taking oral contraceptives?</FormLabel>
+          <FormLabel className={classes.breath} component="legend">
+            Taking oral contraceptives?
+          </FormLabel>
           <RadioGroup className={classes.ourFlex}>
-            <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
+            <FormControlLabel
+              value="yes"
+              control={<Radio color="primary" />}
+              label="Yes"
+            />
+            <FormControlLabel
+              value="no"
+              control={<Radio color="primary" />}
+              label="No"
+            />
           </RadioGroup>
         </Grid>
         <Grid item xs={6} sm={4} md={4} lg={4}>
-          <FormLabel className={classes.breath} component="legend">Nursing?</FormLabel>
+          <FormLabel className={classes.breath} component="legend">
+            Nursing?
+          </FormLabel>
           <RadioGroup className={classes.ourFlex}>
-            <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
+            <FormControlLabel
+              value="yes"
+              control={<Radio color="primary" />}
+              label="Yes"
+            />
+            <FormControlLabel
+              value="no"
+              control={<Radio color="primary" />}
+              label="No"
+            />
           </RadioGroup>
         </Grid>
       </Grid>
       <br></br>
+      <br></br>
+      <div className={classes.btnGroup}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          className={classes.button}
+        >
+          Back
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleNext}
+          className={classes.button}
+        >
+          {activeStep === steps.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </div>
+
     </div>
   );
 }

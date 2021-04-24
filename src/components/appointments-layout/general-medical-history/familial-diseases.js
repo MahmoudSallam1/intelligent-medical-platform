@@ -1,9 +1,10 @@
 import React from "react";
 
-
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,9 +22,19 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     fontSize: "1.1rem",
   },
+  btnGroup: {
+    textAlign: "center",
+  },
 }));
 
-function FamilialDiseases() {
+function FamilialDiseases({
+  formData,
+  setFormData,
+  nextStep,
+  prevStep,
+  activeStep,
+  steps,
+}) {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
@@ -37,12 +48,21 @@ function FamilialDiseases() {
     checkedH: false,
     checkedI: false,
     checkedJ: false,
-    checkedK: false
+    checkedK: false,
   });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+  function handleNext(e) {
+    e.preventDefault();
+    nextStep();
+  }
+
+  function handleBack(e) {
+    e.preventDefault();
+    prevStep();
+  }
   return (
     <div>
       <div className={classes.breath}>
@@ -174,7 +194,6 @@ function FamilialDiseases() {
               name="checkedI"
               color="primary"
               margin="normal"
-             
             />
           }
           label="Obesity"
@@ -193,6 +212,26 @@ function FamilialDiseases() {
           label="Glaucoma"
         />
       </form>
+      <br></br>
+      <br></br>
+      <div className={classes.btnGroup}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          className={classes.button}
+        >
+          Back
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleNext}
+          className={classes.button}
+        >
+          {activeStep === steps.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </div>
     </div>
   );
 }

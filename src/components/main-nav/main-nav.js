@@ -8,11 +8,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import * as ROUTES from "../../constants/routes";
 
-import ButtonLinks from "../button-link/index";
+
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    padding: "1em",
+    padding: "0.3em 10em",
   },
   toolbar: {
     display: "flex",
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     margin: theme.spacing(1, 2),
+    color:"#fff"
   },
 }));
 
@@ -40,7 +41,6 @@ function MainNav() {
       <CssBaseline />
       <AppBar
         position="static"
-        color="default"
         elevation={0}
         className={classes.appBar}
       >
@@ -79,9 +79,6 @@ function MainNav() {
               About us
             </Link>
           </nav>
-          <ButtonLinks.ButtonLink to={ROUTES.SIGN_IN}>
-            Login
-          </ButtonLinks.ButtonLink>
         </Toolbar>
       </AppBar>
     </>

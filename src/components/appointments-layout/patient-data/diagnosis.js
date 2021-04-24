@@ -26,13 +26,25 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginBottom: "1em",
   },
+  button: {
+    marginRight: theme.spacing(1),
+    padding: "0.5em 1.5em",
+  },
+  btnGroup: {
+    textAlign: "center",
+  },
 }));
 
-function Diagnosis() {
+function Diagnosis({
+  formData,
+  setFormData,
+  nextStep,
+  prevStep,
+  activeStep,
+  steps,
+}) {
   const classes = useStyles();
   const [isRecord, setIsRecord] = useState(false);
-  const [comments, setComments] = useState("");
-
 
   //Speech Recognition
 
@@ -42,7 +54,17 @@ function Diagnosis() {
     return null;
   }
 
-  console.log(comments);
+  function handleNext(e) {
+    e.preventDefault();
+    nextStep();
+  }
+
+  function handleBack(e) {
+    e.preventDefault();
+    prevStep();
+  }
+
+  console.log(formData);
 
   return (
     <Container>
@@ -99,7 +121,13 @@ function Diagnosis() {
               multiline
               fullWidth
               rowsMax={4}
-              value={transcript}
+              value={formData.diagnosis}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  diagnosis: e.target.value,
+                });
+              }}
               variant="outlined"
             />
           </Grid>
@@ -109,13 +137,40 @@ function Diagnosis() {
 
         <TextField
           id="comments"
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
+          value={formData.comments}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              comments: e.target.value,
+            });
+          }}
           placeholder="Comments"
           multiline
           fullWidth
         />
       </form>{" "}
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className={classes.btnGroup}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          className={classes.button}
+        >
+          Back
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleNext}
+          className={classes.button}
+        >
+          {/* {activeStep === steps.length - 1 ? "Finish" : "Next"} */}
+          Next
+        </Button>
+      </div>
       <br></br>
       <br></br>
     </Container>
