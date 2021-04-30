@@ -115,6 +115,7 @@ function AppBarAndDrawer({ pageTitle, profile }) {
     <>
       {/* nav and drawer */}
       <AppBar
+      elevation={0}
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >

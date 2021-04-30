@@ -3,18 +3,18 @@ import MainNav from "../components/main-nav/main-nav";
 import HeroArea from "../components/hero-area/hero-area";
 
 import OurFeatures from "../components/our-features/our-features";
+import WhyUs from "../components/why-us/why-us";
 
-import Footer from '../components/footer/footer'
-
-
+import Footer from "../components/footer/footer";
 
 export default function HomePage() {
   return (
     <>
       <MainNav />
       <HeroArea />
+      <WhyUs/>
       <OurFeatures />
-      <Footer/>
+      <Footer />
     </>
   );
 }

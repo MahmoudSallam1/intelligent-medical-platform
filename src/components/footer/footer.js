@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
 
   section: {
     background: "#1DB5E4",
-    padding: "0.3em 10em",
+    padding:'4em 2em'
+
   },
   item: {
     color: "#fff",
@@ -42,14 +43,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
 
   },
-  footer: {
-    paddingTop: theme.spacing(5),
-    paddingBottom: theme.spacing(5),
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(10),
-      paddingBottom: theme.spacing(8),
-    },
-  },
+
 }));
 
 const footers = [
@@ -93,7 +87,7 @@ export default function Footer() {
         <Container maxWidth="lg" component="footer" className={classes.footer}>
           <Grid container spacing={3} justify="space-evenly">
             {footers.map((footer) => (
-              <Grid item xs={6} sm={3} key={footer.title}>
+              <Grid item xs={6} sm={6} md={3} key={footer.title}>
                 <Typography className={classes.title} variant="h6" gutterBottom>
                   {footer.title}
                 </Typography>

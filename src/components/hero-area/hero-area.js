@@ -26,20 +26,38 @@ const useStyles = makeStyles((theme) => ({
     // backgroundSize:"cover"
   },
   container: {
-    width: "60%",
     margin: "0 auto",
+    [theme.breakpoints.up("xs")]: {
+      width: "90%",
+    },
+    [theme.breakpoints.up("md")]: {
+      width: "60%",
+
+    },
   },
 
   heading: {
     color: "#1DB5E4",
     lineHeight: "1.1",
-    fontSize: "64px",
+    [theme.breakpoints.up("xs")]: {
+      fontSize: "44px",
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: "64px",
+    },
   },
   content: {
     color: "#6B6C6F",
     marginTop: "25px",
-    fontSize: "20px",
+    [theme.breakpoints.up("xs")]: {
+      fontSize: "16px",
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: "20px",
+    },
   },
+
+
   btnGroup: {
     marginTop: "2em",
     display: "flex",

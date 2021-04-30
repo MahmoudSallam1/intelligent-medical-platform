@@ -1,0 +1,13 @@
+.modern-card {
+    background: #ffffff;
+    /* box-shadow: 0 3px 10px rgba(0, 0, 0, .06), 0 0 3px rgba(0, 0, 0, .04); */
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+    padding: 14px 80px 18px 36px;
+    border-radius: 10px;
+    border: 1px solid #E0E0E0;
+}
+
+.modern-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}

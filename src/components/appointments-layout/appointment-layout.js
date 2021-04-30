@@ -7,6 +7,7 @@ import AppBarAndDrawer from "../app-bar-drawer/app-bar-drawer";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    background:"#F5F6FA"
   },
 
 }));

@@ -7,13 +7,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 
-import "./our-features.css";
+import "./why-us.css";
 import { tiers } from "./tiers";
 
 const useStyles = makeStyles((theme) => ({
   section: {
-    backgroundColor: "#fff",
-    paddingBottom:"7em"
+    backgroundColor: "#EEF9FE",
+    paddingBottom: "10em",
   },
   heroContent: {
     padding: theme.spacing(12, 0, 6),
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function OurFeatures() {
+function WhyUs() {
   const classes = useStyles();
 
   return (
@@ -52,7 +52,7 @@ function OurFeatures() {
           className={classes.heroContent}
         >
           <Typography className={classes.heading} variant="h2" gutterBottom>
-            <Box fontWeight="fontWeightBold">Our features</Box>
+            <Box fontWeight="fontWeightBold">Why name</Box>
           </Typography>
           <Typography className={classes.content} variant="body1" gutterBottom>
             A platform that adapts to your needs.
@@ -63,8 +63,7 @@ function OurFeatures() {
           <Grid container spacing={5} alignItems="flex-end">
             {tiers.map((tier) => (
               <Grid item key={tier.id} xs={12} md={4}>
-                {/* <img className={classes.imageClass} src={tier.image} alt="" /> */}
-                <div className={`card card-${tier.id}`}>
+                <div className="card-us">
                   <h3>{tier.title}</h3>
                   <p>{tier.desc}</p>
                 </div>
@@ -77,4 +76,4 @@ function OurFeatures() {
   );
 }
 
-export default OurFeatures;
+export default WhyUs;
