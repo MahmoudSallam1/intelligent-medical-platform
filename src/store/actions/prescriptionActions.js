@@ -6,6 +6,8 @@ export const createPrescription = (prescription) => {
     firestore
       .collection("doctors")
       .doc(authorId)
+      .collection("patients")
+      .doc("348mtrun4ZbgGnDpsboE") //patient ID
       .update({
         displayName: profile.displayName,
         authorId: authorId,

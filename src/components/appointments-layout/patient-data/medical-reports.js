@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import PauseIcon from "@material-ui/icons/Pause";
-import { DropzoneDialog } from "material-ui-dropzone";
 import Button from "@material-ui/core/Button";
+
+import { DropzoneDialog } from "material-ui-dropzone";
 import MicIcon from "@material-ui/icons/Mic";
-import KeyboardIcon from "@material-ui/icons/Keyboard";
 import Container from "@material-ui/core/Container";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MedicalReports({
-  formData,
-  setFormData,
+  symptoms,
+  setSymptoms,
   nextStep,
   prevStep,
   activeStep,
@@ -48,39 +48,48 @@ function MedicalReports({
 }) {
   const classes = useStyles();
 
-  const [open, setOpen] = useState(false);
-  const [files, setFiles] = useState();
   const [isRecord, setIsRecord] = useState(false);
+  const [initSymptoms, setInitSymptoms] = useState(symptoms);
 
   //Speech Recognition
-  const { transcript, resetTranscript } = useSpeechRecognition();
+  const { transcript, resetTranscript, listening } = useSpeechRecognition();
 
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return null;
-  }
+  // if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+  //   return null;
+  // }
 
-  function handleClose() {
-    setOpen(false);
-  }
+  // useEffect(() => {
+  //   if (!listening) {
+  //     setInitSymptoms(symptoms.concat(transcript));
+  //     resetTranscript();
+  //   } else {
+  //     setSymptoms(initSymptoms.concat(transcript));
+  //   }
+  // }, [listening, transcript]);
 
-  function handleSave(files) {
-    setFiles(files);
-    setOpen(false);
-  }
-  function handleOpen() {
-    setOpen(true);
-  }
+  /* handling speech functions */
 
-  function handleNext(e) {
-    e.preventDefault();
-    nextStep();
-  }
+  const handleRecord = () => {
+    setIsRecord(true);
+    SpeechRecognition.startListening({
+      continuous: true,
+      // language: "ar-EG",
+    });
+  };
 
-  function handleBack(e) {
-    e.preventDefault();
-    prevStep();
-  }
-  // console.log(document.querySelectorAll(" p * div "));
+  const handleStop = () => {
+    setIsRecord(false);
+    SpeechRecognition.stopListening();
+  };
+
+  const handleReset = () => {
+    handleStop();
+    resetTranscript();
+  };
+
+  /* handling stepper functions */
+
+ 
 
   return (
     <Container>
@@ -99,68 +108,44 @@ function MedicalReports({
                 Symptoms{" "}
               </Typography>
 
-              <div>
-                {isRecord ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    onClick={() => {
-                      setIsRecord(!isRecord);
-                      SpeechRecognition.stopListening();
-                    }}
-                    endIcon={<PauseIcon />}
-                  >
-                    Pause
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      setIsRecord(!isRecord);
-                      SpeechRecognition.startListening({
-                        continuous: true,
-                        // language: "ar-EG",
-                      });
-                    }}
-                    className={classes.button}
-                    endIcon={<MicIcon />}
-                  >
-                    Record
-                  </Button>
-                )}
-              </div>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={isRecord ? handleStop : handleRecord}
+                endIcon={isRecord ? <PauseIcon /> : <MicIcon />}
+              >
+                {isRecord ? "Pause" : "Record"}
+              </Button>
             </div>
 
             <TextField
               id="symptoms"
               label="Symptoms"
-              value={formData.symptoms}
+              value={symptoms}
               onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  symptoms: e.target.value,
-                });
+                setSymptoms(e.target.value);
+                setInitSymptoms(e.target.value);
               }}
               multiline
               fullWidth
               rowsMax={4}
               variant="outlined"
+              disabled={isRecord}
             />
           </Grid>
         </Grid>
 
         <br></br>
-        <Typography
+        {/* <Typography
           className={classes.gray}
           align={"left"}
           variant="h6"
           gutterBottom
         >
           Upload Reports / Radiology{" "}
-        </Typography>
-        <Grid container spacing={2}>
+        </Typography> */}
+        {/* <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={12}>
             <div style={{ textAlign: "left" }}>
               <Button variant="contained" color="primary" onClick={handleOpen}>
@@ -191,28 +176,11 @@ function MedicalReports({
               />
             </div>
           </Grid>
-        </Grid>
+        </Grid> */}
       </form>{" "}
       <br></br>
       <br></br>
-      <div className={classes.btnGroup}>
-        <Button
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          className={classes.button}
-        >
-          Back
-        </Button>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleNext}
-          className={classes.button}
-        >
-          {activeStep === steps.length - 1 ? "Finish" : "Next"}
-        </Button>
-      </div>
     </Container>
   );
 }

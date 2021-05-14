@@ -82,7 +82,7 @@ function Confirm({
             <List>
               <ListItem>
                 <ListItemText
-                  primary="First Name"
+                  primary="Diagnosis"
                   secondary={formData.diagnosis}
                 />
               </ListItem>
@@ -90,14 +90,14 @@ function Confirm({
 
               <ListItem>
                 <ListItemText
-                  primary="Last Name"
+                  primary="Symptoms"
                   secondary={formData.symptoms}
                 />
               </ListItem>
               <Divider />
 
               <ListItem>
-                <ListItemText primary="Email" secondary={formData.comments} />
+                <ListItemText primary="Comments" secondary={formData.comments} />
               </ListItem>
             </List>
             <br />

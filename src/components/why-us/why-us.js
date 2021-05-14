@@ -23,11 +23,12 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.1",
     fontSize: "48px",
     textAlign: "center",
+    marginBottom:"5px",
+
   },
 
   content: {
     color: "#6B6C6F",
-    marginTop: "25px",
     fontSize: "20px",
     textAlign: "center",
   },

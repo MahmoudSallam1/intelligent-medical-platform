@@ -152,25 +152,7 @@ function Diagnosis({
       <br></br>
       <br></br>
       <br></br>
-      <div className={classes.btnGroup}>
-        <Button
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          className={classes.button}
-        >
-          Back
-        </Button>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleNext}
-          className={classes.button}
-        >
-          {/* {activeStep === steps.length - 1 ? "Finish" : "Next"} */}
-          Next
-        </Button>
-      </div>
       <br></br>
       <br></br>
     </Container>

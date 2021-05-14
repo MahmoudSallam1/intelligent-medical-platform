@@ -4,7 +4,7 @@ import HeroArea from "../components/hero-area/hero-area";
 
 import OurFeatures from "../components/our-features/our-features";
 import WhyUs from "../components/why-us/why-us";
-
+import FAQ from "../components/faq/FAQ";
 import Footer from "../components/footer/footer";
 
 export default function HomePage() {
@@ -12,8 +12,9 @@ export default function HomePage() {
     <>
       <MainNav />
       <HeroArea />
-      <WhyUs/>
+      <WhyUs />
       <OurFeatures />
+      <FAQ/>
       <Footer />
     </>
   );

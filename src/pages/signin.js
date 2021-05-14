@@ -11,15 +11,15 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Alert from "@material-ui/lab/Alert";
-import { useHistory } from "react-router-dom";
+
 import * as ROUTES from "../constants/routes";
 
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { signIn } from "../store/actions/authActions";
 
-import { Redirect } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,11 +61,10 @@ const useStyles = makeStyles((theme) => ({
 function SignIn(props) {
   const classes = useStyles();
 
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const isInvalid = (password === "") | (email === "");
+  // const isInvalid = (password === "") | (email === "");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -77,10 +76,11 @@ function SignIn(props) {
   if (auth.uid) return <Redirect to={ROUTES.DASHBOARD} />;
 
   return (
+    <>
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={false} sm={4} md={8} className={classes.image} />
+      <Grid item xs={12} sm={8} md={4} component={Paper} elevation={1} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -138,27 +138,24 @@ function SignIn(props) {
 
             <Grid container>
               <Grid item xs>
-                <Link>Forgot password?</Link>
+                <Link to="/#">Forgot password?</Link>
               </Grid>
               <Grid item>
-                <Link to={ROUTES.SIGN_UP}>
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <Link to={ROUTES.SIGN_UP}>Don't have an account? Sign Up</Link>
               </Grid>
             </Grid>
           </form>
         </div>
       </Grid>
     </Grid>
+    </>
   );
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     authError: state.auth.authError,
     auth: state.firebase.auth,
-
   };
 };
 

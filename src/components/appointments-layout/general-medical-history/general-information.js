@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -11,10 +11,9 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Container from "@material-ui/core/Container";
 
 import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
+// import SaveIcon from "@material-ui/icons/Save";
 
-import { connect } from "react-redux";
-import { createPatientGeneralInformation } from "../../../store/actions/patientGeneralMedicalHistoryActions";
+
 
 import DateFnsUtils from "@date-io/date-fns";
 

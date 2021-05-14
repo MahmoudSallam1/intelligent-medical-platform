@@ -7,11 +7,12 @@ export const createPatientGeneralMedicalHistory = (generalMedicalHistory) => {
 
       .collection("doctors")
       .doc(authorId)
-      .update({
+      .collection("patients")
+      .add({
         displayName: profile.displayName,
         authorId: authorId,
         createdAt: new Date(),
-        patientGeneralMedicalHistory: {
+        patientInformation: {
           ...generalMedicalHistory,
           createdAt: new Date(),
         },

@@ -68,7 +68,7 @@ export const secondaryListItems = (
         <ListItemIcon>
           <AssignmentIcon />
         </ListItemIcon>
-        <ListItemText primary="Medical History" />
+        <ListItemText primary="Patient Information" />
       </ListItem>
     </Link>
 
@@ -80,7 +80,7 @@ export const secondaryListItems = (
         <ListItemIcon>
           <AssignmentIcon />
         </ListItemIcon>
-        <ListItemText primary="Patient Data" />
+        <ListItemText primary="Medical Data" />
       </ListItem>
     </Link>
     <Link

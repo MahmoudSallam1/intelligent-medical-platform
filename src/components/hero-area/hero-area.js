@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   bg: {
     background: "#fff",
-    height: "90vh",
+    height: "85vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     // backgroundRepeat:"no-repeat",
     // backgroundPosition: "center",
     // backgroundSize:"cover"
+    [theme.breakpoints.up("md")]: {
+      textAlign: "left",
+    },
   },
   container: {
     margin: "0 auto",
@@ -31,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
       width: "90%",
     },
     [theme.breakpoints.up("md")]: {
-      width: "60%",
-
+      // width: "60%",
     },
   },
 
@@ -43,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "44px",
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: "64px",
+      fontSize: "54px",
+      textAlign: "left",
     },
   },
   content: {
@@ -53,21 +56,32 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "16px",
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: "20px",
+      fontSize: "18px",
+      textAlign: "left",
     },
   },
-
 
   btnGroup: {
     marginTop: "2em",
     display: "flex",
     justifyContent: "center",
+    [theme.breakpoints.up("md")]: {
+      textAlign: "left",
+      justifyContent: "flex-start",
+      marginLeft: "2em",
+    },
   },
   btn: {
     boxShadow: "none",
     height: "55px",
     marginRight: "1em",
     padding: "1em 2.5em",
+  },
+
+  heroImg: {
+    maxWidth: "120%",
+    objectFit: "cover",
+    
   },
 }));
 
@@ -78,7 +92,7 @@ function HeroArea() {
     <div className={classes.bg}>
       <Container>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={12}>
+          <Grid item xs={12} sm={12} md={6}>
             {" "}
             <div className={classes.container}>
               {" "}
@@ -101,7 +115,7 @@ function HeroArea() {
               {" "}
               <Button
                 variant="contained"
-                size="large"
+                // size="large"
                 color="primary"
                 className={classes.btn}
                 component={Link}
@@ -111,7 +125,7 @@ function HeroArea() {
               </Button>
               <Button
                 variant="outlined"
-                size="large"
+                // size="large"
                 color="primary"
                 className={classes.btn}
                 component={Link}
@@ -120,6 +134,13 @@ function HeroArea() {
                 Login
               </Button>
             </div>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <img
+              className={classes.heroImg}
+              src="/images/land-hero.svg"
+              alt="hero"
+            />
           </Grid>
         </Grid>
       </Container>

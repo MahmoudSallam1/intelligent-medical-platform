@@ -6,15 +6,19 @@ export const createPatientData = (patientData) => {
     firestore
       .collection("doctors")
       .doc(authorId)
-      .update({
-        displayName: profile.displayName,
-        authorId: authorId,
-        createdAt: new Date(),
-        patientData: {
-          ...patientData,
+      .collection("patients")
+      .doc("348mtrun4ZbgGnDpsboE") //patient ID
+      .update(
+        {
+          displayName: profile.displayName,
+          authorId: authorId,
           createdAt: new Date(),
+          medicalData: {
+            ...patientData,
+            createdAt: new Date(),
+          },
         },
-      })
+      )
       .then(() => {
         dispatch({ type: "CREATE_PATIENT_DATA_SUCCESS" });
       })

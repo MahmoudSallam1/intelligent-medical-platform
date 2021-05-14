@@ -2,13 +2,10 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
-import * as ROUTES from "../../constants/routes";
-
-
+// import * as ROUTES from "../../constants/routes";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -18,18 +15,21 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
     },
   },
-
 
   toolbarTitle: {
     flexGrow: 1,
   },
   link: {
     margin: theme.spacing(1, 2),
-    color:"#fff"
+    color: "#fff",
+    textDecoration:"none"
+  },
+  logo: {
+    width: "200px",
   },
 }));
 
@@ -39,45 +39,45 @@ function MainNav() {
   return (
     <>
       <CssBaseline />
-      <AppBar
-        position="static"
-        elevation={0}
-        className={classes.appBar}
-      >
+      <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <Typography
+          {/* <Typography
             variant="h6"
             color="inherit"
             noWrap
             className={classes.toolbarTitle}
           >
             IntelligentMedicalSystem
-          </Typography>
+          </Typography> */}
+          <Link to="/">
+            {" "}
+            <img className={classes.logo} src="/images/logo.png" alt="logo" />
+          </Link>
           <nav>
-            <Link
+            <a
               variant="button"
               color="textPrimary"
-              href="#"
+              href
               className={classes.link}
             >
               Home
-            </Link>
-            <Link
+            </a>
+            <a
               variant="button"
               color="textPrimary"
-              href="#"
+              href
               className={classes.link}
             >
               Features
-            </Link>
-            <Link
+            </a>
+            <a
               variant="button"
               color="textPrimary"
-              href="#"
+              href
               className={classes.link}
             >
               About us
-            </Link>
+            </a>
           </nav>
         </Toolbar>
       </AppBar>

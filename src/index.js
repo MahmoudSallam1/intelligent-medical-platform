@@ -27,6 +27,7 @@ const store = createStore(
 );
 
 const theme = createMuiTheme({
+  // shadows: ["none"],
   palette: {
     primary: {
       light: "#1DB5E4",

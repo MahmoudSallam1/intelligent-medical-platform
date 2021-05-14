@@ -11,17 +11,12 @@ import { signOut } from "../../store/actions/authActions";
 function LogOut(props) {
   return (
     <div>
-      <a
-        onClick={props.signOut}
-        style={{ color: "black", background: "none", border: "none" }}
-      >
-        <ListItem button>
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <ListItemText primary="Log out" />
-        </ListItem>
-      </a>
+      <ListItem button onClick={props.signOut}>
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
+        <ListItemText primary="Log out" />
+      </ListItem>
     </div>
   );
 }
