@@ -9,9 +9,9 @@ import SigninPage from "./pages/signin";
 import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
+import ProfilePage from "./pages/profile";
 
 import DashboardPage from "./pages/dashboard";
-
 
 function App() {
   return (
@@ -39,6 +39,9 @@ function App() {
         </Route>
         <Route path={ROUTES.PRESCRIPTION}>
           <PrescriptionPage />
+        </Route>
+        <Route path={ROUTES.PROFILE}>
+          <ProfilePage />
         </Route>
       </Switch>
     </Router>

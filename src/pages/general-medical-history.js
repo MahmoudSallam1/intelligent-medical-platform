@@ -14,7 +14,7 @@ function GeneralMedicalHistoryPage(props) {
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
 
   return (
-    <AppointmentLayout>
+    <AppointmentLayout pageTitle="Patient Information">
       <GeneralMedicalHistory />
     </AppointmentLayout>
   );

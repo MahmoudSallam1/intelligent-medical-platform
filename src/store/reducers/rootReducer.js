@@ -2,6 +2,7 @@ import authReducer from "./authReducer";
 import patientGeneralMedicalHistoryReducer from "./patientGeneralMedicalHistoryReducer";
 import patientDataReducer from "./patientDataReducer";
 import prescriptionReducer from "./prescriptionReducer";
+import userProfileReducer from "./userProfileReducer";
 import { combineReducers } from "redux";
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   prescription: prescriptionReducer,
   firestore: firestoreReducer,
   firebase: firebaseReducer,
+  userProfile: userProfileReducer,
 });
 
 export default rootReducer;

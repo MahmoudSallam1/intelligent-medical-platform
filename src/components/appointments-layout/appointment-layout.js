@@ -12,18 +12,13 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function AppointmentLayout({ children }) {
+export default function AppointmentLayout({ children ,pageTitle }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-
-      {/* appbar and drawer starts here */}
-      <AppBarAndDrawer pageTitle={"Appointment"} />
-
-      {/* appbar and drawer ends here */}
-
+      <AppBarAndDrawer pageTitle={pageTitle} />
       {children}
     </div>
   );

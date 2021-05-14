@@ -15,10 +15,8 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import EventNoteIcon from "@material-ui/icons/EventNote";
-import {
-  mainListItems,
-  secondaryListItems,
-} from "../dashboard-layout/list-items";
+
+import { MainListItems } from "./list-items";
 
 import LogOut from "./log-out";
 
@@ -64,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     position: "relative",
     height: "110vh",
-  
+
     whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -115,7 +113,7 @@ function AppBarAndDrawer({ pageTitle, profile }) {
     <>
       {/* nav and drawer */}
       <AppBar
-      elevation={0}
+        elevation={0}
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
@@ -171,10 +169,9 @@ function AppBarAndDrawer({ pageTitle, profile }) {
           </IconButton>
         </div>
         <Divider />
-        <List>{mainListItems}</List>
+        <MainListItems />
         <Divider />
-        <List>{secondaryListItems}</List>
-        <Divider />
+        {/* <List>{secondaryListItems}</List> */}
 
         <List>
           <LogOut />

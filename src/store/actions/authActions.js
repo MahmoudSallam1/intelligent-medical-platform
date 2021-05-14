@@ -38,6 +38,9 @@ export const signUp = ({ email, password, displayName }) => {
       .then((res) => {
         return firestore.collection("doctors").doc(res.user.uid).set({
           displayName: displayName,
+          email: email,
+          password: password,
+          createdAt: new Date(),
         });
       })
       .then(() => {

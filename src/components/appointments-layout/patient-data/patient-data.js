@@ -18,14 +18,14 @@ function PatientData() {
 
   return (
     <PaperWrapper>
-      <Typography
+      {/* <Typography
         className={classes.marginBot}
         align={"center"}
         variant="h5"
         gutterBottom
       >
         Patient Data{" "}
-      </Typography>
+      </Typography> */}
       <PatientDataForm />
     </PaperWrapper>
   );
