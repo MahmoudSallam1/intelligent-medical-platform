@@ -1,6 +1,6 @@
 import React from "react";
 
-import AppointmentLayout from "../components/appointments-layout/appointment-layout";
+import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
 import GeneralMedicalHistory from "../components/appointments-layout/general-medical-history/general-medical-history";
 
 import * as ROUTES from "../constants/routes";
@@ -14,9 +14,9 @@ function GeneralMedicalHistoryPage(props) {
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
 
   return (
-    <AppointmentLayout pageTitle="Patient Information">
+    <DashboardLayout pageTitle="Patient Information">
       <GeneralMedicalHistory />
-    </AppointmentLayout>
+    </DashboardLayout>
   );
 }
 

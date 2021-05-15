@@ -140,7 +140,7 @@ function AppBarAndDrawer({ pageTitle, profile }) {
             {pageTitle}
           </Typography>
 
-          <Typography component="h5" variant="h5" color="inherit" noWrap>
+          <Typography component="body1" variant="body1" color="inherit" noWrap>
             <Box fontWeight="fontWeightLight" m={1}>
               {profile.displayName}
             </Box>{" "}
@@ -171,8 +171,6 @@ function AppBarAndDrawer({ pageTitle, profile }) {
         <Divider />
         <MainListItems />
         <Divider />
-        {/* <List>{secondaryListItems}</List> */}
-
         <List>
           <LogOut />
         </List>

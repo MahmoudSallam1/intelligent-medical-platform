@@ -1,9 +1,14 @@
 import React from "react";
 
-import Dashboard from "../components/dashboard-layout/dashboard";
+import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
+import PaperWrapper from "../components/paper-wrapper/paper-wrapper";
 
 function DashboardPage() {
-  return <Dashboard />;
+  return (
+    <DashboardLayout pageTitle="Dashboard">
+      <PaperWrapper>this is dashboard</PaperWrapper>{" "}
+    </DashboardLayout>
+  );
 }
 
 export default DashboardPage;

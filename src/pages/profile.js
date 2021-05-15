@@ -1,6 +1,6 @@
 import React from "react";
 import * as ROUTES from "../constants/routes";
-import AppointmentLayout from "../components/appointments-layout/appointment-layout";
+import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
 
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -11,9 +11,9 @@ function ProfilePage(props) {
   const { auth } = props;
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
   return (
-    <AppointmentLayout pageTitle="Profile">
+    <DashboardLayout pageTitle="Profile">
      <Profile/>
-    </AppointmentLayout>
+    </DashboardLayout>
   );
 }
 

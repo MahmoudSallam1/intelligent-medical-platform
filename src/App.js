@@ -23,14 +23,12 @@ function App() {
         <Route path={ROUTES.SIGN_UP}>
           <SignupPage />
         </Route>
-
         <Route path={ROUTES.SIGN_IN}>
           <SigninPage />
         </Route>
         <Route path={ROUTES.DASHBOARD}>
           <DashboardPage />
         </Route>
-
         <Route path={ROUTES.MEDICAL_HISTORY}>
           <GeneralMedicalHistoryPage />
         </Route>

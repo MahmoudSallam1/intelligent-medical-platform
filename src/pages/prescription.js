@@ -1,5 +1,5 @@
 import React from "react";
-import AppointmentLayout from "../components/appointments-layout/appointment-layout";
+import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
 import PrescriptionLayout from "../components/appointments-layout/prescription-layout/prescription-layout";
 
 import * as ROUTES from "../constants/routes";
@@ -12,9 +12,9 @@ function PrescriptionPage(props) {
   const { auth } = props;
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
   return (
-    <AppointmentLayout pageTitle="Intelligent Prescription">
+    <DashboardLayout pageTitle="Intelligent Prescription">
       <PrescriptionLayout />
-    </AppointmentLayout>
+    </DashboardLayout>
   );
 }
 
