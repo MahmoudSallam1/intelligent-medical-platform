@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 
+
 import HomePage from "./pages/home";
 import SignupPage from "./pages/signup";
 import SigninPage from "./pages/signin";
@@ -10,10 +11,12 @@ import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
 import ProfilePage from "./pages/profile";
+import ContactSupportPage from "./pages/contact-support";
 
 import DashboardPage from "./pages/dashboard";
 
 function App() {
+
   return (
     <Router>
       <Switch>
@@ -40,6 +43,9 @@ function App() {
         </Route>
         <Route path={ROUTES.PROFILE}>
           <ProfilePage />
+        </Route>
+        <Route path={ROUTES.CONTACT_SUPPORT}>
+          <ContactSupportPage />
         </Route>
       </Switch>
     </Router>

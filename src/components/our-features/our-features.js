@@ -8,7 +8,7 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 
 import "./our-features.css";
-import { tiers } from "./tiers";
+import { ourFeaturesArray } from "./ourFeaturesArray";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -62,7 +62,7 @@ function OurFeatures() {
 
         <Container maxWidth="lg" component="main">
           <Grid container spacing={5} alignItems="flex-end">
-            {tiers.map((tier) => (
+            {ourFeaturesArray.map((tier) => (
               <Grid item key={tier.id} xs={12} md={4}>
                 {/* <img className={classes.imageClass} src={tier.image} alt="" /> */}
                 <div className={`card card-${tier.id}`}>

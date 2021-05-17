@@ -11,6 +11,8 @@ import SpeechRecognition, {
 
 import Container from "@material-ui/core/Container";
 
+import FreeSoloCreateOptionDialog from '../../autocomplete-textfield/autocomplete'
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -132,6 +134,8 @@ function Diagnosis({
             />
           </Grid>
         </Grid>
+
+        <FreeSoloCreateOptionDialog/>
 
         <br></br>
 

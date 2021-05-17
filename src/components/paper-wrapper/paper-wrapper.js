@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
-  breath: {
+  card: {
     padding: "2em",
     background: "#ffffff",
     /* box-shadow: 0 3px 10px rgba(0, 0, 0, .06), 0 0 3px rgba(0, 0, 0, .04); */
@@ -43,7 +43,7 @@ function PaperWrapper({ children }) {
       <Container maxWidth="lg" className={classes.container}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={12} lg={12}>
-            <Paper elevation={0} className={classes.breath}>{children}</Paper>
+            <Paper elevation={0} className={classes.card}>{children}</Paper>
           </Grid>
         </Grid>
       </Container>

@@ -57,10 +57,7 @@ function Confirm({
     setActiveStep(0);
   };
 
-  function handleBack(e) {
-    e.preventDefault();
-    prevStep();
-  }
+ 
 
   async function handleConfirm(e) {
     e.preventDefault();
@@ -105,7 +102,7 @@ function Confirm({
             <div className={classes.btnGroup}>
               <Button
                 disabled={activeStep === 0}
-                onClick={handleBack}
+                onClick={prevStep}
                 className={classes.button}
               >
                 Back

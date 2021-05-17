@@ -81,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
   heroImg: {
     maxWidth: "120%",
     objectFit: "cover",
-    
   },
 }));
 
@@ -107,8 +106,7 @@ function HeroArea() {
                 gutterBottom
               >
                 Doctors can effortlessly manage all major functions of their
-                practice through one intuitive platform and Streamline workflow
-                on a personalized, interactive, and adaptable platform.
+                practice through one intuitive platform.
               </Typography>
             </div>
             <div className={classes.btnGroup}>

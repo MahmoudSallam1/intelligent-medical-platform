@@ -8,7 +8,6 @@ export const updateUserProfile = (userProfileData) => {
       .doc(authorId)
       .update({
         ...userProfileData,
-        displayName:userProfileData.displayName,
         updatedAt: new Date(),
       })
       .then(() => {
