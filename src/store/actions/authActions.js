@@ -36,12 +36,24 @@ export const signUp = ({ email, password, displayName }) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        return firestore.collection("doctors").doc(res.user.uid).set({
-          displayName: displayName,
-          email: email,
-          password: password,
-          createdAt: new Date(),
-        });
+        return firestore
+          .collection("doctors")
+          .doc(res.user.uid)
+          .set({
+            displayName: displayName,
+            createdAt: new Date(),
+            personalInfo: {
+              displayName: displayName,
+              email: email,
+              password: password,
+              createdAt: new Date(),
+            },
+            clinicInfo: {
+              address: "",
+              contactNumber: "",
+              fees: "",
+            },
+          });
       })
       .then(() => {
         dispatch({ type: "SIGNUP_SUCCESS" });

@@ -100,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AppBarAndDrawer({ pageTitle, profile }) {
+  const {personalInfo} = profile
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
@@ -109,6 +110,7 @@ function AppBarAndDrawer({ pageTitle, profile }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   return (
     <>
       {/* nav and drawer */}
@@ -142,7 +144,7 @@ function AppBarAndDrawer({ pageTitle, profile }) {
 
           <Typography component="body1" variant="body1" color="inherit" noWrap>
             <Box fontWeight="fontWeightLight" m={1}>
-              {profile.displayName}
+              {profile.displayName||""}
             </Box>{" "}
           </Typography>
 
