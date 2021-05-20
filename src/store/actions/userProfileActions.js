@@ -7,6 +7,7 @@ export const updateUserProfile = (personaInfo, clinicInfo) => {
       .collection("doctors")
       .doc(authorId)
       .update({
+        displayName: personaInfo.displayName,
         personalInfo: { ...personaInfo, updatedAt: new Date() },
         clinicInfo: { ...clinicInfo },
       })

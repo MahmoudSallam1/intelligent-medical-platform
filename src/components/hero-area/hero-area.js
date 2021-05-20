@@ -8,6 +8,8 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
+import CustomButton from "../custom-button/custom-button";
+
 import * as ROUTES from "../../constants/routes";
 
 import { Link } from "react-router-dom";
@@ -73,9 +75,10 @@ const useStyles = makeStyles((theme) => ({
   },
   btn: {
     boxShadow: "none",
-    height: "55px",
+    height: "50px",
     marginRight: "1em",
     padding: "1em 2.5em",
+    "&:hover": {},
   },
 
   heroImg: {
@@ -111,19 +114,16 @@ function HeroArea() {
             </div>
             <div className={classes.btnGroup}>
               {" "}
-              <Button
+              <CustomButton
                 variant="contained"
-                // size="large"
                 color="primary"
-                className={classes.btn}
                 component={Link}
                 to={ROUTES.SIGN_UP}
               >
                 Get Started
-              </Button>
+              </CustomButton>
               <Button
                 variant="outlined"
-                // size="large"
                 color="primary"
                 className={classes.btn}
                 component={Link}
