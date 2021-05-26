@@ -17,6 +17,8 @@ import { Link } from "react-router-dom";
 
 import { signUp } from "../store/actions/authActions";
 
+import MainNav from '../components/main-nav/main-nav'
+
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -68,6 +70,8 @@ function SignUp(props) {
   if (auth.uid) return <Redirect to={ROUTES.DASHBOARD} />;
 
   return (
+    <>
+    <MainNav/>
     <Container className={classes.container} component="main" maxWidth="xs">
       <CssBaseline />
 
@@ -160,6 +164,7 @@ function SignUp(props) {
         </form>
       </Box>
     </Container>
+    </>
   );
 }
 

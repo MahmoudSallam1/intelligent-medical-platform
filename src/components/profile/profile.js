@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Profile(props) {
+  
   const { profile, auth, updateUserProfile } = props;
+
   const { personalInfo, clinicInfo } = profile;
   const classes = useStyles();
 
@@ -77,6 +79,8 @@ function Profile(props) {
       setImage(e.target.files[0]);
     }
   };
+
+  // console.log(props);
 
   const handleUpdatUserProfile = async (e) => {
     e.preventDefault();

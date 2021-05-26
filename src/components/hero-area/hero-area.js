@@ -16,18 +16,14 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   bg: {
-    background: "#fff",
-    height: "85vh",
+    background: "#F5F6FA",
+    height: "90vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    // backgroundImage:"url(/images/doc.png)",
-    // backgroundRepeat:"no-repeat",
-    // backgroundPosition: "center",
-    // backgroundSize:"cover"
     [theme.breakpoints.up("md")]: {
-      textAlign: "left",
+      textAlign:"center"
     },
   },
   container: {
@@ -35,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("xs")]: {
       width: "90%",
     },
-    [theme.breakpoints.up("md")]: {
-      // width: "60%",
+    [theme.breakpoints.down("sm")]: {
+      textAlign:"center",
     },
   },
 
@@ -84,6 +80,9 @@ const useStyles = makeStyles((theme) => ({
   heroImg: {
     maxWidth: "120%",
     objectFit: "cover",
+    [theme.breakpoints.down("sm")]: {
+      display:"none",
+    },
   },
 }));
 
@@ -133,7 +132,7 @@ function HeroArea() {
               </Button>
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12}  md={6}>
             <img
               className={classes.heroImg}
               src="/images/land-hero.svg"

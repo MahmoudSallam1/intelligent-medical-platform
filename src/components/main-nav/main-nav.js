@@ -1,88 +1,60 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import "./main-nav.css";
 
-// import * as ROUTES from "../../constants/routes";
+const MainNav = () => {
+  const [open, setOpen] = useState(false);
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    padding: "0.3em 10em",
-  },
-  toolbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-    },
-  },
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
-  toolbarTitle: {
-    flexGrow: 1,
-  },
-  link: {
-    margin: theme.spacing(1, 2),
-    color: "#fff",
-    textDecoration:"none"
-  },
-  logo: {
-    width: "200px",
-  },
-}));
-
-function MainNav() {
-  const classes = useStyles();
+  const closeMenu = () => {
+    setOpen(false);
+  };
 
   return (
-    <>
-      <CssBaseline />
-      <AppBar position="static" elevation={0} className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          {/* <Typography
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            IntelligentMedicalSystem
-          </Typography> */}
-          <Link to="/">
-            {" "}
-            <img className={classes.logo} src="/images/logo.png" alt="logo" />
+    <nav className="navbar">
+      <Link to="/" className="nav-logo">
+        {/* <img
+          style={{ width: "250px", objectFit: "cover" }}
+          src="/images/logo-dark.png"
+          alt="logo"
+        />{" "} */}
+        Medical System
+      </Link>
+      <div onClick={handleClick} className="nav-icon">
+        {open ? (
+          <FiX style={{ color: "#1DB5E4" }} />
+        ) : (
+          <FiMenu style={{ color: "#1DB5E4" }} />
+        )}
+      </div>
+      <ul className={open ? "nav-links active" : "nav-links"}>
+        <li className="nav-item">
+          <Link to="/" className="nav-link" onClick={closeMenu}>
+            Home
           </Link>
-          <nav>
-            <a
-              variant="button"
-              color="textPrimary"
-              href
-              className={classes.link}
-            >
-              Home
-            </a>
-            <a
-              variant="button"
-              color="textPrimary"
-              href
-              className={classes.link}
-            >
-              Features
-            </a>
-            <a
-              variant="button"
-              color="textPrimary"
-              href
-              className={classes.link}
-            >
-              About us
-            </a>
-          </nav>
-        </Toolbar>
-      </AppBar>
-    </>
+        </li>
+        <li className="nav-item">
+          <Link to="/about" className="nav-link" onClick={closeMenu}>
+            About
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/features" className="nav-link" onClick={closeMenu}>
+            Features
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/contact" className="nav-link" onClick={closeMenu}>
+            Contact
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
-}
+};
 
 export default MainNav;

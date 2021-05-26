@@ -135,7 +135,7 @@ function Diagnosis({
           </Grid>
         </Grid>
 
-        <FreeSoloCreateOptionDialog/>
+        {/* <FreeSoloCreateOptionDialog/> */}
 
         <br></br>
 
