@@ -72,7 +72,6 @@ function Diagnosis({ formData, setFormData, tags, setTags }) {
     resetTranscript();
   };
 
-  console.log(formData.diagnosis);
 
   return (
     <Container>
@@ -113,7 +112,7 @@ function Diagnosis({ formData, setFormData, tags, setTags }) {
 
             <TextField
               id="outlined-multiline-flexible"
-              placeholder="Diagnosis"
+              placeholder="Add more diagnoses"
               multiline
               fullWidth
               rowsMax={4}
@@ -121,7 +120,7 @@ function Diagnosis({ formData, setFormData, tags, setTags }) {
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  diagnosis: e.target.value,
+                  diagnosis: e.target.value ,
                 });
               }}
               variant="outlined"

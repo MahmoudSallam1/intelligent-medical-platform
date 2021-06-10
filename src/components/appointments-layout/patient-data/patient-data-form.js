@@ -56,6 +56,7 @@ function PatientDataForm() {
             setFormData={setFormData}
             prevStep={prevStep}
             tags={tags}
+            setTags={setTags}
           />
         );
 

@@ -14,12 +14,11 @@ import Container from "@material-ui/core/Container";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import { connect } from "react-redux";
+
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -45,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     padding: "2em",
     background: "#EEF9FE",
+    borderRadius: "10px",
+    border: "1px solid #E0E0E0",
   },
   doctorHeading: {
     color: "#1DB5E4",
@@ -56,9 +57,18 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "400",
   },
 
+  signature: {
+    color: "#1DB5E4",
+    fontSize: "0.8rem",
+    fontWeight: "400",
+  },
+  btnGroup: {
+    textAlign: "center",
+  },
 }));
 
 function Prescription({
+  profile,
   formData,
   setFormData,
   nextStep,
@@ -70,14 +80,34 @@ function Prescription({
 
   const [isRecord, setIsRecord] = useState(false);
 
-
   const { transcript, resetTranscript } = useSpeechRecognition();
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
   }
 
-  
+  /* handling speech functions */
+
+  const handleRecord = () => {
+    setIsRecord(true);
+    SpeechRecognition.startListening({
+      continuous: true,
+      // language: "ar-EG",
+    });
+  };
+
+  const handleStop = () => {
+    setIsRecord(false);
+    SpeechRecognition.stopListening();
+  };
+
+  const handleReset = () => {
+    handleStop();
+    resetTranscript();
+  };
+
+  const { personalInfo, clinicInfo } = profile;
+
   return (
     <Container>
       <form
@@ -87,37 +117,15 @@ function Prescription({
           <Grid item xs={12} md={12} lg={12}>
             <div>
               <div className={classes.btnGroup}>
-                {" "}
-                {isRecord ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    onClick={() => {
-                      setIsRecord(!isRecord);
-                      SpeechRecognition.stopListening();
-                    }}
-                    endIcon={<PauseIcon />}
-                  >
-                    Pause
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      setIsRecord(!isRecord);
-                      SpeechRecognition.startListening({
-                        continuous: true,
-                        // language: "ar-EG",
-                      });
-                    }}
-                    className={classes.button}
-                    endIcon={<MicIcon />}
-                  >
-                    Record
-                  </Button>
-                )}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  onClick={isRecord ? handleStop : handleRecord}
+                  endIcon={isRecord ? <PauseIcon /> : <MicIcon />}
+                >
+                  {isRecord ? "Pause" : "Record"}
+                </Button>
                 <Button
                   variant="outlined"
                   color="primary"
@@ -144,28 +152,29 @@ function Prescription({
                     variant="h6"
                     gutterBottom
                   >
-                    Doctor Name{" "}
+                    {personalInfo &&
+                      `${personalInfo.firstName} ${personalInfo.lastName}`}
                   </Typography>
                   <Typography
                     className={classes.subtitle}
                     align={"left"}
                     variant="h6"
                   >
-                    Specilaiztion{" "}
+                    {personalInfo && personalInfo.specialty}
                   </Typography>
                   <Typography
                     className={classes.subtitle}
                     align={"left"}
                     variant="h6"
                   >
-                    Address{" "}
+                    {personalInfo && personalInfo.country}
                   </Typography>
                   <Typography
                     className={classes.subtitle}
                     align={"left"}
                     variant="h6"
                   >
-                    Phone Number{" "}
+                    {personalInfo && personalInfo.phoneNumber}
                   </Typography>
                   <Typography
                     className={classes.subtitle}
@@ -217,7 +226,7 @@ function Prescription({
                 />
               </div>
 
-              <div style={{ marginTop: "4em" }}>
+              <div style={{ marginTop: "5em" }}>
                 <Typography
                   className={classes.subtitle}
                   align={"left"}
@@ -225,7 +234,14 @@ function Prescription({
                 >
                   Signature{" "}
                 </Typography>
-                <br></br>
+                <Typography
+                  className={classes.signature}
+                  align={"left"}
+                  variant="h6"
+                >
+                  {personalInfo &&
+                    `${personalInfo.firstName} ${personalInfo.lastName}`}
+                </Typography>
                 <Divider style={{ width: "30%" }} />
               </div>
             </Paper>
@@ -234,9 +250,13 @@ function Prescription({
       </form>{" "}
       <br></br>
       <br></br>
-
     </Container>
   );
 }
-
-export default Prescription;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  };
+};
+export default connect(mapStateToProps, null)(Prescription);

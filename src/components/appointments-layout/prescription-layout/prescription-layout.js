@@ -18,14 +18,6 @@ function PrescriptionLayout() {
 
   return (
     <PaperWrapper>
-      {/* <Typography
-        className={classes.marginBot}
-        align={"center"}
-        variant="h5"
-        gutterBottom
-      >
-        Prescription
-      </Typography> */}
       <PrescriptionForm />
     </PaperWrapper>
   );

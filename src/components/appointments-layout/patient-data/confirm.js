@@ -42,11 +42,14 @@ function Confirm({
   activeStep,
   setActiveStep,
   tags,
+  setTags
 }) {
   const classes = useStyles();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [open, setOpen] = useState(false);
+
+  const newTags = tags.map((tag) => tag.name);
 
   const handleCloseDialog = () => {
     setOpen(false);
@@ -57,14 +60,15 @@ function Confirm({
     e.preventDefault();
     setIsSubmitting(true);
     console.log("submitting to DB...");
-    // await sleep(2000);
-    createPatientData(formData);
+    createPatientData({
+      ...formData,
+      diagnosis: newTags.join(" ,") + " ," + formData.diagnosis,
+    });
     setOpen(true);
     setIsSubmitting(false);
+    setTags([]);
     setFormData({});
   }
-
-  const newTags = tags.map((tag) => tag.name);
 
   return (
     <Container>
