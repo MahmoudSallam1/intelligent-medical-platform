@@ -38,18 +38,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MedicalReports({
-  symptoms,
-  setSymptoms,
-  nextStep,
-  prevStep,
-  activeStep,
-  steps,
-}) {
+function MedicalReports({ formData, setFormData }) {
   const classes = useStyles();
 
   const [isRecord, setIsRecord] = useState(false);
-  const [initSymptoms, setInitSymptoms] = useState(symptoms);
+  // const [initSymptoms, setInitSymptoms] = useState(symptoms);
 
   //Speech Recognition
   const { transcript, resetTranscript, listening } = useSpeechRecognition();
@@ -87,9 +80,6 @@ function MedicalReports({
     resetTranscript();
   };
 
-  /* handling stepper functions */
-
- 
 
   return (
     <Container>
@@ -122,10 +112,12 @@ function MedicalReports({
             <TextField
               id="symptoms"
               label="Symptoms"
-              value={symptoms}
+              value={formData.symptoms}
               onChange={(e) => {
-                setSymptoms(e.target.value);
-                setInitSymptoms(e.target.value);
+                setFormData({
+                  ...formData,
+                  symptoms: e.target.value,
+                });
               }}
               multiline
               fullWidth
@@ -180,7 +172,6 @@ function MedicalReports({
       </form>{" "}
       <br></br>
       <br></br>
-
     </Container>
   );
 }

@@ -11,7 +11,10 @@ import SpeechRecognition, {
 
 import Container from "@material-ui/core/Container";
 
-import FreeSoloCreateOptionDialog from '../../autocomplete-textfield/autocomplete'
+import FreeSoloCreateOptionDialog from "../../autocomplete-textfield/autocomplete";
+
+import MultipleTags from "../../autocomplete-textfield/multiple-autocomplete";
+import diagnoses from "../../../apis/diagnoses.json";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -37,14 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Diagnosis({
-  formData,
-  setFormData,
-  nextStep,
-  prevStep,
-  activeStep,
-  steps,
-}) {
+function Diagnosis({ formData, setFormData, tags, setTags }) {
   const classes = useStyles();
   const [isRecord, setIsRecord] = useState(false);
 
@@ -56,23 +52,31 @@ function Diagnosis({
     return null;
   }
 
-  function handleNext(e) {
-    e.preventDefault();
-    nextStep();
-  }
+  /* handling speech functions */
 
-  function handleBack(e) {
-    e.preventDefault();
-    prevStep();
-  }
+  const handleRecord = () => {
+    setIsRecord(true);
+    SpeechRecognition.startListening({
+      continuous: true,
+      // language: "ar-EG",
+    });
+  };
 
-  console.log(formData);
+  const handleStop = () => {
+    setIsRecord(false);
+    SpeechRecognition.stopListening();
+  };
+
+  const handleReset = () => {
+    handleStop();
+    resetTranscript();
+  };
+
+  console.log(formData.diagnosis);
 
   return (
     <Container>
-      <form
-      //   noValidate
-      >
+      <form>
         <Grid spacing={3} container>
           <Grid item xs={12} md={12} lg={12}>
             <div className={classes.ourFlex}>
@@ -85,37 +89,27 @@ function Diagnosis({
                 Diagnosis{" "}
               </Typography>
 
-              {isRecord ? (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                  onClick={() => {
-                    setIsRecord(!isRecord);
-                    SpeechRecognition.stopListening();
-                  }}
-                  endIcon={<PauseIcon />}
-                >
-                  Pause
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    setIsRecord(!isRecord);
-                    SpeechRecognition.startListening({
-                      continuous: true,
-                      // language: "ar-EG",
-                    });
-                  }}
-                  className={classes.button}
-                  endIcon={<MicIcon />}
-                >
-                  Record
-                </Button>
-              )}
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={isRecord ? handleStop : handleRecord}
+                endIcon={isRecord ? <PauseIcon /> : <MicIcon />}
+              >
+                {isRecord ? "Pause" : "Record"}
+              </Button>
             </div>
+
+            <MultipleTags
+              setFormData={setFormData}
+              formData={formData}
+              placeholder="Select diagnoses"
+              tags={tags}
+              setTags={setTags}
+              tagsArray={diagnoses}
+            />
+
+            <br></br>
 
             <TextField
               id="outlined-multiline-flexible"
@@ -134,9 +128,6 @@ function Diagnosis({
             />
           </Grid>
         </Grid>
-
-        {/* <FreeSoloCreateOptionDialog/> */}
-
         <br></br>
 
         <TextField
@@ -156,7 +147,6 @@ function Diagnosis({
       <br></br>
       <br></br>
       <br></br>
-
       <br></br>
       <br></br>
     </Container>

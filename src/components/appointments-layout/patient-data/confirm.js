@@ -22,8 +22,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-
-
 const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
 
 const useStyles = makeStyles((theme) => ({
@@ -38,14 +36,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Confirm({
   createPatientData,
-  history,
   formData,
   setFormData,
-  nextStep,
   prevStep,
   activeStep,
-  steps,
   setActiveStep,
+  tags,
 }) {
   const classes = useStyles();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,8 +52,6 @@ function Confirm({
     setOpen(false);
     setActiveStep(0);
   };
-
- 
 
   async function handleConfirm(e) {
     e.preventDefault();
@@ -70,6 +64,8 @@ function Confirm({
     setFormData({});
   }
 
+  const newTags = tags.map((tag) => tag.name);
+
   return (
     <Container>
       <Grid container>
@@ -80,7 +76,7 @@ function Confirm({
               <ListItem>
                 <ListItemText
                   primary="Diagnosis"
-                  secondary={formData.diagnosis}
+                  secondary={newTags.join(" ,") + " ," + formData.diagnosis}
                 />
               </ListItem>
               <Divider />
@@ -94,7 +90,10 @@ function Confirm({
               <Divider />
 
               <ListItem>
-                <ListItemText primary="Comments" secondary={formData.comments} />
+                <ListItemText
+                  primary="Comments"
+                  secondary={formData.comments}
+                />
               </ListItem>
             </List>
             <br />
