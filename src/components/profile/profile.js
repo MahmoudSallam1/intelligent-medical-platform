@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Profile(props) {
-  
   const { profile, auth, updateUserProfile } = props;
 
   const { personalInfo, clinicInfo } = profile;
@@ -80,10 +79,11 @@ function Profile(props) {
     }
   };
 
-  // console.log(props);
+  console.log(url);
 
-  const handleUpdatUserProfile = async (e) => {
+  const updateProfileImg = async (e) => {
     e.preventDefault();
+
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -99,27 +99,31 @@ function Profile(props) {
           .then((url) => {
             console.log(url);
             setUrl(url);
-            updateUserProfile(
-              {
-                displayName,
-                firstName,
-                lastName,
-                email,
-                password,
-                specialty,
-                specializedIn,
-                country,
-                degree,
-                phoneNumber,
-                url,
-              },
-              {
-                address,
-                contactNumber,
-                fees,
-              }
-            );
           });
+      }
+    );
+  };
+
+  const updateProfile = (e) => {
+    e.preventDefault();
+    updateUserProfile(
+      {
+        displayName,
+        firstName,
+        lastName,
+        email,
+        password,
+        specialty,
+        specializedIn,
+        country,
+        degree,
+        phoneNumber,
+        url,
+      },
+      {
+        address,
+        contactNumber,
+        fees,
       }
     );
   };
@@ -130,7 +134,7 @@ function Profile(props) {
 
   return (
     <PaperWrapper>
-      <form onSubmit={handleUpdatUserProfile}>
+      <form onSubmit={updateProfile}>
         <SimpleTabs handleTabChange={handleTabChange} tab={tab}>
           {/* personal info starts here */}
           <TabPanel value={tab} index={0}>
@@ -148,6 +152,16 @@ function Profile(props) {
                 <Button variant="contained" component="label">
                   Upload Image
                   <input onChange={handleImage} type="file" hidden />
+                </Button>
+                <Button
+                  margin="normal"
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  style={{ marginLeft: "1em" }}
+                  onClick={updateProfileImg}
+                >
+                  Update
                 </Button>
               </Grid>
             </Grid>
