@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -78,6 +79,13 @@ function Prescription({
 }) {
   const classes = useStyles();
 
+  /* handle printing prescription */
+
+  const prescriptionRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => prescriptionRef.current,
+  });
+
   const [isRecord, setIsRecord] = useState(false);
 
   const { transcript, resetTranscript } = useSpeechRecognition();
@@ -131,6 +139,7 @@ function Prescription({
                   color="primary"
                   className={classes.button}
                   endIcon={<PrintIcon />}
+                  onClick={handlePrint}
                 >
                   Print
                 </Button>
@@ -142,7 +151,7 @@ function Prescription({
         <br></br>
         <Grid container>
           <Grid item xs={12} md={12} lg={12}>
-            <Paper elevation={0} className={classes.card}>
+            <Paper ref={prescriptionRef} elevation={0} className={classes.card}>
               <div className={classes.ourFlex}>
                 {" "}
                 <div>
