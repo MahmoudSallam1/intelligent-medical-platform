@@ -7,6 +7,7 @@ export const MEDICAL_HISTORY = "/medical-history";
 export const PATIENT_DATA = "/patient-data";
 export const PRESCRIPTION = "/prescription";
 export const PROFILE = "/profile";
+export const CALENDER = "/calender";
 
 export const CONTACT_SUPPORT = "/contact-support";
 export const TERMS_OF_SERVICES = "/terms-of-services";

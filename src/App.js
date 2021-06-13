@@ -11,6 +11,7 @@ import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
 import ProfilePage from "./pages/profile";
 import ContactSupportPage from "./pages/contact-support";
+import CalenderPage from "./pages/calender";
 
 import PatientsPage from "./pages/patients";
 
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path={ROUTES.PATIENTS}>
           <PatientsPage />
+        </Route>
+        <Route path={ROUTES.CALENDER}>
+          <CalenderPage />
         </Route>
       </Switch>
     </Router>

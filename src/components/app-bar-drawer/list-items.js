@@ -75,13 +75,19 @@ export const MainListItems = () => {
             <ListItemText primary="Patients" />
           </ListItem>
         </Link>
-
-        <ListItem button>
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to={ROUTES.CALENDER}
+        >
+           <ListItem button>
           <ListItemIcon>
             <EventNoteIcon />
           </ListItemIcon>
           <ListItemText primary="Calender" />
         </ListItem>
+        </Link>
+
+ 
 
         <Link
           style={{ textDecoration: "none", color: "black" }}
