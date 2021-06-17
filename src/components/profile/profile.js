@@ -10,6 +10,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
@@ -134,236 +135,244 @@ function Profile(props) {
 
   return (
     <PaperWrapper>
-      <form onSubmit={updateProfile}>
-        <SimpleTabs handleTabChange={handleTabChange} tab={tab}>
-          {/* personal info starts here */}
-          <TabPanel value={tab} index={0}>
-            <Grid
-              direction="column"
-              justify="center"
-              alignItems="center"
-              spacing={1}
-              container
-            >
-              <Grid item>
-                <Avatar className={classes.large} alt="Remy Sharp" src={url} />
-              </Grid>
-              <Grid item>
-                <Button variant="contained" component="label">
-                  Upload Image
-                  <input onChange={handleImage} type="file" hidden />
-                </Button>
-                <Button
-                  margin="normal"
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  style={{ marginLeft: "1em" }}
-                  onClick={updateProfileImg}
-                >
-                  Update
-                </Button>
-              </Grid>
-            </Grid>
-
-            <br></br>
-
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
-                  fullWidth
-                  id="displayName"
-                  label="Display Name"
-                  name="text"
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  name="text"
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="text"
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="text"
-                  autoComplete="text"
-                />
-                <TextField
-                  type="password"
-                  variant="outlined"
-                  margin="normal"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  fullWidth
-                  id="password"
-                  label="Password"
-                  name="text"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl margin="normal" fullWidth variant="outlined">
-                  <InputLabel htmlFor="outlined-speciality-native-simple">
-                    Specialty
-                  </InputLabel>
-                  <Select
-                    native
-                    value={specialty}
-                    onChange={(e) => setSpecialty(e.target.value)}
-                    label="Choose a country"
-                    inputProps={{
-                      name: "specilaity",
-                      id: "outlined-speciality-native-simple",
-                    }}
+      {!profile ? (
+        <CircularProgress />
+      ) : (
+        <form onSubmit={updateProfile}>
+          <SimpleTabs handleTabChange={handleTabChange} tab={tab}>
+            {/* personal info starts here */}
+            <TabPanel value={tab} index={0}>
+              <Grid
+                direction="column"
+                justify="center"
+                alignItems="center"
+                spacing={1}
+                container
+              >
+                <Grid item>
+                  <Avatar
+                    className={classes.large}
+                    alt="Remy Sharp"
+                    src={url}
+                  />
+                </Grid>
+                <Grid item>
+                  <Button variant="contained" component="label">
+                    Upload Image
+                    <input onChange={handleImage} type="file" hidden />
+                  </Button>
+                  <Button
+                    margin="normal"
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    style={{ marginLeft: "1em" }}
+                    onClick={updateProfileImg}
                   >
-                    <option aria-label="None" value="" />
-                    {specialties.map((item, i) => (
-                      <option key={item + i} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </Select>
-                </FormControl>
+                    Update
+                  </Button>
+                </Grid>
+              </Grid>
 
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={specializedIn}
-                  onChange={(e) => setSpecializedIn(e.target.value)}
-                  fullWidth
-                  id="specializedIn"
-                  label="Specialized In "
-                  name="text"
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={degree}
-                  onChange={(e) => setDegree(e.target.value)}
-                  fullWidth
-                  id="degree"
-                  label="Degree"
-                  name="text"
-                />
+              <br></br>
 
-                <FormControl margin="normal" fullWidth variant="outlined">
-                  <InputLabel htmlFor="outlined-country-native-simple">
-                    Choose a country
-                  </InputLabel>
-                  <Select
-                    native
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    label="Choose a country"
-                    inputProps={{
-                      name: "country",
-                      id: "outlined-country-native-simple",
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={displayName}
+                    onChange={(e) => setDisplayName(e.target.value)}
+                    fullWidth
+                    id="displayName"
+                    label="Display Name"
+                    name="text"
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    name="text"
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="text"
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    fullWidth
+                    id="email"
+                    label="Email"
+                    name="text"
+                    autoComplete="text"
+                  />
+                  <TextField
+                    type="password"
+                    variant="outlined"
+                    margin="normal"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    fullWidth
+                    id="password"
+                    label="Password"
+                    name="text"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl margin="normal" fullWidth variant="outlined">
+                    <InputLabel htmlFor="outlined-speciality-native-simple">
+                      Specialty
+                    </InputLabel>
+                    <Select
+                      native
+                      value={specialty}
+                      onChange={(e) => setSpecialty(e.target.value)}
+                      label="Choose a country"
+                      inputProps={{
+                        name: "specilaity",
+                        id: "outlined-speciality-native-simple",
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      {specialties.map((item, i) => (
+                        <option key={item + i} value={item}>
+                          {item}
+                        </option>
+                      ))}
+                    </Select>
+                  </FormControl>
+
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={specializedIn}
+                    onChange={(e) => setSpecializedIn(e.target.value)}
+                    fullWidth
+                    id="specializedIn"
+                    label="Specialized In "
+                    name="text"
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={degree}
+                    onChange={(e) => setDegree(e.target.value)}
+                    fullWidth
+                    id="degree"
+                    label="Degree"
+                    name="text"
+                  />
+
+                  <FormControl margin="normal" fullWidth variant="outlined">
+                    <InputLabel htmlFor="outlined-country-native-simple">
+                      Choose a country
+                    </InputLabel>
+                    <Select
+                      native
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                      label="Choose a country"
+                      inputProps={{
+                        name: "country",
+                        id: "outlined-country-native-simple",
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      {countries.map((country, i) => (
+                        <option key={country + i} value={country.label}>
+                          {country.label}
+                        </option>
+                      ))}
+                    </Select>
+                  </FormControl>
+
+                  <MuiPhoneNumber
+                    name="phone"
+                    margin="normal"
+                    variant="outlined"
+                    label="Phone Number"
+                    data-cy="user-phone"
+                    defaultCountry={"eg"}
+                    fullWidth
+                    value={phoneNumber}
+                    onChange={(value) => {
+                      if (value) {
+                        setPhoneNumber(value);
+                      }
                     }}
-                  >
-                    <option aria-label="None" value="" />
-                    {countries.map((country, i) => (
-                      <option key={country + i} value={country.label}>
-                        {country.label}
-                      </option>
-                    ))}
-                  </Select>
-                </FormControl>
-
-                <MuiPhoneNumber
-                  name="phone"
-                  margin="normal"
-                  variant="outlined"
-                  label="Phone Number"
-                  data-cy="user-phone"
-                  defaultCountry={"eg"}
-                  fullWidth
-                  value={phoneNumber}
-                  onChange={(value) => {
-                    if (value) {
-                      setPhoneNumber(value);
-                    }
-                  }}
-                />
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-          </TabPanel>
+            </TabPanel>
 
-          {/* clinic info starts here */}
-          <TabPanel value={tab} index={1}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  fullWidth
-                  id="address"
-                  label="Address"
-                  name="text"
-                />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  value={fees}
-                  onChange={(e) => setFees(e.target.value)}
-                  fullWidth
-                  id="address"
-                  label="Fees"
-                  name="text"
-                />
-                <MuiPhoneNumber
-                  name="phone"
-                  margin="normal"
-                  variant="outlined"
-                  label="Contact Number"
-                  data-cy="user-phone"
-                  defaultCountry={"eg"}
-                  fullWidth
-                  value={contactNumber}
-                  onChange={(value) => {
-                    if (value) {
-                      setContactNumber(value);
-                    }
-                  }}
-                />
+            {/* clinic info starts here */}
+            <TabPanel value={tab} index={1}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    fullWidth
+                    id="address"
+                    label="Address"
+                    name="text"
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    value={fees}
+                    onChange={(e) => setFees(e.target.value)}
+                    fullWidth
+                    id="address"
+                    label="Fees"
+                    name="text"
+                  />
+                  <MuiPhoneNumber
+                    name="phone"
+                    margin="normal"
+                    variant="outlined"
+                    label="Contact Number"
+                    data-cy="user-phone"
+                    defaultCountry={"eg"}
+                    fullWidth
+                    value={contactNumber}
+                    onChange={(value) => {
+                      if (value) {
+                        setContactNumber(value);
+                      }
+                    }}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-          </TabPanel>
-        </SimpleTabs>
+            </TabPanel>
+          </SimpleTabs>
 
-        <CustomButton
-          margin="normal"
-          type="submit"
-          variant="contained"
-          color="primary"
-          style={{ margin: "0 auto", marginTop: "2em", display: "block" }}
-        >
-          Save
-        </CustomButton>
-      </form>
+          <CustomButton
+            margin="normal"
+            type="submit"
+            variant="contained"
+            color="primary"
+            style={{ margin: "0 auto", marginTop: "2em", display: "block" }}
+          >
+            Save
+          </CustomButton>
+        </form>
+      )}
     </PaperWrapper>
   );
 }

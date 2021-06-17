@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AppBarAndDrawer({ pageTitle, profile }) {
-  const {personalInfo} = profile
+  const { personalInfo } = profile;
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
@@ -142,9 +142,9 @@ function AppBarAndDrawer({ pageTitle, profile }) {
             {pageTitle}
           </Typography>
 
-          <Typography component="body1" variant="body1" color="inherit" noWrap>
+          <Typography component="h1" variant="body1" color="inherit" noWrap>
             <Box fontWeight="fontWeightLight" m={1}>
-              {profile.displayName||""}
+              {profile.displayName || ""}
             </Box>{" "}
           </Typography>
 

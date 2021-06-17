@@ -1,12 +1,27 @@
 import React from "react";
 import Patients from "../components/patients/patients";
+import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
+import * as ROUTES from "../constants/routes";
 
-function PatientsPage() {
+import { Redirect } from "react-router-dom";
+
+import { connect } from "react-redux";
+
+function PatientsPage(props) {
+  const { auth } = props;
+  if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
   return (
-    <div>
+    <DashboardLayout pageTitle="Patients">
       <Patients />
-    </div>
+    </DashboardLayout>
   );
 }
 
-export default PatientsPage;
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps)(PatientsPage);

@@ -10,6 +10,7 @@ import MicIcon from "@material-ui/icons/Mic";
 import PrintIcon from "@material-ui/icons/Print";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Container from "@material-ui/core/Container";
 
@@ -65,6 +66,13 @@ const useStyles = makeStyles((theme) => ({
   },
   btnGroup: {
     textAlign: "center",
+  },
+  spinner: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "0 auto",
+    marginTop: "5em",
   },
 }));
 
@@ -151,109 +159,117 @@ function Prescription({
         <br></br>
         <Grid container>
           <Grid item xs={12} md={12} lg={12}>
-            <Paper ref={prescriptionRef} elevation={0} className={classes.card}>
-              <div className={classes.ourFlex}>
-                {" "}
-                <div>
+            {!personalInfo ? (
+              <CircularProgress className={classes.spinner} />
+            ) : (
+              <Paper
+                ref={prescriptionRef}
+                elevation={0}
+                className={classes.card}
+              >
+                <div className={classes.ourFlex}>
+                  {" "}
+                  <div>
+                    <Typography
+                      className={classes.doctorHeading}
+                      align={"left"}
+                      variant="h6"
+                      gutterBottom
+                    >
+                      {personalInfo &&
+                        `${personalInfo.firstName} ${personalInfo.lastName}`}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      {personalInfo && personalInfo.specialty}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      {personalInfo && personalInfo.country}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      {personalInfo && personalInfo.phoneNumber}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Working hours{" "}
+                    </Typography>
+                  </div>{" "}
+                  <div>
+                    <Typography
+                      className={classes.doctorHeading}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Patient Name{" "}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Age{" "}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Date{" "}
+                    </Typography>
+                  </div>
+                </div>
+                <Divider />
+
+                <div style={{ marginTop: "2em" }}>
+                  <TextField
+                    id="standard-textarea"
+                    placeholder="Prescription"
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        prescription: e.target.value,
+                      });
+                    }}
+                    multiline
+                    fullWidth
+                    value={formData.prescription}
+                  />
+                </div>
+
+                <div style={{ marginTop: "5em" }}>
                   <Typography
-                    className={classes.doctorHeading}
+                    className={classes.subtitle}
                     align={"left"}
                     variant="h6"
-                    gutterBottom
+                  >
+                    Signature{" "}
+                  </Typography>
+                  <Typography
+                    className={classes.signature}
+                    align={"left"}
+                    variant="h6"
                   >
                     {personalInfo &&
                       `${personalInfo.firstName} ${personalInfo.lastName}`}
                   </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    {personalInfo && personalInfo.specialty}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    {personalInfo && personalInfo.country}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    {personalInfo && personalInfo.phoneNumber}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Working hours{" "}
-                  </Typography>
-                </div>{" "}
-                <div>
-                  <Typography
-                    className={classes.doctorHeading}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Patient Name{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Age{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Date{" "}
-                  </Typography>
+                  <Divider style={{ width: "30%" }} />
                 </div>
-              </div>
-              <Divider />
-
-              <div style={{ marginTop: "2em" }}>
-                <TextField
-                  id="standard-textarea"
-                  placeholder="Prescription"
-                  onChange={(e) => {
-                    setFormData({
-                      ...formData,
-                      prescription: e.target.value,
-                    });
-                  }}
-                  multiline
-                  fullWidth
-                  value={formData.prescription}
-                />
-              </div>
-
-              <div style={{ marginTop: "5em" }}>
-                <Typography
-                  className={classes.subtitle}
-                  align={"left"}
-                  variant="h6"
-                >
-                  Signature{" "}
-                </Typography>
-                <Typography
-                  className={classes.signature}
-                  align={"left"}
-                  variant="h6"
-                >
-                  {personalInfo &&
-                    `${personalInfo.firstName} ${personalInfo.lastName}`}
-                </Typography>
-                <Divider style={{ width: "30%" }} />
-              </div>
-            </Paper>
+              </Paper>
+            )}
           </Grid>
         </Grid>
       </form>{" "}
