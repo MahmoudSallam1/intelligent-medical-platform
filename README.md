@@ -7,7 +7,7 @@ portable electronic health record (EHR).
 
 ## Features
 
-- Save Medical Records
+[✔] Save Medical Records
 - Manage Appoitments
 - Digitze Prescription using Speech Recognition Model to automatically converted to text
 - Add Symptoms or Diagnoses using Speech Recognition Model
