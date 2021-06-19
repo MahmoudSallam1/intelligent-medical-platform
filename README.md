@@ -1,70 +1,57 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Intelligent Medical System
 
-## Available Scripts
+An intelligent platform for clinics that serve and connects doctors and patients. A web app for doctors to automate
+inefficient paper-based processes and manage primary clinical tasks and a mobile app for patients that serve as a
+portable electronic health record (EHR).
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+- Save Medical Records
+- Manage Appoitments
+- Digitze Prescription using Speech Recognition Model to automatically converted to text
+- Add Symptoms or Diagnoses using Speech Recognition Model
+- Print Prescription
+- Add Doctor's profile and clinic information
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  
+## Installation 
 
-### `yarn test`
+Install Intelligent-medical-system  with npm
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash 
+  npm install
+```
+Run the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+```bash 
+  npm start
+```
+## Tech Stack
 
-### `yarn build`
+**Client:** React, Redux, Material UI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Server:** Firebase , Firestore, Google Cloud
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  
+## Authors
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [@Mahmoud Sallam](https://github.com/MahmoudSallam1)
+- [@Yumna Ali](https://github.com/Yuumna)
 
-### `yarn eject`
+  
+## Related
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Mobile app to view prescribed medicine and
+medical records, search for doctors, and book
+appointments
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Mobile App](https://github.com/Eslam-Mohamed-Gharieb/Patient-Medical-App)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  
+## Feedback
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+If you have any feedback, please reach out to us at m.sallam@nu.edu.eg
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  
