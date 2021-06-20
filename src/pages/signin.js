@@ -19,6 +19,7 @@ import { Link,Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "../store/actions/authActions";
 
+import MainNav from '../components/main-nav/main-nav'
 
 
 const useStyles = makeStyles((theme) => ({

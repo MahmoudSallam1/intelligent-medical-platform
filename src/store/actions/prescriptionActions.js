@@ -7,7 +7,7 @@ export const createPrescription = (prescription) => {
       .collection("doctors")
       .doc(authorId)
       .collection("patients")
-      .doc("348mtrun4ZbgGnDpsboE") //patient ID
+      .doc("GEgYjmcj7Rr2JHYFVVQG") //patient ID
       .update({
         displayName: profile.displayName,
         authorId: authorId,

@@ -8,7 +8,7 @@ import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 
 import "./why-us.css";
-import { tiers } from "./tiers";
+import { whyUsArray } from "./whyUsArray";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -62,7 +62,7 @@ function WhyUs() {
 
         <Container maxWidth="lg" component="main">
           <Grid container spacing={5} alignItems="flex-end">
-            {tiers.map((tier) => (
+            {whyUsArray.map((tier) => (
               <Grid item key={tier.id} xs={12} md={4}>
                 <div className="card-us">
                   <h3>{tier.title}</h3>

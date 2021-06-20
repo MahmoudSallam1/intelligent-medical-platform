@@ -9,7 +9,7 @@ import Confirm from "./confirm";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  button: {
+  btn: {
     marginRight: theme.spacing(1),
     padding: "0.5em 1.5em",
   },
@@ -30,6 +30,9 @@ function PatientDataForm() {
     comments: "",
   });
 
+  const [tags, setTags] = useState([]);
+
+
   const nextStep = (e) => {
     e.preventDefault();
     setActiveStep((prev) => prev + 1);
@@ -39,44 +42,21 @@ function PatientDataForm() {
     setActiveStep((prev) => prev - 1);
   };
 
-  const setSymptoms = (value) => {
-    setFormData({ ...formData, symptoms: value });
-  };
-
   const renderForm = (activeStep) => {
     switch (activeStep) {
       case 0:
-        return (
-          <MedicalReports
-            setSymptoms={setSymptoms}
-            steps={steps}
-            symptoms={formData.symptoms}
-            prevStep={prevStep}
-            activeStep={activeStep}
-            nextStep={nextStep}
-          />
-        );
+        return <MedicalReports formData={formData} setFormData={setFormData} />;
       case 1:
-        return (
-          <Diagnosis
-            steps={steps}
-            activeStep={activeStep}
-            formData={formData}
-            setFormData={setFormData}
-            nextStep={nextStep}
-            prevStep={prevStep}
-          />
-        );
+        return <Diagnosis tags={tags} setTags={setTags} formData={formData} setFormData={setFormData} />;
       case 2:
         return (
           <Confirm
             setActiveStep={setActiveStep}
-            steps={steps}
-            activeStep={activeStep}
             formData={formData}
             setFormData={setFormData}
-            nextStep={nextStep}
             prevStep={prevStep}
+            tags={tags}
+            setTags={setTags}
           />
         );
 
@@ -94,7 +74,7 @@ function PatientDataForm() {
           <Button
             disabled={activeStep === 0}
             onClick={prevStep}
-            className={classes.button}
+            className={classes.btn}
           >
             Back
           </Button>
@@ -103,7 +83,7 @@ function PatientDataForm() {
             variant="contained"
             color="primary"
             onClick={nextStep}
-            className={classes.button}
+            className={classes.btn}
           >
             {activeStep === steps.length - 1 ? "Finish" : "Next"}
           </Button>

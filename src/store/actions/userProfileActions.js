@@ -1,4 +1,4 @@
-export const updateUserProfile = (userProfileData) => {
+export const updateUserProfile = (personaInfo, clinicInfo) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -7,9 +7,9 @@ export const updateUserProfile = (userProfileData) => {
       .collection("doctors")
       .doc(authorId)
       .update({
-        ...userProfileData,
-        displayName:userProfileData.displayName,
-        updatedAt: new Date(),
+        displayName: personaInfo.displayName,
+        personalInfo: { ...personaInfo, updatedAt: new Date() },
+        clinicInfo: { ...clinicInfo },
       })
       .then(() => {
         dispatch({ type: "UPDATE_USER_PROFILE_SUCCESS" });

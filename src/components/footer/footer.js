@@ -2,21 +2,13 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="" align="center">
-      {"Copyright © IntelligentMedicalSystem "}
+import { footerContentArray } from "./footerContentArray";
 
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -33,48 +25,19 @@ const useStyles = makeStyles((theme) => ({
 
   section: {
     background: "#1DB5E4",
-    padding:'4em 2em'
-
+    padding: "10em 2em",
   },
   item: {
     color: "#fff",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
-  title:{
+  title: {
     color: "#fff",
-
   },
-
 }));
-
-const footers = [
-  {
-    title: "Company",
-    description: ["Team", "History", "Contact us", "Locations"],
-  },
-  {
-    title: "Features",
-    description: [
-      "Cool stuff",
-      "Random feature",
-      "Team feature",
-      "Developer stuff",
-      "Another one",
-    ],
-  },
-  {
-    title: "Resources",
-    description: [
-      "Resource",
-      "Resource name",
-      "Another resource",
-      "Final resource",
-    ],
-  },
-  {
-    title: "Legal",
-    description: ["Privacy policy", "Terms of use"],
-  },
-];
 
 export default function Footer() {
   const classes = useStyles();
@@ -85,17 +48,17 @@ export default function Footer() {
 
       <div className={classes.section}>
         <Container maxWidth="lg" component="footer" className={classes.footer}>
-          <Grid container spacing={3} justify="space-evenly">
-            {footers.map((footer) => (
-              <Grid item xs={6} sm={6} md={3} key={footer.title}>
+          <Grid container spacing={1} justify="space-between">
+            {footerContentArray.map((footer) => (
+              <Grid item xs={6} sm={6} md={2} key={footer.id}>
                 <Typography className={classes.title} variant="h6" gutterBottom>
                   {footer.title}
                 </Typography>
                 <ul>
-                  {footer.description.map((item) => (
-                    <li key={item}>
-                      <Link className={classes.item} href="#">
-                        {item}
+                  {footer.description.map((description) => (
+                    <li key={description.page}>
+                      <Link className={classes.item} to={description.to}>
+                        {description.page}
                       </Link>
                     </li>
                   ))}
@@ -103,9 +66,6 @@ export default function Footer() {
               </Grid>
             ))}
           </Grid>
-          {/* <Box mt={5}>
-            <Copyright />
-          </Box> */}
         </Container>
       </div>
       {/* End footer */}

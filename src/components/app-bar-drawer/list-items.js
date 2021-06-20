@@ -46,10 +46,7 @@ export const MainListItems = () => {
     <>
       <List>
         <Link style={{ textDecoration: "none", color: "black" }} to="/">
-          <ListItem
-            button
-            
-          >
+          <ListItem button>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
@@ -60,43 +57,43 @@ export const MainListItems = () => {
           style={{ textDecoration: "none", color: "black" }}
           to={ROUTES.DASHBOARD}
         >
-          <ListItem
-            button
-         
-          >
+          <ListItem button>
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
           </ListItem>
         </Link>
-        <ListItem
-          button
- 
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to={ROUTES.PATIENTS}
         >
-          <ListItemIcon>
-            <PeopleIcon />
-          </ListItemIcon>
-          <ListItemText primary="Patients" />
-        </ListItem>
-        <ListItem
-          button
-        
+          <ListItem button>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Patients" />
+          </ListItem>
+        </Link>
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to={ROUTES.CALENDER}
         >
+           <ListItem button>
           <ListItemIcon>
             <EventNoteIcon />
           </ListItemIcon>
           <ListItemText primary="Calender" />
         </ListItem>
+        </Link>
+
+ 
 
         <Link
           style={{ textDecoration: "none", color: "black" }}
           to={ROUTES.PROFILE}
         >
-          <ListItem
-            button
-        
-          >
+          <ListItem button>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
@@ -116,10 +113,7 @@ export const MainListItems = () => {
           to={ROUTES.MEDICAL_HISTORY}
         >
           {" "}
-          <ListItem
-            button
-         
-          >
+          <ListItem button>
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
@@ -131,10 +125,7 @@ export const MainListItems = () => {
           style={{ textDecoration: "none", color: "black" }}
           to={ROUTES.PATIENT_DATA}
         >
-          <ListItem
-            button
-          
-          >
+          <ListItem button>
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
@@ -145,10 +136,7 @@ export const MainListItems = () => {
           style={{ textDecoration: "none", color: "black" }}
           to={ROUTES.PRESCRIPTION}
         >
-          <ListItem
-            button
-          
-          >
+          <ListItem button>
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>

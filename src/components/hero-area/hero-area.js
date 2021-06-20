@@ -8,24 +8,22 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
+import CustomButton from "../custom-button/custom-button";
+
 import * as ROUTES from "../../constants/routes";
 
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   bg: {
-    background: "#fff",
-    height: "85vh",
+    background: "#F5F6FA",
+    height: "90vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    // backgroundImage:"url(/images/doc.png)",
-    // backgroundRepeat:"no-repeat",
-    // backgroundPosition: "center",
-    // backgroundSize:"cover"
     [theme.breakpoints.up("md")]: {
-      textAlign: "left",
+      textAlign:"center"
     },
   },
   container: {
@@ -33,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("xs")]: {
       width: "90%",
     },
-    [theme.breakpoints.up("md")]: {
-      // width: "60%",
+    [theme.breakpoints.down("sm")]: {
+      textAlign:"center",
     },
   },
 
@@ -73,15 +71,18 @@ const useStyles = makeStyles((theme) => ({
   },
   btn: {
     boxShadow: "none",
-    height: "55px",
+    height: "50px",
     marginRight: "1em",
     padding: "1em 2.5em",
+    "&:hover": {},
   },
 
   heroImg: {
     maxWidth: "120%",
     objectFit: "cover",
-    
+    [theme.breakpoints.down("sm")]: {
+      display:"none",
+    },
   },
 }));
 
@@ -107,25 +108,21 @@ function HeroArea() {
                 gutterBottom
               >
                 Doctors can effortlessly manage all major functions of their
-                practice through one intuitive platform and Streamline workflow
-                on a personalized, interactive, and adaptable platform.
+                practice through one intuitive platform.
               </Typography>
             </div>
             <div className={classes.btnGroup}>
               {" "}
-              <Button
+              <CustomButton
                 variant="contained"
-                // size="large"
                 color="primary"
-                className={classes.btn}
                 component={Link}
                 to={ROUTES.SIGN_UP}
               >
                 Get Started
-              </Button>
+              </CustomButton>
               <Button
                 variant="outlined"
-                // size="large"
                 color="primary"
                 className={classes.btn}
                 component={Link}
@@ -135,7 +132,7 @@ function HeroArea() {
               </Button>
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12}  md={6}>
             <img
               className={classes.heroImg}
               src="/images/land-hero.svg"

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -9,17 +10,17 @@ import MicIcon from "@material-ui/icons/Mic";
 import PrintIcon from "@material-ui/icons/Print";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Container from "@material-ui/core/Container";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import { connect } from "react-redux";
+
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -45,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     padding: "2em",
     background: "#EEF9FE",
+    borderRadius: "10px",
+    border: "1px solid #E0E0E0",
   },
   doctorHeading: {
     color: "#1DB5E4",
@@ -56,9 +59,25 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "400",
   },
 
+  signature: {
+    color: "#1DB5E4",
+    fontSize: "0.8rem",
+    fontWeight: "400",
+  },
+  btnGroup: {
+    textAlign: "center",
+  },
+  spinner: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "0 auto",
+    marginTop: "5em",
+  },
 }));
 
 function Prescription({
+  profile,
   formData,
   setFormData,
   nextStep,
@@ -68,8 +87,14 @@ function Prescription({
 }) {
   const classes = useStyles();
 
-  const [isRecord, setIsRecord] = useState(false);
+  /* handle printing prescription */
 
+  const prescriptionRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => prescriptionRef.current,
+  });
+
+  const [isRecord, setIsRecord] = useState(false);
 
   const { transcript, resetTranscript } = useSpeechRecognition();
 
@@ -77,7 +102,28 @@ function Prescription({
     return null;
   }
 
-  
+  /* handling speech functions */
+
+  const handleRecord = () => {
+    setIsRecord(true);
+    SpeechRecognition.startListening({
+      continuous: true,
+      // language: "ar-EG",
+    });
+  };
+
+  const handleStop = () => {
+    setIsRecord(false);
+    SpeechRecognition.stopListening();
+  };
+
+  const handleReset = () => {
+    handleStop();
+    resetTranscript();
+  };
+
+  const { personalInfo, clinicInfo } = profile;
+
   return (
     <Container>
       <form
@@ -87,42 +133,21 @@ function Prescription({
           <Grid item xs={12} md={12} lg={12}>
             <div>
               <div className={classes.btnGroup}>
-                {" "}
-                {isRecord ? (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    onClick={() => {
-                      setIsRecord(!isRecord);
-                      SpeechRecognition.stopListening();
-                    }}
-                    endIcon={<PauseIcon />}
-                  >
-                    Pause
-                  </Button>
-                ) : (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      setIsRecord(!isRecord);
-                      SpeechRecognition.startListening({
-                        continuous: true,
-                        // language: "ar-EG",
-                      });
-                    }}
-                    className={classes.button}
-                    endIcon={<MicIcon />}
-                  >
-                    Record
-                  </Button>
-                )}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                  onClick={isRecord ? handleStop : handleRecord}
+                  endIcon={isRecord ? <PauseIcon /> : <MicIcon />}
+                >
+                  {isRecord ? "Pause" : "Record"}
+                </Button>
                 <Button
                   variant="outlined"
                   color="primary"
                   className={classes.button}
                   endIcon={<PrintIcon />}
+                  onClick={handlePrint}
                 >
                   Print
                 </Button>
@@ -134,109 +159,129 @@ function Prescription({
         <br></br>
         <Grid container>
           <Grid item xs={12} md={12} lg={12}>
-            <Paper elevation={0} className={classes.card}>
-              <div className={classes.ourFlex}>
-                {" "}
-                <div>
-                  <Typography
-                    className={classes.doctorHeading}
-                    align={"left"}
-                    variant="h6"
-                    gutterBottom
-                  >
-                    Doctor Name{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Specilaiztion{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Address{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Phone Number{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Working hours{" "}
-                  </Typography>
-                </div>{" "}
-                <div>
-                  <Typography
-                    className={classes.doctorHeading}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Patient Name{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Age{" "}
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    align={"left"}
-                    variant="h6"
-                  >
-                    Date{" "}
-                  </Typography>
+            {!personalInfo ? (
+              <CircularProgress className={classes.spinner} />
+            ) : (
+              <Paper
+                ref={prescriptionRef}
+                elevation={0}
+                className={classes.card}
+              >
+                <div className={classes.ourFlex}>
+                  {" "}
+                  <div>
+                    <Typography
+                      className={classes.doctorHeading}
+                      align={"left"}
+                      variant="h6"
+                      gutterBottom
+                    >
+                      {personalInfo &&
+                        `${personalInfo.firstName} ${personalInfo.lastName}`}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      {personalInfo && personalInfo.specialty}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      {personalInfo && personalInfo.country}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      {personalInfo && personalInfo.phoneNumber}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Working hours{" "}
+                    </Typography>
+                  </div>{" "}
+                  <div>
+                    <Typography
+                      className={classes.doctorHeading}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Patient Name{" "}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Age{" "}
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle}
+                      align={"left"}
+                      variant="h6"
+                    >
+                      Date{" "}
+                    </Typography>
+                  </div>
                 </div>
-              </div>
-              <Divider />
+                <Divider />
 
-              <div style={{ marginTop: "2em" }}>
-                <TextField
-                  id="standard-textarea"
-                  placeholder="Prescription"
-                  onChange={(e) => {
-                    setFormData({
-                      ...formData,
-                      prescription: e.target.value,
-                    });
-                  }}
-                  multiline
-                  fullWidth
-                  value={formData.prescription}
-                />
-              </div>
+                <div style={{ marginTop: "2em" }}>
+                  <TextField
+                    id="standard-textarea"
+                    placeholder="Prescription"
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        prescription: e.target.value,
+                      });
+                    }}
+                    multiline
+                    fullWidth
+                    value={formData.prescription}
+                  />
+                </div>
 
-              <div style={{ marginTop: "4em" }}>
-                <Typography
-                  className={classes.subtitle}
-                  align={"left"}
-                  variant="h6"
-                >
-                  Signature{" "}
-                </Typography>
-                <br></br>
-                <Divider style={{ width: "30%" }} />
-              </div>
-            </Paper>
+                <div style={{ marginTop: "5em" }}>
+                  <Typography
+                    className={classes.subtitle}
+                    align={"left"}
+                    variant="h6"
+                  >
+                    Signature{" "}
+                  </Typography>
+                  <Typography
+                    className={classes.signature}
+                    align={"left"}
+                    variant="h6"
+                  >
+                    {personalInfo &&
+                      `${personalInfo.firstName} ${personalInfo.lastName}`}
+                  </Typography>
+                  <Divider style={{ width: "30%" }} />
+                </div>
+              </Paper>
+            )}
           </Grid>
         </Grid>
       </form>{" "}
       <br></br>
       <br></br>
-
     </Container>
   );
 }
-
-export default Prescription;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  };
+};
+export default connect(mapStateToProps, null)(Prescription);

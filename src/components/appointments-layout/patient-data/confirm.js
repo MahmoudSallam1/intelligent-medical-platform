@@ -22,8 +22,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-
-
 const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
 
 const useStyles = makeStyles((theme) => ({
@@ -38,38 +36,37 @@ const useStyles = makeStyles((theme) => ({
 
 function Confirm({
   createPatientData,
-  history,
   formData,
   setFormData,
-  nextStep,
   prevStep,
   activeStep,
-  steps,
   setActiveStep,
+  tags,
+  setTags
 }) {
   const classes = useStyles();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [open, setOpen] = useState(false);
 
+  const newTags = tags.map((tag) => tag.name);
+
   const handleCloseDialog = () => {
     setOpen(false);
     setActiveStep(0);
   };
 
-  function handleBack(e) {
-    e.preventDefault();
-    prevStep();
-  }
-
   async function handleConfirm(e) {
     e.preventDefault();
     setIsSubmitting(true);
     console.log("submitting to DB...");
-    // await sleep(2000);
-    createPatientData(formData);
+    createPatientData({
+      ...formData,
+      diagnosis: newTags.join(" ,") + " ," + formData.diagnosis,
+    });
     setOpen(true);
     setIsSubmitting(false);
+    setTags([]);
     setFormData({});
   }
 
@@ -83,7 +80,7 @@ function Confirm({
               <ListItem>
                 <ListItemText
                   primary="Diagnosis"
-                  secondary={formData.diagnosis}
+                  secondary={newTags.join(" ,") + " ," + formData.diagnosis}
                 />
               </ListItem>
               <Divider />
@@ -97,7 +94,10 @@ function Confirm({
               <Divider />
 
               <ListItem>
-                <ListItemText primary="Comments" secondary={formData.comments} />
+                <ListItemText
+                  primary="Comments"
+                  secondary={formData.comments}
+                />
               </ListItem>
             </List>
             <br />
@@ -105,7 +105,7 @@ function Confirm({
             <div className={classes.btnGroup}>
               <Button
                 disabled={activeStep === 0}
-                onClick={handleBack}
+                onClick={prevStep}
                 className={classes.button}
               >
                 Back

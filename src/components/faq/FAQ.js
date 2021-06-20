@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   content: {
-    color: "#6B6C6F",
+    color: "#5f6c7b",
     fontSize: "20px",
     textAlign: "center",
     marginBottom:"25px",
@@ -41,10 +41,12 @@ const useStyles = makeStyles((theme) => ({
   },
   question: {
     color: "#094067",
-    fontWeight: "500",
+    fontWeight: "600",
+    fontSize:"1.2rem"
   },
   answer: {
     color: "#5f6c7b",
+    fontSize:"1.1rem"
   },
 }));
 

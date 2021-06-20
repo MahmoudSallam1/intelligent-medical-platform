@@ -10,6 +10,10 @@ import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
 import ProfilePage from "./pages/profile";
+import ContactSupportPage from "./pages/contact-support";
+import CalenderPage from "./pages/calender";
+
+import PatientsPage from "./pages/patients";
 
 import DashboardPage from "./pages/dashboard";
 
@@ -23,14 +27,12 @@ function App() {
         <Route path={ROUTES.SIGN_UP}>
           <SignupPage />
         </Route>
-
         <Route path={ROUTES.SIGN_IN}>
           <SigninPage />
         </Route>
         <Route path={ROUTES.DASHBOARD}>
           <DashboardPage />
         </Route>
-
         <Route path={ROUTES.MEDICAL_HISTORY}>
           <GeneralMedicalHistoryPage />
         </Route>
@@ -42,6 +44,15 @@ function App() {
         </Route>
         <Route path={ROUTES.PROFILE}>
           <ProfilePage />
+        </Route>
+        <Route path={ROUTES.CONTACT_SUPPORT}>
+          <ContactSupportPage />
+        </Route>
+        <Route path={ROUTES.PATIENTS}>
+          <PatientsPage />
+        </Route>
+        <Route path={ROUTES.CALENDER}>
+          <CalenderPage />
         </Route>
       </Switch>
     </Router>
