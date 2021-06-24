@@ -53,7 +53,7 @@ function WhyUs() {
           className={classes.heroContent}
         >
           <Typography className={classes.heading} variant="h2" gutterBottom>
-            <Box fontWeight="fontWeightBold">Why name</Box>
+            <Box fontWeight="fontWeightBold">Why MediChain</Box>
           </Typography>
           <Typography className={classes.content} variant="body1" gutterBottom>
             A platform that adapts to your needs.

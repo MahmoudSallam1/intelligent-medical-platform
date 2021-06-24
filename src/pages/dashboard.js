@@ -1,12 +1,13 @@
 import React from "react";
 
 import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
-import PaperWrapper from "../components/paper-wrapper/paper-wrapper";
+
+import Dashboard from "../components/dashboard/dashboard";
 
 function DashboardPage() {
   return (
     <DashboardLayout pageTitle="Dashboard">
-      <PaperWrapper>this is dashboard</PaperWrapper>{" "}
+      <Dashboard />
     </DashboardLayout>
   );
 }

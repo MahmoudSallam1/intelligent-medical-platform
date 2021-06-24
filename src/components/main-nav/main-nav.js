@@ -17,12 +17,11 @@ const MainNav = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="nav-logo">
-        {/* <img
-          style={{ width: "250px", objectFit: "cover" }}
-          src="/images/logo-dark.png"
+        <img
+          style={{ width: "130px", objectFit: "cover" }}
+          src="/images/logo.png"
           alt="logo"
-        />{" "} */}
-        Medical System
+        />{" "}
       </Link>
       <div onClick={handleClick} className="nav-icon">
         {open ? (

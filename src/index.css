@@ -6,7 +6,7 @@ body {
     font-size: 16px;
     box-sizing: border-box;
     font-family: "Roboto";
-    background-color: #ffffff;
+    background-color: #F5F6FA;
 }
 
 body ::selection {
@@ -14,4 +14,6 @@ body ::selection {
     background: #1DB5E4;
 
 }
+
+
 

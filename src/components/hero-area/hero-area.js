@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   bg: {
-    background: "#F5F6FA",
+    background: "#fff",
     height: "90vh",
     display: "flex",
     justifyContent: "center",
@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     color: "#6B6C6F",
     marginTop: "25px",
+    fontWeight:"400",
     [theme.breakpoints.up("xs")]: {
       fontSize: "16px",
     },
@@ -99,7 +100,7 @@ function HeroArea() {
               {" "}
               <Typography className={classes.heading} variant="h2">
                 <Box fontWeight="fontWeightBold">
-                  Easy and complete Medical Care Platform.
+                  Easy and Complete Medical Care Platform.
                 </Box>
               </Typography>
               <Typography

@@ -11,20 +11,26 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Alert from "@material-ui/lab/Alert";
+import Box from "@material-ui/core/Box";
 
 import * as ROUTES from "../constants/routes";
 
-import { Link,Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { signIn } from "../store/actions/authActions";
 
-import MainNav from '../components/main-nav/main-nav'
+import MainNav from "../components/main-nav/main-nav";
+import CustomButton from "../components/custom-button/custom-button";
+import Footer from "../components/footer/footer";
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "100vh",
+    height: "90vh",
+    justifyContent: "center",
+    alignItems: "center",
+    background:"#F5F6FA"
   },
   image: {
     backgroundImage: "url(/images/sign-in.png)",
@@ -36,15 +42,23 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
+
   paper: {
     margin: theme.spacing(8, 4),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    background: "#fff",
+    padding: "3em",
+    borderRadius: "8px",
+    border: "1px solid #E0E0E0",
+    boxShadow: "0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)"
+
+
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -77,79 +91,85 @@ function SignIn(props) {
   if (auth.uid) return <Redirect to={ROUTES.DASHBOARD} />;
 
   return (
-    <>
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={8} className={classes.image} />
-      <Grid item xs={12} sm={8} md={4} component={Paper} elevation={1} square>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
+    <div className={classes.section}>
+      <MainNav />
 
-          <div className="">
-            {authError ? (
-              <Alert className={classes.error} severity="error">
-                {authError}
-              </Alert>
-            ) : null}
-          </div>
-          <form className={classes.form} onSubmit={handleSubmit} method="POST">
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={({ target }) => setEmail(target.value)}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={({ target }) => setPassword(target.value)}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              // disabled={isInvalid}
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        {/* <Grid item xs={false} sm={4} md={8} className={classes.image} /> */}
+
+        <Grid item xs={12} sm={6} md={4} className={classes.container}>
+          <Box className={classes.paper}  >
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+
+            <div className="">
+              {authError ? (
+                <Alert className={classes.error} severity="error">
+                  {authError}
+                </Alert>
+              ) : null}
+            </div>
+            <form
+              className={classes.form}
+              onSubmit={handleSubmit}
+              method="POST"
             >
-              Sign In
-            </Button>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={({ target }) => setEmail(target.value)}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={({ target }) => setPassword(target.value)}
+              />
 
-            <Grid container>
-              <Grid item xs>
-                <Link to="/#">Forgot password?</Link>
+              <CustomButton
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                style={{ marginTop: "1em" }}
+                // className={classes.submit}
+                // disabled={isInvalid}
+              >
+                Sign In
+              </CustomButton>
+
+              <Grid container style={{ marginTop: "2.5em" }}>
+              
+                <Grid item>
+                  <Link to={ROUTES.SIGN_UP}>
+                    Don't have an account? Sign Up
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link to={ROUTES.SIGN_UP}>Don't have an account? Sign Up</Link>
-              </Grid>
-            </Grid>
-          </form>
-        </div>
+            </form>
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
-    </>
+      <Footer/>
+    </div>
   );
 }
 

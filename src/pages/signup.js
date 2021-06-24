@@ -17,30 +17,39 @@ import { Link } from "react-router-dom";
 
 import { signUp } from "../store/actions/authActions";
 
-import MainNav from '../components/main-nav/main-nav'
+import MainNav from "../components/main-nav/main-nav";
 
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+import CustomButton from "../components/custom-button/custom-button";
+import Footer from "../components/footer/footer";
+
 const useStyles = makeStyles((theme) => ({
+  section: {
+    // background: "#EEF9FE"
+    background: "#F5F6FA",
+  },
   container: {
     display: "flex",
-    height: "100vh",
     justifyContent: "center",
     alignItems: "center",
+    padding: "2em",
   },
   paper: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height: "90vh",
+    height: "83vh",
     background: "#fff",
     padding: "2em",
     borderRadius: "8px",
+    border: "1px solid #E0E0E0",
+    boxShadow: "0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)",
   },
   avatar: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -70,101 +79,102 @@ function SignUp(props) {
   if (auth.uid) return <Redirect to={ROUTES.DASHBOARD} />;
 
   return (
-    <>
-    <MainNav/>
-    <Container className={classes.container} component="main" maxWidth="xs">
-      <CssBaseline />
+    <div className={classes.section}>
+      <MainNav />
+      <Container className={classes.container} component="main" maxWidth="xs">
+        <CssBaseline />
 
-      <Box className={classes.paper} boxShadow={1}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
+        <Box className={classes.paper} boxShadow={1}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
 
-        <div className="">
-          {authError ? (
-            <Alert className={classes.error} severity="error">
-              {authError}
-            </Alert>
-          ) : null}
-        </div>
-        <form
-          className={classes.form}
-          onSubmit={handleSubmit}
-          method="POST"
-          //   noValidate
-        >
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="displayName"
-            label="Display name"
-            name="displayName"
-            autoComplete="text"
-            autoFocus
-            onChange={({ target }) => setDisplayName(target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            onChange={({ target }) => setEmail(target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={({ target }) => setPassword(target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="confirmPassword"
-            label="Confirm password"
-            type="password"
-            id="confirmPassword"
-            autoComplete="current-password"
-            onChange={({ target }) => setConfirmPassword(target.value)}
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            // disabled={isInvalid}
+          <div className="">
+            {authError ? (
+              <Alert className={classes.error} severity="error">
+                {authError}
+              </Alert>
+            ) : null}
+          </div>
+          <form
+            className={classes.form}
+            onSubmit={handleSubmit}
+            method="POST"
+            //   noValidate
           >
-            Sign Up
-          </Button>
-          <Grid container>
-            <Grid item>
-              Already a user?
-              <Link to={ROUTES.SIGN_IN}> Sign in now.</Link>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="displayName"
+              label="Display name"
+              name="displayName"
+              autoComplete="text"
+              autoFocus
+              onChange={({ target }) => setDisplayName(target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={({ target }) => setEmail(target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={({ target }) => setPassword(target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="confirmPassword"
+              label="Confirm password"
+              type="password"
+              id="confirmPassword"
+              autoComplete="current-password"
+              onChange={({ target }) => setConfirmPassword(target.value)}
+            />
+
+            <CustomButton
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              style={{ marginTop: "1em" }}
+              // disabled={isInvalid}
+            >
+              Sign Up
+            </CustomButton>
+            <Grid container>
+              <Grid item style={{ marginTop: "2.5em" }}>
+                Already a user?
+                <Link to={ROUTES.SIGN_IN}> Sign in now.</Link>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </Box>
-    </Container>
-    </>
+          </form>
+        </Box>
+      </Container>
+      <Footer />
+    </div>
   );
 }
 

@@ -1,17 +1,17 @@
 .card-us {
     background: #ffffff;
-    /* box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05); */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .02), 0 0 6px rgba(0, 0, 0, .03);
     transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
     padding: 14px 80px 18px 36px;
     cursor: pointer;
     border-radius: 10px;
-    border-left: 4px solid #5f6c7b;
+    /* border-left: 4px solid #5f6c7b; */
 }
 
 .card-us:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
-    border-left: 4px solid #1DB5E4;
+    /* border-left: 4px solid #1DB5E4; */
 
 }
 
@@ -22,6 +22,7 @@
 
 .card-us p {
     color: #5f6c7b;
+    font-weight: 400;
 
 }
 
