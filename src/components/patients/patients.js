@@ -9,20 +9,50 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { DataGrid } from "@material-ui/data-grid";
 
+import { Link } from "react-router-dom";
+
 const db = firebase.firestore();
 
 const columns = [
-  { field: "id", headerName: "ID", width: 200 },
+  {
+    field: "id",
+    headerName: "ID",
+    width: 150,
+    renderCell: (params) => (
+      <Link to={`/patients/${params.value}`}>{params.value}</Link>
+    ),
+  },
+
   { field: "fullName", headerName: "Full name", width: 150 },
   {
     field: "phoneNumber",
     headerName: "Phone number",
-    width: 170,
+    width: 140,
     type: "number",
   },
   {
     field: "address",
     headerName: "Address",
+    width: 150,
+  },
+  {
+    field: "gender",
+    headerName: "Gender",
+    width: 150,
+  },
+  {
+    field: "emergencyFullName",
+    headerName: "Emergency FullName",
+    width: 150,
+  },
+  {
+    field: "emergencyPhoneNumber",
+    headerName: "Emergency Phone Number",
+    width: 150,
+  },
+  {
+    field: "relation",
+    headerName: "Relation",
     width: 150,
   },
 ];
@@ -69,7 +99,7 @@ function Patients(props) {
             rows={rows}
             columns={columns}
             pageSize={5}
-            checkboxSelection
+            // checkboxSelection
           />
         </div>
       ) : (

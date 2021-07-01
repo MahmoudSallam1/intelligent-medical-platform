@@ -17,6 +17,8 @@ import PatientsPage from "./pages/patients";
 
 import DashboardPage from "./pages/dashboard";
 
+import PatientDetailsPage from "./pages/patient-details-page";
+
 function App() {
   return (
     <Router>
@@ -48,8 +50,11 @@ function App() {
         <Route path={ROUTES.CONTACT_SUPPORT}>
           <ContactSupportPage />
         </Route>
-        <Route path={ROUTES.PATIENTS}>
+        <Route exact path={ROUTES.PATIENTS}>
           <PatientsPage />
+        </Route>
+        <Route path={ROUTES.PATIENT_ID}>
+         <PatientDetailsPage/>
         </Route>
         <Route path={ROUTES.CALENDER}>
           <CalenderPage />

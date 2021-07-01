@@ -3,6 +3,7 @@ export const SIGN_UP = "/signup";
 export const SIGN_IN = "/signin";
 export const DASHBOARD = "/dashboard";
 export const PATIENTS = "/patients";
+export const PATIENT_ID = "/patients/:id";
 export const MEDICAL_HISTORY = "/medical-history";
 export const PATIENT_DATA = "/patient-data";
 export const PRESCRIPTION = "/prescription";
