@@ -19,6 +19,8 @@ import DashboardPage from "./pages/dashboard";
 
 import PatientDetailsPage from "./pages/patient-details-page";
 
+import ErrorPage from "./pages/error-page";
+
 function App() {
   return (
     <Router>
@@ -54,10 +56,13 @@ function App() {
           <PatientsPage />
         </Route>
         <Route path={ROUTES.PATIENT_ID}>
-         <PatientDetailsPage/>
+          <PatientDetailsPage />
         </Route>
         <Route path={ROUTES.CALENDER}>
           <CalenderPage />
+        </Route>
+        <Route path={ROUTES.ERROR}>
+          <ErrorPage />
         </Route>
       </Switch>
     </Router>

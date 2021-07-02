@@ -30,3 +30,4 @@ export const DICTATION = "/dictation";
 export const PRACTICE_MANAGEMENT = "/practice-management";
 export const EHR_FEATURES = "/ehr-features";
 export const EHR = "/ehr";
+export const ERROR = "*";
