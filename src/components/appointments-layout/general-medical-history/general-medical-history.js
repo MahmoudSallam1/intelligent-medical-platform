@@ -18,14 +18,6 @@ function GeneralMedicalHistory() {
 
   return (
     <PaperWrapper>
-      {/* <Typography
-        className={classes.marginBot}
-        align={"center"}
-        variant="h5"
-        gutterBottom
-      >
-        Patient General Medical History
-      </Typography> */}
       <GeneralMedicalHistoryForm />
     </PaperWrapper>
   );

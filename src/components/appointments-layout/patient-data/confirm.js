@@ -22,8 +22,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
-
 const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
@@ -42,7 +40,7 @@ function Confirm({
   activeStep,
   setActiveStep,
   tags,
-  setTags
+  setTags,
 }) {
   const classes = useStyles();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,16 +58,22 @@ function Confirm({
     e.preventDefault();
     setIsSubmitting(true);
     console.log("submitting to DB...");
-    createPatientData({
-      ...formData,
-      diagnosis: newTags.join(" ,") + " ," + formData.diagnosis,
-    });
+    createPatientData(
+      {
+        ...formData,
+        diagnosis: newTags,
+      },
+      "66"
+    );
     setOpen(true);
     setIsSubmitting(false);
     setTags([]);
     setFormData({});
   }
 
+
+
+  
   return (
     <Container>
       <Grid container>
@@ -163,8 +167,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPatientData: (patientData) =>
-      dispatch(createPatientData(patientData)),
+    createPatientData: (patientData, patientID) =>
+      dispatch(createPatientData(patientData, patientID)),
   };
 };
 

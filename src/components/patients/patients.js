@@ -17,7 +17,7 @@ const columns = [
   {
     field: "id",
     headerName: "ID",
-    width: 150,
+    width: 140,
     renderCell: (params) => (
       <Link to={`/patients/${params.value}`}>{params.value}</Link>
     ),
@@ -94,11 +94,11 @@ function Patients(props) {
     <PaperWrapper>
       {" "}
       {patients.length ? (
-        <div style={{ height: 400, width: "100%" }}>
-          <DataGrid
+        <div style={{ height: 600, width: "100%" }}>
+          <DataGrid 
             rows={rows}
             columns={columns}
-            pageSize={5}
+            pageSize={10}
             // checkboxSelection
           />
         </div>

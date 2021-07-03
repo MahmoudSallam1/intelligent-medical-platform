@@ -25,7 +25,7 @@ function PatientDataForm() {
 
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
-    diagnosis: "",
+    diagnosis: [],
     symptoms: "",
     comments: "",
   });

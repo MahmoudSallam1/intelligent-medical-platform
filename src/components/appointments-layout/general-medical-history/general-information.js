@@ -11,9 +11,6 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Container from "@material-ui/core/Container";
 
 import Button from "@material-ui/core/Button";
-// import SaveIcon from "@material-ui/icons/Save";
-
-
 
 import DateFnsUtils from "@date-io/date-fns";
 
@@ -52,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function GeneralInformation({
+  patientID,
   formData,
   setFormData,
   nextStep,
@@ -70,6 +68,7 @@ function GeneralInformation({
     e.preventDefault();
     prevStep();
   }
+
   return (
     <Container>
       <form>
@@ -277,5 +276,3 @@ function GeneralInformation({
 }
 
 export default GeneralInformation;
-
-

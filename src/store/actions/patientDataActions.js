@@ -1,4 +1,4 @@
-export const createPatientData = (patientData) => {
+export const createPatientData = (patientData,patientID) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
@@ -7,7 +7,7 @@ export const createPatientData = (patientData) => {
       .collection("doctors")
       .doc(authorId)
       .collection("patients")
-      .doc("GEgYjmcj7Rr2JHYFVVQG") //patient ID
+      .doc(patientID) //patient ID
       .update(
         {
           displayName: profile.displayName,

@@ -2,12 +2,16 @@ import React, { useState } from "react";
 
 import FormStepper from "../../form-stepper/form-stepper";
 import GeneralInformation from "./general-information";
-import MedicalHistory from './medical-history'
-import FamilialDiseases from './familial-diseases'
-import SmokingAlcohol from './smoking-alcohol'
+import MedicalHistory from "./medical-history";
+import FamilialDiseases from "./familial-diseases";
+import SmokingAlcohol from "./smoking-alcohol";
 import Confirm from "./confirm";
 
+import { useParams } from "react-router-dom";
+
 function GeneralMedicalHistoryForm() {
+  const { id } = useParams();
+
   const steps = [
     "General information",
     "Medical history",
@@ -36,6 +40,7 @@ function GeneralMedicalHistoryForm() {
         <>
           <FormStepper steps={steps} activeStep={activeStep} />
           <GeneralInformation
+            patientID={id}
             steps={steps}
             prevStep={prevStep}
             activeStep={activeStep}
@@ -60,34 +65,34 @@ function GeneralMedicalHistoryForm() {
         </>
       );
 
-      case 2:
-        return (
-          <>
-            <FormStepper steps={steps} activeStep={activeStep} />
-            <FamilialDiseases
-              steps={steps}
-              activeStep={activeStep}
-              formData={formData}
-              setFormData={setFormData}
-              nextStep={nextStep}
-              prevStep={prevStep}
-            />
-          </>
-        );
-      case 3:
-        return (
-          <>
-            <FormStepper steps={steps} activeStep={activeStep} />
-            <SmokingAlcohol
-              steps={steps}
-              activeStep={activeStep}
-              formData={formData}
-              setFormData={setFormData}
-              nextStep={nextStep}
-              prevStep={prevStep}
-            />
-          </>
-        );
+    case 2:
+      return (
+        <>
+          <FormStepper steps={steps} activeStep={activeStep} />
+          <FamilialDiseases
+            steps={steps}
+            activeStep={activeStep}
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+          />
+        </>
+      );
+    case 3:
+      return (
+        <>
+          <FormStepper steps={steps} activeStep={activeStep} />
+          <SmokingAlcohol
+            steps={steps}
+            activeStep={activeStep}
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+          />
+        </>
+      );
 
     case 4:
       return (

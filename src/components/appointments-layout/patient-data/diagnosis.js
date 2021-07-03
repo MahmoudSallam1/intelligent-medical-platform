@@ -11,7 +11,6 @@ import SpeechRecognition, {
 
 import Container from "@material-ui/core/Container";
 
-import FreeSoloCreateOptionDialog from "../../autocomplete-textfield/autocomplete";
 
 import MultipleTags from "../../autocomplete-textfield/multiple-autocomplete";
 import diagnoses from "../../../apis/diagnoses.json";

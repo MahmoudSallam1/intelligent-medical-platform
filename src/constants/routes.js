@@ -4,9 +4,19 @@ export const SIGN_IN = "/signin";
 export const DASHBOARD = "/dashboard";
 export const PATIENTS = "/patients";
 export const PATIENT_ID = "/patients/:id";
-export const MEDICAL_HISTORY = "/medical-history";
-export const PATIENT_DATA = "/patient-data";
+
+export const MEDICAL_HISTORY = "/patient-information";
+export const PATIENT_MEDICAL_HISTORY_DETAILS = "/patient-information/:id";
+
+export const PATIENT_DATA = "/medical-data";
+export const PATIENT_DATA_DETAILS = "/medical-data/:id";
+
 export const PRESCRIPTION = "/prescription";
+export const PRESCRIPTION_DETAILS = "/prescription/:id";
+
+
+
+
 export const PROFILE = "/profile";
 export const CALENDER = "/calender";
 
