@@ -48,12 +48,18 @@ function App() {
         <Route exact path={ROUTES.PATIENT_DATA}>
           <PatientDataPage />
         </Route>
-        <Route path={ROUTES.PATIENT_DATA_DETAILS}>medical data details</Route>
+        <Route path={ROUTES.PATIENT_DATA_DETAILS}>
+          {" "}
+          <PatientDataPage />
+        </Route>
 
         <Route exact path={ROUTES.PRESCRIPTION}>
           <PrescriptionPage />
         </Route>
-        <Route path={ROUTES.PRESCRIPTION_DETAILS}>prescription details</Route>
+        <Route path={ROUTES.PRESCRIPTION_DETAILS}>
+          {" "}
+          <PrescriptionPage />
+        </Route>
 
         <Route path={ROUTES.PROFILE}>
           <ProfilePage />

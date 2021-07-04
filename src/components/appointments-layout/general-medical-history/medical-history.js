@@ -204,7 +204,7 @@ function MedicalHistory({
       </div>
 
       <Grid container>
-        {patientGeneralMedicalHistoryArray.slice(0, 20).map((item) => (
+        {patientGeneralMedicalHistoryArray.slice(0, 4).map((item) => (
           <Grid key={item.id} item xs={6} sm={4} md={4} lg={3}>
             <FormLabel className={classes.breath} component="legend">
               {item.question}
@@ -287,24 +287,7 @@ function MedicalHistory({
       </Grid>
       <br></br>
       <br></br>
-      <div className={classes.btnGroup}>
-        <Button
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          className={classes.button}
-        >
-          Back
-        </Button>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleNext}
-          className={classes.button}
-        >
-          {activeStep === steps.length - 1 ? "Finish" : "Next"}
-        </Button>
-      </div>
 
     </div>
   );

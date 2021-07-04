@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
+
 function GeneralMedicalHistoryPage(props) {
   const { auth } = props;
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
@@ -16,6 +17,7 @@ function GeneralMedicalHistoryPage(props) {
   return (
     <DashboardLayout pageTitle="Patient Information">
       <GeneralMedicalHistory />
+
     </DashboardLayout>
   );
 }

@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import FormStepper from "../../form-stepper/form-stepper";
+import { connect } from "react-redux";
 
 import Prescription from "./prescription";
 import Confirm from "./confirm";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import AppoitmentLinks from "../appointment-links/appointment-links";
+import { useParams } from "react-router-dom";
+import firebase from "../../../firebase/firebase";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -18,14 +22,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PrescriptionForm() {
+const db = firebase.firestore();
+
+function PrescriptionForm({auth}) {
   const classes = useStyles();
+  const { id } = useParams();
+
   const steps = ["Prescription", "Confirm"];
 
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
     prescription: "",
   });
+
+  const getPatientDetails = () => {
+    db.collection(`doctors/${auth.uid}/patients`)
+      .doc(id)
+      .get()
+      .then((docRef) => {
+        setFormData(docRef.data().prescriptions);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getPatientDetails();
+  }, []);
   const nextStep = () => setActiveStep((prev) => prev + 1);
   const prevStep = () => setActiveStep((prev) => prev - 1);
 
@@ -65,6 +87,7 @@ function PrescriptionForm() {
 
   return (
     <>
+      <AppoitmentLinks id={id} />
       <FormStepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (
@@ -91,4 +114,10 @@ function PrescriptionForm() {
   );
 }
 
-export default PrescriptionForm;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps, null)(PrescriptionForm);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -13,6 +13,7 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 
 import DateFnsUtils from "@date-io/date-fns";
+import { connect } from "react-redux";
 
 import {
   MuiPickersUtilsProvider,
@@ -20,6 +21,7 @@ import {
 } from "@material-ui/pickers";
 
 import { makeStyles } from "@material-ui/core/styles";
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,15 +51,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function GeneralInformation({
-  patientID,
   formData,
   setFormData,
   nextStep,
   prevStep,
   activeStep,
   steps,
+  auth,
 }) {
   const classes = useStyles();
+
+
+
 
   function handleNext(e) {
     e.preventDefault();
@@ -137,7 +142,7 @@ function GeneralInformation({
               autoFocus
             />
 
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDatePicker
                 margin="normal"
                 id="date-picker-dialog"
@@ -155,7 +160,7 @@ function GeneralInformation({
                   "aria-label": "change date",
                 }}
               />
-            </MuiPickersUtilsProvider>
+            </MuiPickersUtilsProvider> */}
 
             <FormLabel className={classes.breath} component="legend">
               Gender
@@ -253,26 +258,15 @@ function GeneralInformation({
           </Grid>
         </Grid>
       </form>{" "}
-      <div className={classes.btnGroup}>
-        <Button
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          className={classes.button}
-        >
-          Back
-        </Button>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleNext}
-          className={classes.button}
-        >
-          {activeStep === steps.length - 1 ? "Finish" : "Next"}
-        </Button>
-      </div>
     </Container>
   );
 }
 
-export default GeneralInformation;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps, null)(GeneralInformation);

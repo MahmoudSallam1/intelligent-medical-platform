@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import FormStepper from "../../form-stepper/form-stepper";
 import Button from "@material-ui/core/Button";
@@ -7,6 +7,11 @@ import MedicalReports from "./medical-reports";
 import Diagnosis from "./diagnosis";
 import Confirm from "./confirm";
 import { makeStyles } from "@material-ui/core/styles";
+
+import firebase from "../../../firebase/firebase";
+import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
+import AppoitmentLinks from "../appointment-links/appointment-links";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -17,21 +22,37 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
 }));
+const db = firebase.firestore();
 
-function PatientDataForm() {
+function PatientDataForm({ auth }) {
+  const { id } = useParams();
+
   const classes = useStyles();
 
   const steps = ["Medical Reports", "Diagnosis", "Confirm"];
 
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
-    diagnosis: [],
+    diagnosis: "",
     symptoms: "",
     comments: "",
   });
 
   const [tags, setTags] = useState([]);
 
+  const getPatientDetails = () => {
+    db.collection(`doctors/${auth.uid}/patients`)
+      .doc(id)
+      .get()
+      .then((docRef) => {
+        setFormData(docRef.data().medicalData);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getPatientDetails();
+  }, []);
 
   const nextStep = (e) => {
     e.preventDefault();
@@ -47,10 +68,18 @@ function PatientDataForm() {
       case 0:
         return <MedicalReports formData={formData} setFormData={setFormData} />;
       case 1:
-        return <Diagnosis tags={tags} setTags={setTags} formData={formData} setFormData={setFormData} />;
+        return (
+          <Diagnosis
+            tags={tags}
+            setTags={setTags}
+            formData={formData}
+            setFormData={setFormData}
+          />
+        );
       case 2:
         return (
           <Confirm
+            patientID={id}
             setActiveStep={setActiveStep}
             formData={formData}
             setFormData={setFormData}
@@ -67,6 +96,7 @@ function PatientDataForm() {
 
   return (
     <>
+      <AppoitmentLinks id={id} />
       <FormStepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (
@@ -93,4 +123,10 @@ function PatientDataForm() {
   );
 }
 
-export default PatientDataForm;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps, null)(PatientDataForm);

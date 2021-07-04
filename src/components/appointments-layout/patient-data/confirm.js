@@ -22,6 +22,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
+import firebase from "../../../firebase/firebase";
+
 const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
@@ -34,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Confirm({
   createPatientData,
+  patientID,
   formData,
   setFormData,
   prevStep,
@@ -58,22 +61,25 @@ function Confirm({
     e.preventDefault();
     setIsSubmitting(true);
     console.log("submitting to DB...");
+
+    newTags.push(formData.diagnosis);
+
     createPatientData(
       {
         ...formData,
-        diagnosis: newTags,
+        diagnosis: newTags
       },
-      "66"
+      patientID
     );
+
     setOpen(true);
     setIsSubmitting(false);
     setTags([]);
-    setFormData({});
+    // setFormData({});
   }
 
+  console.log(newTags);
 
-
-  
   return (
     <Container>
       <Grid container>
