@@ -224,9 +224,9 @@ function PatientDetails(props) {
                 </Grid>
               </ModernCard>
             </Link>
-          ) : (
+          ) : !patient.patientInformation ? (
             <CircularProgress />
-          )}
+          ) : null}
         </Grid>
         <Grid item xs={12} sm={6}>
           {patient.medicalData ? (
@@ -268,9 +268,9 @@ function PatientDetails(props) {
                 </div>
               </ModernCard>
             </Link>
-          ) : (
+          ) : !patient.patientInformation ? (
             <CircularProgress />
-          )}
+          ) : null}
         </Grid>
         <Grid item xs={12} sm={6}>
           {patient.prescriptions ? (
@@ -314,9 +314,9 @@ function PatientDetails(props) {
                 </div>
               </ModernCard>
             </Link>
-          ) : (
+          ) : !patient.patientInformation ? (
             <CircularProgress />
-          )}
+          ) : null}
         </Grid>
       </Grid>
     </div>

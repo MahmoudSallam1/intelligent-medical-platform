@@ -62,12 +62,11 @@ function Confirm({
     setIsSubmitting(true);
     console.log("submitting to DB...");
 
-    newTags.push(formData.diagnosis);
 
     createPatientData(
       {
         ...formData,
-        diagnosis: newTags
+        diagnosis: newTags.join(" ,") + " ," + formData.diagnosis,
       },
       patientID
     );

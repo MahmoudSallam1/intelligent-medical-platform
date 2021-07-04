@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 function Confirm({
   createPrescription,
   formData,
+  patientID,
   setFormData,
   prevStep,
   activeStep,
@@ -62,10 +63,9 @@ function Confirm({
     setIsSubmitting(true);
     console.log("submitting to DB...");
     // await sleep(2000);
-    createPrescription(formData);
+    createPrescription(formData, patientID);
     setOpen(true);
     setIsSubmitting(false);
-    setFormData({});
   }
 
   return (
@@ -77,11 +77,18 @@ function Confirm({
             <List>
               <ListItem>
                 <ListItemText
-                  primary="Prescription"
-                  secondary={formData.prescription}
+                  primary="Medications"
+                  secondary={formData.medications}
                 />
               </ListItem>
               <Divider />
+
+              <ListItem>
+                <ListItemText
+                  primary="Medications"
+                  secondary={formData.dosages}
+                />
+              </ListItem>
             </List>
             <br />
 
@@ -146,8 +153,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPrescription: (prescription) =>
-      dispatch(createPrescription(prescription)),
+    createPrescription: (prescription, patientID) =>
+      dispatch(createPrescription(prescription, patientID)),
   };
 };
 

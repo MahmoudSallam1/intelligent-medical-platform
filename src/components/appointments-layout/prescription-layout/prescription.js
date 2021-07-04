@@ -78,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Prescription({
   profile,
+  patientInfo,
   formData,
   setFormData,
   nextStep,
@@ -214,21 +215,14 @@ function Prescription({
                       align={"left"}
                       variant="h6"
                     >
-                      Patient Name{" "}
+                      {patientInfo.fullName}
                     </Typography>
                     <Typography
                       className={classes.subtitle}
                       align={"left"}
                       variant="h6"
                     >
-                      Age{" "}
-                    </Typography>
-                    <Typography
-                      className={classes.subtitle}
-                      align={"left"}
-                      variant="h6"
-                    >
-                      Date{" "}
+                      {patientInfo.phoneNumber}
                     </Typography>
                   </div>
                 </div>
@@ -237,16 +231,29 @@ function Prescription({
                 <div style={{ marginTop: "2em" }}>
                   <TextField
                     id="standard-textarea"
-                    placeholder="Prescription"
+                    placeholder="Medications"
+                    value={formData.medications}
                     onChange={(e) => {
                       setFormData({
                         ...formData,
-                        prescription: e.target.value,
+                        medications: e.target.value,
                       });
                     }}
                     multiline
                     fullWidth
-                    value={formData.prescription}
+                  />
+                  <TextField
+                    id="standard-textarea"
+                    placeholder="Dosages"
+                    value={formData.dosages}
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        dosages: e.target.value,
+                      });
+                    }}
+                    multiline
+                    fullWidth
                   />
                 </div>
 

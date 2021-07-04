@@ -35,6 +35,14 @@ export const createPatientGeneralMedicalHistory = (
             ...generalMedicalHistory,
             createdAt: new Date(),
           },
+          medicalData: {
+            symptoms: "",
+            diagnosis: "",
+          },
+          prescriptions: {
+            dosages: "",
+            medications: "",
+          },
         })
         .then(() => {
           dispatch({ type: "CREATE_GENERAL_MEDCIAL_HISTORY_SUCCESS" });

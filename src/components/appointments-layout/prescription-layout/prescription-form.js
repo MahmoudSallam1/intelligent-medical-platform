@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import FormStepper from "../../form-stepper/form-stepper";
 import { connect } from "react-redux";
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const db = firebase.firestore();
 
-function PrescriptionForm({auth}) {
+function PrescriptionForm({ auth }) {
   const classes = useStyles();
   const { id } = useParams();
 
@@ -33,7 +33,9 @@ function PrescriptionForm({auth}) {
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
     prescription: "",
+    dosages: "",
   });
+  const [patientInfo, setPateintInfo] = useState({});
 
   const getPatientDetails = () => {
     db.collection(`doctors/${auth.uid}/patients`)
@@ -41,6 +43,7 @@ function PrescriptionForm({auth}) {
       .get()
       .then((docRef) => {
         setFormData(docRef.data().prescriptions);
+        setPateintInfo(docRef.data().patientInformation);
       })
       .catch((err) => console.error(err));
   };
@@ -57,6 +60,7 @@ function PrescriptionForm({auth}) {
         return (
           <>
             <Prescription
+              patientInfo={patientInfo}
               steps={steps}
               prevStep={prevStep}
               activeStep={activeStep}
@@ -71,6 +75,7 @@ function PrescriptionForm({auth}) {
         return (
           <>
             <Confirm
+              patientID={id}
               setActiveStep={setActiveStep}
               activeStep={activeStep}
               formData={formData}
