@@ -139,8 +139,9 @@ function PatientDetails(props) {
                     >
                       Full Name :{" "}
                       <span className={classes.info}>
-                        {patient.patientInformation &&
-                          patient.patientInformation.fullName}
+                        {(patient.patientInformation &&
+                          patient.patientInformation.fullName) ||
+                          "--"}
                       </span>
                     </Typography>
                     <Typography
@@ -150,8 +151,9 @@ function PatientDetails(props) {
                     >
                       Gender :{" "}
                       <span className={classes.info}>
-                        {patient.patientInformation &&
-                          patient.patientInformation.gender}
+                        {(patient.patientInformation &&
+                          patient.patientInformation.gender) ||
+                          "--"}
                       </span>
                     </Typography>
                     <Typography
@@ -161,8 +163,9 @@ function PatientDetails(props) {
                     >
                       Address :{" "}
                       <span className={classes.info}>
-                        {patient.patientInformation &&
-                          patient.patientInformation.address}
+                        {(patient.patientInformation &&
+                          patient.patientInformation.address) ||
+                          "--"}
                       </span>
                     </Typography>
                     <Typography
@@ -172,8 +175,9 @@ function PatientDetails(props) {
                     >
                       Phone Number:{" "}
                       <span className={classes.info}>
-                        {patient.patientInformation &&
-                          patient.patientInformation.phoneNumber}
+                        {(patient.patientInformation &&
+                          patient.patientInformation.phoneNumber) ||
+                          "--"}
                       </span>
                     </Typography>
                   </Grid>
@@ -187,8 +191,9 @@ function PatientDetails(props) {
                     >
                       Emergency Full Name :{" "}
                       <span className={classes.info}>
-                        {patient.patientInformation &&
-                          patient.patientInformation.emergencyFullName}
+                        {(patient.patientInformation &&
+                          patient.patientInformation.emergencyFullName) ||
+                          "--"}
                       </span>
                     </Typography>
                     <Typography
@@ -198,8 +203,9 @@ function PatientDetails(props) {
                     >
                       Emergency Phone Number :{" "}
                       <span className={classes.info}>
-                        {patient.patientInformation &&
-                          patient.patientInformation.emergencyPhoneNumber}
+                        {(patient.patientInformation &&
+                          patient.patientInformation.emergencyPhoneNumber) ||
+                          "--"}
                       </span>
                     </Typography>
                     <Typography
@@ -209,8 +215,9 @@ function PatientDetails(props) {
                     >
                       Relation :{" "}
                       <span className={classes.info}>
-                        {patient.patientInformation &&
-                          patient.patientInformation.relation}
+                        {(patient.patientInformation &&
+                          patient.patientInformation.relation) ||
+                          "--"}
                       </span>
                     </Typography>
                   </Grid>
@@ -241,10 +248,10 @@ function PatientDetails(props) {
                     variant="subtitle2"
                     gutterBottom
                   >
-                    Diagnosis :{" "}
+                    🤤 Diagnosis :{" "}
                     <span className={classes.info}>
-                      {patient.medicalData &&
-                        patient.medicalData.diagnosis.join(" 💊 ")}
+                      {(patient.medicalData && patient.medicalData.diagnosis) ||
+                        "--"}
                     </span>
                   </Typography>
                   <Typography
@@ -252,10 +259,10 @@ function PatientDetails(props) {
                     variant="subtitle2"
                     gutterBottom
                   >
-                    Symptoms :{" "}
+                    🤒 Symptoms :{" "}
                     <span className={classes.info}>
-                      {patient.medicalData &&
-                        patient.medicalData.symptoms.join(" 💊 ")}
+                      {(patient.medicalData && patient.medicalData.symptoms) ||
+                        "--"}
                     </span>
                   </Typography>
                 </div>
@@ -285,10 +292,11 @@ function PatientDetails(props) {
                     variant="subtitle2"
                     gutterBottom
                   >
-                    Medications :{" "}
+                    💊 Medications :{" "}
                     <span className={classes.info}>
-                      {patient.prescriptions &&
-                        patient.prescriptions.medications.join(" 💊 ")}
+                      {(patient.prescriptions &&
+                        patient.prescriptions.medications) ||
+                        "--"}
                     </span>
                   </Typography>
                   <Typography
@@ -296,10 +304,11 @@ function PatientDetails(props) {
                     variant="subtitle2"
                     gutterBottom
                   >
-                    Dosages :{" "}
+                    💊 Dosages :{" "}
                     <span className={classes.info}>
-                      {patient.prescriptions &&
-                        patient.prescriptions.dosages.join(" 💊 ")}
+                      {(patient.prescriptions &&
+                        patient.prescriptions.dosages) ||
+                        "--"}
                     </span>
                   </Typography>
                 </div>

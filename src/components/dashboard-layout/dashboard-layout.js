@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     background: "#F5F6FA",
   },
+  content: {
+    width: "100%"
+  },
 }));
 
 function DashboardLayout({ children, pageTitle, auth }) {
@@ -24,7 +27,7 @@ function DashboardLayout({ children, pageTitle, auth }) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBarAndDrawer pageTitle={pageTitle} />
-      {children}
+      <div className={classes.content}> {children}</div>
     </div>
   );
 }

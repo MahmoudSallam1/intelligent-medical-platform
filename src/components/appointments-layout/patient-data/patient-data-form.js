@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import firebase from "../../../firebase/firebase";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+
 import AppoitmentLinks from "../appointment-links/appointment-links";
 
 const useStyles = makeStyles((theme) => ({
@@ -96,7 +97,8 @@ function PatientDataForm({ auth }) {
 
   return (
     <>
-      <AppoitmentLinks id={id} />
+          <AppoitmentLinks id={id} />
+
       <FormStepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (

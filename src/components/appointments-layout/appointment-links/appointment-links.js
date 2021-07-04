@@ -1,37 +1,58 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as ROUTES from "../../../constants/routes";
+import { makeStyles } from "@material-ui/core/styles";
 
-function AppoitmentLinks({id}) {
+const useStyles = makeStyles((theme) => ({
+  links: {
+    // border: "1px solid #E0E0E0",
+    borderRadius: "30px",
+    width: "60%",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "space-evenly",
+    padding: "1em",
+    background: "#EEF9FE",
+    marginBottom: theme.spacing(4),
+  },
+  link: {
+    textDecoration: "none",
+    color: "#6B6C6F",
+  },
+}));
+
+const activeStyle = {
+  color: "#1DB5E4",
+  fontWeight: "500",
+  borderBottom: "1px solid #1DB5E4 ",
+};
+
+function AppoitmentLinks({ id }) {
+  const classes = useStyles();
+
   return (
-    <div>
-      <Link
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-        }}
+    <div className={classes.links}>
+      <NavLink
+        className={classes.link}
+        activeStyle={activeStyle}
         to={`${ROUTES.MEDICAL_HISTORY}/${id}`}
       >
         Patient Information
-      </Link>
-      <Link
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-        }}
+      </NavLink>
+      <NavLink
+        className={classes.link}
+        activeStyle={activeStyle}
         to={`${ROUTES.PATIENT_DATA}/${id}`}
       >
         Medical Data
-      </Link>
-      <Link
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-        }}
+      </NavLink>
+      <NavLink
+        className={classes.link}
+        activeStyle={activeStyle}
         to={`${ROUTES.PRESCRIPTION}/${id}`}
       >
         Intelligent Prescription
-      </Link>
+      </NavLink>
     </div>
   );
 }
