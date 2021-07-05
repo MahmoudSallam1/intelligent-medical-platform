@@ -12,6 +12,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
 
+import { ReactComponent as DeclineUser } from "./decline.svg";
+import { ReactComponent as AcceptUser } from "./accept.svg";
+
+import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
+
 const db = firebase.firestore();
 
 const useStyles = makeStyles((theme) => ({
@@ -39,10 +45,40 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     marginBottom: "1em",
   },
+  banner: {
+    backgroundImage: "url(/images/bg.png)",
+    backgroundRepeat: "no-repeat",
+    // backgroundBlendMode: "multiply",
+    backgroundColor: "#1DB5E4",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "230px",
+    borderRadius: "10px",
+    textAlign: "left",
+    display: "flex",
+    alignItems: "center",
+    // marginLeft:"0.7em",
+    // boxShadow: "0 3px 10px rgba(0, 0, 0, .06), 0 0 3px rgba(0, 0, 0, .04)",
+    transition:
+      ".3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12)",
+    "&:hover": {
+      transform: "scale(1.01)",
+      boxShadow:
+        " 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)",
+    },
+  },
+  bannerContent: {
+    marginLeft: "3em",
+  },
+  bannerSubheading: {
+    color: "#fff",
+    fontWeight: "300",
+  },
 }));
 
-function Dashboard({ auth }) {
+function Dashboard({ auth, profile }) {
   const [patients, setPatients] = useState([]);
+  const { personalInfo, clinicInfo } = profile;
 
   const classes = useStyles();
 
@@ -78,16 +114,66 @@ function Dashboard({ auth }) {
   return (
     <div className={classes.container}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={4}>
-          <ModernCard classStyle="style2">
-            <Typography variant="h6" gutterBottom>
-              Patient Information
-            </Typography>
-          </ModernCard>
+        <Grid item xs={12} sm={12} md={9}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={12}>
+              <ModernCard classStyle="style-image" >
+                {" "}
+                <div className={classes.bannerContent}>
+                  <Typography
+                    className={classes.whiteHeading}
+                    align={"left"}
+                    variant="h6"
+                    gutterBottom
+                  >
+                    Welcome{" "}
+                    {personalInfo &&
+                      `${personalInfo.firstName} ${personalInfo.lastName}`}{" "}
+                    !
+                  </Typography>
+                  <Typography
+                    className={classes.bannerSubheading}
+                    variant="subtitle2"
+                  >
+                    Let's check your health with us , Care with <br></br> your
+                    health from now to get more live better.
+                  </Typography>
+                </div>{" "}
+              </ModernCard>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <ModernCard classStyle="style2">
+                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+              </ModernCard>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <ModernCard classStyle="style2">
+                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+              </ModernCard>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <ModernCard classStyle="style2">
+                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+              </ModernCard>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <ModernCard classStyle="style2">
+                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+              </ModernCard>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <ModernCard classStyle="style2">
+                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+              </ModernCard>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4}>
+              <ModernCard classStyle="style2">
+                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+              </ModernCard>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={4}>
-          <ModernCard classStyle="style2">hellow </ModernCard>
-        </Grid>
+
         <Grid item xs={12} sm={12} md={3}>
           <ModernCard color="light" classStyle="style2">
             {" "}
@@ -103,44 +189,56 @@ function Dashboard({ auth }) {
             {patients.length ? (
               patients.map((patient) => (
                 <ModernCard key={patient.id} classStyle="style3">
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
-                  >
-                    <span className={classes.info}>
-                      {(patient && patient.fullName) || "--"}
-                    </span>
-                  </Typography>
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
-                  >
-                    {(patient && patient.phoneNumber) || "--"}
-                  </Typography>
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
-                  >
-                    {(patient && patient.address) || "--"}
-                  </Typography>
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
-                  >
-                    {/* {(patient && patient.createdAt.toDate().toDateString()) ||
+                  <div>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                      gutterBottom
+                    >
+                      <span className={classes.info}>
+                        {(patient && patient.fullName) || "--"}
+                      </span>
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                    >
+                      {(patient && patient.phoneNumber) || "--"}
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                    >
+                      {(patient && patient.address) || "--"}
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                    >
+                      {/* {(patient && patient.createdAt.toDate().toDateString()) ||
                       "--"}{" "} */}
-                    <span className={classes.info}>
-                      {(patient &&
-                        patient.createdAt
-                          .toDate()
-                          .toLocaleTimeString("en-US")) ||
-                        ""}
-                    </span>
-                  </Typography>
+                      <span className={classes.info}>
+                        {(patient &&
+                          patient.createdAt
+                            .toDate()
+                            .toLocaleTimeString("en-US")) ||
+                          ""}
+                      </span>
+                    </Typography>
+                  </div>
+                  <div>
+                    {" "}
+                    <DeclineUser />
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                      }}
+                      to={`${ROUTES.MEDICAL_HISTORY}/${patient.id}`}
+                    >
+                      <AcceptUser />
+                    </Link>
+                  </div>
                 </ModernCard>
               ))
             ) : (
@@ -156,6 +254,7 @@ function Dashboard({ auth }) {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
+    profile: state.firebase.profile,
   };
 };
 
