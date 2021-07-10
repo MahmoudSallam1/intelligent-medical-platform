@@ -13,7 +13,7 @@ import { ourFeaturesArray } from "./ourFeaturesArray";
 const useStyles = makeStyles((theme) => ({
   section: {
     backgroundColor: "#F5F6FA",
-    paddingBottom:"7em"
+    paddingBottom: "7em",
   },
   heroContent: {
     padding: theme.spacing(12, 0, 6),
@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.1",
     fontSize: "48px",
     textAlign: "center",
-    marginBottom:"5px",
-
+    marginBottom: "5px",
   },
 
   content: {
@@ -66,6 +65,7 @@ function OurFeatures() {
               <Grid item key={tier.id} xs={12} md={4}>
                 {/* <img className={classes.imageClass} src={tier.image} alt="" /> */}
                 <div className={`card card-${tier.id}`}>
+                  <img src={`/images/features/${tier.id}.png`} alt="our features" />
                   <h3>{tier.title}</h3>
                   <p>{tier.desc}</p>
                 </div>

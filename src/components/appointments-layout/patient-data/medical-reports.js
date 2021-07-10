@@ -38,27 +38,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MedicalReports({ formData, setFormData }) {
+function MedicalReports({ formData, setFormData, transcript }) {
   const classes = useStyles();
 
   const [isRecord, setIsRecord] = useState(false);
-  // const [initSymptoms, setInitSymptoms] = useState(symptoms);
+
+  const [files, setFiles] = useState([]);
+  const [open, setOpen] = useState(false);
 
   //Speech Recognition
-  const { transcript, resetTranscript, listening } = useSpeechRecognition();
 
   // if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
   //   return null;
   // }
 
-  // useEffect(() => {
-  //   if (!listening) {
-  //     setInitSymptoms(symptoms.concat(transcript));
-  //     resetTranscript();
-  //   } else {
-  //     setSymptoms(initSymptoms.concat(transcript));
-  //   }
-  // }, [listening, transcript]);
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      symptoms: transcript,
+    });
+  }, [transcript]);
 
   /* handling speech functions */
 
@@ -75,11 +74,18 @@ function MedicalReports({ formData, setFormData }) {
     SpeechRecognition.stopListening();
   };
 
-  const handleReset = () => {
-    handleStop();
-    resetTranscript();
+  const handleSave = (files) => {
+    setFiles(files);
   };
 
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  console.log(formData);
 
   return (
     <Container>
@@ -112,13 +118,13 @@ function MedicalReports({ formData, setFormData }) {
             <TextField
               id="symptoms"
               label="Symptoms"
-              value={formData.symptoms}
-              onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  symptoms: e.target.value,
-                });
-              }}
+              value={transcript}
+              // onChange={(e) => {
+              //   setFormData({
+              //     ...formData,
+              //     symptoms: transcript,
+              //   });
+              // }}
               multiline
               fullWidth
               rowsMax={4}
@@ -129,15 +135,15 @@ function MedicalReports({ formData, setFormData }) {
         </Grid>
 
         <br></br>
-        {/* <Typography
+        <Typography
           className={classes.gray}
           align={"left"}
           variant="h6"
           gutterBottom
         >
           Upload Reports / Radiology{" "}
-        </Typography> */}
-        {/* <Grid container spacing={2}>
+        </Typography>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={12}>
             <div style={{ textAlign: "left" }}>
               <Button variant="contained" color="primary" onClick={handleOpen}>
@@ -168,7 +174,7 @@ function MedicalReports({ formData, setFormData }) {
               />
             </div>
           </Grid>
-        </Grid> */}
+        </Grid>
       </form>{" "}
       <br></br>
       <br></br>

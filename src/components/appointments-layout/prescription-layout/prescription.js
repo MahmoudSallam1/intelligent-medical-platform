@@ -206,7 +206,7 @@ function Prescription({
                       align={"left"}
                       variant="h6"
                     >
-                      Working hours{" "}
+                      11 AM : 8 PM
                     </Typography>
                   </div>{" "}
                   <div>

@@ -10,6 +10,8 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Divider from "@material-ui/core/Divider";
 
+import CustomButton from "../custom-button/custom-button";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import SettingsIcon from "@material-ui/icons/Settings";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import HomeIcon from "@material-ui/icons/Home";
@@ -45,6 +47,48 @@ export const MainListItems = () => {
   return (
     <>
       <List>
+        {/* <Link
+          style={{
+            textDecoration: "none",
+            color: "black",
+          }}
+          to={ROUTES.MEDICAL_HISTORY}
+        >
+          {" "}
+          <CustomButton
+            type="submit"
+            variant="contained"
+            color="primary"
+            startIcon={<PersonAddIcon />}
+
+            style={{ marginLeft: "1em",marginBottom:"1em",marginTop:"1em"}}
+          >
+            New Appointment{" "}
+          </CustomButton>
+        </Link> */}
+        <Link
+          style={{
+            textDecoration: "none",
+          }}
+          to={ROUTES.MEDICAL_HISTORY}
+        >
+          {" "}
+          <ListItem
+            button
+            style={{
+              background: "#1DB5E4",
+              color: "#fff",
+              marginTop: "2em",
+              marginBottom: "2em",
+            
+            }}
+          >
+            <ListItemIcon>
+              <PersonAddIcon style={{ color: "#fff" }} />
+            </ListItemIcon>
+            <ListItemText primary="New Appointment" />
+          </ListItem>
+        </Link>
         <Link style={{ textDecoration: "none", color: "black" }} to="/">
           <ListItem button>
             <ListItemIcon>
@@ -79,15 +123,13 @@ export const MainListItems = () => {
           style={{ textDecoration: "none", color: "black" }}
           to={ROUTES.CALENDER}
         >
-           <ListItem button>
-          <ListItemIcon>
-            <EventNoteIcon />
-          </ListItemIcon>
-          <ListItemText primary="Calender" />
-        </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <EventNoteIcon />
+            </ListItemIcon>
+            <ListItemText primary="Calender" />
+          </ListItem>
         </Link>
-
- 
 
         <Link
           style={{ textDecoration: "none", color: "black" }}
@@ -104,23 +146,31 @@ export const MainListItems = () => {
 
       {/* second list */}
 
-      <Divider />
-
       <List>
-        <ListSubheader inset>Appointment</ListSubheader>
-        <Link
-          style={{ textDecoration: "none", color: "black" }}
+        {/* <ListSubheader inset>Appointment</ListSubheader> */}
+        {/* <Link
+          style={{
+            textDecoration: "none",
+            color: "black",
+          }}
           to={ROUTES.MEDICAL_HISTORY}
         >
           {" "}
-          <ListItem button>
+          <ListItem
+            button
+            style={{
+              textDecoration: "none",
+              color: "black",
+            }}
+          >
             <ListItemIcon>
               <AssignmentIcon />
             </ListItemIcon>
-            <ListItemText primary="Patient Information" />
+            <ListItemText primary="New Appointment" />
           </ListItem>
-        </Link>
+        </Link> */}
 
+        {/* 
         <Link
           style={{ textDecoration: "none", color: "black" }}
           to={ROUTES.PATIENT_DATA}
@@ -131,8 +181,8 @@ export const MainListItems = () => {
             </ListItemIcon>
             <ListItemText primary="Medical Data" />
           </ListItem>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           style={{ textDecoration: "none", color: "black" }}
           to={ROUTES.PRESCRIPTION}
         >
@@ -142,7 +192,7 @@ export const MainListItems = () => {
             </ListItemIcon>
             <ListItemText primary="Prescription" />
           </ListItem>
-        </Link>
+        </Link> */}
       </List>
     </>
   );

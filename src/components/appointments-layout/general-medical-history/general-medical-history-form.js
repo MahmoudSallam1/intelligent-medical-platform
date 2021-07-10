@@ -14,7 +14,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
 import AppoitmentLinks from "../appointment-links/appointment-links";
 
-
 const db = firebase.firestore();
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +64,8 @@ function GeneralMedicalHistoryForm({ auth }) {
     getPatientDetails();
   }, []);
 
+
+
   console.log(formData);
 
   const nextStep = () => setActiveStep((prev) => prev + 1);
@@ -88,7 +89,6 @@ function GeneralMedicalHistoryForm({ auth }) {
         return (
           <>
             <MedicalHistory
-        
               formData={formData}
               setFormData={setFormData}
               nextStep={nextStep}
@@ -112,7 +112,6 @@ function GeneralMedicalHistoryForm({ auth }) {
         return (
           <>
             <SmokingAlcohol
-         
               formData={formData}
               setFormData={setFormData}
               nextStep={nextStep}
@@ -145,7 +144,7 @@ function GeneralMedicalHistoryForm({ auth }) {
   return (
     <>
       {" "}
-      <AppoitmentLinks id={id}/>
+      {id ? <AppoitmentLinks id={id} /> : null}
       <FormStepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (

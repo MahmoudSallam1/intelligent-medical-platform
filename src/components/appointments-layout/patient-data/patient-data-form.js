@@ -14,6 +14,12 @@ import { useParams } from "react-router-dom";
 
 import AppoitmentLinks from "../appointment-links/appointment-links";
 
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+
+
+
 const useStyles = makeStyles((theme) => ({
   btn: {
     marginRight: theme.spacing(1),
@@ -29,6 +35,9 @@ function PatientDataForm({ auth }) {
   const { id } = useParams();
 
   const classes = useStyles();
+  const { transcript, resetTranscript } = useSpeechRecognition();
+
+
 
   const steps = ["Medical Reports", "Diagnosis", "Confirm"];
 
@@ -67,7 +76,7 @@ function PatientDataForm({ auth }) {
   const renderForm = (activeStep) => {
     switch (activeStep) {
       case 0:
-        return <MedicalReports formData={formData} setFormData={setFormData} />;
+        return <MedicalReports transcript={transcript}  formData={formData} setFormData={setFormData} />;
       case 1:
         return (
           <Diagnosis

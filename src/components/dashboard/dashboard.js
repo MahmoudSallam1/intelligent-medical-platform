@@ -18,6 +18,10 @@ import { ReactComponent as AcceptUser } from "./accept.svg";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 
+import PrescribedMedicineChart from "./insights/prescribed-medicine-chart";
+import NumberOfPatientsChart from "./insights/number-of-patients-chart";
+import NumberOfBookingChart from './insights/number-of-booking-chart'
+
 const db = firebase.firestore();
 
 const useStyles = makeStyles((theme) => ({
@@ -117,7 +121,7 @@ function Dashboard({ auth, profile }) {
         <Grid item xs={12} sm={12} md={9}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={12}>
-              <ModernCard classStyle="style-image" >
+              <ModernCard classStyle="style-image">
                 {" "}
                 <div className={classes.bannerContent}>
                   <Typography
@@ -141,19 +145,20 @@ function Dashboard({ auth, profile }) {
                 </div>{" "}
               </ModernCard>
             </Grid>
-            <Grid item xs={12} sm={12} md={4}>
+            <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
-                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+                <PrescribedMedicineChart />
               </ModernCard>
             </Grid>
-            <Grid item xs={12} sm={12} md={4}>
+
+            <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
-                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+                <NumberOfPatientsChart />{" "}
               </ModernCard>
             </Grid>
-            <Grid item xs={12} sm={12} md={4}>
+            <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
-                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
+                <NumberOfBookingChart />{" "}
               </ModernCard>
             </Grid>
             <Grid item xs={12} sm={12} md={4}>

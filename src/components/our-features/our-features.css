@@ -2,9 +2,10 @@
     background: #fff;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .02), 0 0 6px rgba(0, 0, 0, .03);
     transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-    padding: 14px 80px 18px 36px;
-    cursor: pointer;
+    padding: 2em 2em;
     border-radius:10px;
+    text-align: center;
+    height: 310px;
 }
 
 .card:hover {
@@ -21,8 +22,12 @@
     font-weight: 400;
 
 }
+.card img{
+    max-width: 100%;
+    width:120px;
+}
 
-.card img {
+/* .card img {
     position: absolute;
     top: 20px;
     right: 15px;
@@ -66,7 +71,7 @@
     background-repeat: no-repeat;
     background-position: right;
     background-size: 80px;
-}
+} */
 
 @media(max-width: 990px) {
     .card {

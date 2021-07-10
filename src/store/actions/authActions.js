@@ -40,6 +40,7 @@ export const signUp = ({ email, password, displayName }) => {
           .collection("doctors")
           .doc(res.user.uid)
           .set({
+            id:res.user.uid,
             displayName: displayName,
             createdAt: new Date(),
             personalInfo: {

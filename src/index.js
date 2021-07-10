@@ -29,6 +29,11 @@ const store = createStore(
 
 const theme = createMuiTheme({
   // shadows: ["none"],
+
+  typography: {
+    button: {
+      textTransform: 'none'
+    }},
   palette: {
     primary: {
       light: "#1DB5E4",
