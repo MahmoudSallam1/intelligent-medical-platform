@@ -1,13 +1,14 @@
 .card-team {
     text-align: center;
 
+
     /* height: 310px; */
 }
 
 
 .card-team h3 {
-    font-weight: 600;
-    color: #094067;
+    font-weight: 500;
+    color: #6B6C6F;
     text-transform: uppercase;
     margin-bottom: 0;
 }
@@ -17,6 +18,7 @@
     font-weight: 500;
     font-size: 0.9rem;
     color:#1DB5E4;
+    margin-bottom: 0;
 
 }
 

@@ -12,7 +12,7 @@ import { ourTeamArray } from "./ourTeamArray";
 
 const useStyles = makeStyles((theme) => ({
   section: {
-    backgroundColor: "#fff",
+    backgroundColor: "#EEF9FE",
     paddingBottom: "7em",
   },
   heroContent: {
@@ -50,16 +50,17 @@ function OurTeam() {
             <Box fontWeight="fontWeightBold">Meet our team</Box>
           </Typography>
           <Typography className={classes.content} variant="body1" gutterBottom>
-            A platform that adapts to your needs.
+             A team that helps clinics develop and takes pride in
+            seeing wellness done right.
           </Typography>
         </Container>
 
         <Container maxWidth="lg" component="main">
-          <Grid container spacing={5} >
+          <Grid container spacing={5}>
             {ourTeamArray.map((tier) => (
-              <Grid item key={tier.id} xs={12} md={3}>
+              <Grid item key={tier.id} xs={12} md={4}>
                 <div className="card-team">
-                  <img src={`/images/team/1.png`} alt="our team" />
+                  <img src={`/images/team/${tier.id}.png`} alt="our team" />
 
                   <div className="container">
                     {" "}

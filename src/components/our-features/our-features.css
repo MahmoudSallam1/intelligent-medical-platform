@@ -20,11 +20,16 @@
 .card p{
     color: #5f6c7b;
     font-weight: 400;
+    margin-bottom: 0;
 
 }
 .card img{
     max-width: 100%;
     width:120px;
+}
+
+.card a{
+    margin-top: 0;
 }
 
 

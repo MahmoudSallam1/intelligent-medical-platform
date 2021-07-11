@@ -150,30 +150,78 @@ function Dashboard({ auth, profile }) {
             </Grid>
             <Grid item xs={12} sm={12} md={12}>
               <ModernCard classStyle="style2">
+                <Typography
+                  className={classes.subHeading}
+                  variant="subtitle2"
+                  gutterBottom
+                  style={{ textAlign: "center" }}
+                >
+                  <span className={classes.info}>
+                    Number of Bookings(Online vs Phone) per Month
+                  </span>
+                </Typography>
                 <NumberOfBookingChart />{" "}
               </ModernCard>
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
+                <Typography
+                  className={classes.subHeading}
+                  variant="subtitle2"
+                  gutterBottom
+                  style={{ textAlign: "center" }}
+                >
+                  <span className={classes.info}>
+                    Freqency of most Prescribed Medicine
+                  </span>
+                </Typography>
                 <PrescribedMedicineChart />
               </ModernCard>
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
+                <Typography
+                  className={classes.subHeading}
+                  variant="subtitle2"
+                  gutterBottom
+                  style={{ textAlign: "center" }}
+                >
+                  <span className={classes.info}>
+                    Frequency of Patient Age Groups
+                  </span>
+                </Typography>
                 <PatientAgeGroupChart />{" "}
               </ModernCard>
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
+              <Typography
+                  className={classes.subHeading}
+                  variant="subtitle2"
+                  gutterBottom
+                  style={{ textAlign: "center" }}
+                >
+                  <span className={classes.info}>
+                    Number of Patients per Month
+                  </span>
+                </Typography>
                 <NumberOfPatientsChart />{" "}
               </ModernCard>
             </Grid>
 
-         
-
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
-              <CommonDiseasesChart/>
+              <Typography
+                  className={classes.subHeading}
+                  variant="subtitle2"
+                  gutterBottom
+                  style={{ textAlign: "center" }}
+                >
+                  <span className={classes.info}>
+                    Common Diseases between Males and Females
+                  </span>
+                </Typography>
+                <CommonDiseasesChart />
               </ModernCard>
             </Grid>
             {/* <Grid item xs={12} sm={12} md={4}>
