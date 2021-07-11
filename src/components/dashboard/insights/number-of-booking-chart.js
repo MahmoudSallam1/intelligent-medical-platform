@@ -11,52 +11,45 @@ import {
 } from "recharts";
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    name: "March",
+    online: 20,
+    phone: 100,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    name: "April",
+    online: 50,
+    phone: 110,
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    name: "May",
+    online: 100,
+    phone: 120,
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    name: "June",
+    online: 170,
+    phone: 130,
   },
   {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    name: "July",
+    online: 300,
+    phone: 120,
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    name: "August",
+    online: 460,
+    phone: 100,
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    name: "September",
+    online: 600,
+    phone: 80,
   },
 ];
 function NumberOfBookingChart() {
   return (
     <div>
-      <ResponsiveContainer  height={240}>
+      <ResponsiveContainer height={240}>
         <LineChart
           width={500}
           height={300}
@@ -75,11 +68,11 @@ function NumberOfBookingChart() {
           <Legend />
           <Line
             type="monotone"
-            dataKey="pv"
+            dataKey="online"
             stroke="#1DB5E4"
             activeDot={{ r: 8 }}
           />
-          <Line type="monotone" dataKey="uv" stroke="#FAB91C" />
+          <Line type="monotone" dataKey="phone" stroke="#FAB91C" />
         </LineChart>
       </ResponsiveContainer>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -11,39 +11,37 @@ import {
 } from "recharts";
 const data = [
   {
-    name: "March",
-    patients: 120,
+    name: "Parkinson's",
+    male: 100,
+    female: 60,
   },
   {
-    name: "April",
-    patients: 160,
+    name: "Alzheimer's",
+    male: 110,
+    female: 105,
   },
   {
-    name: "May",
-    patients: 220,
+    name: "Huntington",
+    male: 17,
+    female: 9,
   },
   {
-    name: "June",
-    patients: 300,
+    name: "Epilepsy",
+    male: 203,
+    female: 170,
   },
   {
-    name: "July",
-    patients: 420,
+    name: "Migraines",
+    male: 130,
+    female: 250,
   },
-  {
-    name: "August",
-    patients: 560,
-  },
-  {
-    name: "September",
-    patients: 680,
-  },
+
 ];
-function NumberOfPatientsChart() {
+function CommonDiseasesChart() {
   return (
     <div>
       <ResponsiveContainer height={240}>
-        <LineChart
+        <BarChart
           width={500}
           height={300}
           data={data}
@@ -59,16 +57,12 @@ function NumberOfPatientsChart() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="patients"
-            stroke="#1DB5E4"
-            activeDot={{ r: 8 }}
-          />
-        </LineChart>
+          <Bar dataKey="male" fill="#1DB5E4" background={{ fill: "#eee" }} />
+          <Bar dataKey="female" fill="#FAB91C" />
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );
 }
 
-export default NumberOfPatientsChart;
+export default CommonDiseasesChart;

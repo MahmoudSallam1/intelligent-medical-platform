@@ -1,0 +1,45 @@
+.card-team {
+    text-align: center;
+
+    /* height: 310px; */
+}
+
+
+.card-team h3 {
+    font-weight: 600;
+    color: #094067;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.card-team h2{
+    color: #5f6c7b;
+    margin-top: 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color:#1DB5E4;
+
+}
+
+.card-team a{
+    color: #5f6c7b;
+    margin-top: 0;
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
+.card-team img{
+    max-width: 100%;
+    width:120px;
+}
+
+.card-team .container{
+}
+
+
+@media(max-width: 990px) {
+    .card-team {
+        margin: 20px;
+    }
+}

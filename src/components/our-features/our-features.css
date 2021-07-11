@@ -27,51 +27,6 @@
     width:120px;
 }
 
-/* .card img {
-    position: absolute;
-    top: 20px;
-    right: 15px;
-    max-height: 120px;
-}
-
-.card-1 {
-    background-image: url(./images/emr.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 80px;
-}
-
-.card-2 {
-    background-image: url(./images/pm.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 80px;
-}
-
-.card-3 {
-    background-image: url(./images/dict.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 80px;
-}
-.card-4 {
-    background-image: url(./images/scan.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 80px;
-}
-.card-5 {
-    background-image: url(./images/analytics.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 80px;
-}
-.card-6 {
-    background-image: url(./images/phone.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 80px;
-} */
 
 @media(max-width: 990px) {
     .card {

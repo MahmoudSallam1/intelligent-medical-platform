@@ -20,7 +20,10 @@ import * as ROUTES from "../../constants/routes";
 
 import PrescribedMedicineChart from "./insights/prescribed-medicine-chart";
 import NumberOfPatientsChart from "./insights/number-of-patients-chart";
-import NumberOfBookingChart from './insights/number-of-booking-chart'
+import NumberOfBookingChart from "./insights/number-of-booking-chart";
+
+import PatientAgeGroupChart from "./insights/patient-age-group-chart";
+import CommonDiseasesChart from "./insights/common-diseases-chart";
 
 const db = firebase.firestore();
 
@@ -145,37 +148,39 @@ function Dashboard({ auth, profile }) {
                 </div>{" "}
               </ModernCard>
             </Grid>
+            <Grid item xs={12} sm={12} md={12}>
+              <ModernCard classStyle="style2">
+                <NumberOfBookingChart />{" "}
+              </ModernCard>
+            </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
                 <PrescribedMedicineChart />
               </ModernCard>
             </Grid>
-
+            <Grid item xs={12} sm={12} md={6}>
+              <ModernCard classStyle="style2">
+                <PatientAgeGroupChart />{" "}
+              </ModernCard>
+            </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
                 <NumberOfPatientsChart />{" "}
               </ModernCard>
             </Grid>
+
+         
+
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
-                <NumberOfBookingChart />{" "}
+              <CommonDiseasesChart/>
               </ModernCard>
             </Grid>
-            <Grid item xs={12} sm={12} md={4}>
+            {/* <Grid item xs={12} sm={12} md={4}>
               <ModernCard classStyle="style2">
                 Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
               </ModernCard>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-              <ModernCard classStyle="style2">
-                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
-              </ModernCard>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-              <ModernCard classStyle="style2">
-                Easy Money Easy Money <br></br> Honey الطحينة بقى طعمها
-              </ModernCard>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
 
