@@ -15,7 +15,7 @@ export default function HomePage() {
       <HeroArea />
       <WhyUs />
       <OurFeatures />
-      {/* <OurTeam/> */}
+      <OurTeam/>
       <FAQ/>
       <Footer />
     </>
