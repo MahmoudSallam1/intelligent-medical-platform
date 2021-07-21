@@ -118,11 +118,11 @@ function MedicalReports({ formData, setFormData, transcript }) {
             <TextField
               id="symptoms"
               label="Symptoms"
-              value={formData.symptoms}
+              value={transcript}
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  symptoms: e.target.value,
+                  symptoms: transcript,
                 });
               }}
               multiline
