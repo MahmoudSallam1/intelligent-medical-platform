@@ -3,7 +3,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import "./main-nav.css";
 
-const MainNav = () => {
+function MainNav() {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -54,6 +54,6 @@ const MainNav = () => {
       </ul>
     </nav>
   );
-};
+}
 
 export default MainNav;

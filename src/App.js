@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import SignupPage from "./pages/SignUpPage";
 import SigninPage from "./pages/SignInPage";
 import GeneralMedicalHistoryPage from "./pages/general-medical-history";
@@ -55,7 +55,7 @@ function App() {
         <Route path={ROUTES.PATIENT_ID}>
           <PatientDetailsPage />
         </Route>
-        
+
         {/* Calender */}
 
         <Route path={ROUTES.CALENDER}>

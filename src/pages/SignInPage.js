@@ -20,9 +20,9 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "../store/actions/authActions";
 
-import MainNav from "../components/main-nav/main-nav";
+// import MainNav from "./Home/components/MainNav/MainNav";
 import CustomButton from "../components/custom-button/custom-button";
-import Footer from "../components/footer/footer";
+// import Footer from "./Home/components/footer/footer";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -92,7 +92,7 @@ function SignIn(props) {
 
   return (
     <div className={classes.section}>
-      <MainNav />
+      {/* <MainNav /> */}
 
       <Grid container component="main" className={classes.root}>
         <CssBaseline />
@@ -168,7 +168,6 @@ function SignIn(props) {
           </Box>
         </Grid>
       </Grid>
-      <Footer/>
     </div>
   );
 }

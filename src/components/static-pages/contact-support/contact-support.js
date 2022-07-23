@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import MainNav from "../../main-nav/main-nav";
+// import MainNav from "../../../pages/Home/components/MainNav/MainNav";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
@@ -8,7 +8,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import PhoneIcon from "@material-ui/icons/Phone";
 
-import Footer from "../../footer/footer";
+// import Footer from "../../../pages/Home/components/footer/footer";
 const useStyles = makeStyles((theme) => ({
   section: {
     width: "90%",
@@ -52,7 +52,6 @@ function ContactSupport() {
 
   return (
     <>
-      <MainNav />
       <section className={classes.section}>
         <Typography className={classes.heading} gutterBottom variant="h2">
           Contact support
@@ -107,7 +106,7 @@ function ContactSupport() {
           </Grid>
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

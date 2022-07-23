@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import PaperWrapper from "../../../components/paper-wrapper/paper-wrapper";
-import ModernCard from "../../../components/modern-card/modern-card";
+import ModernCard from "../../../components/ModernCard/ModernCard";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";

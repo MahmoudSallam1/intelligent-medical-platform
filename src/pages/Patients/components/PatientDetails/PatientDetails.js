@@ -8,7 +8,7 @@ import { useReactToPrint } from "react-to-print";
 
 import * as ROUTES from "../../../../constants/routes";
 
-import ModernCard from "../../../../components/modern-card/modern-card";
+import ModernCard from "../../../../components/ModernCard/ModernCard";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";

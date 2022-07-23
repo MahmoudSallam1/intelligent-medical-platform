@@ -17,13 +17,13 @@ import { Link } from "react-router-dom";
 
 import { signUp } from "../store/actions/authActions";
 
-import MainNav from "../components/main-nav/main-nav";
+// import MainNav from "./Home/components/MainNav/MainNav";
 
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import CustomButton from "../components/custom-button/custom-button";
-import Footer from "../components/footer/footer";
+// import Footer from "./Home/components/footer/footer";
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -80,7 +80,7 @@ function SignUp(props) {
 
   return (
     <div className={classes.section}>
-      <MainNav />
+      {/* <MainNav /> */}
       <Container className={classes.container} component="main" maxWidth="xs">
         <CssBaseline />
 
@@ -173,7 +173,6 @@ function SignUp(props) {
           </form>
         </Box>
       </Container>
-      <Footer />
     </div>
   );
 }
