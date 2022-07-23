@@ -3,9 +3,10 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import {ThemeProvider } from "@material-ui/core/styles";
+import {theme} from './theme/theme'
 
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./store/reducers/rootReducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -27,42 +28,7 @@ const store = createStore(
   )
 );
 
-const theme = createMuiTheme({
-  // shadows: ["none"],
 
-  typography: {
-    button: {
-      textTransform: 'none'
-    }},
-  palette: {
-    primary: {
-      light: "#1DB5E4",
-      main: "#1DB5E4",
-      dark: "#FAB91C",
-      contrastText: "#fff",
-    },
-    secondary: {
-      light: "#FAB91C",
-      main: "#FAB91C",
-      dark: "#FAB91C",
-      contrastText: "#fff",
-    },
-    typography: {
-      fontFamily: [
-        "-apple-system",
-        "BlinkMacSystemFont",
-        '"Segoe UI"',
-        "Roboto",
-        '"Helvetica Neue"',
-        "Arial",
-        "sans-serif",
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(","),
-    },
-  },
-});
 
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
