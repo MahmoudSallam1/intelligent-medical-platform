@@ -13,18 +13,15 @@ import ProfilePage from "./pages/ProfilePage";
 import ContactSupportPage from "./pages/contact-support";
 import CalenderPage from "./pages/calender";
 
-import PatientsPage from "./pages/patients";
+import PatientsPage from "./pages/Patients/PatientsPage";
 
 import DashboardPage from "./pages/Dashboard/DashboardPage";
 
-import PatientDetailsPage from "./pages/patient-details-page";
+import PatientDetailsPage from "./pages/Patients/components/PatientDetails/PatientDetails";
 
 import ErrorPage from "./pages/ErrorPage";
 
-
 // Message from ك.ض.ح
-
-
 
 function App() {
   return (
@@ -40,7 +37,7 @@ function App() {
           <SigninPage />
         </Route>
 
-         {/* Dashboard Main Route */}
+        {/* Dashboard Main Route */}
         <Route exact path={ROUTES.DASHBOARD}>
           <DashboardPage />
         </Route>
@@ -49,20 +46,21 @@ function App() {
           <ProfilePage />
         </Route>
 
+        {/* Patients */}
+
         <Route exact path={ROUTES.PATIENTS}>
           <PatientsPage />
         </Route>
-        
+
         <Route path={ROUTES.PATIENT_ID}>
           <PatientDetailsPage />
         </Route>
+        
+        {/* Calender */}
 
         <Route path={ROUTES.CALENDER}>
           <CalenderPage />
         </Route>
-
-
-
 
         <Route exact path={ROUTES.MEDICAL_HISTORY}>
           <GeneralMedicalHistoryPage />
@@ -87,13 +85,10 @@ function App() {
           <PrescriptionPage />
         </Route>
 
-       
         <Route path={ROUTES.CONTACT_SUPPORT}>
           <ContactSupportPage />
         </Route>
-      
-    
-    
+
         <Route path={ROUTES.ERROR}>
           <ErrorPage />
         </Route>

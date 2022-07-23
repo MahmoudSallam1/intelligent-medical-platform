@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import PatientDetails from "../components/patients/patient-details/patient-details";
+import PatientDetails from "./Patients/components/patient-details/patient-details";
 
 function PatientDetailsPage(props) {
   const { auth } = props;

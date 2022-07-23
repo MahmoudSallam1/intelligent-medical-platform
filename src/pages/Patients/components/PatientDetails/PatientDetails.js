@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import firebase from "../../../firebase/firebase";
+import firebase from "../../../../firebase/firebase";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { useReactToPrint } from "react-to-print";
 
-import * as ROUTES from "../../../constants/routes";
+import * as ROUTES from "../../../../constants/routes";
 
-import ModernCard from "../../modern-card/modern-card";
+import ModernCard from "../../../../components/modern-card/modern-card";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
