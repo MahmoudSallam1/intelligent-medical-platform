@@ -15,7 +15,7 @@ import CalenderPage from "./pages/calender";
 
 import PatientsPage from "./pages/patients";
 
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./pages/Dashboard/DashboardPage";
 
 import PatientDetailsPage from "./pages/patient-details-page";
 
@@ -39,9 +39,30 @@ function App() {
         <Route path={ROUTES.SIGN_IN}>
           <SigninPage />
         </Route>
-        <Route path={ROUTES.DASHBOARD}>
+
+         {/* Dashboard Main Route */}
+        <Route exact path={ROUTES.DASHBOARD}>
           <DashboardPage />
         </Route>
+
+        <Route path={ROUTES.PROFILE}>
+          <ProfilePage />
+        </Route>
+
+        <Route exact path={ROUTES.PATIENTS}>
+          <PatientsPage />
+        </Route>
+        
+        <Route path={ROUTES.PATIENT_ID}>
+          <PatientDetailsPage />
+        </Route>
+
+        <Route path={ROUTES.CALENDER}>
+          <CalenderPage />
+        </Route>
+
+
+
 
         <Route exact path={ROUTES.MEDICAL_HISTORY}>
           <GeneralMedicalHistoryPage />
@@ -66,21 +87,13 @@ function App() {
           <PrescriptionPage />
         </Route>
 
-        <Route path={ROUTES.PROFILE}>
-          <ProfilePage />
-        </Route>
+       
         <Route path={ROUTES.CONTACT_SUPPORT}>
           <ContactSupportPage />
         </Route>
-        <Route exact path={ROUTES.PATIENTS}>
-          <PatientsPage />
-        </Route>
-        <Route path={ROUTES.PATIENT_ID}>
-          <PatientDetailsPage />
-        </Route>
-        <Route path={ROUTES.CALENDER}>
-          <CalenderPage />
-        </Route>
+      
+    
+    
         <Route path={ROUTES.ERROR}>
           <ErrorPage />
         </Route>

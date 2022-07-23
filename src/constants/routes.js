@@ -1,9 +1,19 @@
 export const HOME = "/";
 export const SIGN_UP = "/signup";
 export const SIGN_IN = "/signin";
+
+// Dashboard Routes
 export const DASHBOARD = "/dashboard";
-export const PATIENTS = "/patients";
-export const PATIENT_ID = "/patients/:id";
+export const PROFILE = "/dashboard/profile";
+export const CALENDER = "/dashboard/calender";
+export const PATIENTS = "/dashboard/patients";
+export const PATIENT_ID = "/dashboard/patients/:id";
+
+
+
+
+
+
 
 export const MEDICAL_HISTORY = "/patient-information";
 export const PATIENT_MEDICAL_HISTORY_DETAILS = "/patient-information/:id";
@@ -17,8 +27,6 @@ export const PRESCRIPTION_DETAILS = "/prescription/:id";
 
 
 
-export const PROFILE = "/profile";
-export const CALENDER = "/calender";
 
 export const CONTACT_SUPPORT = "/contact-support";
 export const TERMS_OF_SERVICES = "/terms-of-services";

@@ -2,28 +2,28 @@ import React, { useState, useEffect } from "react";
 import Divider from "@material-ui/core/Divider";
 
 import Grid from "@material-ui/core/Grid";
-import firebase from "../../firebase/firebase";
+import firebase from "../../../firebase/firebase";
 import { connect } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import PaperWrapper from "../paper-wrapper/paper-wrapper";
-import ModernCard from "../modern-card/modern-card";
+import PaperWrapper from "../../../components/paper-wrapper/paper-wrapper";
+import ModernCard from "../../../components/modern-card/modern-card";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
 
-import { ReactComponent as DeclineUser } from "./decline.svg";
-import { ReactComponent as AcceptUser } from "./accept.svg";
+import { ReactComponent as DeclineUser } from "./icons/decline.svg";
+import { ReactComponent as AcceptUser } from "./icons/accept.svg";
 
 import { Link } from "react-router-dom";
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "../../../constants/routes";
 
-import PrescribedMedicineChart from "./insights/prescribed-medicine-chart";
-import NumberOfPatientsChart from "./insights/number-of-patients-chart";
-import NumberOfBookingChart from "./insights/number-of-booking-chart";
+import PrescribedMedicineChart from "./insights/PrescribedMedicineChart";
+import NumberOfPatientsChart from "./insights/NumberOfPatientsChart";
+import NumberOfBookingChart from "./insights/NumberOfBookingChart";
 
-import PatientAgeGroupChart from "./insights/patient-age-group-chart";
-import CommonDiseasesChart from "./insights/common-diseases-chart";
+import PatientAgeGroupChart from "./insights/PatientAgeGroupChart";
+import CommonDiseasesChart from "./insights/CommonDiseasesChart";
 
 const db = firebase.firestore();
 
@@ -195,7 +195,7 @@ function Dashboard({ auth, profile }) {
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
-              <Typography
+                <Typography
                   className={classes.subHeading}
                   variant="subtitle2"
                   gutterBottom
@@ -211,7 +211,7 @@ function Dashboard({ auth, profile }) {
 
             <Grid item xs={12} sm={12} md={6}>
               <ModernCard classStyle="style2">
-              <Typography
+                <Typography
                   className={classes.subHeading}
                   variant="subtitle2"
                   gutterBottom

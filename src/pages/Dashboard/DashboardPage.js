@@ -1,10 +1,8 @@
 import React from "react";
 
+import Dashboard from "./components/dashboard";
 
-import Dashboard from "../components/dashboard/dashboard";
-
-
-import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
+import DashboardLayout from "../../layouts/Dashboard/DashboardLayout";
 
 function DashboardPage() {
   return (
