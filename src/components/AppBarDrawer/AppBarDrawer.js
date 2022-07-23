@@ -5,7 +5,6 @@ import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
@@ -16,9 +15,8 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import EventNoteIcon from "@material-ui/icons/EventNote";
 
-import { MainListItems } from "./list-items";
+import  MainListItems  from "./MainListItems";
 
-import LogOut from "./log-out";
 
 import { connect } from "react-redux";
 
@@ -172,10 +170,7 @@ function AppBarAndDrawer({ pageTitle, profile }) {
         </div>
         <Divider />
         <MainListItems />
-        <Divider />
-        <List>
-          <LogOut />
-        </List>
+      
       </Drawer>
 
       {/* end of nav and drawer */}

@@ -9,7 +9,7 @@ import SigninPage from "./pages/SignInPage";
 import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
-import ProfilePage from "./pages/profile";
+import ProfilePage from "./pages/ProfilePage";
 import ContactSupportPage from "./pages/contact-support";
 import CalenderPage from "./pages/calender";
 

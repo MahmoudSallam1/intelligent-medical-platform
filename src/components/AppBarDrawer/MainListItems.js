@@ -6,17 +6,18 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
-import AssignmentIcon from "@material-ui/icons/Assignment";
-import ListSubheader from "@material-ui/core/ListSubheader";
 import Divider from "@material-ui/core/Divider";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-import CustomButton from "../custom-button/custom-button";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import SettingsIcon from "@material-ui/icons/Settings";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import HomeIcon from "@material-ui/icons/Home";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+
+import { connect } from "react-redux";
+import { signOut } from "../../store/actions/authActions";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -37,7 +38,7 @@ const ListItem = withStyles({
   selected: {},
 })(MuiListItem);
 
-export const MainListItems = () => {
+function MainListItems(props) {
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const handleListItemClick = (index) => {
@@ -47,25 +48,6 @@ export const MainListItems = () => {
   return (
     <>
       <List>
-        {/* <Link
-          style={{
-            textDecoration: "none",
-            color: "black",
-          }}
-          to={ROUTES.MEDICAL_HISTORY}
-        >
-          {" "}
-          <CustomButton
-            type="submit"
-            variant="contained"
-            color="primary"
-            startIcon={<PersonAddIcon />}
-
-            style={{ marginLeft: "1em",marginBottom:"1em",marginTop:"1em"}}
-          >
-            New Appointment{" "}
-          </CustomButton>
-        </Link> */}
         <Link
           style={{
             textDecoration: "none",
@@ -80,7 +62,6 @@ export const MainListItems = () => {
               color: "#fff",
               marginTop: "2em",
               marginBottom: "2em",
-            
             }}
           >
             <ListItemIcon>
@@ -142,58 +123,27 @@ export const MainListItems = () => {
             <ListItemText primary="Settings" />
           </ListItem>
         </Link>
-      </List>
 
-      {/* second list */}
+        {/* second list */}
 
-      <List>
-        {/* <ListSubheader inset>Appointment</ListSubheader> */}
-        {/* <Link
-          style={{
-            textDecoration: "none",
-            color: "black",
-          }}
-          to={ROUTES.MEDICAL_HISTORY}
-        >
-          {" "}
-          <ListItem
-            button
-            style={{
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
+        <Divider />
+        <List>
+          <ListItem button onClick={props.signOut}>
             <ListItemIcon>
-              <AssignmentIcon />
+              <ExitToAppIcon />
             </ListItemIcon>
-            <ListItemText primary="New Appointment" />
-          </ListItem>
-        </Link> */}
-
-        {/* 
-        <Link
-          style={{ textDecoration: "none", color: "black" }}
-          to={ROUTES.PATIENT_DATA}
-        >
-          <ListItem button>
-            <ListItemIcon>
-              <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Medical Data" />
-          </ListItem>
-        </Link> */}
-        {/* <Link
-          style={{ textDecoration: "none", color: "black" }}
-          to={ROUTES.PRESCRIPTION}
-        >
-          <ListItem button>
-            <ListItemIcon>
-              <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Prescription" />
-          </ListItem>
-        </Link> */}
+            <ListItemText primary="Log out" />
+          </ListItem>{" "}
+        </List>
       </List>
     </>
   );
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut()),
+  };
 };
+
+export default connect(null, mapDispatchToProps)(MainListItems);
