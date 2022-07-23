@@ -1,6 +1,6 @@
 import React from "react";
 
-import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
+import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
 import PatientData from "../components/appointments-layout/patient-data/patient-data";
 
 import * as ROUTES from "../constants/routes";

@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 
-import HomePage from "./pages/home";
-import SignupPage from "./pages/signup";
-import SigninPage from "./pages/signin";
+import HomePage from "./pages/HomePage";
+import SignupPage from "./pages/SignUpPage";
+import SigninPage from "./pages/SignInPage";
 import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
@@ -15,11 +15,11 @@ import CalenderPage from "./pages/calender";
 
 import PatientsPage from "./pages/patients";
 
-import DashboardPage from "./pages/dashboard";
+import DashboardPage from "./pages/DashboardPage";
 
 import PatientDetailsPage from "./pages/patient-details-page";
 
-import ErrorPage from "./pages/error-page";
+import ErrorPage from "./pages/ErrorPage";
 
 
 // Message from ك.ض.ح

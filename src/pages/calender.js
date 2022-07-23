@@ -1,6 +1,6 @@
 import React from "react";
 
-import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
+import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
 import Calender from "../components/calender/calender";
 
 import * as ROUTES from "../constants/routes";

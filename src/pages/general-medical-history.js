@@ -1,6 +1,6 @@
 import React from "react";
 
-import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
+import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
 import GeneralMedicalHistory from "../components/appointments-layout/general-medical-history/general-medical-history";
 
 import * as ROUTES from "../constants/routes";
@@ -9,7 +9,6 @@ import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-
 function GeneralMedicalHistoryPage(props) {
   const { auth } = props;
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
@@ -17,7 +16,6 @@ function GeneralMedicalHistoryPage(props) {
   return (
     <DashboardLayout pageTitle="Patient Information">
       <GeneralMedicalHistory />
-
     </DashboardLayout>
   );
 }

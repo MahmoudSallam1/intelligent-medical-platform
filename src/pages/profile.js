@@ -1,6 +1,6 @@
 import React from "react";
 import * as ROUTES from "../constants/routes";
-import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
+import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
 
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";

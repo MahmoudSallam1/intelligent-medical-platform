@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardLayout from "../components/dashboard-layout/dashboard-layout";
+import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
 import * as ROUTES from "../constants/routes";
 
 import { Redirect } from "react-router-dom";

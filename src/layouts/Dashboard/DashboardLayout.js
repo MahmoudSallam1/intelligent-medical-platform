@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as ROUTES from "../../constants/routes";
 
-import AppBarAndDrawer from "../app-bar-drawer/app-bar-drawer";
+import AppBarAndDrawer from "../../components/AppBarDrawer/AppBarDrawer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#F5F6FA",
   },
   content: {
-    width: "100%"
+    width: "100%",
   },
 }));
 
