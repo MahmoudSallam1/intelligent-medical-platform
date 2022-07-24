@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import MuiPhoneNumber from "material-ui-phone-number";
-import CustomButton from "../custom-button/custom-button";
+import CustomButton from "../../../components/custom-button/custom-button";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
@@ -14,16 +14,16 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
-import { countries, specialties } from "../../utils";
+import { countries, specialties } from "../../../utils";
 
 import { connect } from "react-redux";
-import { updateUserProfile } from "../../store/actions/userProfileActions";
+import { updateUserProfile } from "../../../store/actions/userProfileActions";
 
-import PaperWrapper from "../paper-wrapper/paper-wrapper";
-import SimpleTabs from "../tabs/simple-tabs";
-import TabPanel from "../tabs/tab-panel";
+import PaperWrapper from "../../../components/paper-wrapper/paper-wrapper";
+import SimpleTabs from "../../../components/tabs/simple-tabs";
+import TabPanel from "../../../components/tabs/tab-panel";
 
-import { storage } from "../../firebase/firebase";
+import { storage } from "../../../firebase/firebase";
 
 const useStyles = makeStyles((theme) => ({
   btn: {

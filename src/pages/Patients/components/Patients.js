@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import firebase from "../../firebase/firebase";
+import firebase from "../../../firebase/firebase";
 
-import PaperWrapper from "../paper-wrapper/paper-wrapper";
+import PaperWrapper from "../../../components/paper-wrapper/paper-wrapper";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -92,8 +92,10 @@ function Patients(props) {
 
   return (
     <PaperWrapper>
-      {" "}
-      {patients.length ? (
+      
+      {
+        
+        patients.length ? (
         <div style={{ height: 600, width: "100%" }}>
           <DataGrid 
             rows={rows}
@@ -103,7 +105,7 @@ function Patients(props) {
           />
         </div>
       ) : (
-        <CircularProgress />
+        <div>No Data Found!</div>
       )}
     </PaperWrapper>
   );

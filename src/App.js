@@ -3,28 +3,25 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import * as ROUTES from "./constants/routes";
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import SignupPage from "./pages/SignUpPage";
 import SigninPage from "./pages/SignInPage";
 import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
-import ProfilePage from "./pages/ProfilePage";
-import ContactSupportPage from "./pages/contact-support";
-import CalenderPage from "./pages/calender";
+import ProfilePage from "./pages/Profile/ProfilePage";
+import AppointmentPage from "./pages/Appointment/AppointmentPage";
+import CalenderPage from "./pages/CalenderPage";
 
-import PatientsPage from "./pages/patients";
+import PatientsPage from "./pages/Patients/PatientsPage";
 
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./pages/Dashboard/DashboardPage";
 
-import PatientDetailsPage from "./pages/patient-details-page";
+import PatientDetailsPage from "./pages/Patients/components/PatientDetails/PatientDetails";
 
 import ErrorPage from "./pages/ErrorPage";
 
-
 // Message from ك.ض.ح
-
-
 
 function App() {
   return (
@@ -39,8 +36,36 @@ function App() {
         <Route path={ROUTES.SIGN_IN}>
           <SigninPage />
         </Route>
-        <Route path={ROUTES.DASHBOARD}>
+
+        {/* Dashboard Main Route */}
+        <Route exact path={ROUTES.DASHBOARD}>
           <DashboardPage />
+        </Route>
+
+        <Route path={ROUTES.PROFILE}>
+          <ProfilePage />
+        </Route>
+
+        {/* Patients */}
+
+        <Route exact path={ROUTES.PATIENTS}>
+          <PatientsPage />
+        </Route>
+
+        <Route path={ROUTES.PATIENT_ID}>
+          <PatientDetailsPage />
+        </Route>
+
+        {/* Calender */}
+
+        <Route path={ROUTES.CALENDER}>
+          <CalenderPage />
+        </Route>
+
+        {/* Appointment */}
+
+        <Route exact path={ROUTES.APPOINTMENT}>
+          <AppointmentPage />
         </Route>
 
         <Route exact path={ROUTES.MEDICAL_HISTORY}>
@@ -66,21 +91,6 @@ function App() {
           <PrescriptionPage />
         </Route>
 
-        <Route path={ROUTES.PROFILE}>
-          <ProfilePage />
-        </Route>
-        <Route path={ROUTES.CONTACT_SUPPORT}>
-          <ContactSupportPage />
-        </Route>
-        <Route exact path={ROUTES.PATIENTS}>
-          <PatientsPage />
-        </Route>
-        <Route path={ROUTES.PATIENT_ID}>
-          <PatientDetailsPage />
-        </Route>
-        <Route path={ROUTES.CALENDER}>
-          <CalenderPage />
-        </Route>
         <Route path={ROUTES.ERROR}>
           <ErrorPage />
         </Route>

@@ -1,7 +1,7 @@
 import React from "react";
-import Patients from "../components/patients/patients";
-import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
-import * as ROUTES from "../constants/routes";
+import Patients from "./components/Patients";
+import DashboardLayout from "../../layouts/Dashboard/DashboardLayout";
+import * as ROUTES from "../../constants/routes";
 
 import { Redirect } from "react-router-dom";
 
@@ -18,7 +18,6 @@ function PatientsPage(props) {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   return {
     auth: state.firebase.auth,
   };

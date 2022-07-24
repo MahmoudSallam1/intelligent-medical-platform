@@ -91,6 +91,7 @@ function MainListItems(props) {
         </Link>
         <Link
           style={{ textDecoration: "none", color: "black" }}
+          
           to={ROUTES.PATIENTS}
         >
           <ListItem button>
@@ -120,7 +121,7 @@ function MainListItems(props) {
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
-            <ListItemText primary="Settings" />
+            <ListItemText primary="Profile" />
           </ListItem>
         </Link>
 
