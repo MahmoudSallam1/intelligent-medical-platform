@@ -10,6 +10,7 @@ import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
 import ProfilePage from "./pages/ProfilePage";
+import AppointmentPage from "./pages/Appointment/AppointmentPage";
 import ContactSupportPage from "./pages/contact-support";
 import CalenderPage from "./pages/calender";
 
@@ -60,6 +61,11 @@ function App() {
 
         <Route path={ROUTES.CALENDER}>
           <CalenderPage />
+        </Route>
+
+
+        <Route path={ROUTES.APPOINTMENT}>
+          <AppointmentPage />
         </Route>
 
         <Route exact path={ROUTES.MEDICAL_HISTORY}>

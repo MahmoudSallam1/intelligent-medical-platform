@@ -8,6 +8,8 @@ export const PROFILE = "/dashboard/profile";
 export const CALENDER = "/dashboard/calender";
 export const PATIENTS = "/dashboard/patients";
 export const PATIENT_ID = "/dashboard/patients/:id";
+export const APPOINTMENT = "/dashboard/appointment";
+
 
 
 
