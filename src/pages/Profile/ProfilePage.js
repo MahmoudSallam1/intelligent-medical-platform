@@ -1,11 +1,11 @@
 import React from "react";
-import * as ROUTES from "../constants/routes";
-import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
+import * as ROUTES from "../../constants/routes";
+import DashboardLayout from "../../layouts/Dashboard/DashboardLayout";
 
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Profile from "../components/profile/profile";
+import Profile from "./components/Profile";
 
 function ProfilePage(props) {
   const { auth } = props;

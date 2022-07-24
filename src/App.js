@@ -9,10 +9,9 @@ import SigninPage from "./pages/SignInPage";
 import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
-import ProfilePage from "./pages/ProfilePage";
+import ProfilePage from "./pages/Profile/ProfilePage";
 import AppointmentPage from "./pages/Appointment/AppointmentPage";
-import ContactSupportPage from "./pages/contact-support";
-import CalenderPage from "./pages/calender";
+import CalenderPage from "./pages/CalenderPage";
 
 import PatientsPage from "./pages/Patients/PatientsPage";
 
@@ -63,8 +62,9 @@ function App() {
           <CalenderPage />
         </Route>
 
+        {/* Appointment */}
 
-        <Route path={ROUTES.APPOINTMENT}>
+        <Route exact path={ROUTES.APPOINTMENT}>
           <AppointmentPage />
         </Route>
 
@@ -89,10 +89,6 @@ function App() {
         <Route path={ROUTES.PRESCRIPTION_DETAILS}>
           {" "}
           <PrescriptionPage />
-        </Route>
-
-        <Route path={ROUTES.CONTACT_SUPPORT}>
-          <ContactSupportPage />
         </Route>
 
         <Route path={ROUTES.ERROR}>
