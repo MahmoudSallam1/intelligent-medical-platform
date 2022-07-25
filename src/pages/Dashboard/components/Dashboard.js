@@ -118,7 +118,6 @@ function Dashboard({ auth, profile }) {
     getPatientsList();
   }, []);
 
-  console.log(patients);
 
   return (
     <div className={classes.container}>
