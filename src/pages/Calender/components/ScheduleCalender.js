@@ -11,7 +11,7 @@ import {
 
 import "./calender.css";
 
-function Calender() {
+function ScheduleCalender() {
   return (
     <ScheduleComponent style={{ marginTop: "5em", height: "90vh" }}>
       <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
@@ -19,4 +19,4 @@ function Calender() {
   );
 }
 
-export default Calender;
+export default ScheduleCalender;

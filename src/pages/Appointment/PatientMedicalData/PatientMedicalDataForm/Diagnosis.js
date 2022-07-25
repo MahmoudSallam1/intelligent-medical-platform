@@ -12,8 +12,8 @@ import SpeechRecognition, {
 import Container from "@material-ui/core/Container";
 
 
-import MultipleTags from "../../autocomplete-textfield/multiple-autocomplete";
-import diagnoses from "../../../apis/diagnoses.json";
+import AutoCompleteTextField from "../../../../components/AutoCompleteTextField/AutoCompleteTextField"
+import diagnoses from "../../../../apis/diagnoses.json";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -98,7 +98,7 @@ function Diagnosis({ formData, setFormData, tags, setTags }) {
               </Button>
             </div>
 
-            <MultipleTags
+            <AutoCompleteTextField
               setFormData={setFormData}
               formData={formData}
               placeholder="Select diagnoses"

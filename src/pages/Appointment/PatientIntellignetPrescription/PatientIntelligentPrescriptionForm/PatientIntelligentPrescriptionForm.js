@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-import FormStepper from "../../Stepper/Stepper";
+import FormStepper from "../../../../components/Stepper/Stepper";
 import { connect } from "react-redux";
 
-import Prescription from "./prescription";
-import Confirm from "./confirm";
+import Prescription from "./Prescription";
+import Confirm from "./Confirm";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import AppoitmentLinks from "../appointment-links/appointment-links";
 import { useParams } from "react-router-dom";
-import firebase from "../../../firebase/firebase";
+import firebase from "../../../../firebase/firebase";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const db = firebase.firestore();
 
-function PrescriptionForm({ auth }) {
+function PatientIntelligentPrescriptionForm({ auth }) {
   const classes = useStyles();
   const { id } = useParams();
 
@@ -92,7 +91,7 @@ function PrescriptionForm({ auth }) {
 
   return (
     <>
-      <AppoitmentLinks id={id} />
+      {/* <AppoitmentLinks id={id} /> */}
       <FormStepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (
@@ -125,4 +124,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(PrescriptionForm);
+export default connect(mapStateToProps, null)(PatientIntelligentPrescriptionForm);

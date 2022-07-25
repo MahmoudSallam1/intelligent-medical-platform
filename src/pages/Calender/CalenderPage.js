@@ -1,9 +1,9 @@
 import React from "react";
 
-import DashboardLayout from "../layouts/Dashboard/DashboardLayout";
-import Calender from "../components/calender/calender";
+import DashboardLayout from "../../layouts/Dashboard/DashboardLayout";
+import Schedule from "./components/ScheduleCalender";
 
-import * as ROUTES from "../constants/routes";
+import * as ROUTES from "../../constants/routes";
 
 import { Redirect } from "react-router-dom";
 
@@ -14,7 +14,7 @@ function CalenderPage(props) {
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
   return (
     <DashboardLayout pageTitle="Calender">
-      <Calender />
+      <Schedule />
     </DashboardLayout>
   );
 }

@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 
-import FormStepper from "../../Stepper/Stepper";
+import Stepper from "../../../../components/Stepper/Stepper";
 import Button from "@material-ui/core/Button";
 
-import MedicalReports from "./medical-reports";
-import Diagnosis from "./diagnosis";
-import Confirm from "./confirm";
+import MedicalReports from "./MedicalReports";
+import Diagnosis from "./Diagnosis";
+import Confirm from "./Confirm";
 import { makeStyles } from "@material-ui/core/styles";
 
-import firebase from "../../../firebase/firebase";
+import firebase from "../../../../firebase/firebase";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import AppoitmentLinks from "../appointment-links/appointment-links";
+import AppointmentNavigation from "../../components/AppointmentNavigation";
 
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-
-
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -31,13 +29,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 const db = firebase.firestore();
 
-function PatientDataForm({ auth }) {
+function PatientMedicalDataForm({ auth }) {
   const { id } = useParams();
 
   const classes = useStyles();
   const { transcript, resetTranscript } = useSpeechRecognition();
-
-
 
   const steps = ["Medical Reports", "Diagnosis", "Confirm"];
 
@@ -76,7 +72,13 @@ function PatientDataForm({ auth }) {
   const renderForm = (activeStep) => {
     switch (activeStep) {
       case 0:
-        return <MedicalReports transcript={transcript}  formData={formData} setFormData={setFormData} />;
+        return (
+          <MedicalReports
+            transcript={transcript}
+            formData={formData}
+            setFormData={setFormData}
+          />
+        );
       case 1:
         return (
           <Diagnosis
@@ -106,9 +108,9 @@ function PatientDataForm({ auth }) {
 
   return (
     <>
-          <AppoitmentLinks id={id} />
+      <AppointmentNavigation id={id} />
 
-      <FormStepper steps={steps} activeStep={activeStep} />
+      <Stepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (
         <div className={classes.btnGroup}>
@@ -140,4 +142,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(PatientDataForm);
+export default connect(mapStateToProps, null)(PatientMedicalDataForm);

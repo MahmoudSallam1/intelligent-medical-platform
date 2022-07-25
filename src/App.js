@@ -6,11 +6,10 @@ import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/Home/HomePage";
 import SignupPage from "./pages/SignUpPage";
 import SigninPage from "./pages/SignInPage";
-import PatientDataPage from "./pages/patient-data";
-import PrescriptionPage from "./pages/prescription";
+
 import ProfilePage from "./pages/Profile/ProfilePage";
 import AppointmentPage from "./pages/Appointment/AppointmentPage";
-import CalenderPage from "./pages/CalenderPage";
+import CalenderPage from "./pages/Calender/CalenderPage";
 
 import PatientsPage from "./pages/Patients/PatientsPage";
 
@@ -69,21 +68,7 @@ function App() {
 
     
 
-        <Route exact path={ROUTES.PATIENT_DATA}>
-          <PatientDataPage />
-        </Route>
-        <Route path={ROUTES.PATIENT_DATA_DETAILS}>
-          {" "}
-          <PatientDataPage />
-        </Route>
-
-        <Route exact path={ROUTES.PRESCRIPTION}>
-          <PrescriptionPage />
-        </Route>
-        <Route path={ROUTES.PRESCRIPTION_DETAILS}>
-          {" "}
-          <PrescriptionPage />
-        </Route>
+     
 
         <Route path={ROUTES.ERROR}>
           <ErrorPage />

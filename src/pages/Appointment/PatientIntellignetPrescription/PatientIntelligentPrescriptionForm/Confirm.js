@@ -14,7 +14,7 @@ import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { connect } from "react-redux";
-import { createPatientData } from "../../../store/actions/patientDataActions";
+import { createPrescription } from "../../../../store/actions/prescriptionActions";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -22,7 +22,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-import firebase from "../../../firebase/firebase";
+const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -35,49 +35,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Confirm({
-  createPatientData,
-  patientID,
+  createPrescription,
   formData,
+  patientID,
   setFormData,
   prevStep,
   activeStep,
   setActiveStep,
-  tags,
-  setTags,
 }) {
   const classes = useStyles();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [open, setOpen] = useState(false);
 
-  const newTags = tags.map((tag) => tag.name);
-
   const handleCloseDialog = () => {
     setOpen(false);
     setActiveStep(0);
   };
 
+  function handleBack(e) {
+    e.preventDefault();
+    prevStep();
+  }
+
   async function handleConfirm(e) {
     e.preventDefault();
     setIsSubmitting(true);
     console.log("submitting to DB...");
-
-
-    createPatientData(
-      {
-        ...formData,
-        diagnosis: newTags.join(" ,") + " ," + formData.diagnosis,
-      },
-      patientID
-    );
-
+    // await sleep(2000);
+    createPrescription(formData, patientID);
     setOpen(true);
     setIsSubmitting(false);
-    setTags([]);
-    // setFormData({});
   }
-
-  console.log(newTags);
 
   return (
     <Container>
@@ -88,24 +77,16 @@ function Confirm({
             <List>
               <ListItem>
                 <ListItemText
-                  primary="Diagnosis"
-                  secondary={newTags.join(" ,") + " ," + formData.diagnosis}
+                  primary="Medications"
+                  secondary={formData.medications}
                 />
               </ListItem>
               <Divider />
 
               <ListItem>
                 <ListItemText
-                  primary="Symptoms"
-                  secondary={formData.symptoms}
-                />
-              </ListItem>
-              <Divider />
-
-              <ListItem>
-                <ListItemText
-                  primary="Comments"
-                  secondary={formData.comments}
+                  primary="Medications"
+                  secondary={formData.dosages}
                 />
               </ListItem>
             </List>
@@ -114,7 +95,7 @@ function Confirm({
             <div className={classes.btnGroup}>
               <Button
                 disabled={activeStep === 0}
-                onClick={prevStep}
+                onClick={handleBack}
                 className={classes.button}
               >
                 Back
@@ -145,7 +126,7 @@ function Confirm({
                 </DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-description">
-                    Patient Data has been added to patient's medical record.
+                    Prescription has been added to patient's medical record.
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -172,8 +153,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPatientData: (patientData, patientID) =>
-      dispatch(createPatientData(patientData, patientID)),
+    createPrescription: (prescription, patientID) =>
+      dispatch(createPrescription(prescription, patientID)),
   };
 };
 

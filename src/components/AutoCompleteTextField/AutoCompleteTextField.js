@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 
-export default function MultipleTags({
+export default function AutoCompleteTextField({
   tagsArray,
   placeholder,
   tags,
