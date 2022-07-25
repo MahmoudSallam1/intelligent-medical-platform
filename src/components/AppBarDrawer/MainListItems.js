@@ -52,7 +52,7 @@ function MainListItems(props) {
           style={{
             textDecoration: "none",
           }}
-          to={ROUTES.MEDICAL_HISTORY}
+          to={ROUTES.APPOINTMENT}
         >
           {" "}
           <ListItem
