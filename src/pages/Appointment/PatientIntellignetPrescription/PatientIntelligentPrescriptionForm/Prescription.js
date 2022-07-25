@@ -160,9 +160,9 @@ function Prescription({
         <br></br>
         <Grid container>
           <Grid item xs={12} md={12} lg={12}>
-            {!personalInfo ? (
+            {/* {!personalInfo ? (
               <CircularProgress className={classes.spinner} />
-            ) : (
+            ) : ( */}
               <Paper
                 ref={prescriptionRef}
                 elevation={0}
@@ -276,7 +276,7 @@ function Prescription({
                   <Divider style={{ width: "30%" }} />
                 </div>
               </Paper>
-            )}
+            {/* )} */}
           </Grid>
         </Grid>
       </form>{" "}

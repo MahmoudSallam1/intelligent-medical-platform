@@ -24,13 +24,12 @@ import { signIn } from "../store/actions/authActions";
 import CustomButton from "../components/custom-button/custom-button";
 // import Footer from "./Home/components/footer/footer";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "90vh",
     justifyContent: "center",
     alignItems: "center",
-    background:"#F5F6FA"
+    background: "#F5F6FA",
   },
   image: {
     backgroundImage: "url(/images/sign-in.png)",
@@ -52,9 +51,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "3em",
     borderRadius: "8px",
     border: "1px solid #E0E0E0",
-    boxShadow: "0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)"
-
-
+    boxShadow: "0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)",
   },
   avatar: {
     margin: theme.spacing(1),
@@ -79,7 +76,7 @@ function SignIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const isInvalid = (password === "") | (email === "");
+  const isEmpty = email === "" || password === "";
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -99,7 +96,7 @@ function SignIn(props) {
         {/* <Grid item xs={false} sm={4} md={8} className={classes.image} /> */}
 
         <Grid item xs={12} sm={6} md={4} className={classes.container}>
-          <Box className={classes.paper}  >
+          <Box className={classes.paper}>
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
             </Avatar>
@@ -151,13 +148,12 @@ function SignIn(props) {
                 color="primary"
                 style={{ marginTop: "1em" }}
                 // className={classes.submit}
-                // disabled={isInvalid}
+                disabled={isEmpty}
               >
                 Sign In
               </CustomButton>
 
               <Grid container style={{ marginTop: "2.5em" }}>
-              
                 <Grid item>
                   <Link to={ROUTES.SIGN_UP}>
                     Don't have an account? Sign Up
