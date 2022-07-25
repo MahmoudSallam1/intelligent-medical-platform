@@ -23,6 +23,7 @@ import NumberOfBookingChart from "./insights/NumberOfBookingChart";
 
 import PatientAgeGroupChart from "./insights/PatientAgeGroupChart";
 import CommonDiseasesChart from "./insights/CommonDiseasesChart";
+import { set } from "date-fns";
 
 const db = firebase.firestore();
 
@@ -84,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Dashboard({ auth, profile }) {
   const [patients, setPatients] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
   const { personalInfo, clinicInfo } = profile;
 
   const classes = useStyles();
@@ -103,10 +105,11 @@ function Dashboard({ auth, profile }) {
         const rows = fetchPatients.slice(0, 4).map((doc) => {
           return { ...doc.patientInformation, id: doc.id };
         });
-
+        setisLoading(false);
         setPatients(rows);
       })
       .catch((error) => {
+        setisLoading(false);
         console.log(error);
       });
   };
@@ -243,64 +246,64 @@ function Dashboard({ auth, profile }) {
             </Typography>{" "}
             <Divider style={{ background: "#E0E0E0" }} />
             <br></br>
-            {patients.length ? (
-              patients.map((patient) => (
-                <ModernCard key={patient.id} classStyle="style3">
-                  <div>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      <span className={classes.info}>
-                        {(patient && patient.fullName) || "--"}
-                      </span>
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                    >
-                      {(patient && patient.phoneNumber) || "--"}
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                    >
-                      {(patient && patient.address) || "--"}
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                    >
-                      {/* {(patient && patient.createdAt.toDate().toDateString()) ||
+            {isLoading ? (<CircularProgress style={{ color: "#fff" }} />) :
+              patients.length ? (
+                patients.map((patient) => (
+                  <ModernCard key={patient.id} classStyle="style3">
+                    <div>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        <span className={classes.info}>
+                          {(patient && patient.fullName) || "--"}
+                        </span>
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                      >
+                        {(patient && patient.phoneNumber) || "--"}
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                      >
+                        {(patient && patient.address) || "--"}
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                      >
+                        {/* {(patient && patient.createdAt.toDate().toDateString()) ||
                       "--"}{" "} */}
-                      <span className={classes.info}>
-                        {(patient &&
-                          patient.createdAt
-                            .toDate()
-                            .toLocaleTimeString("en-US")) ||
-                          ""}
-                      </span>
-                    </Typography>
-                  </div>
-                  <div>
-                    {" "}
-                    <DeclineUser />
-                    <Link
-                      style={{
-                        textDecoration: "none",
-                        color: "inherit",
-                      }}
-                      to={`${ROUTES.MEDICAL_HISTORY}/${patient.id}`}
-                    >
-                      <AcceptUser />
-                    </Link>
-                  </div>
-                </ModernCard>
-              ))
-            ) : (
-              <CircularProgress style={{ color: "#fff" }} />
-            )}
+                        <span className={classes.info}>
+                          {(patient &&
+                            patient.createdAt
+                              .toDate()
+                              .toLocaleTimeString("en-US")) ||
+                            ""}
+                        </span>
+                      </Typography>
+                    </div>
+                    <div>
+                      {" "}
+                      <DeclineUser />
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          color: "inherit",
+                        }}
+                        to={`${ROUTES.MEDICAL_HISTORY}/${patient.id}`}
+                      >
+                        <AcceptUser />
+                      </Link>
+                    </div>
+                  </ModernCard>
+                ))
+              ) : ("No upcoming appointments")
+            }
           </ModernCard>
         </Grid>
       </Grid>
