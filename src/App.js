@@ -6,7 +6,6 @@ import * as ROUTES from "./constants/routes";
 import HomePage from "./pages/Home/HomePage";
 import SignupPage from "./pages/SignUpPage";
 import SigninPage from "./pages/SignInPage";
-import GeneralMedicalHistoryPage from "./pages/general-medical-history";
 import PatientDataPage from "./pages/patient-data";
 import PrescriptionPage from "./pages/prescription";
 import ProfilePage from "./pages/Profile/ProfilePage";
@@ -19,7 +18,7 @@ import DashboardPage from "./pages/Dashboard/DashboardPage";
 
 import PatientDetailsPage from "./pages/Patients/components/PatientDetails/PatientDetails";
 
-import ErrorPage from "./pages/ErrorPage";
+import ErrorPage from "./pages/Error/ErrorPage";
 
 // Message from ك.ض.ح
 
@@ -68,12 +67,7 @@ function App() {
           <AppointmentPage />
         </Route>
 
-        <Route exact path={ROUTES.MEDICAL_HISTORY}>
-          <GeneralMedicalHistoryPage />
-        </Route>
-        <Route path={ROUTES.PATIENT_MEDICAL_HISTORY_DETAILS}>
-          <GeneralMedicalHistoryPage />
-        </Route>
+    
 
         <Route exact path={ROUTES.PATIENT_DATA}>
           <PatientDataPage />

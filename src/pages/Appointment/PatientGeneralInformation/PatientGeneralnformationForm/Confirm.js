@@ -13,10 +13,10 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 
 import { makeStyles } from "@material-ui/core/styles";
-import * as ROUTES from "../../../constants/routes";
+import * as ROUTES from "../../../../constants/routes";
 
 import { connect } from "react-redux";
-import { createPatientGeneralMedicalHistory } from "../../../store/actions/patientGeneralMedicalHistoryActions";
+import { createPatientGeneralMedicalHistory } from "../../../../store/actions/patientGeneralMedicalHistoryActions";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";

@@ -8,7 +8,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Button from "@material-ui/core/Button";
 
-import { patientGeneralMedicalHistoryArray } from "./medical-history-array";
+import { patientGeneralMedicalHistoryArray } from "./medicalHistoryArray";
 import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   breath: {

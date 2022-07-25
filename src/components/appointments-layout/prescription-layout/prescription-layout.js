@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import PrescriptionForm from "./prescription-form";
 
-import PaperWrapper from "../../paper-wrapper/paper-wrapper";
+import PaperWrapper from "../../PaperWrapper/PaperWrapper";
 
 const useStyles = makeStyles({
   marginBot: {

@@ -6,7 +6,6 @@ import firebase from "../../../firebase/firebase";
 import { connect } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import PaperWrapper from "../../../components/paper-wrapper/paper-wrapper";
 import ModernCard from "../../../components/ModernCard/ModernCard";
 import { makeStyles } from "@material-ui/core/styles";
 

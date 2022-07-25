@@ -3,7 +3,7 @@ import React from "react";
 
 import PatientDataForm from "./patient-data-form";
 
-import PaperWrapper from "../../paper-wrapper/paper-wrapper";
+import PaperWrapper from "../../PaperWrapper/PaperWrapper";
 
 
 function PatientData() {

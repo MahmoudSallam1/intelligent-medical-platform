@@ -9,7 +9,7 @@ import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    padding: "2em",
+    padding: ".6128em",
     background: "#ffffff",
     /* box-shadow: 0 3px 10px rgba(0, 0, 0, .06), 0 0 3px rgba(0, 0, 0, .04); */
     transition:
@@ -17,17 +17,15 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     border: "1px solid #E0E0E0",
   },
-  marginBot: {
-    marginBottom: "1em",
-  },
+ 
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     // overflow: "auto",
   },
   container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(1),
   },
   fixedHeight: {
     height: 240,
@@ -41,7 +39,7 @@ function PaperWrapper({ children }) {
     <main className={classes.content}>
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
-        <Grid container spacing={3}>
+        <Grid container>
           <Grid item xs={12} md={12} lg={12}>
             <Paper elevation={0} className={classes.card}>{children}</Paper>
           </Grid>

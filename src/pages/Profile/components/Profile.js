@@ -19,7 +19,7 @@ import { countries, specialties } from "../../../utils";
 import { connect } from "react-redux";
 import { updateUserProfile } from "../../../store/actions/userProfileActions";
 
-import PaperWrapper from "../../../components/paper-wrapper/paper-wrapper";
+import PaperWrapper from "../../../components/PaperWrapper/PaperWrapper";
 import SimpleTabs from "../../../components/tabs/simple-tabs";
 import TabPanel from "../../../components/tabs/tab-panel";
 

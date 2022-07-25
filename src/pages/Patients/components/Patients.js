@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import firebase from "../../../firebase/firebase";
 
-import PaperWrapper from "../../../components/paper-wrapper/paper-wrapper";
+import PaperWrapper from "../../../components/PaperWrapper/PaperWrapper";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 

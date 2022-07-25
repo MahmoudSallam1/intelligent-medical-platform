@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import FormStepper from "../../form-stepper/form-stepper";
+import FormStepper from "../../Stepper/Stepper";
 import Button from "@material-ui/core/Button";
 
 import MedicalReports from "./medical-reports";

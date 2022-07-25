@@ -4,10 +4,10 @@ import "./error.css";
 import { Link } from "react-router-dom";
 
 
-function Error() {
+function ErrorPage() {
   return (
     <div className="error-container">
-      <img className="error" src="/images/error.png" alt="404" />{" "}
+      {/* <img className="error" src="/images/error.png" alt="404" />{" "} */}
       <h1 className="error-h1">404</h1>
       <h2 className="error-h2">UH OH! You're lost.</h2>
       <p className="error-p">
@@ -19,4 +19,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default ErrorPage;

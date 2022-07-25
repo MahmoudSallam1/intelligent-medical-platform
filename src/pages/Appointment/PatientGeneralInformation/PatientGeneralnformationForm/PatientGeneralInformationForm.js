@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 
-import FormStepper from "../../form-stepper/form-stepper";
-import GeneralInformation from "./general-information";
-import MedicalHistory from "./medical-history";
-import FamilialDiseases from "./familial-diseases";
-import SmokingAlcohol from "./smoking-alcohol";
-import Confirm from "./confirm";
-import firebase from "../../../firebase/firebase";
+import FormStepper from "../../../../components/Stepper/Stepper";
+import GeneralInformation from "./GeneralInformation";
+import MedicalHistory from "./MedicalHistory";
+import FamilialDiseases from "./FamilialDiseases";
+import SmokingAlcohol from "./SmokingAndAlcohol";
+import Confirm from "./Confirm";
+import firebase from "../../../../firebase/firebase";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { useParams } from "react-router-dom";
-import AppoitmentLinks from "../appointment-links/appointment-links";
+import AppointmentNavigation from "../../components/AppointmentNavigation";
 
 const db = firebase.firestore();
 
@@ -144,7 +144,7 @@ function GeneralMedicalHistoryForm({ auth }) {
   return (
     <>
       {" "}
-      {id ? <AppoitmentLinks id={id} /> : null}
+      {id ? <AppointmentNavigation id={id} /> : null}
       <FormStepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (

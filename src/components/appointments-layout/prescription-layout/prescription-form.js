@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import FormStepper from "../../form-stepper/form-stepper";
+import FormStepper from "../../Stepper/Stepper";
 import { connect } from "react-redux";
 
 import Prescription from "./prescription";

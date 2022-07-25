@@ -3,9 +3,9 @@ import Typography from "@material-ui/core/Typography";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import GeneralMedicalHistoryForm from "./general-medical-history-form";
+import PatientGeneralInformationForm from "./PatientGeneralnformationForm/PatientGeneralInformationForm";
 
-import PaperWrapper from "../../paper-wrapper/paper-wrapper";
+import PaperWrapper from "../../../components/PaperWrapper/PaperWrapper";
 
 const useStyles = makeStyles({
   marginBot: {
@@ -13,14 +13,14 @@ const useStyles = makeStyles({
   },
 });
 
-function GeneralMedicalHistory() {
+function PatientGeneralInformation() {
   const classes = useStyles();
 
   return (
     <PaperWrapper>
-      <GeneralMedicalHistoryForm />
+      <PatientGeneralInformationForm />
     </PaperWrapper>
   );
 }
 
-export default GeneralMedicalHistory;
+export default PatientGeneralInformation;

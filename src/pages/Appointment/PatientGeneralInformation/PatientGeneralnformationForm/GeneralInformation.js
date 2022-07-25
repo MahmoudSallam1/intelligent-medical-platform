@@ -142,25 +142,7 @@ function GeneralInformation({
               autoFocus
             />
 
-            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                margin="normal"
-                id="date-picker-dialog"
-                label="Date picker dialog"
-                format="MM/dd/yyyy"
-                fullWidth
-                value={formData.selectedDate}
-                onChange={(date) => {
-                  setFormData({
-                    ...formData,
-                    selectedDate: date,
-                  });
-                }}
-                KeyboardButtonProps={{
-                  "aria-label": "change date",
-                }}
-              />
-            </MuiPickersUtilsProvider> */}
+          
 
             <FormLabel className={classes.breath} component="legend">
               Gender

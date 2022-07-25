@@ -6,12 +6,20 @@ import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
+import PatientGeneralInformation from "./PatientGeneralInformation/PatientGeneralInformation";
+import AppointmentNavigation from "./components/AppointmentNavigation";
+import PaperWrapper from "../../components/PaperWrapper/PaperWrapper";
+
 function AppointmentPage(props) {
   const { auth } = props;
   if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
   return (
     <DashboardLayout pageTitle="Appointment">
-      <div>This is appointment page...</div>
+
+    <PaperWrapper>      <AppointmentNavigation />
+</PaperWrapper>
+
+      <PatientGeneralInformation />
     </DashboardLayout>
   );
 }
