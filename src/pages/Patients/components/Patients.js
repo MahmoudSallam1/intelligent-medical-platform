@@ -5,8 +5,6 @@ import firebase from "../../../firebase/firebase";
 
 import PaperWrapper from "../../../components/PaperWrapper/PaperWrapper";
 
-import CircularProgress from "@material-ui/core/CircularProgress";
-
 import { DataGrid } from "@material-ui/data-grid";
 
 import { Link } from "react-router-dom";
@@ -60,7 +58,7 @@ const columns = [
 function Patients(props) {
   const { auth } = props;
   const [patients, setPatients] = useState([]);
-
+  const [loading, setIsLoading] = useState(true);
   const getPatientsList = () => {
     db.collection(`doctors/${auth.uid}/patients`)
       .get()
@@ -73,6 +71,7 @@ function Patients(props) {
           };
           fetchPatients.push(fetchedPatient);
         });
+        setIsLoading(false);
         setPatients(fetchPatients);
       })
       .catch((error) => {
@@ -92,21 +91,18 @@ function Patients(props) {
 
   return (
     <PaperWrapper>
-      
-      {
-        
-        patients.length ? (
-        <div style={{ height: 600, width: "100%" }}>
-          <DataGrid 
-            rows={rows}
-            columns={columns}
-            pageSize={10}
+      {(patients.length == 0) && (!loading) ? ("No Data Found") :
+        (
+          <div style={{ height: 600, width: "100%" }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={10}
+              loading={loading}
             // checkboxSelection
-          />
-        </div>
-      ) : (
-        <div>No Data Found!</div>
-      )}
+            />
+          </div>
+        )}
     </PaperWrapper>
   );
 }
