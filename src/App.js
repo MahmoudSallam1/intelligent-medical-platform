@@ -65,10 +65,9 @@ function App() {
         <Route exact path={ROUTES.APPOINTMENT}>
           <AppointmentPage />
         </Route>
+        {/* Patients */}
 
-    
 
-     
 
         <Route path={ROUTES.ERROR}>
           <ErrorPage />

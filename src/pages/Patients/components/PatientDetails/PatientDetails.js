@@ -46,6 +46,7 @@ const db = firebase.firestore();
 
 function PatientDetails(props) {
   const patientInfo = useRef();
+  const [isLoading, setIsLoading] = useState(true);
   const handlePrint = useReactToPrint({
     content: () => patientInfo.current,
   });
@@ -59,13 +60,18 @@ function PatientDetails(props) {
   const [patient, setPatient] = useState({});
 
   const getPatientDetails = () => {
+    setIsLoading(true);
     db.collection(`doctors/${auth.uid}/patients`)
       .doc(id)
       .get()
       .then((docRef) => {
         setPatient(docRef.data());
+        setIsLoading(false);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
   };
 
   const handleDeletePatient = () => {
@@ -85,240 +91,238 @@ function PatientDetails(props) {
 
   return (
     <div className={classes.container}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={12} lg={12}>
-          {" "}
-          <div>
-            <div className={classes.btnGroup}>
+      {!isLoading ? (
+        <>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={12} lg={12}>
               {" "}
-              <Button
-                className={classes.btn}
-                variant="contained"
-                color="primary"
-                endIcon={<PrintIcon />}
-                onClick={handlePrint}
-              >
-                Print
-              </Button>
-              <Button
-                className={classes.btn}
-                startIcon={<DeleteIcon />}
-                variant="outlined"
-                color="primary"
-                onClick={handleDeletePatient}
-              >
-                Delete
-              </Button>
-            </div>
-          </div>
-        </Grid>
-      </Grid>
-
-      <Grid ref={patientInfo} container spacing={3}>
-        <Grid item xs={12}>
-          {patient.patientInformation ? (
-            <Link
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-              to={`${ROUTES.MEDICAL_HISTORY}/${id}`}
-            >
-              <ModernCard>
-                {" "}
-                <Typography variant="h6" gutterBottom>
-                  Patient Information
-                </Typography>
-                <Grid container justify="space-between">
-                  <Grid item>
-                    {" "}
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      Full Name :{" "}
-                      <span className={classes.info}>
-                        {(patient.patientInformation &&
-                          patient.patientInformation.fullName) ||
-                          "--"}
-                      </span>
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      Gender :{" "}
-                      <span className={classes.info}>
-                        {(patient.patientInformation &&
-                          patient.patientInformation.gender) ||
-                          "--"}
-                      </span>
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      Address :{" "}
-                      <span className={classes.info}>
-                        {(patient.patientInformation &&
-                          patient.patientInformation.address) ||
-                          "--"}
-                      </span>
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      Phone Number:{" "}
-                      <span className={classes.info}>
-                        {(patient.patientInformation &&
-                          patient.patientInformation.phoneNumber) ||
-                          "--"}
-                      </span>
-                    </Typography>
-                  </Grid>
-
-                  <Grid item>
-                    {" "}
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      Emergency Full Name :{" "}
-                      <span className={classes.info}>
-                        {(patient.patientInformation &&
-                          patient.patientInformation.emergencyFullName) ||
-                          "--"}
-                      </span>
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      Emergency Phone Number :{" "}
-                      <span className={classes.info}>
-                        {(patient.patientInformation &&
-                          patient.patientInformation.emergencyPhoneNumber) ||
-                          "--"}
-                      </span>
-                    </Typography>
-                    <Typography
-                      className={classes.subHeading}
-                      variant="subtitle2"
-                      gutterBottom
-                    >
-                      Relation :{" "}
-                      <span className={classes.info}>
-                        {(patient.patientInformation &&
-                          patient.patientInformation.relation) ||
-                          "--"}
-                      </span>
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </ModernCard>
-            </Link>
-          ) : !patient.patientInformation ? (
-            <CircularProgress />
-          ) : null}
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          {patient.medicalData ? (
-            <Link
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-              to={`${ROUTES.PATIENT_DATA}/${id}`}
-            >
-              <ModernCard>
-                {" "}
-                <Typography variant="h6" gutterBottom>
-                  Medical Data
-                </Typography>
-                <div>
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
+              <div>
+                <div className={classes.btnGroup}>
+                  {" "}
+                  <Button
+                    className={classes.btn}
+                    variant="contained"
+                    color="primary"
+                    endIcon={<PrintIcon />}
+                    onClick={handlePrint}
                   >
-                    🤤 Diagnosis :{" "}
-                    <span className={classes.info}>
-                      {(patient.medicalData && patient.medicalData.diagnosis) ||
-                        "--"}
-                    </span>
-                  </Typography>
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
+                    Print
+                  </Button>
+                  <Button
+                    className={classes.btn}
+                    startIcon={<DeleteIcon />}
+                    variant="outlined"
+                    color="primary"
+                    onClick={handleDeletePatient}
                   >
-                    🤒 Symptoms :{" "}
-                    <span className={classes.info}>
-                      {(patient.medicalData && patient.medicalData.symptoms) ||
-                        "--"}
-                    </span>
-                  </Typography>
+                    Delete
+                  </Button>
                 </div>
-              </ModernCard>
-            </Link>
-          ) : !patient.patientInformation ? (
-            <CircularProgress />
-          ) : null}
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          {patient.prescriptions ? (
-            <Link
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-              to={`${ROUTES.PRESCRIPTION}/${id}`}
-            >
-              <ModernCard>
-                {" "}
-                <Typography variant="h6" gutterBottom>
-                  Prescription
-                </Typography>
-                <div>
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
-                  >
-                    💊 Medications :{" "}
-                    <span className={classes.info}>
-                      {(patient.prescriptions &&
-                        patient.prescriptions.medications) ||
-                        "--"}
-                    </span>
+              </div>
+            </Grid>
+          </Grid>
+
+          <Grid ref={patientInfo} container spacing={3}>
+            <Grid item xs={12}>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+                to={`${ROUTES.MEDICAL_HISTORY}/${id}`}
+              >
+                <ModernCard>
+                  {" "}
+                  <Typography variant="h6" gutterBottom>
+                    Patient Information
                   </Typography>
-                  <Typography
-                    className={classes.subHeading}
-                    variant="subtitle2"
-                    gutterBottom
-                  >
-                    💊 Dosages :{" "}
-                    <span className={classes.info}>
-                      {(patient.prescriptions &&
-                        patient.prescriptions.dosages) ||
-                        "--"}
-                    </span>
+                  <Grid container justify="space-between">
+                    <Grid item>
+                      {" "}
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        Full Name :{" "}
+                        <span className={classes.info}>
+                          {(patient.patientInformation &&
+                            patient.patientInformation.fullName) ||
+                            "--"}
+                        </span>
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        Gender :{" "}
+                        <span className={classes.info}>
+                          {(patient.patientInformation &&
+                            patient.patientInformation.gender) ||
+                            "--"}
+                        </span>
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        Address :{" "}
+                        <span className={classes.info}>
+                          {(patient.patientInformation &&
+                            patient.patientInformation.address) ||
+                            "--"}
+                        </span>
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        Phone Number:{" "}
+                        <span className={classes.info}>
+                          {(patient.patientInformation &&
+                            patient.patientInformation.phoneNumber) ||
+                            "--"}
+                        </span>
+                      </Typography>
+                    </Grid>
+
+                    <Grid item>
+                      {" "}
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        Emergency Full Name :{" "}
+                        <span className={classes.info}>
+                          {(patient.patientInformation &&
+                            patient.patientInformation.emergencyFullName) ||
+                            "--"}
+                        </span>
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        Emergency Phone Number :{" "}
+                        <span className={classes.info}>
+                          {(patient.patientInformation &&
+                            patient.patientInformation.emergencyPhoneNumber) ||
+                            "--"}
+                        </span>
+                      </Typography>
+                      <Typography
+                        className={classes.subHeading}
+                        variant="subtitle2"
+                        gutterBottom
+                      >
+                        Relation :{" "}
+                        <span className={classes.info}>
+                          {(patient.patientInformation &&
+                            patient.patientInformation.relation) ||
+                            "--"}
+                        </span>
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </ModernCard>
+              </Link>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+                to={`${ROUTES.PATIENT_DATA}/${id}`}
+              >
+                <ModernCard>
+                  {" "}
+                  <Typography variant="h6" gutterBottom>
+                    Medical Data
                   </Typography>
-                </div>
-              </ModernCard>
-            </Link>
-          ) : !patient.patientInformation ? (
-            <CircularProgress />
-          ) : null}
-        </Grid>
-      </Grid>
+                  <div>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                      gutterBottom
+                    >
+                      🤤 Diagnosis :{" "}
+                      <span className={classes.info}>
+                        {(patient.medicalData &&
+                          patient.medicalData.diagnosis) ||
+                          "--"}
+                      </span>
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                      gutterBottom
+                    >
+                      🤒 Symptoms :{" "}
+                      <span className={classes.info}>
+                        {(patient.medicalData &&
+                          patient.medicalData.symptoms) ||
+                          "--"}
+                      </span>
+                    </Typography>
+                  </div>
+                </ModernCard>
+              </Link>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+                to={`${ROUTES.PRESCRIPTION}/${id}`}
+              >
+                <ModernCard>
+                  {" "}
+                  <Typography variant="h6" gutterBottom>
+                    Prescription
+                  </Typography>
+                  <div>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                      gutterBottom
+                    >
+                      💊 Medications :{" "}
+                      <span className={classes.info}>
+                        {(patient.prescriptions &&
+                          patient.prescriptions.medications) ||
+                          "--"}
+                      </span>
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                      gutterBottom
+                    >
+                      💊 Dosages :{" "}
+                      <span className={classes.info}>
+                        {(patient.prescriptions &&
+                          patient.prescriptions.dosages) ||
+                          "--"}
+                      </span>
+                    </Typography>
+                  </div>
+                </ModernCard>
+              </Link>
+            </Grid>
+          </Grid>
+        </>
+      ) : patient ? (
+        <CircularProgress />
+      ) : (
+        <div>No data found...</div>
+      )}
     </div>
   );
 }
