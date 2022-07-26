@@ -17,7 +17,7 @@ const columns = [
     headerName: "ID",
     width: 140,
     renderCell: (params) => (
-      <Link to={`/patients/${params.value}`}>{params.value}</Link>
+      <Link to={`/dashboard/patients/${params.value}`}>{params.value}</Link>
     ),
   },
 
