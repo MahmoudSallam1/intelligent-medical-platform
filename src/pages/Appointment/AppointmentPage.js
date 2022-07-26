@@ -6,10 +6,7 @@ import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import PatientGeneralInformation from "./PatientGeneralInformation/PatientGeneralInformation";
-import PatientMedicalData from "./PatientMedicalData/PatientMedicalData";
 import AppointmentNavigation from "./components/AppointmentNavigation";
-import PatientIngellgientPresription from "./PatientIntellignetPrescription/PatientIntelligentPrescription";
 import PaperWrapper from "../../components/PaperWrapper/PaperWrapper";
 
 function AppointmentPage(props) {
@@ -22,9 +19,7 @@ function AppointmentPage(props) {
         <AppointmentNavigation />
       </PaperWrapper>
 
-      <PatientGeneralInformation />
-      <PatientMedicalData />
-      <PatientIngellgientPresription/>
+   
     </DashboardLayout>
   );
 }

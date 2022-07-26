@@ -1,59 +1,92 @@
-import React from "react";
 
-import { NavLink } from "react-router-dom";
-import * as ROUTES from "../../../constants/routes";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+
+
+import PatientGeneralInformation from "../PatientGeneralInformation/PatientGeneralInformation";
+import PatientMedicalData from "../PatientMedicalData/PatientMedicalData";
+import PatientIntelligentPrescription from "../PatientIntellignetPrescription/PatientIntelligentPrescription";
+
+
+
+
+
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 const useStyles = makeStyles((theme) => ({
-  links: {
-    // border: "1px solid #E0E0E0",
-    borderRadius: "30px",
-    width: "60%",
-    margin: "0 auto",
-    display: "flex",
-    justifyContent: "space-evenly",
-    padding: "1em",
-    background: "#EEF9FE",
-  },
-  link: {
-    textDecoration: "none",
-    color: "#6B6C6F",
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
   },
 }));
 
-const activeStyle = {
-  color: "#1DB5E4",
-  fontWeight: "500",
-  borderBottom: "1px solid #1DB5E4 ",
-};
-function AppointmentNavigation({ id }) {
+function AppointmentNavigation() {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
-    <div className={classes.links}>
-      <NavLink
-        className={classes.link}
-        activeStyle={activeStyle}
-        to={`${ROUTES.MEDICAL_HISTORY}/${id}`}
-      >
-        Patient Information
-      </NavLink>
-      <NavLink
-        className={classes.link}
-        activeStyle={activeStyle}
-        to={`${ROUTES.PATIENT_DATA}/${id}`}
-      >
-        Medical Data
-      </NavLink>
-      <NavLink
-        className={classes.link}
-        activeStyle={activeStyle}
-        to={`${ROUTES.PRESCRIPTION}/${id}`}
-      >
-        Intelligent Prescription
-      </NavLink>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+          <Tab label="General Information" {...a11yProps(0)} />
+          <Tab label="Medical Data" {...a11yProps(1)} />
+          <Tab label="Intelligent Prescription" {...a11yProps(2)} />
+        </Tabs>
+      </AppBar>
+      <TabPanel value={value} index={0}>
+      <PatientGeneralInformation/>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+      <PatientMedicalData/>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+      <PatientIntelligentPrescription/>
+      </TabPanel>
     </div>
   );
 }
 
 export default AppointmentNavigation;
+

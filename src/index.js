@@ -11,7 +11,12 @@ import rootReducer from "./store/reducers/rootReducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { reduxFirestore, getFirestore } from "redux-firestore";
+
+
+import { getFirestore } from "redux-firestore";
+
+import { reduxFirestore } from 'redux-firestore';
+
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
 import fbConfig from "./firebase/firebase";
 

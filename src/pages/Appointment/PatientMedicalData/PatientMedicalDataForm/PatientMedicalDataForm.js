@@ -108,7 +108,6 @@ function PatientMedicalDataForm({ auth }) {
 
   return (
     <>
-      <AppointmentNavigation id={id} />
 
       <Stepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}

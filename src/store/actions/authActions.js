@@ -36,15 +36,16 @@ export const signUp = ({ email, password, displayName }) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
+        console.log(res);
         return firestore
           .collection("doctors")
           .doc(res.user.uid)
           .set({
             id:res.user.uid,
-            displayName: displayName,
+            displayName: "",
             createdAt: new Date(),
             personalInfo: {
-              displayName: displayName,
+              displayName: "",
               email: email,
               password: password,
               createdAt: new Date(),
