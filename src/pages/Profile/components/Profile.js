@@ -47,32 +47,40 @@ function Profile(props) {
   const [tab, setTab] = useState(0);
 
   const [image, setImage] = useState(null);
-  const [url, setUrl] = useState(personalInfo.url || "");
+  const [url, setUrl] = useState(personalInfo && personalInfo.url);
 
   const [displayName, setDisplayName] = useState(
-    personalInfo.displayName || ""
+    personalInfo && personalInfo.displayName
   );
 
-  const [firstName, setFirstName] = useState(personalInfo.firstName || "");
-  const [lastName, setLastName] = useState(personalInfo.lastName || "");
-  const [specialty, setSpecialty] = useState(personalInfo.specialty || "");
-  const [specializedIn, setSpecializedIn] = useState(
-    personalInfo.specializedIn || ""
+  const [firstName, setFirstName] = useState(
+    personalInfo && personalInfo.firstName
   );
-  const [degree, setDegree] = useState(personalInfo.degree || "");
-  const [email, setEmail] = useState(personalInfo.email);
-  const [password, setPassword] = useState(personalInfo.password);
-  const [country, setCountry] = useState(personalInfo.country || "");
+  const [lastName, setLastName] = useState(
+    personalInfo && personalInfo.lastName
+  );
+  const [specialty, setSpecialty] = useState(
+    personalInfo && personalInfo.specialty
+  );
+  const [specializedIn, setSpecializedIn] = useState(
+    personalInfo && personalInfo.specializedIn
+  );
+  const [degree, setDegree] = useState(personalInfo && personalInfo.degree);
+  const [email, setEmail] = useState(personalInfo && personalInfo.email);
+  const [password, setPassword] = useState(
+    personalInfo && personalInfo.password
+  );
+  const [country, setCountry] = useState(personalInfo && personalInfo.country);
   const [phoneNumber, setPhoneNumber] = useState(
-    personalInfo.phoneNumber || ""
+    personalInfo && personalInfo.phoneNumber
   );
 
   // clinic info states
-  const [address, setAddress] = useState(clinicInfo.address || "");
+  const [address, setAddress] = useState(clinicInfo && clinicInfo.address);
   const [contactNumber, setContactNumber] = useState(
-    clinicInfo.contactNumber || ""
+    clinicInfo && clinicInfo.contactNumber
   );
-  const [fees, setFees] = useState(clinicInfo.fees || "");
+  const [fees, setFees] = useState(clinicInfo && clinicInfo.fees);
 
   const handleImage = (e) => {
     if (e.target.files[0]) {
