@@ -67,12 +67,9 @@ function Confirm({
   async function handleConfirm(e) {
     e.preventDefault();
     setIsSubmitting(true);
-    console.log("submitting to DB...");
-    // await sleep(2000);
-    createPatientGeneralMedicalHistory(formData, patientID);
-    setOpen(true);
+    await createPatientGeneralMedicalHistory(formData, patientID);
     setIsSubmitting(false);
-
+    setOpen(true);
   }
 
   return (
@@ -95,12 +92,7 @@ function Confirm({
               </ListItem>
               <Divider />
 
-              {/* <ListItem>
-                <ListItemText
-                  primary="Date"
-                  secondary={formData.selectedDate}
-                />
-              </ListItem> */}
+              
               <ListItem>
                 <ListItemText primary="Gender" secondary={formData.gender} />
               </ListItem>
