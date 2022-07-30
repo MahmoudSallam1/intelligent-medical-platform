@@ -3,6 +3,7 @@
 
 .progress-label {
     margin-bottom: 5px;
+    margin-top: 1em;
 }
 .progress-bar {
     background-color: rgb(232, 232, 232);
@@ -15,4 +16,10 @@
     background-color:#1DB5E4;
     width: 0%;
     height: 10px;
+}
+
+.extracted-text{
+    background-color: rgb(232, 231, 231);
+    padding: 1em 2em;
+    border-radius: 0.428rem;
 }

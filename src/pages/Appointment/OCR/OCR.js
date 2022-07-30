@@ -61,8 +61,12 @@ function OCR() {
       </div>}
       <div>
         <img src={imageData} alt="" srcset="" />
+
+        <div className="extracted-text">
         <h3>Extracted text...</h3>
         <p>{ocr}</p>
+        </div>
+     
       </div>
     </div>
   );
