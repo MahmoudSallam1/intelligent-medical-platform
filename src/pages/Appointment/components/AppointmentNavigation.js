@@ -12,6 +12,7 @@ import Box from '@material-ui/core/Box';
 import PatientGeneralInformation from "../PatientGeneralInformation/PatientGeneralInformation";
 import PatientMedicalData from "../PatientMedicalData/PatientMedicalData";
 import PatientIntelligentPrescription from "../PatientIntellignetPrescription/PatientIntelligentPrescription";
+import OCR from '../OCR/OCR';
 
 
 
@@ -73,6 +74,8 @@ function AppointmentNavigation() {
           <Tab label="General Information" {...a11yProps(0)} />
           <Tab label="Medical Data" {...a11yProps(1)} />
           <Tab label="Intelligent Prescription" {...a11yProps(2)} />
+          <Tab label="OCR" {...a11yProps(3)} />
+
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -83,6 +86,9 @@ function AppointmentNavigation() {
       </TabPanel>
       <TabPanel value={value} index={2}>
       <PatientIntelligentPrescription/>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+      <OCR/>
       </TabPanel>
     </div>
   );
