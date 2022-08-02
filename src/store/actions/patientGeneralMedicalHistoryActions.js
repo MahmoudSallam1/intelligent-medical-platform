@@ -40,8 +40,7 @@ export const createPatientGeneralMedicalHistory = (
             diagnosis: "",
           },
           prescriptions: {
-            dosages: "",
-            medications: "",
+  
           },
         })
         .then(() => {

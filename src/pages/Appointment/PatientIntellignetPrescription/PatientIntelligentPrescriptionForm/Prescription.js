@@ -231,30 +231,18 @@ function Prescription({
                 <div style={{ marginTop: "2em" }}>
                   <TextField
                     id="standard-textarea"
-                    placeholder="Medications"
-                    value={formData.medications}
+                    placeholder="Add medications and dosages"
+                    value={formData.prescription}
                     onChange={(e) => {
                       setFormData({
                         ...formData,
-                        medications: e.target.value,
+                        prescription: transcript,
                       });
                     }}
                     multiline
                     fullWidth
                   />
-                  <TextField
-                    id="standard-textarea"
-                    placeholder="Dosages"
-                    value={formData.dosages}
-                    onChange={(e) => {
-                      setFormData({
-                        ...formData,
-                        dosages: e.target.value,
-                      });
-                    }}
-                    multiline
-                    fullWidth
-                  />
+              
                 </div>
 
                 <div style={{ marginTop: "5em" }}>
