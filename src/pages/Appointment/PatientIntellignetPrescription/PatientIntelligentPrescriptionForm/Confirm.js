@@ -68,6 +68,8 @@ function Confirm({
     setIsSubmitting(false);
   }
 
+  console.log(formData);
+
   return (
     <Container>
       <Grid container>
