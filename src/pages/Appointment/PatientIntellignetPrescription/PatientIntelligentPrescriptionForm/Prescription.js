@@ -232,8 +232,8 @@ function Prescription({
                   <TextField
                     id="standard-textarea"
                     placeholder="Add medications and dosages"
-                    value={formData.prescription}
-                    onChange={(e) => {
+                    value={transcript}
+                    onChange={() => {
                       setFormData({
                         ...formData,
                         prescription: transcript,
