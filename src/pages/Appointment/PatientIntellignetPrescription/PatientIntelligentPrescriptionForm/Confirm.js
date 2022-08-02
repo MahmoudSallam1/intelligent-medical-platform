@@ -77,18 +77,13 @@ function Confirm({
             <List>
               <ListItem>
                 <ListItemText
-                  primary="Medications"
-                  secondary={formData.medications}
+                  primary="Prescription"
+                  secondary={formData.prescription}
                 />
               </ListItem>
               <Divider />
 
-              <ListItem>
-                <ListItemText
-                  primary="Medications"
-                  secondary={formData.dosages}
-                />
-              </ListItem>
+            
             </List>
             <br />
 

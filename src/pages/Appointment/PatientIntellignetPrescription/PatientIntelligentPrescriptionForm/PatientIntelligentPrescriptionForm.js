@@ -32,7 +32,6 @@ function PatientIntelligentPrescriptionForm({ auth }) {
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
     prescription: "",
-    dosages: "",
   });
   const [patientInfo, setPateintInfo] = useState({});
 
