@@ -67,8 +67,6 @@ function App() {
         </Route>
         {/* Patients */}
 
-
-
         <Route path={ROUTES.ERROR}>
           <ErrorPage />
         </Route>
