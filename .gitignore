@@ -2,9 +2,12 @@
 
 # dependencies
 /node_modules
-/server
+/server/venv
+/server/uploads
+/server/modelcancerlung.h5
 /.pnp
 .pnp.js
+*.h5
 
 # testing
 /coverage
