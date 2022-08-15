@@ -13,6 +13,7 @@ import PatientGeneralInformation from "../PatientGeneralInformation/PatientGener
 import PatientMedicalData from "../PatientMedicalData/PatientMedicalData";
 import PatientIntelligentPrescription from "../PatientIntellignetPrescription/PatientIntelligentPrescription";
 import OCR from '../OCR/OCR';
+import Radiology from '../Radiology/Radiology';
 
 
 
@@ -75,6 +76,7 @@ function AppointmentNavigation() {
           <Tab label="Medical Data" {...a11yProps(1)} />
           <Tab label="Intelligent Prescription" {...a11yProps(2)} />
           <Tab label="OCR" {...a11yProps(3)} />
+          <Tab label="Radiology" {...a11yProps(4)} />
 
         </Tabs>
       </AppBar>
@@ -89,6 +91,9 @@ function AppointmentNavigation() {
       </TabPanel>
       <TabPanel value={value} index={3}>
       <OCR/>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+      <Radiology/>
       </TabPanel>
     </div>
   );
