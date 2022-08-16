@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useTranslation } from "react-i18next";
 
 import { footerContentArray } from "./footerContentArray";
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
   section: {
     background: "#1DB5E4",
-    padding: "10em 2em",
+    padding: "6em 2em",
   },
   item: {
     color: "#fff",
@@ -36,10 +37,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: "#fff",
   },
+  footerCopyrights: {
+    color: "#fff",
+    textAlign: "center",
+  },
 }));
 
 export default function Footer() {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -47,7 +53,7 @@ export default function Footer() {
 
       <div className={classes.section}>
         <Container maxWidth="lg" component="footer" className={classes.footer}>
-          <Grid container spacing={1} justify="space-between">
+          {/* <Grid container spacing={1} justify="space-between">
             {footerContentArray.map((footer) => (
               <Grid item xs={6} sm={6} md={2} key={footer.id}>
                 <Typography className={classes.title} variant="h6" gutterBottom>
@@ -64,7 +70,15 @@ export default function Footer() {
                 </ul>
               </Grid>
             ))}
-          </Grid>
+          </Grid> */}
+          <div>
+            <p className={classes.footerCopyrights}>
+              {t("footer_copyrights_developer")}
+            </p>
+            <p className={classes.footerCopyrights}>
+              {t("footer_copyrights_supervision")}
+            </p>
+          </div>
         </Container>
       </div>
       {/* End footer */}

@@ -1,3 +1,28 @@
 {
-    "Welcome_to_react": "اهلا بالعربية"
-  }
+  "Welcome_to_react": "اهلا بالعربية",
+  "app_title": " التحول الرقمى للمنظومة الطبية",
+  "slogan": "منصة رعاية طبية سهلة وكاملة.",
+  "slogan_desc": "يمكن للأطباء إدارة جميع الوظائف الرئيسية لممارساتهم دون عناء من خلال منصة واحدة بديهية.",
+  "btn_register": "البدء",
+  "btn_login": "تسجيل الدخول",
+  "nav_home": "الرئيسية",
+  "nav_about": "حولنا",
+  "our_features_heading": "ميزانا",
+  "our_features_desc": "منصة تتكيف مع احتياجاتك.",
+  "EMR_heading": "EMR",
+  "EMR_desc": "يوفر توثيقًا سريريًا للسجلات الطبية التي يسهل الوصول إليها وتوفير الوقت",
+  "practice_management_heading": "إدارة الممارسة",
+  "practice_management_desc": "جدولة المواعيد المخصصة لكل عيادة والتذكير الآلي بالمواعيد",
+  "dictation_heading": "إملاء",
+  "dictation_desc": "الوصفات والأعراض والملاحظات من خلال الإملاء بنقرة زر واحدة",
+  "mobile_EHR_heading": "Mobile EHR",
+  "mobile_EHR_desc": "يحصل المرضى على تطبيق جوال لحجز المواعيد وعرض سجلهم الطبي",
+  "analytics_heading": "تحليل البيانات",
+  "analytics_heading_desc": "إنشاء تحليلات حول المرضى وإطلاق العنان لرؤى الأعمال لاتخاذ قرارات أفضل تعتمد على البيانات",
+  "scan_documents_heading": "مسح المستندات ضوئيًا",
+  "scan_documents_desc": "يمكن مسح المستندات الطبية ضوئيًا",
+  "footer_copyrights_developer":"تم التطوير بواسطة محمود سلام | كلية الضباط اﻻحتياط" ,
+  "footer_copyrights_supervision":"تحت اشراف الرائد / محمود عادل" 
+
+
+}

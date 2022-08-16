@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import "./main-nav.css";
 
 function MainNav() {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleClick = () => {
     setOpen(!open);
@@ -33,22 +36,12 @@ function MainNav() {
       <ul className={open ? "nav-links active" : "nav-links"}>
         <li className="nav-item">
           <Link to="/" className="nav-link" onClick={closeMenu}>
-            Home
+            {t("nav_home")}
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/about" className="nav-link" onClick={closeMenu}>
-            About
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/features" className="nav-link" onClick={closeMenu}>
-            Features
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/contact" className="nav-link" onClick={closeMenu}>
-            Contact
+            {t("nav_about")}
           </Link>
         </li>
       </ul>

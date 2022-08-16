@@ -7,12 +7,19 @@ body {
     box-sizing: border-box;
     font-family: "Roboto";
     background-color: #F5F6FA;
+    overflow-x: hidden;
 }
 
 body ::selection {
     color: #fff;
     background: #1DB5E4;
 
+}
+
+.language-container{
+    background: #f4f3f3;
+    padding: 0.4em 3em;
+    margin: 0 auto;
 }
 
 

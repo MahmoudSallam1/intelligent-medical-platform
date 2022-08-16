@@ -1,3 +1,29 @@
 {
-    "Welcome_to_react": "Welcome to React and react-i18next"
+    "Welcome_to_react": "Welcome to React and react-i18next",
+    "app_title": "Intellignet Medical System",
+    "slogan": "Easy and Complete Medical Care Platform.",
+    "slogan_desc": "Doctors can effortlessly manage all major functions of their practice through one intuitive platform.",
+    "btn_register": "Get Started",
+    "btn_login": "Login",
+    "nav_home": "Home",
+    "nav_about": "About Us",
+    "our_features_heading": "Our features",
+    "our_features_desc": "A platform that adapts to your needs.",
+    "EMR_heading": "EMR",
+    "EMR_desc": "Provides clinical documentation of Medical Records that are easy to access and time saving",
+    "practice_management_heading": "Practice Management",
+    "practice_management_desc": "Scheduling appointments customized for each clinic and automated appointment reminders",
+    "dictation_heading": "Dictation",
+    "dictation_desc": "Prescriptions, symptoms, and notes through dictation in a click on a button",
+    "mobile_EHR_heading": "Mobile EHR",
+    "mobile_EHR_desc": "Patients get a mobile app to book appointments and view their medical record",
+    "analytics_heading": "Analytics",
+    "analytics_heading_desc": "Generate analytics about patients and unlock business insights to make better data-driven decisions",
+    "scan_documents_heading": "Scan documents",
+    "scan_documents_desc": "Medical documents can be scanned and uploaded to the cloud",
+    "footer_copyrights_developer":"Developed by Mahmoud Sallam | Reserve Officers College" ,
+    "footer_copyrights_supervision":"Under supervision of Major : Mahmoud Adel" 
+
+
+
 }
