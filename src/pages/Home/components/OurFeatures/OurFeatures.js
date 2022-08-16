@@ -79,7 +79,7 @@ function OurFeatures() {
               <div className={`card card-1`}>
                 <img src={`/images/features/1.png`} alt="our features" />
                 <h3>{t("EMR_heading")}</h3>
-                <p>{t("EMR_heading_desc")}</p>
+                <p>{t("EMR_desc")}</p>
               </div>
             </Grid>
 
