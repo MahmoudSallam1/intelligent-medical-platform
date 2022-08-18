@@ -42,15 +42,29 @@
     "appointment_medical_data": "Medical Data",
     "appointment_intellignet_prescription": "Intellignet Prescription",
     "appointment_intellignet_radiology": "Intellignet Radiology",
+
+
+
     "symptoms": "Symptoms",
     "record_btn": "Record",
     "pause_btn": "Pause",
     "medical_reports": "Medical Reports",
     "diagonsis": "Diagnosis",
     "confirm": "Confirm",
-    "prescription":"Prescription",
-    "print_btn":"Print"
+    "prescription": "Prescription",
+    "print_btn": "Print",
+    "results": "Results:",
 
+
+    "general_information": "General Information",
+    "medical_history": "Medical History",
+    "familial_diseases": "Familial diseases",
+    "smoking_and_alcoholic_drinks": "Smoking and Alcoholic drinks",
+
+    "next_btn": "Next",
+    "back_btn":"Back",
+    "submit_btn":"Submit",
+    "finish_btn":"Finish"
 
 
 

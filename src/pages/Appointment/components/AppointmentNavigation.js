@@ -17,7 +17,6 @@ import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  const { t } = useTranslation();
 
   return (
     <div

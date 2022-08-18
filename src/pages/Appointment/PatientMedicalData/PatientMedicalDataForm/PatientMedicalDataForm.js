@@ -121,7 +121,7 @@ function PatientMedicalDataForm({ auth }) {
             onClick={prevStep}
             className={classes.btn}
           >
-            Back
+            {t("back_btn")}
           </Button>
 
           <Button
@@ -130,7 +130,7 @@ function PatientMedicalDataForm({ auth }) {
             onClick={nextStep}
             className={classes.btn}
           >
-            {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            {activeStep === steps.length - 1 ? t("finish_btn") : t("next_btn")}
           </Button>
         </div>
       )}

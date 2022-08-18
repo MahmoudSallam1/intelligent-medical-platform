@@ -47,13 +47,23 @@
   "record_btn": "تسجيل",
   "pause_btn": "ايقاف",
 
+
   "medical_reports": "تقارير طبية",
   "diagonsis": "التشخيص",
   "confirm": "تاكيد",
-  "prescription":"الروشتة",
-  "print_btn":"طباعة"
+  "prescription": "الروشتة",
+  "print_btn": "طباعة",
+  "results": "النتائج:",
 
 
+  "general_information": "بيانات عامة",
+  "medical_history": "السجل الطبى",
+  "familial_diseases": "امراض وراثية",
+  "smoking_and_alcoholic_drinks": "التدخين والمخدرات",
 
+  "next_btn": "التالى",
+  "back_btn": "السابق",
+  "submit_btn":"ارسال",
+  "finish_btn":"انهاء"
 
 }

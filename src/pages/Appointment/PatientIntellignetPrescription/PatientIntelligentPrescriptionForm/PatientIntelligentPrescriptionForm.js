@@ -30,7 +30,6 @@ function PatientIntelligentPrescriptionForm({ auth }) {
 
   const { t } = useTranslation();
 
-
   const steps = [t("prescription"), t("confirm")];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -104,7 +103,7 @@ function PatientIntelligentPrescriptionForm({ auth }) {
             onClick={prevStep}
             className={classes.button}
           >
-            Back
+            {t("back_btn")}
           </Button>
 
           <Button
@@ -113,7 +112,7 @@ function PatientIntelligentPrescriptionForm({ auth }) {
             onClick={nextStep}
             className={classes.button}
           >
-            {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            {activeStep === steps.length - 1 ? t("finish_btn") : t("next_btn")}
           </Button>
         </div>
       )}
@@ -127,4 +126,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(PatientIntelligentPrescriptionForm);
+export default connect(
+  mapStateToProps,
+  null
+)(PatientIntelligentPrescriptionForm);
