@@ -21,8 +21,22 @@
     "analytics_heading_desc": "Generate analytics about patients and unlock business insights to make better data-driven decisions",
     "scan_documents_heading": "Scan documents",
     "scan_documents_desc": "Medical documents can be scanned and uploaded to the cloud",
-    "footer_copyrights_developer":"Developed by Mahmoud Sallam | Reserve Officers College" ,
-    "footer_copyrights_supervision":"Under supervision of Major : Mahmoud Adel" 
+    "footer_copyrights_developer": "Developed by Mahmoud Sallam | Reserve Officers College",
+    "footer_copyrights_supervision": "Under supervision of Major : Mahmoud Adel",
+
+    "drawer_new_appointment_btn": "New Appointment",
+    "dashboard_title": "Dashboard",
+    "dashboard_next_appointment": "Next Appointments",
+
+    "drawer_home": "Home",
+    "drawer_dashboard": "Dashboard",
+    "drawer_patients": "Patients",
+    "drawer_calendar": "Calendar",
+    "drawer_profile": "Profile",
+    "drawer_logout": "Log out",
+
+    "onboarding_heading":"Welcome",
+    "onboarding_desc":"Let's check your health with us , Care with yourhealth from now to get more live better."
 
 
 

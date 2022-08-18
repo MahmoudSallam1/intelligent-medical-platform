@@ -21,8 +21,22 @@
   "analytics_heading_desc": "إنشاء تحليلات حول المرضى وإطلاق العنان لرؤى الأعمال لاتخاذ قرارات أفضل تعتمد على البيانات",
   "scan_documents_heading": "مسح المستندات ضوئيًا",
   "scan_documents_desc": "يمكن مسح المستندات الطبية ضوئيًا",
-  "footer_copyrights_developer":"تم التطوير بواسطة محمود سلام | كلية الضباط اﻻحتياط" ,
-  "footer_copyrights_supervision":"تحت اشراف الرائد / محمود عادل" 
+  "footer_copyrights_developer": "تم التطوير بواسطة محمود سلام | كلية الضباط اﻻحتياط",
+  "footer_copyrights_supervision": "تحت اشراف الرائد / محمود عادل",
+
+  "drawer_new_appointment_btn": "حجز جديد",
+  "dashboard_title": "لوحة القيادة",
+  "dashboard_next_appointment": "الحجوزات القادمة",
+
+  "drawer_home": "الرئيسية",
+  "drawer_dashboard": "لوحة القيادة",
+  "drawer_patients": "المرضى",
+  "drawer_calendar": "النتيجة",
+  "drawer_profile": "البروفايل",
+  "drawer_logout": "تسجيل الخروج",
+
+  "onboarding_heading": "اهلا",
+  "onboarding_desc": "دعنا نتحقق من صحتك معنا ، اهتم بصحتك الصحة من الآن للحصول على حياة أفضل."
 
 
 }
