@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { useParams } from "react-router-dom";
 import firebase from "../../../../firebase/firebase";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -27,7 +28,10 @@ function PatientIntelligentPrescriptionForm({ auth }) {
   const classes = useStyles();
   const { id } = useParams();
 
-  const steps = ["Prescription", "Confirm"];
+  const { t } = useTranslation();
+
+
+  const steps = [t("prescription"), t("confirm")];
 
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({

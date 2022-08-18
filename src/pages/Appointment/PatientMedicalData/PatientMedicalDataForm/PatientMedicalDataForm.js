@@ -18,6 +18,8 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
+import { useTranslation } from "react-i18next";
+
 const useStyles = makeStyles((theme) => ({
   btn: {
     marginRight: theme.spacing(1),
@@ -32,10 +34,12 @@ const db = firebase.firestore();
 function PatientMedicalDataForm({ auth }) {
   const { id } = useParams();
 
+  const { t } = useTranslation();
+
   const classes = useStyles();
   const { transcript, resetTranscript } = useSpeechRecognition();
 
-  const steps = ["Medical Reports", "Diagnosis", "Confirm"];
+  const steps = [t("medical_reports"), t("diagonsis"), t("confirm")];
 
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -108,7 +112,6 @@ function PatientMedicalDataForm({ auth }) {
 
   return (
     <>
-
       <Stepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (

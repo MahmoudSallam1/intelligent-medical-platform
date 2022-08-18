@@ -41,6 +41,19 @@
   "appointment_general_information": "بيانات عامة",
   "appointment_medical_data": "بيانات طبية",
   "appointment_intellignet_prescription": "روشتة ذكية",
-  "appointment_intellignet_radiology": "اشاعات ذكية"
+  "appointment_intellignet_radiology": "اشاعات ذكية",
+
+  "symptoms": "اﻻعراض",
+  "record_btn": "تسجيل",
+  "pause_btn": "ايقاف",
+
+  "medical_reports": "تقارير طبية",
+  "diagonsis": "التشخيص",
+  "confirm": "تاكيد",
+  "prescription":"الروشتة",
+  "print_btn":"طباعة"
+
+
+
 
 }

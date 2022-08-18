@@ -41,7 +41,16 @@
     "appointment_general_information": "General Information",
     "appointment_medical_data": "Medical Data",
     "appointment_intellignet_prescription": "Intellignet Prescription",
-    "appointment_intellignet_radiology": "Intellignet Radiology"
+    "appointment_intellignet_radiology": "Intellignet Radiology",
+    "symptoms": "Symptoms",
+    "record_btn": "Record",
+    "pause_btn": "Pause",
+    "medical_reports": "Medical Reports",
+    "diagonsis": "Diagnosis",
+    "confirm": "Confirm",
+    "prescription":"Prescription",
+    "print_btn":"Print"
+
 
 
 
