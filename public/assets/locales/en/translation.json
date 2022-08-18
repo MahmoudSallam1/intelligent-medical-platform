@@ -35,8 +35,13 @@
     "drawer_profile": "Profile",
     "drawer_logout": "Log out",
 
-    "onboarding_heading":"Welcome",
-    "onboarding_desc":"Let's check your health with us , Care with yourhealth from now to get more live better."
+    "onboarding_heading": "Welcome",
+    "onboarding_desc": "Let's check your health with us , Care with yourhealth from now to get more live better.",
+
+    "appointment_general_information": "General Information",
+    "appointment_medical_data": "Medical Data",
+    "appointment_intellignet_prescription": "Intellignet Prescription",
+    "appointment_intellignet_radiology": "Intellignet Radiology"
 
 
 
