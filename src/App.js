@@ -23,55 +23,57 @@ import ErrorPage from "./pages/Error/ErrorPage";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path={ROUTES.HOME}>
-          <HomePage />
-        </Route>
-        <Route path={ROUTES.SIGN_UP}>
-          <SignupPage />
-        </Route>
-        <Route path={ROUTES.SIGN_IN}>
-          <SigninPage />
-        </Route>
+    <>
+      <Router>
+        <Switch>
+          <Route exact path={ROUTES.HOME}>
+            <HomePage />
+          </Route>
+          <Route path={ROUTES.SIGN_UP}>
+            <SignupPage />
+          </Route>
+          <Route path={ROUTES.SIGN_IN}>
+            <SigninPage />
+          </Route>
 
-        {/* Dashboard Main Route */}
-        <Route exact path={ROUTES.DASHBOARD}>
-          <DashboardPage />
-        </Route>
+          {/* Dashboard Main Route */}
+          <Route exact path={ROUTES.DASHBOARD}>
+            <DashboardPage />
+          </Route>
 
-        <Route path={ROUTES.PROFILE}>
-          <ProfilePage />
-        </Route>
+          <Route path={ROUTES.PROFILE}>
+            <ProfilePage />
+          </Route>
 
-        {/* Patients */}
+          {/* Patients */}
 
-        <Route exact path={ROUTES.PATIENTS}>
-          <PatientsPage />
-        </Route>
+          <Route exact path={ROUTES.PATIENTS}>
+            <PatientsPage />
+          </Route>
 
-        <Route path={ROUTES.PATIENT_ID}>
-          <PatientDetailsPage />
-        </Route>
+          <Route path={ROUTES.PATIENT_ID}>
+            <PatientDetailsPage />
+          </Route>
 
-        {/* Calender */}
+          {/* Calender */}
 
-        <Route path={ROUTES.CALENDER}>
-          <CalenderPage />
-        </Route>
+          <Route path={ROUTES.CALENDER}>
+            <CalenderPage />
+          </Route>
 
-        {/* Appointment */}
+          {/* Appointment */}
 
-        <Route exact path={ROUTES.APPOINTMENT}>
-          <AppointmentPage />
-        </Route>
-        {/* Patients */}
+          <Route exact path={ROUTES.APPOINTMENT}>
+            <AppointmentPage />
+          </Route>
+          {/* Patients */}
 
-        <Route path={ROUTES.ERROR}>
-          <ErrorPage />
-        </Route>
-      </Switch>
-    </Router>
+          <Route path={ROUTES.ERROR}>
+            <ErrorPage />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

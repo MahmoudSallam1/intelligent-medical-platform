@@ -16,6 +16,8 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
+import { useTranslation } from "react-i18next";
+
 const useStyles = makeStyles((theme) => ({
   gray: {
     color: "#616161",
@@ -40,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 function MedicalReports({ formData, setFormData, transcript }) {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const [isRecord, setIsRecord] = useState(false);
 
@@ -101,7 +104,7 @@ function MedicalReports({ formData, setFormData, transcript }) {
                 variant="h6"
                 gutterBottom
               >
-                Symptoms{" "}
+                {t("symptoms")}
               </Typography>
 
               <Button
@@ -111,13 +114,13 @@ function MedicalReports({ formData, setFormData, transcript }) {
                 onClick={isRecord ? handleStop : handleRecord}
                 endIcon={isRecord ? <PauseIcon /> : <MicIcon />}
               >
-                {isRecord ? "Pause" : "Record"}
+                {isRecord ? t("pause_btn") : t("record_btn")}
               </Button>
             </div>
 
             <TextField
               id="symptoms"
-              label="Symptoms"
+              label={t("symptoms")}
               value={transcript}
               onChange={(e) => {
                 setFormData({

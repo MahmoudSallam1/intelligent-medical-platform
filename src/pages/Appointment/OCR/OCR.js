@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 import { createWorker } from "tesseract.js";
 import "./ocr.css"
 
+import {useTranslation} from 'react-i18next'
+
 function OCR() {
   const [ocr, setOcr] = useState("");
   const [progress, setProgress] = useState(0);
+  const { t } = useTranslation();
 
   const [imageData, setImageData] = useState(null);
   const worker = createWorker({
@@ -63,7 +66,7 @@ function OCR() {
         <img src={imageData} alt="" srcset="" />
 
         <div className="extracted-text">
-        <h3>Extracted text...</h3>
+        <h3>{t("results")}</h3>
         <p>{ocr}</p>
         </div>
      

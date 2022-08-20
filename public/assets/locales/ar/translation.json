@@ -1,0 +1,69 @@
+{
+  "Welcome_to_react": "اهلا بالعربية",
+  "app_title": " التحول الرقمى للمنظومة الطبية",
+  "slogan": "منصة رعاية طبية سهلة وكاملة.",
+  "slogan_desc": "يمكن للأطباء إدارة جميع الوظائف الرئيسية لممارساتهم دون عناء من خلال منصة واحدة بديهية.",
+  "btn_register": "البدء",
+  "btn_login": "تسجيل الدخول",
+  "nav_home": "الرئيسية",
+  "nav_about": "حولنا",
+  "our_features_heading": "ميزانا",
+  "our_features_desc": "منصة تتكيف مع احتياجاتك.",
+  "EMR_heading": "EMR",
+  "EMR_desc": "يوفر توثيقًا سريريًا للسجلات الطبية التي يسهل الوصول إليها وتوفير الوقت",
+  "practice_management_heading": "إدارة الممارسة",
+  "practice_management_desc": "جدولة المواعيد المخصصة لكل عيادة والتذكير الآلي بالمواعيد",
+  "dictation_heading": "إملاء",
+  "dictation_desc": "الوصفات والأعراض والملاحظات من خلال الإملاء بنقرة زر واحدة",
+  "mobile_EHR_heading": "Mobile EHR",
+  "mobile_EHR_desc": "يحصل المرضى على تطبيق جوال لحجز المواعيد وعرض سجلهم الطبي",
+  "analytics_heading": "تحليل البيانات",
+  "analytics_heading_desc": "إنشاء تحليلات حول المرضى وإطلاق العنان لرؤى الأعمال لاتخاذ قرارات أفضل تعتمد على البيانات",
+  "scan_documents_heading": "مسح المستندات ضوئيًا",
+  "scan_documents_desc": "يمكن مسح المستندات الطبية ضوئيًا",
+  "footer_copyrights_developer": "تم التطوير بواسطة محمود سلام | كلية الضباط اﻻحتياط",
+  "footer_copyrights_supervision": "تحت اشراف الرائد / محمود عادل",
+
+  "drawer_new_appointment_btn": "حجز جديد",
+  "dashboard_title": "لوحة القيادة",
+  "dashboard_next_appointment": "الحجوزات القادمة",
+
+  "drawer_home": "الرئيسية",
+  "drawer_dashboard": "لوحة القيادة",
+  "drawer_patients": "المرضى",
+  "drawer_calendar": "النتيجة",
+  "drawer_profile": "البروفايل",
+  "drawer_logout": "تسجيل الخروج",
+
+  "onboarding_heading": "اهلا",
+  "onboarding_desc": "دعنا نتحقق من صحتك معنا ، اهتم بصحتك الصحة من الآن للحصول على حياة أفضل.",
+
+  "appointment_general_information": "بيانات عامة",
+  "appointment_medical_data": "بيانات طبية",
+  "appointment_intellignet_prescription": "روشتة ذكية",
+  "appointment_intellignet_radiology": "اشاعات ذكية",
+
+  "symptoms": "اﻻعراض",
+  "record_btn": "تسجيل",
+  "pause_btn": "ايقاف",
+
+
+  "medical_reports": "تقارير طبية",
+  "diagonsis": "التشخيص",
+  "confirm": "تاكيد",
+  "prescription": "الروشتة",
+  "print_btn": "طباعة",
+  "results": "النتائج:",
+
+
+  "general_information": "بيانات عامة",
+  "medical_history": "السجل الطبى",
+  "familial_diseases": "امراض وراثية",
+  "smoking_and_alcoholic_drinks": "التدخين والمخدرات",
+
+  "next_btn": "التالى",
+  "back_btn": "السابق",
+  "submit_btn":"ارسال",
+  "finish_btn":"انهاء"
+
+}

@@ -21,6 +21,7 @@ import { connect } from "react-redux";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -87,6 +88,7 @@ function Prescription({
   steps,
 }) {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   /* handle printing prescription */
 
@@ -148,7 +150,7 @@ function Prescription({
                   onClick={isRecord ? handleStop : handleRecord}
                   endIcon={isRecord ? <PauseIcon /> : <MicIcon />}
                 >
-                  {isRecord ? "Pause" : "Record"}
+                  {isRecord ? t("pause_btn") : t("record_btn")}
                 </Button>
                 <Button
                   variant="outlined"
@@ -157,7 +159,7 @@ function Prescription({
                   endIcon={<PrintIcon />}
                   onClick={handlePrint}
                 >
-                  Print
+                  {t("print_btn")}
                 </Button>
               </div>
             </div>

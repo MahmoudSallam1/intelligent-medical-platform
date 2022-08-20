@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { useParams } from "react-router-dom";
 import firebase from "../../../../firebase/firebase";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -27,7 +28,9 @@ function PatientIntelligentPrescriptionForm({ auth }) {
   const classes = useStyles();
   const { id } = useParams();
 
-  const steps = ["Prescription", "Confirm"];
+  const { t } = useTranslation();
+
+  const steps = [t("prescription"), t("confirm")];
 
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -100,7 +103,7 @@ function PatientIntelligentPrescriptionForm({ auth }) {
             onClick={prevStep}
             className={classes.button}
           >
-            Back
+            {t("back_btn")}
           </Button>
 
           <Button
@@ -109,7 +112,7 @@ function PatientIntelligentPrescriptionForm({ auth }) {
             onClick={nextStep}
             className={classes.button}
           >
-            {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            {activeStep === steps.length - 1 ? t("finish_btn") : t("next_btn")}
           </Button>
         </div>
       )}
@@ -123,4 +126,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(PatientIntelligentPrescriptionForm);
+export default connect(
+  mapStateToProps,
+  null
+)(PatientIntelligentPrescriptionForm);

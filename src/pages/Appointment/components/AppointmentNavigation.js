@@ -1,24 +1,19 @@
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 import PatientGeneralInformation from "../PatientGeneralInformation/PatientGeneralInformation";
 import PatientMedicalData from "../PatientMedicalData/PatientMedicalData";
 import PatientIntelligentPrescription from "../PatientIntellignetPrescription/PatientIntelligentPrescription";
-import OCR from '../OCR/OCR';
-import Radiology from '../Radiology/Radiology';
+import OCR from "../OCR/OCR";
+import Radiology from "../Radiology/Radiology";
 
-
-
-
-
+import { useTranslation } from "react-i18next";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,7 +44,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -63,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 function AppointmentNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { t } = useTranslation();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -71,33 +67,41 @@ function AppointmentNavigation() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="General Information" {...a11yProps(0)} />
-          <Tab label="Medical Data" {...a11yProps(1)} />
-          <Tab label="Intelligent Prescription" {...a11yProps(2)} />
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="simple tabs example"
+        >
+          <Tab label={t("appointment_general_information")} {...a11yProps(0)} />
+          <Tab label={t("appointment_medical_data")} {...a11yProps(1)} />
+          <Tab
+            label={t("appointment_intellignet_prescription")}
+            {...a11yProps(2)}
+          />
           <Tab label="OCR" {...a11yProps(3)} />
-          <Tab label="Radiology" {...a11yProps(4)} />
-
+          <Tab
+            label={t("appointment_intellignet_radiology")}
+            {...a11yProps(4)}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <PatientGeneralInformation/>
+        <PatientGeneralInformation />
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <PatientMedicalData/>
+        <PatientMedicalData />
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <PatientIntelligentPrescription/>
+        <PatientIntelligentPrescription />
       </TabPanel>
       <TabPanel value={value} index={3}>
-      <OCR/>
+        <OCR />
       </TabPanel>
       <TabPanel value={value} index={4}>
-      <Radiology/>
+        <Radiology />
       </TabPanel>
     </div>
   );
 }
 
 export default AppointmentNavigation;
-

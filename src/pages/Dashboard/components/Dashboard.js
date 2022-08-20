@@ -24,6 +24,7 @@ import NumberOfBookingChart from "./insights/NumberOfBookingChart";
 import PatientAgeGroupChart from "./insights/PatientAgeGroupChart";
 import CommonDiseasesChart from "./insights/CommonDiseasesChart";
 import { set } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 const db = firebase.firestore();
 
@@ -87,6 +88,7 @@ function Dashboard({ auth, profile }) {
   const [patients, setPatients] = useState([]);
   const [isLoading, setisLoading] = useState(true);
   const { personalInfo, clinicInfo } = profile;
+  const { t } = useTranslation();
 
   const classes = useStyles();
 
@@ -118,7 +120,6 @@ function Dashboard({ auth, profile }) {
     getPatientsList();
   }, []);
 
-
   return (
     <div className={classes.container}>
       <Grid container spacing={3}>
@@ -134,7 +135,7 @@ function Dashboard({ auth, profile }) {
                     variant="h6"
                     gutterBottom
                   >
-                    Welcome{" "}
+                    {t("onboarding_heading")}
                     {personalInfo &&
                       `${personalInfo.firstName} ${personalInfo.lastName}`}{" "}
                     !
@@ -143,8 +144,7 @@ function Dashboard({ auth, profile }) {
                     className={classes.bannerSubheading}
                     variant="subtitle2"
                   >
-                    Let's check your health with us , Care with <br></br> your
-                    health from now to get more live better.
+                    {t("onboarding_desc")}
                   </Typography>
                 </div>{" "}
               </ModernCard>
@@ -241,68 +241,70 @@ function Dashboard({ auth, profile }) {
               variant="h6"
               gutterBottom
             >
-              Next Appoitments
+              {t("dashboard_next_appointment")}{" "}
             </Typography>{" "}
             <Divider style={{ background: "#E0E0E0" }} />
             <br></br>
-            {isLoading ? (<CircularProgress style={{ color: "#fff" }} />) :
-              patients.length ? (
-                patients.map((patient) => (
-                  <ModernCard key={patient.id} classStyle="style3">
-                    <div>
-                      <Typography
-                        className={classes.subHeading}
-                        variant="subtitle2"
-                        gutterBottom
-                      >
-                        <span className={classes.info}>
-                          {(patient && patient.fullName) || "--"}
-                        </span>
-                      </Typography>
-                      <Typography
-                        className={classes.subHeading}
-                        variant="subtitle2"
-                      >
-                        {(patient && patient.phoneNumber) || "--"}
-                      </Typography>
-                      <Typography
-                        className={classes.subHeading}
-                        variant="subtitle2"
-                      >
-                        {(patient && patient.address) || "--"}
-                      </Typography>
-                      <Typography
-                        className={classes.subHeading}
-                        variant="subtitle2"
-                      >
-                        {/* {(patient && patient.createdAt.toDate().toDateString()) ||
+            {isLoading ? (
+              <CircularProgress style={{ color: "#fff" }} />
+            ) : patients.length ? (
+              patients.map((patient) => (
+                <ModernCard key={patient.id} classStyle="style3">
+                  <div>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                      gutterBottom
+                    >
+                      <span className={classes.info}>
+                        {(patient && patient.fullName) || "--"}
+                      </span>
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                    >
+                      {(patient && patient.phoneNumber) || "--"}
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                    >
+                      {(patient && patient.address) || "--"}
+                    </Typography>
+                    <Typography
+                      className={classes.subHeading}
+                      variant="subtitle2"
+                    >
+                      {/* {(patient && patient.createdAt.toDate().toDateString()) ||
                       "--"}{" "} */}
-                        <span className={classes.info}>
-                          {(patient &&
-                            patient.createdAt
-                              .toDate()
-                              .toLocaleTimeString("en-US")) ||
-                            ""}
-                        </span>
-                      </Typography>
-                    </div>
-                    <div>
-                      {" "}
-                      <DeclineUser />
-                      <Link
-                        style={{
-                          textDecoration: "none",
-                          color: "inherit",
-                        }}
-                        to={`${ROUTES.MEDICAL_HISTORY}/${patient.id}`}
-                      >
-                        <AcceptUser />
-                      </Link>
-                    </div>
-                  </ModernCard>
-                ))
-              ) : ("No upcoming appointments")
-            }
+                      <span className={classes.info}>
+                        {(patient &&
+                          patient.createdAt
+                            .toDate()
+                            .toLocaleTimeString("en-US")) ||
+                          ""}
+                      </span>
+                    </Typography>
+                  </div>
+                  <div>
+                    {" "}
+                    <DeclineUser />
+                    <Link
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                      }}
+                      to={`${ROUTES.MEDICAL_HISTORY}/${patient.id}`}
+                    >
+                      <AcceptUser />
+                    </Link>
+                  </div>
+                </ModernCard>
+              ))
+            ) : (
+              "No upcoming appointments"
+            )}
           </ModernCard>
         </Grid>
       </Grid>

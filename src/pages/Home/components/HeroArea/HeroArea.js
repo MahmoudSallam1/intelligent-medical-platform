@@ -13,6 +13,7 @@ import CustomButton from "../../../../components/custom-button/custom-button";
 import * as ROUTES from "../../../../constants/routes";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   bg: {
@@ -23,22 +24,24 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     textAlign: "center",
     [theme.breakpoints.up("md")]: {
-      textAlign:"center"
+      textAlign: "center",
     },
   },
   container: {
     margin: "0 auto",
+    padding: "0",
     [theme.breakpoints.up("xs")]: {
       width: "90%",
     },
     [theme.breakpoints.down("sm")]: {
-      textAlign:"center",
+      textAlign: "center",
     },
   },
 
   heading: {
     color: "#1DB5E4",
     lineHeight: "1.1",
+
     [theme.breakpoints.up("xs")]: {
       fontSize: "44px",
     },
@@ -50,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     color: "#6B6C6F",
     marginTop: "25px",
-    fontWeight:"400",
+    fontWeight: "400",
     [theme.breakpoints.up("xs")]: {
       fontSize: "16px",
     },
@@ -82,13 +85,14 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "120%",
     objectFit: "cover",
     [theme.breakpoints.down("sm")]: {
-      display:"none",
+      display: "none",
     },
   },
 }));
 
 function HeroArea() {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.bg}>
@@ -99,17 +103,14 @@ function HeroArea() {
             <div className={classes.container}>
               {" "}
               <Typography className={classes.heading} variant="h2">
-                <Box fontWeight="fontWeightBold">
-                  Easy and Complete Medical Care Platform.
-                </Box>
+                <Box fontWeight="fontWeightBold">{t("slogan")}</Box>
               </Typography>
               <Typography
                 className={classes.content}
                 variant="body1"
                 gutterBottom
               >
-                Doctors can effortlessly manage all major functions of their
-                practice through one intuitive platform.
+                {t("slogan_desc")}
               </Typography>
             </div>
             <div className={classes.btnGroup}>
@@ -120,7 +121,7 @@ function HeroArea() {
                 component={Link}
                 to={ROUTES.SIGN_UP}
               >
-                Get Started
+                {t("btn_register")}
               </CustomButton>
               <Button
                 variant="outlined"
@@ -129,11 +130,11 @@ function HeroArea() {
                 component={Link}
                 to={ROUTES.SIGN_IN}
               >
-                Login
+                {t("btn_login")}
               </Button>
             </div>
           </Grid>
-          <Grid item xs={12}  md={6}>
+          <Grid item xs={12} md={6}>
             <img
               className={classes.heroImg}
               src="/images/land-hero.svg"

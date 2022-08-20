@@ -21,6 +21,8 @@ import { signOut } from "../../store/actions/authActions";
 
 import * as ROUTES from "../../constants/routes";
 
+import { useTranslation } from "react-i18next";
+
 const ListItem = withStyles({
   root: {
     // "&$selected": {
@@ -40,6 +42,7 @@ const ListItem = withStyles({
 
 function MainListItems(props) {
   const [selectedIndex, setSelectedIndex] = useState(1);
+  const { t } = useTranslation();
 
   const handleListItemClick = (index) => {
     setSelectedIndex(index);
@@ -67,7 +70,7 @@ function MainListItems(props) {
             <ListItemIcon>
               <PersonAddIcon style={{ color: "#fff" }} />
             </ListItemIcon>
-            <ListItemText primary="New Appointment" />
+            <ListItemText primary={t("drawer_new_appointment_btn")} />
           </ListItem>
         </Link>
         <Link style={{ textDecoration: "none", color: "black" }} to="/">
@@ -75,7 +78,7 @@ function MainListItems(props) {
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText primary={t("drawer_home")} />
           </ListItem>
         </Link>
         <Link
@@ -86,19 +89,18 @@ function MainListItems(props) {
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            <ListItemText primary={t("drawer_dashboard")} />
           </ListItem>
         </Link>
         <Link
           style={{ textDecoration: "none", color: "black" }}
-          
           to={ROUTES.PATIENTS}
         >
           <ListItem button>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
-            <ListItemText primary="Patients" />
+            <ListItemText primary={t("drawer_patients")} />
           </ListItem>
         </Link>
         <Link
@@ -109,7 +111,7 @@ function MainListItems(props) {
             <ListItemIcon>
               <EventNoteIcon />
             </ListItemIcon>
-            <ListItemText primary="Calender" />
+            <ListItemText primary={t("drawer_calendar")} />
           </ListItem>
         </Link>
 
@@ -121,7 +123,7 @@ function MainListItems(props) {
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
-            <ListItemText primary="Profile" />
+            <ListItemText primary={t("drawer_profile")} />
           </ListItem>
         </Link>
 
@@ -133,7 +135,7 @@ function MainListItems(props) {
             <ListItemIcon>
               <ExitToAppIcon />
             </ListItemIcon>
-            <ListItemText primary="Log out" />
+            <ListItemText primary={t("drawer_logout")} />
           </ListItem>{" "}
         </List>
       </List>

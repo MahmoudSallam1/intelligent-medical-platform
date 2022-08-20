@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
 import AppointmentNavigation from "../../components/AppointmentNavigation";
 
+import { useTranslation } from "react-i18next";
 const db = firebase.firestore();
 
 const useStyles = makeStyles((theme) => ({
@@ -29,13 +30,14 @@ const useStyles = makeStyles((theme) => ({
 function GeneralMedicalHistoryForm({ auth }) {
   const { id } = useParams();
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const steps = [
-    "General information",
-    "Medical history",
-    "Familial diseases",
-    "Smoking and Alcoholic drinks",
-    "Confirm",
+    t("general_information"),
+    t("medical_history"),
+    t("familial_diseases"),
+    t("smoking_and_alcoholic_drinks"),
+    t("confirm"),
   ];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -63,8 +65,6 @@ function GeneralMedicalHistoryForm({ auth }) {
   useEffect(() => {
     getPatientDetails();
   }, []);
-
-
 
   console.log(formData);
 
@@ -154,7 +154,7 @@ function GeneralMedicalHistoryForm({ auth }) {
             onClick={prevStep}
             className={classes.btn}
           >
-            Back
+            {t("back_btn")}
           </Button>
 
           <Button
@@ -163,7 +163,7 @@ function GeneralMedicalHistoryForm({ auth }) {
             onClick={nextStep}
             className={classes.btn}
           >
-            {activeStep === steps.length - 1 ? "Finish" : "Next"}
+            {activeStep === steps.length - 1 ? t("finish_btn") : t("next_btn")}
           </Button>
         </div>
       )}

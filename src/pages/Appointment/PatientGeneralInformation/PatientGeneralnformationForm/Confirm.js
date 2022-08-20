@@ -23,6 +23,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { useTranslation } from "react-i18next";
 
 const sleep = (time) => new Promise((acc) => setTimeout(acc, time));
 
@@ -49,6 +50,7 @@ function Confirm({
 }) {
   const classes = useStyles();
   let history = useHistory();
+  const { t } = useTranslation();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -92,7 +94,6 @@ function Confirm({
               </ListItem>
               <Divider />
 
-              
               <ListItem>
                 <ListItemText primary="Gender" secondary={formData.gender} />
               </ListItem>
@@ -129,7 +130,7 @@ function Confirm({
                 onClick={handleBack}
                 className={classes.button}
               >
-                Back
+                {t("back_btn")}
               </Button>
               <Button
                 variant="contained"
@@ -141,7 +142,7 @@ function Confirm({
                 }
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Submitting" : "Submit"}
+                {isSubmitting ? "Submitting" : t("submit_btn")}
               </Button>
             </div>
 

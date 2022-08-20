@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
 import { Button } from "@material-ui/core";
+import {useTranslation} from 'react-i18next'
 
 
 function Radiology() {
   const [imageData, setImageData] = useState(null);
   const [selectedFile, setSelectedFile] = useState();
   const [prediction, setPrediction] = useState("");
+  const { t } = useTranslation();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -62,7 +64,7 @@ function Radiology() {
         </div>
 
         <div className="extracted-text">
-          <h3>Results...</h3>
+        <h3>{t("results")}</h3>
           <p>{prediction}</p>
         </div>
       </div>
