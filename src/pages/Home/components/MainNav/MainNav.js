@@ -22,7 +22,7 @@ function MainNav() {
       <Link to="/" className="nav-logo">
         <img
           style={{ width: "130px", objectFit: "cover" }}
-          src="/images/logo.png"
+          src="/logo.png"
           alt="logo"
         />{" "}
       </Link>
