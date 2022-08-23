@@ -45,10 +45,10 @@ def preprocess_image(img):
 
 get_model()
 
-@app.route("/predict", methods=["GET","POST"])
+@app.route("/", methods=["GET","POST"])
 def predict():
     data = request.get_json()
-    return "Hello!!"  
+    return "Hello World From Reserve Officers College!!"  
 
 
 @app.route('/uploader', methods = ['GET', 'POST'])
