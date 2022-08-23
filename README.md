@@ -54,6 +54,7 @@ medical records, search for doctors, and book
 appointments
 
 [Mobile App](https://github.com/Eslam-Mohamed-Gharieb/Patient-Medical-App)
+[Flask Server](https://github.com/MahmoudSallam1/chest-_cancer_detection_from_CT-SCAN)
 
   
 ## Feedback
