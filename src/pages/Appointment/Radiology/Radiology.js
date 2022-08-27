@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { Button } from "@material-ui/core";
-import {useTranslation} from 'react-i18next'
-
+import { useTranslation } from "react-i18next";
 
 function Radiology() {
   const [imageData, setImageData] = useState(null);
   const [selectedFile, setSelectedFile] = useState();
   const [prediction, setPrediction] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
 
   const handleImageChange = (e) => {
@@ -25,6 +26,7 @@ function Radiology() {
   const handleSubmission = async () => {
     const formData = new FormData();
     formData.append("file", selectedFile);
+    setIsLoading(true);
 
     let predict = await fetch("/uploader", {
       method: "POST",
@@ -32,9 +34,8 @@ function Radiology() {
     });
     let res = await predict.json();
     setPrediction(res.result);
+    setIsLoading(false);
   };
-
-  console.log(prediction);
 
   return (
     <div>
@@ -64,8 +65,8 @@ function Radiology() {
         </div>
 
         <div className="extracted-text">
-        <h3>{t("results")}</h3>
-          <p>{prediction}</p>
+          <h3>{t("results")}</h3>
+          {isLoading ? <CircularProgress /> : <p>{prediction}</p>}
         </div>
       </div>
     </div>
