@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     position: "relative",
-    height: "110vh",
 
     whiteSpace: "nowrap",
     width: drawerWidth,
