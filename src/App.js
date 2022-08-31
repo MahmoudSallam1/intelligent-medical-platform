@@ -19,6 +19,9 @@ import PatientDetailsPage from "./pages/Patients/components/PatientDetails/Patie
 
 import ErrorPage from "./pages/Error/ErrorPage";
 
+import PatientGeneralInformation from "./pages/Appointment/PatientGeneralInformation/PatientGeneralInformation";
+import PatientMedicalData from "./pages/Appointment/PatientMedicalData/PatientMedicalData";
+import PatientIntelligentPrescription from "./pages/Appointment/PatientIntellignetPrescription/PatientIntelligentPrescription";
 // Message from ك.ض.ح
 
 function App() {
@@ -66,6 +69,22 @@ function App() {
           <Route exact path={ROUTES.APPOINTMENT}>
             <AppointmentPage />
           </Route>
+
+          <Route path={ROUTES.PATIENT_MEDICAL_HISTORY_DETAILS}>
+            <PatientGeneralInformation />
+          </Route>
+
+          <Route path={ROUTES.PATIENT_DATA_DETAILS}>
+            <PatientMedicalData />
+          </Route>
+
+          <Route path={ROUTES.PRESCRIPTION_DETAILS}>
+            <PatientIntelligentPrescription />
+          </Route>
+
+
+          
+
           {/* Patients */}
 
           <Route path={ROUTES.ERROR}>

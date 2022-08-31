@@ -129,7 +129,7 @@ function PatientDetails(props) {
                   textDecoration: "none",
                   color: "inherit",
                 }}
-                to={`${ROUTES.MEDICAL_HISTORY}/${id}`}
+                to={`/dashboard/appointment/patient-general-information/${id}`}
               >
                 <ModernCard>
                   {" "}
@@ -238,7 +238,7 @@ function PatientDetails(props) {
                   textDecoration: "none",
                   color: "inherit",
                 }}
-                to={`${ROUTES.PATIENT_DATA}/${id}`}
+                to={`/dashboard/appointment/patient-medical-data/${id}`}
               >
                 <ModernCard>
                   {" "}
@@ -280,7 +280,7 @@ function PatientDetails(props) {
                   textDecoration: "none",
                   color: "inherit",
                 }}
-                to={`${ROUTES.PRESCRIPTION}/${id}`}
+                to={`/dashboard/appointment/patient-intelligent-prescription/${id}`}
               >
                 <ModernCard>
                   {" "}

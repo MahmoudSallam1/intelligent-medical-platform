@@ -7,6 +7,7 @@ import PatientGeneralInformationForm from "./PatientGeneralnformationForm/Patien
 
 import PaperWrapper from "../../../components/PaperWrapper/PaperWrapper";
 
+
 const useStyles = makeStyles({
   marginBot: {
     marginBottom: "1em",
@@ -15,6 +16,7 @@ const useStyles = makeStyles({
 
 function PatientGeneralInformation() {
   const classes = useStyles();
+
 
   return (
     <PaperWrapper>

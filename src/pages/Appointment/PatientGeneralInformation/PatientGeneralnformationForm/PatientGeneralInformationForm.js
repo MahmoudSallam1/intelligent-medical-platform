@@ -32,6 +32,7 @@ function GeneralMedicalHistoryForm({ auth }) {
   const classes = useStyles();
   const { t } = useTranslation();
 
+
   const steps = [
     t("general_information"),
     t("medical_history"),
@@ -65,8 +66,6 @@ function GeneralMedicalHistoryForm({ auth }) {
   useEffect(() => {
     getPatientDetails();
   }, []);
-
-  console.log(formData);
 
   const nextStep = () => setActiveStep((prev) => prev + 1);
   const prevStep = () => setActiveStep((prev) => prev - 1);
@@ -144,7 +143,6 @@ function GeneralMedicalHistoryForm({ auth }) {
   return (
     <>
       {" "}
-      {id ? <AppointmentNavigation id={id} /> : null}
       <FormStepper steps={steps} activeStep={activeStep} />
       {renderForm(activeStep)}
       {activeStep !== steps.length - 1 && (
