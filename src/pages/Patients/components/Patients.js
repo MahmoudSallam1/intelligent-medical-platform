@@ -8,6 +8,7 @@ import PaperWrapper from "../../../components/PaperWrapper/PaperWrapper";
 import { DataGrid } from "@material-ui/data-grid";
 
 import { Link } from "react-router-dom";
+import SearchBar from "material-ui-search-bar";
 
 const db = firebase.firestore();
 
@@ -57,8 +58,12 @@ const columns = [
 
 function Patients(props) {
   const { auth } = props;
+  const [rows, setRows] = useState([]);
   const [patients, setPatients] = useState([]);
+
   const [loading, setIsLoading] = useState(true);
+  const [searched, setSearched] = useState("");
+
   const getPatientsList = () => {
     db.collection(`doctors/${auth.uid}/patients`)
       .get()
@@ -72,7 +77,11 @@ function Patients(props) {
           fetchPatients.push(fetchedPatient);
         });
         setIsLoading(false);
-        setPatients(fetchPatients);
+        const data = fetchPatients.map((doc) => {
+          return { ...doc.patientInformation, id: doc.id };
+        });
+        setRows(data);
+        setPatients(data);
       })
       .catch((error) => {
         console.log(error);
@@ -83,26 +92,40 @@ function Patients(props) {
     getPatientsList();
   }, []);
 
-  const rows = patients.map((doc) => {
-    return { ...doc.patientInformation, id: doc.id };
-  });
+  const requestSearch = (searchedVal) => {
+    const filteredRows = patients.filter((row) => {
+      return row.fullName.toLowerCase().includes(searchedVal.toLowerCase());
+    });
+    setRows(filteredRows);
+  };
 
-  console.log(rows);
+  const cancelSearch = () => {
+    setSearched("");
+    requestSearch(searched);
+  };
 
   return (
     <PaperWrapper>
-      {(patients.length == 0) && (!loading) ? ("No Data Found") :
-        (
-          <div style={{ height: 600, width: "100%" }}>
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              pageSize={10}
-              loading={loading}
+      <SearchBar
+        value={searched}
+        onChange={(searchVal) => requestSearch(searchVal)}
+        onCancelSearch={() => cancelSearch()}
+      />
+
+      <br></br>
+      {rows.length === 0 && !loading ? (
+        "No Data Found"
+      ) : (
+        <div style={{ height: 600, width: "100%" }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={10}
+            loading={loading}
             // checkboxSelection
-            />
-          </div>
-        )}
+          />
+        </div>
+      )}
     </PaperWrapper>
   );
 }
