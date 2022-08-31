@@ -6,7 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import PatientGeneralInformationForm from "./PatientGeneralnformationForm/PatientGeneralInformationForm";
 
 import PaperWrapper from "../../../components/PaperWrapper/PaperWrapper";
+import { Redirect } from "react-router-dom";
 
+import * as ROUTES from "../../../constants/routes";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles({
   marginBot: {
@@ -14,10 +17,11 @@ const useStyles = makeStyles({
   },
 });
 
-function PatientGeneralInformation() {
+function PatientGeneralInformation(props) {
   const classes = useStyles();
 
-
+  const { auth } = props;
+  if (!auth.uid) return <Redirect to={ROUTES.SIGN_IN} />;
   return (
     <PaperWrapper>
       <PatientGeneralInformationForm />
@@ -25,4 +29,10 @@ function PatientGeneralInformation() {
   );
 }
 
-export default PatientGeneralInformation;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+  };
+};
+
+export default connect(mapStateToProps)(PatientGeneralInformation);
