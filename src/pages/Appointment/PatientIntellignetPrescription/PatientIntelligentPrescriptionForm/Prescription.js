@@ -246,6 +246,7 @@ function Prescription({
                   }}
                   multiline
                   fullWidth
+                  disabled={isRecord}
                 />
               </div>
 

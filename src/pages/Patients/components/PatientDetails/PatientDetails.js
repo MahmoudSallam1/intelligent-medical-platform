@@ -89,6 +89,7 @@ function PatientDetails(props) {
     getPatientDetails();
   }, []);
 
+  console.log(patient);
   return (
     <div className={classes.container}>
       {!isLoading ? (
@@ -129,7 +130,7 @@ function PatientDetails(props) {
                   textDecoration: "none",
                   color: "inherit",
                 }}
-                to={`${ROUTES.MEDICAL_HISTORY}/${id}`}
+                to={`/dashboard/appointment/patient-general-information/${id}`}
               >
                 <ModernCard>
                   {" "}
@@ -238,7 +239,7 @@ function PatientDetails(props) {
                   textDecoration: "none",
                   color: "inherit",
                 }}
-                to={`${ROUTES.PATIENT_DATA}/${id}`}
+                to={`/dashboard/appointment/patient-medical-data/${id}`}
               >
                 <ModernCard>
                   {" "}
@@ -280,7 +281,7 @@ function PatientDetails(props) {
                   textDecoration: "none",
                   color: "inherit",
                 }}
-                to={`${ROUTES.PRESCRIPTION}/${id}`}
+                to={`/dashboard/appointment/patient-intelligent-prescription/${id}`}
               >
                 <ModernCard>
                   {" "}
@@ -296,11 +297,11 @@ function PatientDetails(props) {
                       💊 Medications :{" "}
                       <span className={classes.info}>
                         {(patient.prescriptions &&
-                          patient.prescriptions.medications) ||
+                          patient.prescriptions.prescription) ||
                           "--"}
                       </span>
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       className={classes.subHeading}
                       variant="subtitle2"
                       gutterBottom
@@ -311,7 +312,7 @@ function PatientDetails(props) {
                           patient.prescriptions.dosages) ||
                           "--"}
                       </span>
-                    </Typography>
+                    </Typography> */}
                   </div>
                 </ModernCard>
               </Link>

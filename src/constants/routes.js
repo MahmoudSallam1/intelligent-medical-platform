@@ -13,26 +13,19 @@ export const APPOINTMENT = "/dashboard/appointment";
 
 
 
-
-
-
-
-
-
-
-
-export const MEDICAL_HISTORY = "/dashboard/appointment/patient-general-information";
-export const PATIENT_MEDICAL_HISTORY_DETAILS = "/dashboard/appointment/patient-general-information/:id";
+export const MEDICAL_HISTORY =
+  "/dashboard/appointment/patient-general-information";
+export const PATIENT_MEDICAL_HISTORY_DETAILS =
+  "/dashboard/appointment/patient-general-information/:id";
 
 export const PATIENT_DATA = "/dashboard/appointment/patient-medical-data";
-export const PATIENT_DATA_DETAILS = "/medical-data/:id";
+export const PATIENT_DATA_DETAILS =
+  "/dashboard/appointment/patient-medical-data/:id";
 
-export const PRESCRIPTION = "/dashboard/appointment/patient-intelligent-prescription";
-export const PRESCRIPTION_DETAILS = "/prescription/:id";
-
-
-
-
+export const PRESCRIPTION =
+  "/dashboard/appointment/patient-intelligent-prescription";
+export const PRESCRIPTION_DETAILS =
+  "/dashboard/appointment/patient-intelligent-prescription/:id";
 
 
 
