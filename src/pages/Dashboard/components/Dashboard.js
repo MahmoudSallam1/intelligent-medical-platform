@@ -136,9 +136,7 @@ function Dashboard({ auth, profile }) {
                     gutterBottom
                   >
                     {t("onboarding_heading")}
-                    {personalInfo &&
-                      `${personalInfo.firstName} ${personalInfo.lastName}`}{" "}
-                    !
+                    {personalInfo && personalInfo.displayName}!
                   </Typography>
                   <Typography
                     className={classes.bannerSubheading}

@@ -145,13 +145,13 @@ function AppBarAndDrawer({ pageTitle, profile }) {
             </Box>{" "}
           </Typography>
 
-          <EventNoteIcon />
+          {/* <EventNoteIcon />
 
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
 

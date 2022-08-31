@@ -182,8 +182,7 @@ function Prescription({
                     variant="h6"
                     gutterBottom
                   >
-                    {personalInfo &&
-                      `${personalInfo.firstName} ${personalInfo.lastName}`}
+                    {personalInfo && personalInfo.displayName}
                   </Typography>
                   <Typography
                     className={classes.subtitle}
@@ -263,8 +262,7 @@ function Prescription({
                   align={"left"}
                   variant="h6"
                 >
-                  {personalInfo &&
-                    `${personalInfo.firstName} ${personalInfo.lastName}`}
+                  {personalInfo && personalInfo.displayName}
                 </Typography>
                 <Divider style={{ width: "30%" }} />
               </div>
