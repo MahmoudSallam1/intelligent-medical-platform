@@ -118,7 +118,7 @@ function Prescription({
     setIsRecord(true);
     SpeechRecognition.startListening({
       continuous: true,
-      // language: "ar-EG",
+      language: "ar-EG",
     });
   };
 
