@@ -89,6 +89,7 @@ function PatientDetails(props) {
     getPatientDetails();
   }, []);
 
+  console.log(patient);
   return (
     <div className={classes.container}>
       {!isLoading ? (
@@ -296,11 +297,11 @@ function PatientDetails(props) {
                       💊 Medications :{" "}
                       <span className={classes.info}>
                         {(patient.prescriptions &&
-                          patient.prescriptions.medications) ||
+                          patient.prescriptions.prescription) ||
                           "--"}
                       </span>
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       className={classes.subHeading}
                       variant="subtitle2"
                       gutterBottom
@@ -311,7 +312,7 @@ function PatientDetails(props) {
                           patient.prescriptions.dosages) ||
                           "--"}
                       </span>
-                    </Typography>
+                    </Typography> */}
                   </div>
                 </ModernCard>
               </Link>

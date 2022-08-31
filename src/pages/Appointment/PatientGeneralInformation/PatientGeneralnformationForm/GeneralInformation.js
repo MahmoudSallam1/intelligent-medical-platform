@@ -159,12 +159,12 @@ function GeneralInformation({
               }}
             >
               <FormControlLabel
-                value="female"
+                value="Female"
                 control={<Radio color="primary" />}
                 label="Female"
               />
               <FormControlLabel
-                value="male"
+                value="Male"
                 control={<Radio color="primary" />}
                 label="Male"
               />
